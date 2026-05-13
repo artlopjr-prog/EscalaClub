@@ -7,22 +7,30 @@ export default async function EventosPage() {
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const { data: ownedCommunities } = await supabase
+  const { data: profile } = await supabase
+    .from('ec_profiles')
+    .select('role_platform')
+    .eq('id', user.id)
+    .maybeSingle()
+
+  const isSuperAdmin = profile?.role_platform === 'super_admin'
+
+  const { data } = await supabase
     .from('ec_communities')
     .select('id, name, primary_color')
     .eq('owner_id', user.id)
+  const ownedCommunities = data ?? []
 
-  const isCreator = (ownedCommunities?.length ?? 0) > 0
+  const isCreator = isSuperAdmin || ownedCommunities.length > 0
 
   const { data: memberships } = await supabase
     .from('ec_community_members')
     .select('community_id')
     .eq('user_id', user.id)
 
-  // Get community IDs - creators see their own community events too
   const communityIds = [
     ...(memberships?.map(m => m.community_id) ?? []),
-    ...(ownedCommunities?.map(c => c.id) ?? []),
+    ...(ownedCommunities.map(c => c.id)),
   ].filter((v, i, a) => a.indexOf(v) === i)
 
   const { data: events } = await supabase
@@ -41,7 +49,7 @@ export default async function EventosPage() {
       events={events ?? []}
       rsvpIds={new Set(rsvps?.map(r => r.event_id) ?? [])}
       userId={user.id}
-      ownedCommunities={ownedCommunities ?? []}
+      ownedCommunities={ownedCommunities}
       isCreator={isCreator}
     />
   )
