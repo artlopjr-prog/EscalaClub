@@ -3,6 +3,8 @@ import { redirect, notFound } from 'next/navigation'
 import Link from 'next/link'
 import { Users, BookOpen, Calendar, MessageSquare, Lock, Radio, HelpCircle, MessageCircle, Settings, ArrowLeft } from 'lucide-react'
 import JoinButton from './JoinButton'
+import LeaveButton from './LeaveButton'
+import RejoinButton from './RejoinButton'
 
 const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500', red: '#FF4D6A' }
 
@@ -29,15 +31,15 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
 
   const { data: membership } = await supabase
     .from('ec_community_members')
-    .select('id, role, points')
+    .select('id, role, points, status, access_until, rejoin_requested_at')
     .eq('community_id', community.id)
     .eq('user_id', user.id)
     .maybeSingle()
 
-  const isMember = !!membership
+  const isBanned = membership?.status === 'banned'
+  const isMember = !!membership && membership.status === 'active'
   const isOwner = community.owner_id === user.id
   const hasAccess = isMember || isOwner
-
   const { data: courses } = await supabase
     .from('ec_courses')
     .select('id, title, cover_url')
@@ -55,10 +57,10 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
 
   const { data: recentPosts } = await supabase
     .from('ec_posts')
-    .select('id, content, created_at, author:ec_profiles(display_name)')
+    .select('id, content, created_at, is_public, author:ec_profiles(display_name)')
     .eq('community_id', community.id)
     .order('created_at', { ascending: false })
-    .limit(3)
+    .limit(hasAccess ? 3 : 10)
 
   const accentColor = community.primary_color ?? '#7C3AED'
 
@@ -101,23 +103,44 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               {community.category && <span style={{ padding: '2px 9px', borderRadius: 99, background: 'rgba(255,255,255,0.06)', color: C.muted, fontSize: 11 }}>{community.category}</span>}
             </div>
           </div>
-          <div style={{ paddingBottom: 4, zIndex: 1 }}>
+          <div style={{ paddingBottom: 4, zIndex: 1, display: 'flex', gap: 10, flexWrap: 'wrap' }}>
             {isOwner ? (
               <Link href="/creator/comunidad" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 20px', borderRadius: 12, background: 'rgba(255,255,255,0.07)', color: C.text, textDecoration: 'none', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14, border: `1px solid ${C.border}` }}>
                 <Settings size={15} /> Gestionar comunidad
               </Link>
-            ) : (
-              <JoinButton
+            ) : isBanned ? (
+              <RejoinButton
+                membershipId={membership!.id}
+                communityName={community.name}
+                alreadyRequested={!!membership?.rejoin_requested_at}
+              />
+            ) : isMember ? (
+              <LeaveButton
                 communityId={community.id}
                 communityName={community.name}
-                communitySlug={slug}
-                accessType={community.access_type}
-                priceMonthly={community.price_monthly ?? 0}
-                paypalEmail={community.paypal_account_email ?? null}
-                isMember={isMember}
-                accentColor={accentColor}
+                membershipId={membership!.id}
                 userId={user.id}
+                isPaid={community.access_type === 'paid'}
+                accessUntil={membership?.access_until ?? null}
               />
+            ) : (
+              community.status === 'pending_deletion' ? (
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 20px', borderRadius: 12, background: 'rgba(255,77,106,0.08)', border: '1px solid rgba(255,77,106,0.2)', color: C.red, fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14 }}>
+                  ⚠️ Comunidad en proceso de cierre
+                </div>
+              ) : (
+                <JoinButton
+                  communityId={community.id}
+                  communityName={community.name}
+                  communitySlug={slug}
+                  accessType={community.access_type}
+                  priceMonthly={community.price_monthly ?? 0}
+                  paypalEmail={community.paypal_account_email ?? null}
+                  isMember={false}
+                  accentColor={accentColor}
+                  userId={user.id}
+                />
+              )
             )}
           </div>
         </div>
@@ -154,12 +177,41 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                   ))}
                 </div>
               </div>
-            ) : (
-              <div style={{ background: `linear-gradient(135deg, ${accentColor}11, rgba(0,0,0,0))`, border: `1px solid ${accentColor}33`, borderRadius: 20, padding: 32, textAlign: 'center' }}>
-                <Lock size={36} color={accentColor} style={{ marginBottom: 16 }} />
-                <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 18, color: C.text, marginBottom: 8 }}>Contenido exclusivo para miembros</h3>
-                <p style={{ fontSize: 14, color: C.muted, marginBottom: 20, lineHeight: 1.6 }}>Únete para acceder al foro, chat, lives, Q&A, cursos y todos los eventos de esta comunidad.</p>
+            ) : isBanned ? (
+              <div style={{ background: 'rgba(255,77,106,0.06)', border: '1px solid rgba(255,77,106,0.2)', borderRadius: 20, padding: 32, textAlign: 'center' }}>
+                <div style={{ fontSize: 36, marginBottom: 16 }}>🚫</div>
+                <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 18, color: C.red, marginBottom: 8 }}>Acceso restringido</h3>
+                <p style={{ fontSize: 14, color: C.muted2, marginBottom: 8, lineHeight: 1.6 }}>Fuiste removido de esta comunidad.</p>
+                {membership?.ban_reason && <p style={{ fontSize: 13, color: C.muted, fontStyle: 'italic' }}>Motivo: "{membership.ban_reason}"</p>}
               </div>
+            ) : (
+              <>
+                <div style={{ background: `linear-gradient(135deg, ${accentColor}11, rgba(0,0,0,0))`, border: `1px solid ${accentColor}33`, borderRadius: 20, padding: 32, textAlign: 'center' }}>
+                  <Lock size={36} color={accentColor} style={{ marginBottom: 16 }} />
+                  <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 18, color: C.text, marginBottom: 8 }}>Contenido exclusivo para miembros</h3>
+                  <p style={{ fontSize: 14, color: C.muted, lineHeight: 1.6 }}>Únete para acceder al foro, chat, lives, Q&A, cursos y todos los eventos.</p>
+                </div>
+                {/* Public posts visible to non-members */}
+                {recentPosts && recentPosts.filter((p: any) => p.is_public).length > 0 && (
+                  <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
+                    <div style={{ padding: '18px 22px', borderBottom: `1px solid ${C.border}` }}>
+                      <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, color: C.text }}>Posts públicos</h2>
+                      <p style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>Una muestra de lo que encontrarás dentro</p>
+                    </div>
+                    {recentPosts.filter((p: any) => p.is_public).map((post: any, i: number, arr: any[]) => (
+                      <div key={post.id} style={{ padding: '16px 22px', borderBottom: i < arr.length - 1 ? `1px solid ${C.border}` : 'none', display: 'flex', gap: 12 }}>
+                        <div style={{ width: 32, height: 32, borderRadius: '50%', background: accentColor + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 12, color: accentColor, flexShrink: 0 }}>
+                          {(post.author as any)?.display_name?.[0]?.toUpperCase() ?? '?'}
+                        </div>
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ fontSize: 12, fontWeight: 600, color: C.text, marginBottom: 4 }}>{(post.author as any)?.display_name}</div>
+                          <div style={{ fontSize: 13, color: C.muted2, lineHeight: 1.5, overflow: 'hidden', display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' as any }}>{post.content}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </>
             )}
 
             {courses && courses.length > 0 && (
@@ -186,8 +238,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               </div>
             )}
 
-            {hasAccess && recentPosts && recentPosts.length > 0 && (
-              <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
+            {hasAccess && recentPosts && recentPosts.length > 0 && (              <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', borderBottom: `1px solid ${C.border}` }}>
                   <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, color: C.text }}>Actividad reciente</h2>
                   <Link href={`/comunidades/${slug}/foro`} style={{ fontSize: 12, color: C.muted, textDecoration: 'none' }}>Ver foro →</Link>

@@ -349,6 +349,19 @@ export default function CreatorComunidadPage() {
         <Save size={16} />
         {saving ? 'Guardando...' : community ? 'Guardar cambios' : '🚀 Crear mi comunidad'}
       </button>
+
+      {/* Danger zone */}
+      {community && (
+        <div style={{ marginTop: 40, paddingTop: 28, borderTop: '1px solid rgba(255,77,106,0.15)' }}>
+          <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14, color: '#FF4D6A', marginBottom: 8 }}>⚠️ Zona de peligro</h3>
+          <p style={{ fontSize: 13, color: '#6B6A80', marginBottom: 14, lineHeight: 1.6 }}>
+            Eliminar tu comunidad notificará a todos los miembros y dará 30 días antes del cierre definitivo.
+          </p>
+          <a href="/creator/eliminar-comunidad" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '9px 18px', borderRadius: 10, background: 'rgba(255,77,106,0.08)', border: '1px solid rgba(255,77,106,0.2)', color: '#FF4D6A', textDecoration: 'none', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13 }}>
+            🗑️ Eliminar comunidad
+          </a>
+        </div>
+      )}
     </div>
   )
 }
