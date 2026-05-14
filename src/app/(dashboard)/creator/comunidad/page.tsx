@@ -40,7 +40,7 @@ const S = {
   label: { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 8, fontFamily: 'Syne, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' as const },
   required: { color: '#FF4D6A', marginLeft: 2 },
   hint: { fontSize: 11, color: '#6B6A80', marginTop: 5, lineHeight: 1.5 },
-  row2: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 },
+  row2: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 200px), 1fr))', gap: 16 },
   divider: { height: 1, background: 'rgba(255,255,255,0.06)', margin: '4px 0 16px' },
 }
 

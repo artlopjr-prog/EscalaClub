@@ -57,7 +57,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 14, marginBottom: 28 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 150px), 1fr))', gap: 12, marginBottom: 24 }}>
         {[
           { label: 'Comunidades', value: myMemberships?.length ?? 0, icon: Globe, color: 'var(--purple2)', bg: 'rgba(159,103,255,0.1)' },
           { label: 'Puntos', value: totalPoints.toLocaleString(), icon: Trophy, color: 'var(--gold)', bg: 'rgba(240,165,0,0.1)' },
@@ -76,7 +76,7 @@ export default async function DashboardPage() {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 20, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 20, alignItems: 'start' }}>
         {/* Left */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 

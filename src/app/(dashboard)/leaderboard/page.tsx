@@ -48,7 +48,7 @@ export default async function LeaderboardPage() {
       )}
 
       <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '50px 1fr 100px 80px', gap: 16, padding: '12px 20px', borderBottom: `1px solid ${C.border}` }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '40px 1fr 80px 60px', gap: 8, padding: '10px 16px', borderBottom: `1px solid ${C.border}` }}>
           {['#','Miembro','Puntos','País'].map(h => (
             <div key={h} style={{ fontSize: 11, fontFamily: 'Syne, sans-serif', fontWeight: 700, color: C.muted, letterSpacing: '0.06em', textTransform: 'uppercase' }}>{h}</div>
           ))}
@@ -58,7 +58,7 @@ export default async function LeaderboardPage() {
           const isMe = l.user_id === user.id
           const profile = null
           return (
-            <div key={`${l.user_id}-${i}`} style={{ display: 'grid', gridTemplateColumns: '50px 1fr 100px 80px', gap: 16, padding: '14px 20px', borderBottom: i < leaders.length - 1 ? `1px solid ${C.border}` : 'none', alignItems: 'center', background: isMe ? 'rgba(124,58,237,0.05)' : 'transparent' }}>
+            <div key={`${l.user_id}-${i}`} style={{ display: 'grid', gridTemplateColumns: '40px 1fr 80px 60px', gap: 8, padding: '12px 16px', borderBottom: i < leaders.length - 1 ? `1px solid ${C.border}` : 'none', alignItems: 'center', background: isMe ? 'rgba(124,58,237,0.05)' : 'transparent' }}>
               <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: i < 3 ? 20 : 14, color: i < 3 ? C.gold : C.muted, textAlign: 'center' }}>
                 {i < 3 ? medals[i] : `${i + 1}`}
               </div>

@@ -145,7 +145,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
           </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: 24, alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 24, alignItems: 'start' }}>
           {/* Left */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
             {community.description && (
@@ -161,7 +161,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                   <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, color: C.text }}>Espacios de la comunidad</h2>
                   <p style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>Selecciona dónde quieres participar</p>
                 </div>
-                <div style={{ padding: 16, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                <div style={{ padding: 16, display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 160px), 1fr))', gap: 12 }}>
                   {SECTIONS.map(s => (
                     <Link key={s.href} href={s.href} style={{ textDecoration: 'none' }}>
                       <div style={{ background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 16, padding: '18px 16px', display: 'flex', alignItems: 'center', gap: 14 }}>

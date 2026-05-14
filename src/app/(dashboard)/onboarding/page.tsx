@@ -103,7 +103,7 @@ export default function OnboardingPage() {
               <p style={{ fontSize: 14, color: '#6B6A80' }}>Esto nos ayuda a personalizar tu experiencia</p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginBottom: 28 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 160px), 1fr))', gap: 14, marginBottom: 28 }}>
               {[
                 { id: 'member', emoji: '📚', title: 'Quiero aprender', desc: 'Accede a comunidades y cursos de los mejores expertos de LATAM', color: '#3B82F6' },
                 { id: 'creator', emoji: '👥', title: 'Quiero crear', desc: 'Lanza tu comunidad, vende cursos y genera ingresos recurrentes', color: '#7C3AED' },
@@ -141,7 +141,7 @@ export default function OnboardingPage() {
               <p style={{ fontSize: 14, color: '#6B6A80' }}>Selecciona todos los que apliquen</p>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginBottom: 28 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 160px), 1fr))', gap: 10, marginBottom: 28 }}>
               {(role === 'creator' ? GOALS_CREATOR : GOALS_MEMBER).map(g => (
                 <button key={g.id} onClick={() => toggleGoal(g.id)} style={{
                   display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', borderRadius: 12,

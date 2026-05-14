@@ -161,7 +161,7 @@ export default function EventosClient({ events: initialEvents, rsvpIds: initialR
               <label style={L}>Descripción</label>
               <textarea value={form.description} onChange={e => set('description', e.target.value)} placeholder="¿De qué se trata el evento?" rows={3} style={{ ...INP, resize: 'vertical' }} />
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 200px), 1fr))', gap: 12 }}>
               <div>
                 <label style={L}>Fecha y hora *</label>
                 <input type="datetime-local" value={form.starts_at} onChange={e => set('starts_at', e.target.value)} style={{ ...INP, colorScheme: 'dark' }} />

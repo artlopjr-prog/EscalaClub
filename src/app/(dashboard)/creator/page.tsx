@@ -99,7 +99,7 @@ export default async function CreatorPage() {
         ))}
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 18, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 18, alignItems: 'start' }}>
         {/* Left */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           {/* Quick actions */}
