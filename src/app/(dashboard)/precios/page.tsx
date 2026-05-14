@@ -144,7 +144,7 @@ export default function PreciosPage() {
                 onClick={() => handleSelectPlan(plan.id)}
                 disabled={!!loading || isCurrentPlan}
                 style={{
-                  width: '100%', padding: '13px', borderRadius: 12, border: 'none', cursor: isCurrentPlan ? 'default' : 'pointer',
+                  width: '100%', padding: '13px', borderRadius: 12, cursor: isCurrentPlan ? 'default' : 'pointer',
                   background: isCurrentPlan ? 'rgba(0,214,143,0.1)' : plan.popular ? `linear-gradient(135deg, ${plan.color}, #9F67FF)` : plan.color + '20',
                   color: isCurrentPlan ? C.green : plan.popular ? '#fff' : plan.color,
                   fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14,

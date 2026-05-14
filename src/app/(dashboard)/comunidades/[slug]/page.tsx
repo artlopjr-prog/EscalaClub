@@ -31,7 +31,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
 
   const { data: membership } = await supabase
     .from('ec_community_members')
-    .select('id, role, points, status, access_until, rejoin_requested_at')
+    .select('id, role, points, status, access_until, rejoin_requested_at, ban_reason')
     .eq('community_id', community.id)
     .eq('user_id', user.id)
     .maybeSingle()

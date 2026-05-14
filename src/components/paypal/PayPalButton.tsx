@@ -14,12 +14,7 @@ interface PayPalButtonProps {
 
 declare global {
   interface Window {
-    paypal?: {
-      Buttons: (config: Record<string, unknown>) => {
-        render: (selector: string) => void
-        close: () => void
-      }
-    }
+    paypal?: any
   }
 }
 

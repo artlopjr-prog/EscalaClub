@@ -92,7 +92,7 @@ export default function JoinButton({ communityId, communityName, communitySlug, 
               return
             }
             // Increment member count
-            await supabase.rpc('increment_member_count', { community_id_param: communityId }).catch(() => {})
+            try { await supabase.rpc('increment_member_count', { community_id_param: communityId }) } catch {}
             // Send join email
             fetch('/api/emails/join', {
               method: 'POST',
@@ -144,7 +144,7 @@ export default function JoinButton({ communityId, communityName, communitySlug, 
     if (error) {
       toast.error('Error al unirte: ' + error.message)
     } else {
-      await supabase.rpc('increment_member_count', { community_id_param: communityId }).catch(() => {})
+      try { await supabase.rpc('increment_member_count', { community_id_param: communityId }) } catch {}
       fetch('/api/emails/join', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
