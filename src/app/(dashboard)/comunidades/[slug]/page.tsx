@@ -62,7 +62,6 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
 
   const accentColor = community.primary_color ?? '#7C3AED'
 
-  // Community content sections available to members
   const SECTIONS = [
     { href: `/comunidades/${slug}/foro`, icon: MessageSquare, label: 'Foro', desc: 'Posts y discusiones', color: accentColor, emoji: '💬' },
     { href: `/comunidades/${slug}/chat`, icon: MessageCircle, label: 'Chat', desc: 'Mensajes en tiempo real', color: '#3B82F6', emoji: '💭' },
@@ -108,7 +107,17 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                 <Settings size={15} /> Gestionar comunidad
               </Link>
             ) : (
-              <JoinButton communityId={community.id} communityName={community.name} accessType={community.access_type} priceMonthly={community.price_monthly} isMember={isMember} accentColor={accentColor} userId={user.id} />
+              <JoinButton
+                communityId={community.id}
+                communityName={community.name}
+                communitySlug={slug}
+                accessType={community.access_type}
+                priceMonthly={community.price_monthly ?? 0}
+                paypalEmail={community.paypal_account_email ?? null}
+                isMember={isMember}
+                accentColor={accentColor}
+                userId={user.id}
+              />
             )}
           </div>
         </div>
@@ -116,7 +125,6 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: 24, alignItems: 'start' }}>
           {/* Left */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-            {/* Description */}
             {community.description && (
               <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 22 }}>
                 <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, color: C.text, marginBottom: 12 }}>Acerca de esta comunidad</h2>
@@ -124,7 +132,6 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               </div>
             )}
 
-            {/* Content sections — only for members */}
             {hasAccess ? (
               <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
                 <div style={{ padding: '18px 22px', borderBottom: `1px solid ${C.border}` }}>
@@ -134,7 +141,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                 <div style={{ padding: 16, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                   {SECTIONS.map(s => (
                     <Link key={s.href} href={s.href} style={{ textDecoration: 'none' }}>
-                      <div style={{ background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 16, padding: '18px 16px', display: 'flex', alignItems: 'center', gap: 14, transition: 'all 0.15s' }}>
+                      <div style={{ background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 16, padding: '18px 16px', display: 'flex', alignItems: 'center', gap: 14 }}>
                         <div style={{ width: 44, height: 44, borderRadius: 13, background: s.color + '18', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, flexShrink: 0 }}>
                           {s.emoji}
                         </div>
@@ -155,7 +162,6 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               </div>
             )}
 
-            {/* Courses preview */}
             {courses && courses.length > 0 && (
               <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', borderBottom: `1px solid ${C.border}` }}>
@@ -180,7 +186,6 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               </div>
             )}
 
-            {/* Recent activity */}
             {hasAccess && recentPosts && recentPosts.length > 0 && (
               <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', borderBottom: `1px solid ${C.border}` }}>
@@ -202,9 +207,8 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
             )}
           </div>
 
-          {/* Right */}
+          {/* Right sidebar */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            {/* Creator */}
             <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 20 }}>
               <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 12, color: C.muted, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 14 }}>Creador</h3>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -218,7 +222,6 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               </div>
             </div>
 
-            {/* Stats */}
             <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 20 }}>
               <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 12, color: C.muted, letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 14 }}>Estadísticas</h3>
               {[
@@ -235,7 +238,6 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               ))}
             </div>
 
-            {/* Upcoming events */}
             {events && events.length > 0 && (
               <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
                 <div style={{ padding: '16px 18px', borderBottom: `1px solid ${C.border}` }}>
