@@ -67,7 +67,7 @@ export default function RegistroPage() {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: C.bg, display: 'flex' }}>
+    <div style={{ minHeight: '100vh', background: C.bg, display: 'flex', overflowX: 'hidden', maxWidth: '100vw' }}>
       {/* Left branding */}
       <div style={{ flex: 1, background: C.bg1, borderRight: `1px solid ${C.border}`, padding: 48, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className="hidden lg:flex">
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
