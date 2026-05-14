@@ -38,7 +38,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: bgColor }}>
+    <div style={{ minHeight: '100vh', background: bgColor, overflowX: 'hidden' }}>
       {/* Community top bar */}
       <div style={{
         background: 'rgba(0,0,0,0.3)',
@@ -71,7 +71,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
           </div>
 
           {/* Members count */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <div className="community-header-stats" style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, color: '#E8E9F0' }}>{community.member_count ?? 0}</div>
               <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)' }}>miembros</div>
@@ -85,7 +85,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
         </div>
 
         {/* Tabs row */}
-        <div style={{ display: 'flex', padding: '0 16px', overflowX: 'auto', gap: 2 }}>
+        <div className="community-tabs" style={{ display: 'flex', padding: '0 16px', overflowX: 'auto', gap: 2 }}>
           {TABS.map(tab => {
             const active = isActive(tab.href)
             return (

@@ -60,13 +60,14 @@ export default async function DashboardLayout({ children }: { children: React.Re
   }
 
   return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden', background: '#06060A' }}>
-      <div style={{ display: 'flex', width: '100%', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: '#1F2335' }}>
+      {/* Sidebar — hidden on mobile via CSS class */}
+      <div className="desktop-sidebar">
         <Sidebar user={member} unread={unread ?? 0} isCreator={isCreator} />
-        <main style={{ flex: 1, overflowY: 'auto', paddingBottom: '80px' }}>
-          {children}
-        </main>
       </div>
+      <main style={{ flex: 1, overflowY: 'auto', paddingBottom: '80px', minWidth: 0 }}>
+        {children}
+      </main>
       <MobileNav />
     </div>
   )

@@ -200,7 +200,7 @@ export default function ForoClient({
   const allTasksDone = WELCOME_TASKS.every(t => completedTasks.has(t.id))
 
   return (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: 24, maxWidth: 1100, margin: '0 auto', padding: '24px 20px', alignItems: 'start' }}>
+    <div className="foro-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 300px', gap: 24, maxWidth: 1100, margin: '0 auto', padding: '24px 20px', alignItems: 'start' }}>
 
       {/* ── LEFT COLUMN ── */}
       <div>
@@ -420,7 +420,7 @@ export default function ForoClient({
       </div>
 
       {/* ── RIGHT SIDEBAR ── */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 100 }}>
+      <div className="foro-sidebar" style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 100 }}>
         {/* Community info card */}
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16, overflow: 'hidden' }}>
           {/* Banner */}
