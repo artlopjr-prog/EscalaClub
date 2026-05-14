@@ -20,7 +20,7 @@ const COLORS = ['#7C3AED','#EF4444','#F59E0B','#10B981','#3B82F6','#EC4899','#8B
 interface Community {
   id: string; name: string; slug: string; description: string
   tagline: string; category: string; locale: string
-  access_type: string; price_monthly: number; price_yearly: number
+  access_type: string; price_monthly: number; price_yearly: number; paypal_account_email: string
   primary_color: string; logo_url: string; banner_url: string
   member_count: number; status: string
 }
@@ -49,7 +49,7 @@ export default function CreatorComunidadPage() {
   const [community, setCommunity] = useState<Community | null>(null)
   const [form, setForm] = useState<Partial<Community>>({
     name: '', slug: '', description: '', tagline: '', category: 'negocios',
-    locale: 'es', access_type: 'public', price_monthly: 0, price_yearly: 0,
+    locale: 'es', access_type: 'public', price_monthly: 0, price_yearly: 0, paypal_account_email: '',
     primary_color: '#7C3AED', logo_url: '', banner_url: '',
   })
   const [saving, setSaving] = useState(false)
@@ -84,6 +84,7 @@ export default function CreatorComunidadPage() {
         price_yearly: form.access_type === 'public' || form.access_type === 'free' ? 0 : Number(form.price_yearly),
         primary_color: form.primary_color,
         logo_url: form.logo_url || null, banner_url: form.banner_url || null,
+        paypal_account_email: form.access_type === 'paid' ? (form.paypal_account_email || null) : null,
       }).eq('id', community.id)
       if (error) toast.error('Error: ' + error.message)
       else { toast.success('✅ Comunidad actualizada'); load() }
@@ -99,6 +100,7 @@ export default function CreatorComunidadPage() {
         price_monthly: form.access_type === 'public' || form.access_type === 'free' ? 0 : Number(form.price_monthly),
         price_yearly: 0,
         primary_color: form.primary_color || '#7C3AED',
+        paypal_account_email: form.access_type === 'paid' ? (form.paypal_account_email || null) : null,
         currency: 'USD', plan: 'starter', status: 'active',
       }).select().single()
       if (error) toast.error('Error: ' + error.message)
@@ -242,6 +244,18 @@ export default function CreatorComunidadPage() {
                     placeholder="29" min="1" className="input" style={{ paddingLeft: 28 }} />
                 </div>
                 <div style={S.hint}>💡 Referencia: comunidades en LATAM cobran entre $19–$99/mes</div>
+              </div>
+
+              <div style={{ marginBottom: 16 }}>
+                <label style={S.label}>Tu email de PayPal <span style={S.required}>*</span></label>
+                <input
+                  type="email"
+                  value={form.paypal_account_email ?? ''}
+                  onChange={e => set('paypal_account_email', e.target.value)}
+                  placeholder="tu@paypal.com"
+                  className="input"
+                />
+                <div style={S.hint}>💡 Los pagos de tus miembros irán directo a este email de PayPal. Asegúrate de que sea el email de tu cuenta PayPal Business.</div>
               </div>
 
               <div style={{ marginBottom: 16 }}>
