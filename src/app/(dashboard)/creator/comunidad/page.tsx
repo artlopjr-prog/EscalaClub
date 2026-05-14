@@ -400,48 +400,60 @@ export default function CreatorComunidadPage() {
       {/* Tab: Appearance */}
       {tab === 'appearance' && (
         <div style={S.card}>
-          <div style={{ marginBottom: 24 }}>
-            <label style={S.label}>Color de acento</label>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 14 }}>
-              {COLORS.map(c => (
+          {/* Live preview */}
+          <div style={{ marginBottom: 24, borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
+            <div style={{ height: 80, background: form.banner_url ? `url(${form.banner_url}) center/cover` : `linear-gradient(135deg, ${form.primary_color ?? '#6366F1'}44, ${form.primary_color ?? '#6366F1'}11)`, position: 'relative' }}>
+              <div style={{ position: 'absolute', bottom: -20, left: 16, width: 44, height: 44, borderRadius: 12, background: form.logo_url ? undefined : (form.primary_color ?? '#6366F1') + '30', border: '3px solid #1F2335', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>
+                {form.logo_url ? <img src={form.logo_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '🌐'}
+              </div>
+            </div>
+            <div style={{ padding: '28px 16px 12px', background: '#262B42' }}>
+              <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14, color: '#E8E9F0' }}>{form.name || 'Tu comunidad'}</div>
+              <div style={{ fontSize: 11, color: form.primary_color ?? '#6366F1', marginTop: 2 }}>● {form.tagline || 'Tu tagline aquí'}</div>
+            </div>
+          </div>
+
+          {/* Color principal */}
+          <div style={{ marginBottom: 20 }}>
+            <label style={S.label}>Color principal</label>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 8 }}>
+              {['#6366F1','#8B5CF6','#EC4899','#EF4444','#F59E0B','#10B981','#3B82F6','#06B6D4','#F97316','#84CC16','#F0A500','#FF4D6A'].map(c => (
                 <button key={c} onClick={() => set('primary_color', c)} style={{
-                  width: 36, height: 36, borderRadius: 10, background: c, border: 'none', cursor: 'pointer',
+                  width: 30, height: 30, borderRadius: 8, background: c, border: 'none', cursor: 'pointer',
                   outline: form.primary_color === c ? `3px solid ${c}` : '3px solid transparent',
-                  outlineOffset: 2, transform: form.primary_color === c ? 'scale(1.15)' : 'scale(1)',
+                  outlineOffset: 2, transform: form.primary_color === c ? 'scale(1.2)' : 'scale(1)',
                   transition: 'all 0.15s',
                 }} />
               ))}
             </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', background: '#13131C', borderRadius: 12, border: '1px solid rgba(255,255,255,0.07)' }}>
-              <div style={{ width: 40, height: 40, borderRadius: 10, background: (form.primary_color ?? '#7C3AED') + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>🌐</div>
-              <div>
-                <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13, color: '#EEEDF5', marginBottom: 2 }}>{form.name || 'Tu comunidad'}</div>
-                <div style={{ fontSize: 11, color: form.primary_color ?? '#7C3AED' }}>Así se verá el color en tu perfil</div>
-              </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <input type="color" value={form.primary_color ?? '#6366F1'} onChange={e => set('primary_color', e.target.value)} style={{ width: 36, height: 36, borderRadius: 8, border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer', padding: 2, background: 'transparent' }} />
+              <span style={{ fontSize: 12, color: '#7B7FA8' }}>Color personalizado</span>
             </div>
           </div>
 
+          {/* Banner */}
           <div style={{ marginBottom: 20 }}>
-            <label style={S.label}>URL del banner (imagen de portada)</label>
+            <label style={S.label}>Banner (imagen de portada)</label>
             <input value={form.banner_url ?? ''} onChange={e => set('banner_url', e.target.value)}
-              placeholder="https://... (imagen 1200×400px recomendada)" className="input" />
-            {form.banner_url && (
-              <div style={{ marginTop: 10, height: 100, borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.09)' }}>
-                <img src={form.banner_url} alt="Banner" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-            )}
+              placeholder="https://... (1200×300px recomendado)" className="input" />
+            <div style={S.hint}>💡 Usa <a href="https://unsplash.com" target="_blank" style={{ color: '#818CF8' }}>Unsplash.com</a> para imágenes gratis de alta calidad</div>
           </div>
 
-          <div style={{ marginBottom: 8 }}>
-            <label style={S.label}>URL del logo</label>
+          {/* Logo */}
+          <div style={{ marginBottom: 20 }}>
+            <label style={S.label}>Logo de la comunidad</label>
             <input value={form.logo_url ?? ''} onChange={e => set('logo_url', e.target.value)}
-              placeholder="https://... (imagen cuadrada 200×200px)" className="input" />
-            {form.logo_url && (
-              <div style={{ marginTop: 10, width: 64, height: 64, borderRadius: 12, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.09)' }}>
-                <img src={form.logo_url} alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              </div>
-            )}
-            <div style={S.hint}>💡 Usa Cloudinary, Imgur o cualquier hosting de imágenes para obtener la URL</div>
+              placeholder="https://... (cuadrada, 200×200px)" className="input" />
+            <div style={S.hint}>Aparece en el navbar y en las cards de la comunidad</div>
+          </div>
+
+          {/* Mensaje de bienvenida */}
+          <div style={{ marginBottom: 8 }}>
+            <label style={S.label}>Mensaje de bienvenida</label>
+            <textarea value={(form as any).welcome_message ?? ''} onChange={e => set('welcome_message' as any, e.target.value)}
+              placeholder="Ej: Bienvenido a Nivel 10. Aquí transformamos vidas y negocios..." rows={3} className="input" />
+            <div style={S.hint}>Aparece en el checklist de bienvenida para nuevos miembros</div>
           </div>
         </div>
       )}

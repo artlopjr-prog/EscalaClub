@@ -420,7 +420,7 @@ export default function ForoClient({
       </div>
 
       {/* ── RIGHT SIDEBAR ── */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 120 }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 16, position: 'sticky', top: 100 }}>
         {/* Community info card */}
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16, overflow: 'hidden' }}>
           {/* Banner */}
