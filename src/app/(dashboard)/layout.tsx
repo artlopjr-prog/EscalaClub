@@ -8,30 +8,41 @@ export default async function DashboardLayout({ children }: { children: React.Re
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) redirect('/login')
 
-  const { data: profile } = await supabase
+  let { data: profile } = await supabase
     .from('ec_profiles')
     .select('*')
     .eq('id', user.id)
     .maybeSingle()
 
   if (!profile) {
-    await supabase.from('ec_profiles').insert({
-      id: user.id,
-      username: user.email?.split('@')[0] ?? 'user',
-      display_name: user.user_metadata?.full_name ?? user.email?.split('@')[0] ?? 'Usuario',
-      role_platform: ['artlopjr@gmail.com','arturo@scalon.co','arturo@scalon.com'].includes(user.email ?? '') ? 'super_admin' : 'user',
-      onboarding_completed: false,
-    })
+    const isAdmin = ['artlopjr@gmail.com','arturo@scalon.co','arturo@scalon.com'].includes(user.email ?? '')
+    const { data: newProfile } = await supabase
+      .from('ec_profiles')
+      .insert({
+        id: user.id,
+        username: user.email?.split('@')[0] ?? 'user',
+        display_name: user.user_metadata?.full_name ?? user.email?.split('@')[0] ?? 'Usuario',
+        role_platform: isAdmin ? 'super_admin' : 'user',
+        onboarding_completed: false,
+      })
+      .select()
+      .single()
+    profile = newProfile
   }
 
-  // Check if user is a creator (owns a community)
-  const { data: ownedCommunity } = await supabase
-    .from('ec_communities')
-    .select('id')
-    .eq('owner_id', user.id)
-    .maybeSingle()
+  const isSuperAdmin = profile?.role_platform === 'super_admin'
 
-  const isCreator = !!ownedCommunity
+  let isCreator = false
+  if (isSuperAdmin) {
+    isCreator = true
+  } else {
+    const { data: ownedCommunity } = await supabase
+      .from('ec_communities')
+      .select('id')
+      .eq('owner_id', user.id)
+      .maybeSingle()
+    isCreator = !!ownedCommunity
+  }
 
   const { count: unread } = await supabase
     .from('ec_notifications')

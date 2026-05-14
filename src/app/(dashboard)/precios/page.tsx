@@ -1,135 +1,181 @@
 'use client'
-
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, Check, Zap } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { createClient } from '@/lib/supabase/client'
+import { ArrowLeft, Check, Zap, Crown, Sparkles, Rocket } from 'lucide-react'
+import toast from 'react-hot-toast'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500' }
+const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500', danger: '#FF4D6A' }
 
 const PLANS = [
   {
-    id: 'starter', name: 'Starter', emoji: '🚀',
+    id: 'starter', name: 'Starter', Icon: Rocket,
     desc: 'Para empezar tu primera comunidad',
     monthly: 39, annual: 374,
     color: '#3B82F6',
-    features: ['1 comunidad activa','Hasta 100 miembros','Cursos ilimitados','Foro con canales','Certificados automáticos','Analytics básico','Soporte por email'],
+    limit: '100 miembros',
+    features: ['1 comunidad activa','Hasta 100 miembros','Cursos ilimitados','Foro con canales','Eventos en vivo','Certificados automáticos','Analytics básico','Soporte por email'],
   },
   {
-    id: 'creator', name: 'Creator', emoji: '⚡',
+    id: 'creator', name: 'Creator', Icon: Sparkles,
     desc: 'Para creadores en crecimiento serio',
     monthly: 79, annual: 758,
     color: '#7C3AED', popular: true,
-    features: ['1 comunidad activa','Hasta 1,000 miembros','Todo lo de Starter','Programa de afiliados','Eventos en vivo (Zoom/Meet)','Analytics avanzado','WhatsApp notifications','Soporte prioritario'],
+    limit: '1,000 miembros',
+    features: ['1 comunidad activa','Hasta 1,000 miembros','Todo lo de Starter','Programa de afiliados','Analytics avanzado','Notificaciones WhatsApp','Badge verificado','Soporte prioritario'],
   },
   {
-    id: 'pro', name: 'Pro', emoji: '👑',
+    id: 'pro', name: 'Pro', Icon: Crown,
     desc: 'Para negocios educativos a escala',
     monthly: 129, annual: 1238,
     color: '#F0A500',
-    features: ['Comunidades ilimitadas','Miembros ilimitados','Todo lo de Creator','Badge verificado','API access','Manager dedicado','White-label (próximamente)','SLA garantizado'],
+    limit: 'Miembros ilimitados',
+    features: ['Comunidades ilimitadas','Miembros ilimitados','Todo lo de Creator','API access','Manager dedicado','White-label (próximamente)','SLA garantizado','Onboarding personalizado'],
   },
 ]
 
 export default function PreciosPage() {
   const [billing, setBilling] = useState<'monthly'|'annual'>('monthly')
+  const [loading, setLoading] = useState<string|null>(null)
+  const [currentPlan, setCurrentPlan] = useState<string|null>(null)
+  const router = useRouter()
+  const supabase = createClient()
+
+  useEffect(() => {
+    supabase.from('ec_creator_subscriptions').select('plan,status').eq('status','active').maybeSingle()
+      .then(({ data }) => { if (data) setCurrentPlan(data.plan) })
+  }, [])
+
+  async function handleSelectPlan(planId: string) {
+    setLoading(planId)
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) { router.push('/login'); return }
+    // Por ahora guardamos intent y dirigimos a contacto para pago manual
+    // Cuando PayPal esté conectado, aquí irá la URL de suscripción PayPal
+    await supabase.from('ec_creator_subscriptions').upsert({
+      member_id: user.id,
+      plan: planId,
+      billing_cycle: billing,
+      status: 'pending',
+      price_usd: billing === 'monthly' ? PLANS.find(p => p.id === planId)!.monthly : PLANS.find(p => p.id === planId)!.annual,
+    }, { onConflict: 'member_id' })
+    toast.success('¡Plan seleccionado! Te contactaremos para activar el pago.')
+    setLoading(null)
+    router.push('/creator')
+  }
 
   return (
-    <div style={{ minHeight: '100vh', background: C.bg, padding: '32px 24px 60px' }}>
-      {/* Back button */}
+    <div style={{ minHeight: '100vh', background: C.bg, padding: '32px 24px 80px' }}>
       <Link href="/dashboard" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 10, border: `1px solid ${C.border}`, color: C.muted, textDecoration: 'none', fontSize: 13, marginBottom: 40 }}>
-        <ArrowLeft size={14} /> Volver al dashboard
+        <ArrowLeft size={14} /> Volver
       </Link>
 
-      {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: 48 }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 20 }}>
           <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Zap size={16} color="#fff" />
           </div>
-          <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 16, color: C.text }}>Elige tu plan de creador</span>
+          <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 16, color: C.text }}>Planes para Creadores</span>
         </div>
         <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 42, letterSpacing: '-0.04em', color: C.text, marginBottom: 12, lineHeight: 1.1 }}>
           Construye tu<br />
-          <span style={{ background: 'linear-gradient(135deg, #9F67FF, #7C3AED)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>comunidad ideal</span>
+          <span style={{ background: 'linear-gradient(135deg, #9F67FF, #7C3AED)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>comunidad ideal</span>
         </h1>
-        <p style={{ fontSize: 16, color: C.muted, maxWidth: 500, margin: '0 auto 32px' }}>
-          Sin comisiones por venta. Sin límites de contenido. Tú cobras directo a tus miembros.
+        <p style={{ fontSize: 16, color: C.muted, maxWidth: 500, margin: '0 auto 12px' }}>
+          Sin comisiones por venta. Tú cobras directo a tus miembros por PayPal.
+        </p>
+        <p style={{ fontSize: 13, color: C.muted, maxWidth: 440, margin: '0 auto 32px' }}>
+          Lo que cobres a tus miembros es 100% tuyo. EscalaClub solo cobra el plan mensual.
         </p>
 
-        {/* Billing toggle */}
         <div style={{ display: 'inline-flex', background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 12, padding: 4 }}>
-          {[{ val: 'monthly', label: 'Mensual' }, { val: 'annual', label: 'Anual' }].map(opt => (
+          {[{ val: 'monthly', label: 'Mensual' }, { val: 'annual', label: 'Anual -20%' }].map(opt => (
             <button key={opt.val} onClick={() => setBilling(opt.val as any)} style={{
               padding: '8px 24px', borderRadius: 9, fontSize: 13, fontFamily: 'Syne, sans-serif', fontWeight: 700,
               background: billing === opt.val ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'transparent',
-              color: billing === opt.val ? '#fff' : C.muted, border: 'none', cursor: 'pointer', transition: 'all 0.2s',
-            }}>
-              {opt.label}
-              {opt.val === 'annual' && <span style={{ marginLeft: 6, fontSize: 10, background: 'rgba(0,214,143,0.2)', color: C.green, padding: '1px 6px', borderRadius: 99 }}>-20%</span>}
-            </button>
+              color: billing === opt.val ? '#fff' : C.muted, border: 'none', cursor: 'pointer',
+            }}>{opt.label}</button>
           ))}
         </div>
       </div>
 
-      {/* Plans */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, maxWidth: 1000, margin: '0 auto 48px' }}>
-        {PLANS.map(plan => (
-          <div key={plan.id} style={{
-            background: plan.popular ? `linear-gradient(145deg, ${plan.color}18, ${C.bg1})` : C.bg1,
-            border: `2px solid ${plan.popular ? plan.color + '60' : C.border}`,
-            borderRadius: 24, padding: 28, position: 'relative', display: 'flex', flexDirection: 'column',
-            boxShadow: plan.popular ? `0 0 40px ${plan.color}20` : 'none',
-          }}>
-            {plan.popular && (
-              <div style={{ position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)', padding: '4px 16px', borderRadius: 99, background: `linear-gradient(135deg, ${plan.color}, ${plan.color}cc)`, color: '#fff', fontSize: 11, fontFamily: 'Syne, sans-serif', fontWeight: 800, whiteSpace: 'nowrap' }}>
-                MÁS POPULAR
-              </div>
-            )}
-
-            <div style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 36, marginBottom: 12 }}>{plan.emoji}</div>
-              <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 24, color: C.text, marginBottom: 4 }}>{plan.name}</h3>
-              <p style={{ fontSize: 13, color: C.muted, marginBottom: 16 }}>{plan.desc}</p>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
-                <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 40, letterSpacing: '-0.04em', color: plan.color }}>
-                  ${billing === 'monthly' ? plan.monthly : Math.round(plan.annual / 12)}
-                </span>
-                <span style={{ fontSize: 14, color: C.muted }}>/mes</span>
-              </div>
-              {billing === 'annual' && (
-                <div style={{ fontSize: 12, color: C.green, marginTop: 4 }}>
-                  ${plan.annual}/año · Ahorras ${(plan.monthly * 12) - plan.annual}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20, maxWidth: 1000, margin: '0 auto 56px' }}>
+        {PLANS.map(plan => {
+          const price = billing === 'monthly' ? plan.monthly : plan.annual
+          const isCurrentPlan = currentPlan === plan.id
+          return (
+            <div key={plan.id} style={{
+              background: plan.popular ? `linear-gradient(145deg, ${plan.color}15, ${C.bg1})` : C.bg1,
+              border: `2px solid ${plan.popular ? plan.color + '50' : C.border}`,
+              borderRadius: 24, padding: 28, position: 'relative', display: 'flex', flexDirection: 'column',
+            }}>
+              {plan.popular && (
+                <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)', background: `linear-gradient(135deg, ${plan.color}, #9F67FF)`, color: '#fff', fontSize: 11, fontWeight: 800, padding: '4px 16px', borderRadius: 99, fontFamily: 'Syne, sans-serif', whiteSpace: 'nowrap' }}>
+                  ⚡ MÁS POPULAR
                 </div>
               )}
-            </div>
-
-            <div style={{ flex: 1, marginBottom: 24 }}>
-              {plan.features.map((f, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 10 }}>
-                  <Check size={15} color={plan.color} style={{ flexShrink: 0, marginTop: 1 }} />
-                  <span style={{ fontSize: 13, color: C.muted2, lineHeight: 1.4 }}>{f}</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+                <div style={{ width: 44, height: 44, borderRadius: 12, background: plan.color + '20', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <plan.Icon size={22} color={plan.color} />
                 </div>
-              ))}
+                <div>
+                  <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 18, color: C.text }}>{plan.name}</div>
+                  <div style={{ fontSize: 11, color: plan.color, fontWeight: 700 }}>{plan.limit}</div>
+                </div>
+              </div>
+              <p style={{ fontSize: 13, color: C.muted, marginBottom: 20, lineHeight: 1.5 }}>{plan.desc}</p>
+              <div style={{ marginBottom: 24 }}>
+                <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 40, color: C.text }}>${price}</span>
+                <span style={{ fontSize: 14, color: C.muted }}>/{billing === 'monthly' ? 'mes' : 'año'}</span>
+                {billing === 'annual' && <div style={{ fontSize: 11, color: C.green, fontWeight: 600, marginTop: 4 }}>Ahorra ${(plan.monthly * 12) - plan.annual}/año</div>}
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28, flex: 1 }}>
+                {plan.features.map(f => (
+                  <div key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                    <div style={{ width: 18, height: 18, borderRadius: 5, background: plan.color + '20', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 1 }}>
+                      <Check size={11} color={plan.color} />
+                    </div>
+                    <span style={{ fontSize: 13, color: C.muted2, lineHeight: 1.4 }}>{f}</span>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() => handleSelectPlan(plan.id)}
+                disabled={!!loading || isCurrentPlan}
+                style={{
+                  width: '100%', padding: '13px', borderRadius: 12, border: 'none', cursor: isCurrentPlan ? 'default' : 'pointer',
+                  background: isCurrentPlan ? 'rgba(0,214,143,0.1)' : plan.popular ? `linear-gradient(135deg, ${plan.color}, #9F67FF)` : plan.color + '20',
+                  color: isCurrentPlan ? C.green : plan.popular ? '#fff' : plan.color,
+                  fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14,
+                  opacity: loading && loading !== plan.id ? 0.5 : 1,
+                  border: isCurrentPlan ? `1px solid rgba(0,214,143,0.3)` : 'none',
+                }}
+              >
+                {isCurrentPlan ? '✓ Plan actual' : loading === plan.id ? 'Procesando...' : `Elegir ${plan.name}`}
+              </button>
             </div>
-
-            <button style={{
-              width: '100%', padding: '14px', borderRadius: 14,
-              background: plan.popular ? `linear-gradient(135deg, ${plan.color}, ${plan.color}cc)` : 'transparent',
-              border: plan.popular ? 'none' : `2px solid ${plan.color}`,
-              color: plan.popular ? '#fff' : plan.color,
-              fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, cursor: 'pointer',
-              transition: 'all 0.2s',
-            }}>
-              {plan.id === 'starter' ? 'Empezar gratis 14 días' : `Elegir ${plan.name}`}
-            </button>
-          </div>
-        ))}
+          )
+        })}
       </div>
 
-      {/* Bottom note */}
-      <div style={{ textAlign: 'center' }}>
-        <p style={{ fontSize: 13, color: C.muted, marginBottom: 8 }}>✅ Sin contratos · Cancela cuando quieras · Pago seguro con PayPal</p>
-        <p style={{ fontSize: 13, color: C.muted }}>¿Tienes dudas? <a href="mailto:hola@escalaclub.com" style={{ color: C.purple2, textDecoration: 'none' }}>Contáctanos</a></p>
+      {/* FAQ */}
+      <div style={{ maxWidth: 700, margin: '0 auto', padding: '40px 0', borderTop: `1px solid ${C.border}` }}>
+        <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 24, color: C.text, textAlign: 'center', marginBottom: 32 }}>Preguntas frecuentes</h2>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          {[
+            ['¿Puedo cambiar de plan?', 'Sí, puedes subir o bajar de plan en cualquier momento. El cambio aplica desde el siguiente ciclo de facturación.'],
+            ['¿Qué pasa con mis miembros si cancelo?', 'Tendrás acceso hasta el final del período pagado. Luego tu comunidad se pausará y los miembros no podrán acceder hasta que reactives.'],
+            ['¿Cómo cobro a mis miembros?', 'Conectas tu cuenta PayPal en la configuración de tu comunidad. Tú defines el precio y el dinero llega directo a ti — sin comisiones de EscalaClub.'],
+            ['¿Hay un período de prueba?', 'Puedes crear tu perfil y configurar tu comunidad gratis. El plan se activa cuando decides publicarla y cobrar.'],
+            ['¿EscalaClub toma comisión de mis ventas?', 'No. EscalaClub cobra el plan mensual, y los pagos de tus miembros son 100% tuyos. Sin comisiones ocultas.'],
+          ].map(([q, a]) => (
+            <div key={q} style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 14, padding: '18px 22px' }}>
+              <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 15, color: C.text, marginBottom: 8 }}>{q}</div>
+              <div style={{ fontSize: 14, color: C.muted, lineHeight: 1.6 }}>{a}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   )
