@@ -7,7 +7,7 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
 }
 
-const FROM = 'EscalaClub <hola@escalaclub.com>'
+const FROM = process.env.EMAIL_FROM ?? 'EscalaClub <onboarding@resend.dev>'
 
 function emailWrapper(content: string) {
   return `<!DOCTYPE html><html><head><meta charset="utf-8"></head>
