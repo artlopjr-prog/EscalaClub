@@ -10,33 +10,45 @@ export default async function ForoPage({ params }: { params: Promise<{ slug: str
 
   const { data: community } = await supabase
     .from('ec_communities')
-    .select('id, name, slug, primary_color, owner_id, members_can_post, members_can_upload_images, members_can_upload_videos, chat_mode, qa_enabled')
+    .select('*')
     .eq('slug', slug)
+    .eq('status', 'active')
     .single()
-
   if (!community) notFound()
 
   const { data: membership } = await supabase
     .from('ec_community_members')
-    .select('id, role')
+    .select('role, status')
     .eq('community_id', community.id)
     .eq('user_id', user.id)
     .maybeSingle()
 
   const isOwner = community.owner_id === user.id
-  if (!membership && !isOwner) redirect(`/comunidades/${slug}`)
+  const isMember = !!membership && membership.status === 'active'
+  if (!isOwner && !isMember) redirect(`/comunidades/${slug}`)
 
-  const [{ data: posts }, { data: categories }] = await Promise.all([
+  const userRole = isOwner ? 'owner' : (membership?.role ?? 'member')
+
+  const [{ data: posts }, { data: categories }, { data: ownerProfile }, { data: profile }] = await Promise.all([
     supabase.from('ec_posts')
       .select('*, author:ec_profiles(id, display_name, avatar_url)')
       .eq('community_id', community.id)
+      .eq('status', 'active')
       .order('is_pinned', { ascending: false })
       .order('created_at', { ascending: false })
       .limit(50),
     supabase.from('ec_post_categories')
       .select('*')
       .eq('community_id', community.id)
-      .order('position'),
+      .order('sort_order'),
+    supabase.from('ec_profiles')
+      .select('display_name, avatar_url')
+      .eq('id', community.owner_id)
+      .maybeSingle(),
+    supabase.from('ec_profiles')
+      .select('display_name, avatar_url')
+      .eq('id', user.id)
+      .maybeSingle(),
   ])
 
   return (
@@ -45,7 +57,11 @@ export default async function ForoPage({ params }: { params: Promise<{ slug: str
       posts={posts ?? []}
       categories={categories ?? []}
       userId={user.id}
-      userRole={isOwner ? 'owner' : (membership?.role ?? 'member')}
+      userRole={userRole}
+      ownerProfile={ownerProfile ?? null}
+      memberCount={community.member_count ?? 0}
+      userDisplayName={profile?.display_name ?? user.email?.split('@')[0] ?? 'Usuario'}
+      userAvatarUrl={profile?.avatar_url}
     />
   )
 }
