@@ -44,9 +44,17 @@ const S = {
   divider: { height: 1, background: 'rgba(255,255,255,0.06)', margin: '4px 0 16px' },
 }
 
+const PLAN_LIMITS: Record<string, number> = {
+  starter: 1,
+  creator: 2,
+  pro: 5,
+}
+
 export default function CreatorComunidadPage() {
   const supabase = createClient()
   const [community, setCommunity] = useState<Community | null>(null)
+  const [allCommunities, setAllCommunities] = useState<Community[]>([])
+  const [selectedCommunityId, setSelectedCommunityId] = useState<string | null>(null)
   const [form, setForm] = useState<Partial<Community>>({
     name: '', slug: '', description: '', tagline: '', category: 'negocios',
     locale: 'es', access_type: 'public', price_monthly: 0, price_yearly: 0, paypal_account_email: '',
@@ -56,15 +64,66 @@ export default function CreatorComunidadPage() {
   const [loading, setLoading] = useState(true)
   const [tab, setTab] = useState<'info'|'pricing'|'appearance'>('info')
   const [userId, setUserId] = useState('')
+  const [isSuperAdmin, setIsSuperAdmin] = useState(false)
+  const [creatorPlan, setCreatorPlan] = useState<string | null>(null)
+  const [canCreate, setCanCreate] = useState(true)
+  const [limitMessage, setLimitMessage] = useState('')
 
   const load = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
     setUserId(user.id)
-    const { data } = await supabase.from('ec_communities').select('*').eq('owner_id', user.id).maybeSingle()
-    if (data) { setCommunity(data); setForm(data) }
+
+    // Check if super_admin
+    const { data: profile } = await supabase.from('ec_profiles').select('role_platform').eq('id', user.id).maybeSingle()
+    const admin = profile?.role_platform === 'super_admin'
+    setIsSuperAdmin(admin)
+
+    // Get creator plan
+    const { data: sub } = await supabase.from('ec_creator_subscriptions').select('plan').eq('member_id', user.id).eq('status', 'active').maybeSingle()
+    setCreatorPlan(sub?.plan ?? null)
+
+    // Get all owned communities
+    const { data: communities } = await supabase.from('ec_communities').select('*').eq('owner_id', user.id).order('created_at')
+    const comms = communities ?? []
+    setAllCommunities(comms)
+
+    // Check limits
+    if (!admin) {
+      if (!sub) {
+        setCanCreate(false)
+        setLimitMessage('Necesitas un plan activo para crear comunidades.')
+      } else {
+        const limit = PLAN_LIMITS[sub.plan] ?? 1
+        if (comms.length >= limit) {
+          setCanCreate(false)
+          setLimitMessage(`Tu plan ${sub.plan} permite hasta ${limit} comunidad${limit > 1 ? 'es' : ''}. Sube de plan para crear más.`)
+        }
+      }
+    }
+
+    // Load first community by default
+    if (comms.length > 0) {
+      const first = comms[0]
+      setCommunity(first)
+      setForm(first)
+      setSelectedCommunityId(first.id)
+    }
     setLoading(false)
   }, [supabase])
+
+  // Switch between communities
+  function selectCommunity(id: string | null) {
+    if (!id) {
+      setCommunity(null)
+      setForm({ name: '', slug: '', description: '', tagline: '', category: 'negocios', locale: 'es', access_type: 'public', price_monthly: 0, price_yearly: 0, paypal_account_email: '', primary_color: '#7C3AED', logo_url: '', banner_url: '' })
+      setSelectedCommunityId(null)
+      setTab('info')
+    } else {
+      const c = allCommunities.find(x => x.id === id)
+      if (c) { setCommunity(c); setForm(c); setSelectedCommunityId(id); setTab('info') }
+    }
+  }
 
   useEffect(() => { load() }, [load])
 
@@ -115,18 +174,27 @@ export default function CreatorComunidadPage() {
     </div>
   )
 
+  const planLimit = isSuperAdmin ? '∞' : creatorPlan ? PLAN_LIMITS[creatorPlan] : 0
+
   return (
     <div style={S.page}>
       {/* Header */}
       <div style={{ ...S.header, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <div>
-          <h1 style={S.title}>{community ? 'Mi comunidad' : 'Crear mi comunidad'}</h1>
-          {community && (
-            <p style={S.subtitle}>
-              <span style={{ display: 'inline-block', width: 6, height: 6, borderRadius: '50%', background: '#00D68F', marginRight: 6 }} />
-              {community.member_count ?? 0} miembros · escalaclub.com/comunidades/{community.slug}
-            </p>
-          )}
+          <h1 style={S.title}>Mis comunidades</h1>
+          <p style={{ fontSize: 13, color: '#6B6A80' }}>
+            {allCommunities.length} de {planLimit} comunidades usadas
+            {!isSuperAdmin && creatorPlan && (
+              <span style={{ marginLeft: 8, padding: '2px 8px', borderRadius: 99, background: 'rgba(124,58,237,0.15)', color: '#9F67FF', fontSize: 11, fontWeight: 700 }}>
+                Plan {creatorPlan}
+              </span>
+            )}
+            {isSuperAdmin && (
+              <span style={{ marginLeft: 8, padding: '2px 8px', borderRadius: 99, background: 'rgba(240,165,0,0.15)', color: '#F0A500', fontSize: 11, fontWeight: 700 }}>
+                ⭐ Super Admin
+              </span>
+            )}
+          </p>
         </div>
         {community && (
           <Link href={`/comunidades/${community.slug}`} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)', fontSize: 12, color: '#9998B0' }}>
@@ -134,6 +202,40 @@ export default function CreatorComunidadPage() {
           </Link>
         )}
       </div>
+
+      {/* Community selector */}
+      {allCommunities.length > 0 && (
+        <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
+          {allCommunities.map(c => (
+            <button key={c.id} onClick={() => selectCommunity(c.id)} style={{
+              padding: '7px 14px', borderRadius: 10, fontSize: 12, fontFamily: 'Syne, sans-serif', fontWeight: 700,
+              background: selectedCommunityId === c.id ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'rgba(255,255,255,0.04)',
+              color: selectedCommunityId === c.id ? '#fff' : '#9998B0',
+              border: `1px solid ${selectedCommunityId === c.id ? 'transparent' : 'rgba(255,255,255,0.1)'}`,
+              cursor: 'pointer',
+            }}>{c.name}</button>
+          ))}
+          {(canCreate || isSuperAdmin) && (
+            <button onClick={() => selectCommunity(null)} style={{
+              padding: '7px 14px', borderRadius: 10, fontSize: 12, fontFamily: 'Syne, sans-serif', fontWeight: 700,
+              background: selectedCommunityId === null ? 'linear-gradient(135deg, #00D68F, #00b377)' : 'rgba(0,214,143,0.08)',
+              color: selectedCommunityId === null ? '#fff' : '#00D68F',
+              border: `1px solid ${selectedCommunityId === null ? 'transparent' : 'rgba(0,214,143,0.2)'}`,
+              cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5,
+            }}><Plus size={13} /> Nueva comunidad</button>
+          )}
+        </div>
+      )}
+
+      {/* Limit warning */}
+      {!canCreate && !isSuperAdmin && selectedCommunityId === null && (
+        <div style={{ background: 'rgba(240,165,0,0.08)', border: '1px solid rgba(240,165,0,0.2)', borderRadius: 14, padding: '14px 18px', marginBottom: 20, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+          <div style={{ fontSize: 13, color: '#F0A500', lineHeight: 1.5 }}>⚠️ {limitMessage}</div>
+          <Link href="/precios" style={{ padding: '8px 16px', borderRadius: 10, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Syne, sans-serif', whiteSpace: 'nowrap' }}>
+            Ver planes →
+          </Link>
+        </div>
+      )}
 
       {/* Tabs */}
       <div style={S.tabs}>
