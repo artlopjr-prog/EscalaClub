@@ -35,7 +35,7 @@ export default function LoginPage() {
   return (
     <div style={{ minHeight: '100vh', background: C.bg, display: 'flex', overflowX: 'hidden' }}>
       {/* Left branding — desktop only */}
-      <div style={{ flex: 1, background: C.bg1, borderRight: `1px solid ${C.border}`, padding: 48, flexDirection: 'column', justifyContent: 'space-between', display: 'none' }} className="lg:flex">
+      <div style={{ flex: 1, background: C.bg1, borderRight: `1px solid ${C.border}`, padding: 48, flexDirection: 'column', justifyContent: 'space-between', display: 'none' }} className="auth-left-panel">
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 36, height: 36, borderRadius: 10, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 20px ${C.purple}44` }}>
             <Zap size={18} color="#fff" />

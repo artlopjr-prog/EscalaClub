@@ -69,7 +69,7 @@ export default function RegistroPage() {
   return (
     <div style={{ minHeight: '100vh', background: C.bg, display: 'flex', overflowX: 'hidden', maxWidth: '100vw' }}>
       {/* Left branding */}
-      <div style={{ flex: 1, background: C.bg1, borderRight: `1px solid ${C.border}`, padding: 48, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }} className="hidden lg:flex">
+      <div className="auth-left-panel" style={{ flex: 1, background: C.bg1, borderRight: `1px solid ${C.border}`, padding: 48, flexDirection: 'column', justifyContent: 'space-between', display: 'none' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 36, height: 36, borderRadius: 10, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(124,58,237,0.4)' }}>
             <Zap size={18} color="#fff" />

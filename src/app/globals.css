@@ -391,3 +391,12 @@ tr:hover td { background: rgba(255,255,255,0.02); }
     max-width: 100vw;
   }
 }
+
+/* ─── AUTH PAGES MOBILE ─── */
+@media (max-width: 1023px) {
+  .lg\:flex { display: flex !important; }
+  .auth-left-panel { display: none !important; }
+}
+@media (min-width: 1024px) {
+  .auth-left-panel { display: flex !important; }
+}
