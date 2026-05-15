@@ -81,42 +81,29 @@ export default function Landing() {
       {/* ── NAVBAR ── */}
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        background: scrolled ? 'rgba(31,35,53,0.95)' : 'transparent',
-        backdropFilter: scrolled ? 'blur(20px)' : 'none',
-        borderBottom: scrolled ? `1px solid ${C.border}` : 'none',
-        transition: 'all 0.3s',
+        background: 'rgba(31,35,53,0.97)',
+        backdropFilter: 'blur(20px)',
+        borderBottom: `1px solid ${C.border}`,
       }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 60, padding: '0 20px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 56, padding: '0 16px' }}>
           {/* Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 9, textDecoration: 'none' }}>
-            <div style={{ width: 34, height: 34, borderRadius: 9, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 20px ${C.purple}44` }}>
-              <Zap size={17} color="#fff" />
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none', flexShrink: 0 }}>
+            <div style={{ width: 32, height: 32, borderRadius: 9, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Zap size={16} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 18, color: C.text, letterSpacing: '-0.03em' }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 17, color: C.text, letterSpacing: '-0.03em' }}>EscalaClub</span>
           </Link>
 
-          {/* Desktop links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 28 }} className="hidden md:flex">
-            {NAV_LINKS.map(l => (
-              <a key={l.label} href={l.href} style={{ color: C.muted2, fontSize: 14, fontWeight: 500, textDecoration: 'none' }}>{l.label}</a>
-            ))}
-          </div>
-
-          {/* CTAs */}
+          {/* Right side — always visible */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            {/* Desktop only */}
-            <Link href="/login" style={{ color: C.muted2, fontSize: 14, fontWeight: 500, textDecoration: 'none' }} className="hidden md:block">
+            <Link href="/login" style={{ color: C.muted2, fontSize: 13, fontWeight: 500, textDecoration: 'none', padding: '8px 10px' }}>
               Entrar
             </Link>
-            <Link href="/registro" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 18px', borderRadius: 10, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }} className="hidden md:flex">
-              Comenzar gratis
-            </Link>
-            {/* Mobile: show registro button + hamburger */}
-            <Link href="/registro" style={{ display: 'flex', alignItems: 'center', padding: '9px 14px', borderRadius: 10, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }} className="md:hidden">
+            <Link href="/registro" style={{ display: 'flex', alignItems: 'center', padding: '9px 16px', borderRadius: 10, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }}>
               Registrarme
             </Link>
-            <button className="md:hidden" onClick={() => setMobileOpen(!mobileOpen)} style={{ background: 'rgba(255,255,255,0.08)', border: `1px solid ${C.border}`, borderRadius: 8, color: C.text, cursor: 'pointer', padding: '8px', display: 'flex' }}>
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            <button onClick={() => setMobileOpen(!mobileOpen)} style={{ background: 'rgba(255,255,255,0.08)', border: `1px solid ${C.border}`, borderRadius: 8, color: C.text, cursor: 'pointer', padding: '7px', display: 'flex' }}>
+              {mobileOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
@@ -139,7 +126,7 @@ export default function Landing() {
       </nav>
 
       {/* ── HERO ── */}
-      <section style={{ padding: 'clamp(100px, 15vw, 140px) 20px 60px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+      <section style={{ padding: 'clamp(80px, 12vw, 120px) 20px 60px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 'min(500px, 100vw)', height: 'min(500px, 100vw)', background: `radial-gradient(circle, ${C.purple}18 0%, transparent 70%)`, pointerEvents: 'none', zIndex: 0 }} />
 
         <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1 }}>
@@ -181,7 +168,7 @@ export default function Landing() {
 
       {/* ── TRUST STRIP ── */}
       <div style={{ borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, padding: '14px 20px', background: 'rgba(255,255,255,0.02)', overflowX: 'auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(16px, 4vw, 40px)', flexWrap: 'wrap', minWidth: 'max-content', margin: '0 auto' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(16px, 4vw, 40px)', flexWrap: 'wrap', margin: '0 auto', flexWrap: 'wrap', minWidth: 0 }}>
           {['✅ Sin comisiones','💳 PayPal nativo','🌎 Español + Portugués','⚡ Setup en 10 min'].map(t => (
             <span key={t} style={{ fontSize: 13, color: C.muted2, fontWeight: 500, whiteSpace: 'nowrap' }}>{t}</span>
           ))}
