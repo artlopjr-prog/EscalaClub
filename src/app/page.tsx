@@ -103,15 +103,20 @@ export default function Landing() {
           </div>
 
           {/* CTAs */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <Link href="/login" style={{ color: C.muted2, fontSize: 14, fontWeight: 500, textDecoration: 'none' }} className="hidden sm:block">
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            {/* Desktop only */}
+            <Link href="/login" style={{ color: C.muted2, fontSize: 14, fontWeight: 500, textDecoration: 'none' }} className="hidden md:block">
               Entrar
             </Link>
-            <Link href="/registro" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 18px', borderRadius: 10, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }}>
+            <Link href="/registro" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 18px', borderRadius: 10, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }} className="hidden md:flex">
               Comenzar gratis
             </Link>
-            <button className="md:hidden" onClick={() => setMobileOpen(!mobileOpen)} style={{ background: 'none', border: 'none', color: C.text, cursor: 'pointer', padding: 4, display: 'flex' }}>
-              {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            {/* Mobile: show registro button + hamburger */}
+            <Link href="/registro" style={{ display: 'flex', alignItems: 'center', padding: '9px 14px', borderRadius: 10, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }} className="md:hidden">
+              Registrarme
+            </Link>
+            <button className="md:hidden" onClick={() => setMobileOpen(!mobileOpen)} style={{ background: 'rgba(255,255,255,0.08)', border: `1px solid ${C.border}`, borderRadius: 8, color: C.text, cursor: 'pointer', padding: '8px', display: 'flex' }}>
+              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
