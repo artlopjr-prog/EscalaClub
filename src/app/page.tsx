@@ -67,20 +67,12 @@ const TESTIMONIALS = [
 export default function Landing() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const [billing, setBilling] = useState<'monthly'|'annual'>('monthly')
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
     <div style={{ background: C.bg, color: C.text, minHeight: '100vh', overflowX: 'hidden' }}>
 
       {/* ── NAVBAR ── */}
       <nav style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
+        position: 'sticky', top: 0, zIndex: 100, width: '100%',
         background: 'rgba(31,35,53,0.97)',
         backdropFilter: 'blur(20px)',
         borderBottom: `1px solid ${C.border}`,
@@ -126,10 +118,8 @@ export default function Landing() {
       </nav>
 
       {/* ── HERO ── */}
-      <section style={{ padding: 'clamp(80px, 12vw, 120px) 20px 60px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 'min(500px, 100vw)', height: 'min(500px, 100vw)', background: `radial-gradient(circle, ${C.purple}18 0%, transparent 70%)`, pointerEvents: 'none', zIndex: 0 }} />
-
-        <div style={{ maxWidth: 800, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+      <section style={{ padding: 'clamp(72px, 10vw, 100px) 20px 60px', textAlign: 'center', position: 'relative' }}>
+        <div style={{ maxWidth: 800, margin: '0 auto' }}>
           {/* Badge */}
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 99, background: `rgba(99,102,241,0.1)`, border: `1px solid rgba(99,102,241,0.25)`, marginBottom: 28 }}>
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: C.green, display: 'block' }} className="animate-pulse" />
