@@ -168,7 +168,7 @@ export default function Landing() {
 
       {/* ── TRUST STRIP ── */}
       <div style={{ borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, padding: '14px 20px', background: 'rgba(255,255,255,0.02)', overflowX: 'auto' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(16px, 4vw, 40px)', flexWrap: 'wrap', margin: '0 auto', flexWrap: 'wrap', minWidth: 0 }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(16px, 4vw, 40px)', flexWrap: 'wrap', margin: '0 auto', minWidth: 0 }}>
           {['✅ Sin comisiones','💳 PayPal nativo','🌎 Español + Portugués','⚡ Setup en 10 min'].map(t => (
             <span key={t} style={{ fontSize: 13, color: C.muted2, fontWeight: 500, whiteSpace: 'nowrap' }}>{t}</span>
           ))}
