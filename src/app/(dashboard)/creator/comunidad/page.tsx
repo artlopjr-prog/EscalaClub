@@ -434,26 +434,66 @@ export default function CreatorComunidadPage() {
 
           {/* Banner */}
           <div style={{ marginBottom: 20 }}>
-            <label style={S.label}>Banner (imagen de portada)</label>
-            <input value={form.banner_url ?? ''} onChange={e => set('banner_url', e.target.value)}
-              placeholder="https://... (1200×300px recomendado)" className="input" />
-            <div style={S.hint}>💡 Usa <a href="https://unsplash.com" target="_blank" style={{ color: '#818CF8' }}>Unsplash.com</a> para imágenes gratis de alta calidad</div>
+            <label style={S.label}>Imagen de portada (Banner)</label>
+            <ImageUpload
+              bucket="community-media"
+              folder={`banners/${selectedCommunityId ?? 'new'}`}
+              onUpload={url => set('banner_url', url)}
+              currentUrl={form.banner_url}
+              label="Subir banner (1200×300px recomendado)"
+              maxMB={8}
+            />
+            <div style={S.hint}>Imagen que aparece en la parte superior de tu comunidad</div>
           </div>
 
           {/* Logo */}
           <div style={{ marginBottom: 20 }}>
             <label style={S.label}>Logo de la comunidad</label>
-            <input value={form.logo_url ?? ''} onChange={e => set('logo_url', e.target.value)}
-              placeholder="https://... (cuadrada, 200×200px)" className="input" />
+            <ImageUpload
+              bucket="community-assets"
+              folder={`logos/${selectedCommunityId ?? 'new'}`}
+              onUpload={url => set('logo_url', url)}
+              currentUrl={form.logo_url}
+              label="Subir logo (200×200px cuadrado)"
+              rounded={true}
+              maxMB={3}
+            />
             <div style={S.hint}>Aparece en el navbar y en las cards de la comunidad</div>
           </div>
 
           {/* Mensaje de bienvenida */}
-          <div style={{ marginBottom: 8 }}>
+          <div style={{ marginBottom: 20 }}>
             <label style={S.label}>Mensaje de bienvenida</label>
             <textarea value={(form as any).welcome_message ?? ''} onChange={e => set('welcome_message' as any, e.target.value)}
-              placeholder="Ej: Bienvenido a Nivel 10. Aquí transformamos vidas y negocios..." rows={3} className="input" />
-            <div style={S.hint}>Aparece en el checklist de bienvenida para nuevos miembros</div>
+              placeholder="Ej: ¡Bienvenido/a! Estoy muy feliz de que formes parte de esta comunidad. Aquí vas a encontrar..." rows={4} className="input" />
+            <div style={S.hint}>Aparece cuando un nuevo miembro se une — hazlo personal y motivador</div>
+          </div>
+
+          {/* Redes sociales */}
+          <div style={{ marginBottom: 8 }}>
+            <label style={S.label}>Redes sociales del creador</label>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {[
+                { key: 'social_instagram', icon: '📸', label: 'Instagram', placeholder: 'https://instagram.com/tucuenta' },
+                { key: 'social_tiktok',    icon: '🎵', label: 'TikTok',    placeholder: 'https://tiktok.com/@tucuenta' },
+                { key: 'social_youtube',   icon: '▶️', label: 'YouTube',   placeholder: 'https://youtube.com/@tucanal' },
+                { key: 'social_twitter',   icon: '🐦', label: 'X / Twitter',placeholder: 'https://x.com/tucuenta' },
+                { key: 'social_whatsapp',  icon: '💬', label: 'WhatsApp (link de grupo)', placeholder: 'https://chat.whatsapp.com/...' },
+                { key: 'social_website',   icon: '🌐', label: 'Sitio web', placeholder: 'https://tuweb.com' },
+              ].map(s => (
+                <div key={s.key} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <span style={{ fontSize: 18, width: 28, textAlign: 'center', flexShrink: 0 }}>{s.icon}</span>
+                  <input
+                    value={(form as any)[s.key] ?? ''}
+                    onChange={e => set(s.key as any, e.target.value)}
+                    placeholder={s.placeholder}
+                    className="input"
+                    style={{ flex: 1 }}
+                  />
+                </div>
+              ))}
+            </div>
+            <div style={S.hint}>Se muestran en el perfil de tu comunidad para que los miembros te sigan</div>
           </div>
         </div>
       )}
