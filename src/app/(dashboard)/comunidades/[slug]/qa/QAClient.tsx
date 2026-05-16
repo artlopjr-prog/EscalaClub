@@ -83,7 +83,7 @@ export default function QAClient({ community, questions: initialQ, userId, isOwn
         <Link href={`/comunidades/${community.slug}`} style={{ display: 'flex', alignItems: 'center', gap: 5, color: C.muted, textDecoration: 'none', fontSize: 12, padding: '6px 10px', borderRadius: 8, border: `1px solid ${C.border}` }}>
           <ArrowLeft size={13} /> Volver
         </Link>
-        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 16, color: C.text, flex: 1 }}>❓ Q&A — {community.name}</h1>
+        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 16, color: C.text, flex: 1 }}>❓ Q&A — {community.name}</h1>
         <span style={{ fontSize: 11, color: C.muted }}>{questions.length} preguntas</span>
       </div>
 
@@ -91,9 +91,9 @@ export default function QAClient({ community, questions: initialQ, userId, isOwn
         {/* Ask */}
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 18, marginBottom: 24 }}>
           <div style={{ fontSize: 13, fontWeight: 700, color: C.text, marginBottom: 10 }}>🙋 Hacer una pregunta</div>
-          <textarea value={newQ} onChange={e => setNewQ(e.target.value)} placeholder="¿Qué quieres preguntarle al creador?" rows={3} style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 14, outline: 'none', resize: 'none', fontFamily: 'Inter, sans-serif' }} />
+          <textarea value={newQ} onChange={e => setNewQ(e.target.value)} placeholder="¿Qué quieres preguntarle al creador?" rows={3} style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 14, outline: 'none', resize: 'none', fontFamily: 'Outfit, sans-serif' }} />
           <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
-            <button onClick={submitQuestion} disabled={submitting || !newQ.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 20px', borderRadius: 10, background: newQ.trim() ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'rgba(255,255,255,0.06)', color: newQ.trim() ? '#fff' : C.muted, border: 'none', cursor: newQ.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
+            <button onClick={submitQuestion} disabled={submitting || !newQ.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 20px', borderRadius: 10, background: newQ.trim() ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'rgba(255,255,255,0.06)', color: newQ.trim() ? '#fff' : C.muted, border: 'none', cursor: newQ.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13 }}>
               <Send size={13} /> {submitting ? 'Enviando...' : 'Preguntar'}
             </button>
           </div>
@@ -165,7 +165,7 @@ export default function QAClient({ community, questions: initialQ, userId, isOwn
         )) : (
           <div style={{ textAlign: 'center', padding: '60px 24px', background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20 }}>
             <div style={{ fontSize: 48, marginBottom: 16 }}>❓</div>
-            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text, marginBottom: 8 }}>Sin preguntas aún</h3>
+            <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 18, color: C.text, marginBottom: 8 }}>Sin preguntas aún</h3>
             <p style={{ fontSize: 14, color: C.muted }}>Sé el primero en hacer una pregunta</p>
           </div>
         )}

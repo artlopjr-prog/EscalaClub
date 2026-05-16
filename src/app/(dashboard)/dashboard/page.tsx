@@ -49,24 +49,24 @@ export default async function DashboardPage() {
       <div style={{ marginBottom: 52 }}>
         <p style={{ fontSize: 12, fontWeight: 600, color: 'var(--muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>{greeting}</p>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 5vw, 52px)', letterSpacing: '-0.04em', lineHeight: 1 }}>
+          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 5vw, 52px)', letterSpacing: '-0.04em', lineHeight: 1 }}>
             {firstName} <span className="text-gradient">👋</span>
           </h1>
           {/* Stats como números flotantes — sin cards */}
           {hasActivity && (
             <div style={{ display: 'flex', gap: 36, alignItems: 'flex-end' }}>
               <div style={{ textAlign: 'right' }}>
-                <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--gold)', lineHeight: 1 }}>{totalPoints.toLocaleString()}</div>
+                <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--gold)', lineHeight: 1 }}>{totalPoints.toLocaleString()}</div>
                 <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 3 }}>puntos totales</div>
               </div>
               {maxStreak > 0 && (
                 <div style={{ textAlign: 'right' }}>
-                  <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--green)', lineHeight: 1 }}>🔥 {maxStreak}</div>
+                  <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--green)', lineHeight: 1 }}>🔥 {maxStreak}</div>
                   <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 3 }}>días de racha</div>
                 </div>
               )}
               <div style={{ textAlign: 'right' }}>
-                <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--purple2)', lineHeight: 1 }}>{myMemberships?.length ?? 0}</div>
+                <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--purple2)', lineHeight: 1 }}>{myMemberships?.length ?? 0}</div>
                 <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 3 }}>comunidades</div>
               </div>
             </div>
@@ -80,7 +80,7 @@ export default async function DashboardPage() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Zap size={16} color="var(--gold)" />
-              <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>Retos activos</span>
+              <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>Retos activos</span>
             </div>
             <Link href="/retos" style={{ fontSize: 12, color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: 3 }}>
               Ver todos <ArrowRight size={12} />
@@ -106,7 +106,7 @@ export default async function DashboardPage() {
                       <span style={{ fontSize: 22 }}>{c.emoji}</span>
                       {c.origin === 'platform' && <span style={{ fontSize: 9, fontWeight: 800, color: 'var(--gold)', background: 'rgba(233,160,32,0.12)', borderRadius: 99, padding: '2px 7px', textTransform: 'uppercase', letterSpacing: '.06em' }}>Oficial</span>}
                     </div>
-                    <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13, marginBottom: 6, lineHeight: 1.2 }}>{c.title}</div>
+                    <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13, marginBottom: 6, lineHeight: 1.2 }}>{c.title}</div>
                     {myP ? (
                       <>
                         <div className="progress-bar" style={{ marginBottom: 6 }}>
@@ -137,7 +137,7 @@ export default async function DashboardPage() {
           {/* Mis comunidades */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
-              <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>Mis comunidades</span>
+              <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>Mis comunidades</span>
               <Link href="/comunidades" style={{ fontSize: 12, color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: 3 }}>
                 Explorar <ArrowRight size={12} />
               </Link>
@@ -194,7 +194,7 @@ export default async function DashboardPage() {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <Calendar size={14} color="var(--blue2)" />
-                  <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>Próximos eventos</span>
+                  <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>Próximos eventos</span>
                 </div>
                 <Link href="/eventos" style={{ fontSize: 12, color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: 3 }}>
                   Ver todos <ArrowRight size={12} />
@@ -207,7 +207,7 @@ export default async function DashboardPage() {
                   return (
                     <div key={e.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px', borderRadius: 'var(--r-md)' }}>
                       <div style={{ width: 38, textAlign: 'center', flexShrink: 0 }}>
-                        <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 16, color: isToday ? 'var(--red)' : 'var(--purple2)' }}>
+                        <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 16, color: isToday ? 'var(--red)' : 'var(--purple2)' }}>
                           {d.getDate()}
                         </div>
                         <div style={{ fontSize: 9, fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '.06em' }}>
@@ -239,7 +239,7 @@ export default async function DashboardPage() {
         <div style={{ position: 'sticky', top: 24 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
             <Trophy size={14} color="var(--gold)" />
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>Top miembros</span>
+            <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>Top miembros</span>
           </div>
           {topMembers && topMembers.length > 0 ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -255,7 +255,7 @@ export default async function DashboardPage() {
                     background: isMe ? 'rgba(123,94,248,0.07)' : 'transparent',
                   }}>
                     <div style={{ width: 20, textAlign: 'center', fontSize: 14, flexShrink: 0 }}>
-                      {i < 3 ? medals[i] : <span style={{ fontSize: 11, fontFamily: 'Inter, sans-serif', fontWeight: 700, color: 'var(--muted)' }}>#{i+1}</span>}
+                      {i < 3 ? medals[i] : <span style={{ fontSize: 11, fontFamily: 'Outfit, sans-serif', fontWeight: 700, color: 'var(--muted)' }}>#{i+1}</span>}
                     </div>
                     <div className="avatar avatar-sm avatar-purple" style={{ background: isMe ? 'linear-gradient(135deg, var(--purple), var(--purple2))' : 'var(--bg3)' }}>
                       {(m.profile as any)?.avatar_url
@@ -267,7 +267,7 @@ export default async function DashboardPage() {
                         {name}{isMe ? ' (tú)' : ''}
                       </div>
                     </div>
-                    <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 12, color: i === 0 ? 'var(--gold)' : isMe ? 'var(--purple2)' : 'var(--muted2)' }}>
+                    <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 12, color: i === 0 ? 'var(--gold)' : isMe ? 'var(--purple2)' : 'var(--muted2)' }}>
                       {(m.points ?? 0).toLocaleString()}
                     </div>
                   </div>

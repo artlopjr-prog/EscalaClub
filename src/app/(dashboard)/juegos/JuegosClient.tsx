@@ -99,7 +99,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
       ctx.translate(cx, cy)
       ctx.rotate(start + slice / 2)
       ctx.textAlign = 'right'
-      ctx.font = 'bold 11px Inter, sans-serif'
+      ctx.font = 'bold 11px Outfit, sans-serif'
       ctx.fillStyle = '#fff'
       ctx.shadowColor = 'rgba(0,0,0,0.5)'
       ctx.shadowBlur = 4
@@ -212,7 +212,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
       {/* HEADER */}
       <div style={{ marginBottom: 32 }}>
         <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 8 }}>EscalaClub</p>
-        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 'clamp(28px,5vw,42px)', letterSpacing: '-0.04em', lineHeight: 1, marginBottom: 8 }}>
+        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 'clamp(28px,5vw,42px)', letterSpacing: '-0.04em', lineHeight: 1, marginBottom: 8 }}>
           🎮 Juegos
         </h1>
         <p style={{ fontSize: 14, color: 'var(--muted2)' }}>Gana XP, badges y premios jugando cada día</p>
@@ -221,7 +221,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
       {/* XP del usuario */}
       <div style={{ display: 'flex', gap: 20, marginBottom: 28, alignItems: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg, var(--purple), var(--purple2))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>
+          <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg, var(--purple), var(--purple2))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 700, fontFamily: 'Outfit, sans-serif' }}>
             {profile.name.slice(0, 2).toUpperCase()}
           </div>
           <div>
@@ -241,7 +241,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
       <div style={{ display: 'flex', gap: 3, marginBottom: 24, background: 'var(--bg1)', borderRadius: 12, padding: 3, width: 'fit-content', border: '1px solid var(--border)' }}>
         {([['spin', '🎡 Spin Diario'], ['trivia', '🧠 Trivia']] as const).map(([g, label]) => (
           <button key={g} onClick={() => setActiveGame(g)}
-            style={{ padding: '8px 20px', borderRadius: 10, fontSize: 13, fontWeight: 700, fontFamily: 'Inter, sans-serif', cursor: 'pointer', border: 'none', background: activeGame === g ? 'var(--bg3)' : 'transparent', color: activeGame === g ? 'var(--text)' : 'var(--muted2)', transition: 'all .15s' }}>
+            style={{ padding: '8px 20px', borderRadius: 10, fontSize: 13, fontWeight: 700, fontFamily: 'Outfit, sans-serif', cursor: 'pointer', border: 'none', background: activeGame === g ? 'var(--bg3)' : 'transparent', color: activeGame === g ? 'var(--text)' : 'var(--muted2)', transition: 'all .15s' }}>
             {label}
           </button>
         ))}
@@ -274,7 +274,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
                     {spinResult ? (
                       <div style={{ background: `${PRIZES[0].color}15`, border: `1px solid ${spinResult.color}33`, borderRadius: 12, padding: '14px 20px', display: 'inline-block' }}>
                         <div style={{ fontSize: 24, marginBottom: 4 }}>{spinResult.emoji}</div>
-                        <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, color: spinResult.color }}>{spinResult.label}</div>
+                        <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 16, color: spinResult.color }}>{spinResult.label}</div>
                         <div style={{ fontSize: 12, color: 'var(--muted)', marginTop: 4 }}>¡Premio ganado hoy!</div>
                       </div>
                     ) : (
@@ -312,7 +312,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
           <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 16, padding: '18px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 14 }}>
               <Trophy size={14} color="var(--gold)" />
-              <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>Jackpots esta semana</span>
+              <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13 }}>Jackpots esta semana</span>
             </div>
             {topWinners.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '24px 0', color: 'var(--muted)', fontSize: 13 }}>
@@ -320,7 +320,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
               </div>
             ) : topWinners.map((w: any, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: i < topWinners.length - 1 ? '1px solid var(--border)' : 'none' }}>
-                <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'linear-gradient(135deg,var(--gold),var(--gold2))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, fontFamily: 'Inter, sans-serif', color: '#0A0A12', flexShrink: 0 }}>
+                <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'linear-gradient(135deg,var(--gold),var(--gold2))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, fontFamily: 'Outfit, sans-serif', color: '#0A0A12', flexShrink: 0 }}>
                   {(w.profile?.display_name ?? 'U').slice(0, 2).toUpperCase()}
                 </div>
                 <div style={{ flex: 1 }}>
@@ -363,7 +363,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
 
             <div style={{ padding: '24px 22px' }}>
               {/* Question */}
-              <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, lineHeight: 1.3, marginBottom: 22 }}>
+              <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 18, lineHeight: 1.3, marginBottom: 22 }}>
                 {trivia.q}
               </h2>
 
@@ -388,8 +388,8 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
 
                   return (
                     <button key={i} onClick={() => answerTrivia(i)} disabled={triviaAnswered}
-                      style={{ width: '100%', padding: '13px 16px', borderRadius: 12, background: bg, border: `1px solid ${border}`, color, fontSize: 14, fontFamily: 'Inter, sans-serif', fontWeight: 500, cursor: triviaAnswered ? 'default' : 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 10, transition: 'all .15s' }}>
-                      <span style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>
+                      style={{ width: '100%', padding: '13px 16px', borderRadius: 12, background: bg, border: `1px solid ${border}`, color, fontSize: 14, fontFamily: 'Outfit, sans-serif', fontWeight: 500, cursor: triviaAnswered ? 'default' : 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 10, transition: 'all .15s' }}>
+                      <span style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, fontFamily: 'Outfit, sans-serif', flexShrink: 0 }}>
                         {['A', 'B', 'C', 'D'][i]}
                       </span>
                       <span style={{ flex: 1 }}>{opt}</span>

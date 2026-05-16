@@ -128,7 +128,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
       {/* HEADER */}
       <div style={{ marginBottom: 32 }}>
         <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 8 }}>EscalaClub</p>
-        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 'clamp(26px,5vw,38px)', letterSpacing: '-0.04em', marginBottom: 6 }}>
+        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 'clamp(26px,5vw,38px)', letterSpacing: '-0.04em', marginBottom: 6 }}>
           🔔 Notificaciones
         </h1>
         <p style={{ fontSize: 14, color: 'var(--muted2)' }}>Conecta WhatsApp para recibir alertas donde ya estás</p>
@@ -148,7 +148,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
             <MessageSquare size={24} color={WA_GREEN} />
           </div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, marginBottom: 3 }}>WhatsApp</div>
+            <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 16, marginBottom: 3 }}>WhatsApp</div>
             <div style={{ fontSize: 12, color: 'var(--muted2)' }}>
               {isConnected
                 ? `Conectado · ${settings.whatsapp_phone ?? phone}`
@@ -179,7 +179,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
                   onKeyDown={e => e.key === 'Enter' && sendCode()}
                 />
                 <button onClick={sendCode} disabled={loading}
-                  style={{ padding: '11px 18px', borderRadius: 10, background: WA_GREEN, border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, fontFamily: 'Inter, sans-serif', cursor: loading ? 'default' : 'pointer', opacity: loading ? .7 : 1, display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap' }}>
+                  style={{ padding: '11px 18px', borderRadius: 10, background: WA_GREEN, border: 'none', color: '#fff', fontSize: 13, fontWeight: 700, fontFamily: 'Outfit, sans-serif', cursor: loading ? 'default' : 'pointer', opacity: loading ? .7 : 1, display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap' }}>
                   {loading ? <Loader2 size={14} className="animate-spin" /> : <Phone size={14} />}
                   {loading ? 'Enviando...' : 'Enviar código'}
                 </button>
@@ -217,10 +217,10 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
               <label style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '.08em', display: 'block', marginBottom: 7 }}>Código de verificación</label>
               <div style={{ display: 'flex', gap: 8 }}>
                 <input className="input" value={code} onChange={e => setCode(e.target.value.replace(/\D/g, '').slice(0, 6))}
-                  placeholder="123456" maxLength={6} style={{ flex: 1, fontSize: 20, letterSpacing: '0.2em', textAlign: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 700 }}
+                  placeholder="123456" maxLength={6} style={{ flex: 1, fontSize: 20, letterSpacing: '0.2em', textAlign: 'center', fontFamily: 'Outfit, sans-serif', fontWeight: 700 }}
                   onKeyDown={e => e.key === 'Enter' && verifyCode()} />
                 <button onClick={verifyCode} disabled={loading || code.length !== 6}
-                  style={{ padding: '11px 18px', borderRadius: 10, background: code.length === 6 ? WA_GREEN : 'var(--bg3)', border: 'none', color: code.length === 6 ? '#fff' : 'var(--muted)', fontSize: 13, fontWeight: 700, fontFamily: 'Inter, sans-serif', cursor: code.length === 6 ? 'pointer' : 'default', display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap' }}>
+                  style={{ padding: '11px 18px', borderRadius: 10, background: code.length === 6 ? WA_GREEN : 'var(--bg3)', border: 'none', color: code.length === 6 ? '#fff' : 'var(--muted)', fontSize: 13, fontWeight: 700, fontFamily: 'Outfit, sans-serif', cursor: code.length === 6 ? 'pointer' : 'default', display: 'flex', alignItems: 'center', gap: 6, whiteSpace: 'nowrap' }}>
                   {loading ? <Loader2 size={14} /> : <Shield size={14} />}
                   Verificar
                 </button>
@@ -245,7 +245,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
                 <div style={{ fontSize: 13, fontWeight: 600, color: WA_GREEN }}>✓ Verificado y activo</div>
               </div>
             </div>
-            <button onClick={disconnect} style={{ background: 'none', border: '1px solid var(--border2)', borderRadius: 8, padding: '7px 14px', color: 'var(--muted)', fontSize: 12, cursor: 'pointer', fontFamily: 'Inter, sans-serif' }}>
+            <button onClick={disconnect} style={{ background: 'none', border: '1px solid var(--border2)', borderRadius: 8, padding: '7px 14px', color: 'var(--muted)', fontSize: 12, cursor: 'pointer', fontFamily: 'Outfit, sans-serif' }}>
               Desconectar WhatsApp
             </button>
           </div>
@@ -255,7 +255,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
       {/* NOTIFICATION PREFERENCES */}
       {isConnected && (
         <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, padding: '20px 24px', marginBottom: 20 }}>
-          <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, marginBottom: 4 }}>
+          <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 15, marginBottom: 4 }}>
             Qué recibir en WhatsApp
           </div>
           <p style={{ fontSize: 12, color: 'var(--muted2)', marginBottom: 18 }}>
@@ -290,7 +290,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
       {/* RECENT NOTIFICATIONS LOG */}
       {recentLogs.length > 0 && (
         <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, padding: '20px 24px' }}>
-          <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, marginBottom: 16 }}>
+          <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 15, marginBottom: 16 }}>
             Historial reciente
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -326,7 +326,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
       <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, padding: '20px 24px', marginTop: 20, opacity: 0.6 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
           <Bell size={18} color="var(--muted)" />
-          <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15 }}>Email digest</div>
+          <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 15 }}>Email digest</div>
           <span style={{ fontSize: 10, fontWeight: 700, background: 'var(--bg3)', color: 'var(--muted)', borderRadius: 99, padding: '2px 8px', textTransform: 'uppercase', letterSpacing: '.06em' }}>Próximamente</span>
         </div>
         <p style={{ fontSize: 12, color: 'var(--muted)' }}>Resumen diario o semanal de toda tu actividad por email</p>

@@ -35,14 +35,14 @@ export default function RejoinButton({ membershipId, communityName, alreadyReque
   }
 
   if (requested) return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '10px 16px', borderRadius: 12, background: 'rgba(240,165,0,0.08)', border: '1px solid rgba(240,165,0,0.2)', color: C.gold, fontSize: 13, fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '10px 16px', borderRadius: 12, background: 'rgba(240,165,0,0.08)', border: '1px solid rgba(240,165,0,0.2)', color: C.gold, fontSize: 13, fontWeight: 700, fontFamily: 'Outfit, sans-serif' }}>
       ⏳ Solicitud enviada — esperando respuesta
     </div>
   )
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '10px 16px', borderRadius: 12, background: 'rgba(240,165,0,0.08)', border: '1px solid rgba(240,165,0,0.2)', color: C.gold, cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
+      <button onClick={() => setShowModal(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '10px 16px', borderRadius: 12, background: 'rgba(240,165,0,0.08)', border: '1px solid rgba(240,165,0,0.2)', color: C.gold, cursor: 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13 }}>
         <RotateCcw size={14} /> Pedir volver a entrar
       </button>
 
@@ -55,13 +55,13 @@ export default function RejoinButton({ membershipId, communityName, alreadyReque
             <div style={{ width: 52, height: 52, borderRadius: 14, background: 'rgba(240,165,0,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
               <RotateCcw size={24} color={C.gold} />
             </div>
-            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 20, color: C.text, marginBottom: 8 }}>Pedir volver a {communityName}</h2>
+            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 20, color: C.text, marginBottom: 8 }}>Pedir volver a {communityName}</h2>
             <p style={{ fontSize: 13, color: C.muted, marginBottom: 20, lineHeight: 1.6 }}>El creador revisará tu solicitud. Puedes dejar un mensaje explicando por qué crees que fue un error.</p>
-            <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#9998B0', marginBottom: 8, fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Tu mensaje (opcional)</label>
-            <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="Ej: Creo que fue un malentendido, me comprometo a respetar las reglas..." style={{ width: '100%', background: '#13131C', border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 13, outline: 'none', resize: 'vertical', minHeight: 80, boxSizing: 'border-box', fontFamily: 'Inter, sans-serif' }} />
+            <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#9998B0', marginBottom: 8, fontFamily: 'Outfit, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Tu mensaje (opcional)</label>
+            <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="Ej: Creo que fue un malentendido, me comprometo a respetar las reglas..." style={{ width: '100%', background: '#13131C', border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 13, outline: 'none', resize: 'vertical', minHeight: 80, boxSizing: 'border-box', fontFamily: 'Outfit, sans-serif' }} />
             <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
-              <button onClick={() => setShowModal(false)} style={{ flex: 1, padding: '12px', borderRadius: 12, background: 'rgba(255,255,255,0.06)', border: `1px solid ${C.border}`, color: C.muted, cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>Cancelar</button>
-              <button onClick={handleRequest} disabled={loading} style={{ flex: 1, padding: '12px', borderRadius: 12, background: 'linear-gradient(135deg, #F0A500, #cc8800)', border: 'none', color: '#fff', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, opacity: loading ? 0.7 : 1 }}>
+              <button onClick={() => setShowModal(false)} style={{ flex: 1, padding: '12px', borderRadius: 12, background: 'rgba(255,255,255,0.06)', border: `1px solid ${C.border}`, color: C.muted, cursor: 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>Cancelar</button>
+              <button onClick={handleRequest} disabled={loading} style={{ flex: 1, padding: '12px', borderRadius: 12, background: 'linear-gradient(135deg, #F0A500, #cc8800)', border: 'none', color: '#fff', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14, opacity: loading ? 0.7 : 1 }}>
                 {loading ? 'Enviando...' : 'Enviar solicitud'}
               </button>
             </div>

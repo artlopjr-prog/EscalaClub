@@ -23,7 +23,7 @@ export default function PayPalSetupPage() {
 
   return (
     <div style={{ padding: '40px 32px', maxWidth: 700, margin: '0 auto' }}>
-      <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, marginBottom: 8 }}>
+      <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, marginBottom: 8 }}>
         ⚙️ Setup PayPal
       </h1>
       <p style={{ color: 'var(--muted2)', fontSize: 14, marginBottom: 28 }}>
@@ -59,7 +59,7 @@ export default function PayPalSetupPage() {
             </pre>
             <button
               onClick={() => navigator.clipboard.writeText(result.env_vars)}
-              style={{ marginTop: 12, padding: '8px 16px', borderRadius: 8, background: 'var(--bg3)', border: '1px solid var(--border2)', color: 'var(--muted2)', fontSize: 12, cursor: 'pointer', fontFamily: 'Inter, sans-serif' }}>
+              style={{ marginTop: 12, padding: '8px 16px', borderRadius: 8, background: 'var(--bg3)', border: '1px solid var(--border2)', color: 'var(--muted2)', fontSize: 12, cursor: 'pointer', fontFamily: 'Outfit, sans-serif' }}>
               📋 Copiar todo
             </button>
           </div>

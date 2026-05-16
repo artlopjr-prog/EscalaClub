@@ -7,8 +7,8 @@ import Link from 'next/link'
 import { ArrowLeft, Save } from 'lucide-react'
 
 const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0' }
-const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 8, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
-const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '12px 16px', color: '#EEEDF5', fontSize: 14, outline: 'none', fontFamily: 'Inter, sans-serif' }
+const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 8, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
+const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '12px 16px', color: '#EEEDF5', fontSize: 14, outline: 'none', fontFamily: 'Outfit, sans-serif' }
 
 export default function NuevoCursoPage() {
   const router = useRouter()
@@ -43,7 +43,7 @@ export default function NuevoCursoPage() {
         <Link href="/creator/cursos" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 10, border: `1px solid ${C.border}`, color: C.muted, textDecoration: 'none', fontSize: 13 }}>
           <ArrowLeft size={14} /> Volver
         </Link>
-        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.04em', color: C.text }}>Nuevo curso</h1>
+        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.04em', color: C.text }}>Nuevo curso</h1>
       </div>
 
       <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 28, display: 'flex', flexDirection: 'column', gap: 20 }}>
@@ -64,7 +64,7 @@ export default function NuevoCursoPage() {
             </div>
           )}
         </div>
-        <button onClick={handleCreate} disabled={saving} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: saving ? 'not-allowed' : 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15, opacity: saving ? 0.7 : 1 }}>
+        <button onClick={handleCreate} disabled={saving} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: saving ? 'not-allowed' : 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 15, opacity: saving ? 0.7 : 1 }}>
           <Save size={16} /> {saving ? 'Creando...' : 'Crear curso'}
         </button>
       </div>

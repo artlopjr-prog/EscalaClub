@@ -28,16 +28,16 @@ interface Community {
 const S = {
   page: { padding: '32px', maxWidth: 760, margin: '0 auto' },
   header: { marginBottom: 28 },
-  title: { fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: '#EEEDF5', marginBottom: 4 },
+  title: { fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: '#EEEDF5', marginBottom: 4 },
   subtitle: { fontSize: 13, color: '#6B6A80' },
   tabs: { display: 'flex', gap: 4, padding: 4, background: '#0D0D14', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, width: 'fit-content', marginBottom: 24 },
   tab: (active: boolean): React.CSSProperties => ({
-    padding: '8px 18px', borderRadius: 9, fontSize: 13, fontFamily: 'Inter, sans-serif', fontWeight: 700,
+    padding: '8px 18px', borderRadius: 9, fontSize: 13, fontFamily: 'Outfit, sans-serif', fontWeight: 700,
     background: active ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'transparent',
     color: active ? '#fff' : '#6B6A80', border: 'none', cursor: 'pointer', transition: 'all 0.2s',
   }),
   card: { background: '#0D0D14', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20, padding: '24px', marginBottom: 16 },
-  label: { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 8, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' as const },
+  label: { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 8, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' as const },
   required: { color: '#FF4D6A', marginLeft: 2 },
   hint: { fontSize: 11, color: '#6B6A80', marginTop: 5, lineHeight: 1.5 },
   row2: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 200px), 1fr))', gap: 16 },
@@ -208,7 +208,7 @@ export default function CreatorComunidadPage() {
         <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
           {allCommunities.map(c => (
             <button key={c.id} onClick={() => selectCommunity(c.id)} style={{
-              padding: '7px 14px', borderRadius: 10, fontSize: 12, fontFamily: 'Inter, sans-serif', fontWeight: 700,
+              padding: '7px 14px', borderRadius: 10, fontSize: 12, fontFamily: 'Outfit, sans-serif', fontWeight: 700,
               background: selectedCommunityId === c.id ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'rgba(255,255,255,0.04)',
               color: selectedCommunityId === c.id ? '#fff' : '#9998B0',
               border: `1px solid ${selectedCommunityId === c.id ? 'transparent' : 'rgba(255,255,255,0.1)'}`,
@@ -217,7 +217,7 @@ export default function CreatorComunidadPage() {
           ))}
           {(canCreate || isSuperAdmin) && (
             <button onClick={() => selectCommunity(null)} style={{
-              padding: '7px 14px', borderRadius: 10, fontSize: 12, fontFamily: 'Inter, sans-serif', fontWeight: 700,
+              padding: '7px 14px', borderRadius: 10, fontSize: 12, fontFamily: 'Outfit, sans-serif', fontWeight: 700,
               background: selectedCommunityId === null ? 'linear-gradient(135deg, #00D68F, #00b377)' : 'rgba(0,214,143,0.08)',
               color: selectedCommunityId === null ? '#fff' : '#00D68F',
               border: `1px solid ${selectedCommunityId === null ? 'transparent' : 'rgba(0,214,143,0.2)'}`,
@@ -231,7 +231,7 @@ export default function CreatorComunidadPage() {
       {!canCreate && !isSuperAdmin && selectedCommunityId === null && (
         <div style={{ background: 'rgba(240,165,0,0.08)', border: '1px solid rgba(240,165,0,0.2)', borderRadius: 14, padding: '14px 18px', marginBottom: 20, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
           <div style={{ fontSize: 13, color: '#F0A500', lineHeight: 1.5 }}>⚠️ {limitMessage}</div>
-          <Link href="/precios" style={{ padding: '8px 16px', borderRadius: 10, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>
+          <Link href="/precios" style={{ padding: '8px 16px', borderRadius: 10, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Outfit, sans-serif', whiteSpace: 'nowrap' }}>
             Ver planes →
           </Link>
         </div>
@@ -329,7 +329,7 @@ export default function CreatorComunidadPage() {
                   background: form.access_type === opt.val ? 'rgba(124,58,237,0.1)' : '#13131C',
                   transition: 'all 0.2s',
                 }}>
-                  <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, color: '#EEEDF5', marginBottom: 4 }}>{opt.label}</div>
+                  <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14, color: '#EEEDF5', marginBottom: 4 }}>{opt.label}</div>
                   <div style={{ fontSize: 11, color: '#6B6A80' }}>{opt.desc}</div>
                 </button>
               ))}
@@ -374,7 +374,7 @@ export default function CreatorComunidadPage() {
                 <div style={{ padding: '14px 16px', background: '#13131C', borderRadius: 12, border: '1px solid rgba(255,255,255,0.07)' }}>
                   <div style={{ fontSize: 11, color: '#6B6A80', marginBottom: 6 }}>Preview de tu precio público:</div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                    <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, color: '#9F67FF' }}>${form.price_monthly}/mes</span>
+                    <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 20, color: '#9F67FF' }}>${form.price_monthly}/mes</span>
                     {form.price_yearly && Number(form.price_yearly) > 0 && (
                       <span style={{ fontSize: 11, background: 'rgba(0,214,143,0.12)', color: '#00D68F', padding: '3px 9px', borderRadius: 99 }}>
                         o ${form.price_yearly}/año
@@ -388,7 +388,7 @@ export default function CreatorComunidadPage() {
 
           {form.access_type === 'public' || form.access_type === 'free' && (
             <div style={{ padding: '14px 16px', background: 'rgba(0,214,143,0.06)', borderRadius: 12, border: '1px solid rgba(0,214,143,0.2)' }}>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13, color: '#00D68F', marginBottom: 4 }}>✓ Comunidad gratuita</div>
+              <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13, color: '#00D68F', marginBottom: 4 }}>✓ Comunidad gratuita</div>
               <div style={{ fontSize: 12, color: '#6B6A80', lineHeight: 1.5 }}>
                 Cualquier persona puede unirse. Puedes monetizar con cursos de pago dentro de la comunidad.
               </div>
@@ -408,7 +408,7 @@ export default function CreatorComunidadPage() {
               </div>
             </div>
             <div style={{ padding: '28px 16px 12px', background: '#262B42' }}>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: '#E8E9F0' }}>{form.name || 'Tu comunidad'}</div>
+              <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: '#E8E9F0' }}>{form.name || 'Tu comunidad'}</div>
               <div style={{ fontSize: 11, color: form.primary_color ?? '#6366F1', marginTop: 2 }}>● {form.tagline || 'Tu tagline aquí'}</div>
             </div>
           </div>
@@ -515,11 +515,11 @@ export default function CreatorComunidadPage() {
       {/* Danger zone */}
       {community && (
         <div style={{ marginTop: 40, paddingTop: 28, borderTop: '1px solid rgba(255,77,106,0.15)' }}>
-          <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: '#FF4D6A', marginBottom: 8 }}>⚠️ Zona de peligro</h3>
+          <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: '#FF4D6A', marginBottom: 8 }}>⚠️ Zona de peligro</h3>
           <p style={{ fontSize: 13, color: '#6B6A80', marginBottom: 14, lineHeight: 1.6 }}>
             Eliminar tu comunidad notificará a todos los miembros y dará 30 días antes del cierre definitivo.
           </p>
-          <a href="/creator/eliminar-comunidad" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '9px 18px', borderRadius: 10, background: 'rgba(255,77,106,0.08)', border: '1px solid rgba(255,77,106,0.2)', color: '#FF4D6A', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
+          <a href="/creator/eliminar-comunidad" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '9px 18px', borderRadius: 10, background: 'rgba(255,77,106,0.08)', border: '1px solid rgba(255,77,106,0.2)', color: '#FF4D6A', textDecoration: 'none', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13 }}>
             🗑️ Eliminar comunidad
           </a>
         </div>

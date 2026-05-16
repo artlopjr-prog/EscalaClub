@@ -8,8 +8,8 @@ import { Save, Globe, BookOpen, Award, TrendingUp, Users } from 'lucide-react'
 import ImageUpload from '@/components/ui/ImageUpload'
 
 const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500' }
-const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '12px 16px', color: '#EEEDF5', fontSize: 14, outline: 'none', fontFamily: 'Inter, sans-serif' }
-const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 8, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
+const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '12px 16px', color: '#EEEDF5', fontSize: 14, outline: 'none', fontFamily: 'Outfit, sans-serif' }
+const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 8, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
 
 const COUNTRIES = ['Argentina','Bolivia','Brasil','Chile','Colombia','Costa Rica','Ecuador','El Salvador','Guatemala','Honduras','México','Nicaragua','Panamá','Paraguay','Perú','Puerto Rico','República Dominicana','Uruguay','Venezuela','Otro']
 
@@ -72,11 +72,11 @@ export default function PerfilPage() {
         <div style={{ height: 100, background: 'linear-gradient(135deg, rgba(124,58,237,0.3), rgba(159,103,255,0.1))' }} />
         <div style={{ padding: '0 24px 24px', marginTop: -40 }}>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: 16, flexWrap: 'wrap' }}>
-            <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(124,58,237,0.2)', border: '4px solid #0D0D14', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 32, color: C.purple2, overflow: 'hidden', flexShrink: 0 }}>
+            <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(124,58,237,0.2)', border: '4px solid #0D0D14', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 32, color: C.purple2, overflow: 'hidden', flexShrink: 0 }}>
               {profile?.avatar_url ? <img src={profile.avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : (profile?.display_name?.[0]?.toUpperCase() ?? '?')}
             </div>
             <div style={{ paddingBottom: 4, flex: 1 }}>
-              <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.04em', color: C.text, marginBottom: 3 }}>{profile?.display_name || 'Sin nombre'}</h1>
+              <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.04em', color: C.text, marginBottom: 3 }}>{profile?.display_name || 'Sin nombre'}</h1>
               <div style={{ fontSize: 13, color: C.muted, marginBottom: 8 }}>{email} {profile?.country && `· ${profile.country}`}</div>
               {profile?.bio && <p style={{ fontSize: 13, color: C.muted2, lineHeight: 1.5 }}>{profile.bio}</p>}
             </div>
@@ -92,7 +92,7 @@ export default function PerfilPage() {
             ].map((s, i) => (
               <div key={i} style={{ background: C.bg2, borderRadius: 14, padding: '14px', textAlign: 'center' }}>
                 <div style={{ fontSize: 20, marginBottom: 4 }}>{s.icon}</div>
-                <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 22, color: s.color }}>{s.value}</div>
+                <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 22, color: s.color }}>{s.value}</div>
                 <div style={{ fontSize: 11, color: C.muted }}>{s.label}</div>
               </div>
             ))}
@@ -114,7 +114,7 @@ export default function PerfilPage() {
       {/* Tabs */}
       <div style={{ display: 'flex', gap: 4, marginBottom: 20, background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 14, padding: 4 }}>
         {([['perfil', '⚙️ Editar perfil'], ['comunidades', '🌐 Mis comunidades'], ['cursos', '📚 Mi progreso']] as const).map(([t, label]) => (
-          <button key={t} onClick={() => setTab(t)} style={{ flex: 1, padding: '9px', borderRadius: 10, background: tab === t ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'transparent', color: tab === t ? '#fff' : C.muted, border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
+          <button key={t} onClick={() => setTab(t)} style={{ flex: 1, padding: '9px', borderRadius: 10, background: tab === t ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'transparent', color: tab === t ? '#fff' : C.muted, border: 'none', cursor: 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13 }}>
             {label}
           </button>
         ))}
@@ -154,7 +154,7 @@ export default function PerfilPage() {
             <label style={L}>Email</label>
             <input value={email} disabled style={{ ...INP, opacity: 0.5, cursor: 'not-allowed' }} />
           </div>
-          <button onClick={handleSave} disabled={saving} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '13px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: saving ? 'not-allowed' : 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15, opacity: saving ? 0.7 : 1 }}>
+          <button onClick={handleSave} disabled={saving} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '13px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: saving ? 'not-allowed' : 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 15, opacity: saving ? 0.7 : 1 }}>
             <Save size={16} /> {saving ? 'Guardando...' : 'Guardar cambios'}
           </button>
         </div>
@@ -172,19 +172,19 @@ export default function PerfilPage() {
                     {comm?.logo_url ? <img src={comm.logo_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '🌐'}
                   </div>
                   <div style={{ flex: 1 }}>
-                    <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: C.text, marginBottom: 3 }}>{comm?.name}</div>
+                    <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 15, color: C.text, marginBottom: 3 }}>{comm?.name}</div>
                     <div style={{ fontSize: 12, color: C.muted }}>{comm?.member_count ?? 0} miembros · {m.points ?? 0} pts · {m.role}</div>
                   </div>
-                  <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 20, color: accent }}>{m.points ?? 0} pts</div>
+                  <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 20, color: accent }}>{m.points ?? 0} pts</div>
                 </div>
               </Link>
             )
           }) : (
             <div style={{ textAlign: 'center', padding: '60px 24px', background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20 }}>
               <div style={{ fontSize: 48, marginBottom: 16 }}>🌐</div>
-              <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text, marginBottom: 8 }}>Sin comunidades</h3>
+              <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 18, color: C.text, marginBottom: 8 }}>Sin comunidades</h3>
               <p style={{ fontSize: 14, color: C.muted, marginBottom: 20 }}>Únete a una comunidad para empezar</p>
-              <Link href="/comunidades" style={{ display: 'inline-flex', padding: '10px 20px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>Explorar comunidades</Link>
+              <Link href="/comunidades" style={{ display: 'inline-flex', padding: '10px 20px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>Explorar comunidades</Link>
             </div>
           )}
         </div>
@@ -193,13 +193,13 @@ export default function PerfilPage() {
       {tab === 'cursos' && (
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 24, textAlign: 'center' }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>📚</div>
-          <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text, marginBottom: 8 }}>
+          <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 18, color: C.text, marginBottom: 8 }}>
             {completedLessons > 0 ? `${completedLessons} lecciones completadas` : 'Sin progreso aún'}
           </h3>
           <p style={{ fontSize: 14, color: C.muted, marginBottom: 20 }}>
             {completedLessons > 0 ? '¡Sigue así! Completa más lecciones para ganar puntos.' : 'Únete a un curso para empezar a aprender'}
           </p>
-          <Link href="/cursos" style={{ display: 'inline-flex', padding: '10px 20px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>Ver cursos disponibles</Link>
+          <Link href="/cursos" style={{ display: 'inline-flex', padding: '10px 20px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>Ver cursos disponibles</Link>
         </div>
       )}
     </div>

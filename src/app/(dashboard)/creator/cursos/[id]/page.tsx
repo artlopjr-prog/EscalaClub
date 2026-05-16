@@ -7,8 +7,8 @@ import Link from 'next/link'
 import { ArrowLeft, Plus, Save, Eye, EyeOff, Trash2, ChevronDown, ChevronRight, Play, GripVertical, Video } from 'lucide-react'
 
 const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', red: '#FF4D6A' }
-const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
-const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '11px 14px', color: '#EEEDF5', fontSize: 13, outline: 'none', fontFamily: 'Inter, sans-serif' }
+const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 7, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
+const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '11px 14px', color: '#EEEDF5', fontSize: 13, outline: 'none', fontFamily: 'Outfit, sans-serif' }
 
 function getVideoThumb(url: string) {
   if (!url) return null
@@ -132,7 +132,7 @@ export default function EditCursoPage() {
             <ArrowLeft size={13} /> Volver
           </Link>
           <div>
-            <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>{course.title}</h1>
+            <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 20, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>{course.title}</h1>
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 12, color: C.muted }}>
               <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
                 <span style={{ width: 6, height: 6, borderRadius: '50%', background: course.is_published ? C.green : C.muted, display: 'inline-block' }} />
@@ -147,7 +147,7 @@ export default function EditCursoPage() {
           <button onClick={togglePublish} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 14px', borderRadius: 10, border: `1px solid ${C.border}`, background: 'transparent', color: course.is_published ? C.red : C.green, cursor: 'pointer', fontSize: 12, fontWeight: 600 }}>
             {course.is_published ? <><EyeOff size={13} /> Despublicar</> : <><Eye size={13} /> Publicar</>}
           </button>
-          <button onClick={saveCourse} disabled={saving} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
+          <button onClick={saveCourse} disabled={saving} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontSize: 13, fontFamily: 'Outfit, sans-serif', fontWeight: 700 }}>
             <Save size={13} /> {saving ? 'Guardando...' : 'Guardar'}
           </button>
         </div>
@@ -173,7 +173,7 @@ export default function EditCursoPage() {
       {/* Modules */}
       <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden', marginBottom: 16 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px', borderBottom: `1px solid ${C.border}` }}>
-          <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>Contenido del curso</h2>
+          <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>Contenido del curso</h2>
           <span style={{ fontSize: 12, color: C.muted }}>{modules.length} módulos · {totalLessons} lecciones</span>
         </div>
 
@@ -235,7 +235,7 @@ export default function EditCursoPage() {
 
                 {/* Add lesson */}
                 <div style={{ background: C.bg1, borderRadius: 14, padding: 14, marginTop: 8, border: `1px solid ${C.border}` }}>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: C.muted, fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 10 }}>+ Nueva lección</div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: C.muted, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 10 }}>+ Nueva lección</div>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                     <input value={newLesson[mod.id]?.title ?? ''} onChange={e => setNL(mod.id, 'title', e.target.value)} placeholder="Título de la lección *" style={{ ...INP, fontSize: 12, padding: '9px 12px' }} />
                     <div style={{ position: 'relative' }}>
@@ -263,7 +263,7 @@ export default function EditCursoPage() {
         <div style={{ padding: 16 }}>
           <div style={{ display: 'flex', gap: 10 }}>
             <input value={newModTitle} onChange={e => setNewModTitle(e.target.value)} onKeyDown={e => e.key === 'Enter' && addModule()} placeholder="Nombre del nuevo módulo..." style={{ ...INP, flex: 1 }} />
-            <button onClick={addModule} disabled={!newModTitle.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '11px 16px', borderRadius: 12, background: newModTitle.trim() ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'rgba(255,255,255,0.06)', color: newModTitle.trim() ? '#fff' : C.muted, border: 'none', cursor: newModTitle.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }}>
+            <button onClick={addModule} disabled={!newModTitle.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '11px 16px', borderRadius: 12, background: newModTitle.trim() ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'rgba(255,255,255,0.06)', color: newModTitle.trim() ? '#fff' : C.muted, border: 'none', cursor: newModTitle.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }}>
               <Plus size={14} /> Módulo
             </button>
           </div>

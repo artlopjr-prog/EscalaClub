@@ -98,7 +98,7 @@ export default function EliminarComunidadPage() {
           <Trash2 size={24} color={C.red} />
         </div>
         <div>
-          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 24, color: C.text }}>Eliminar comunidad</h1>
+          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 24, color: C.text }}>Eliminar comunidad</h1>
           <p style={{ fontSize: 13, color: C.muted }}>{community.name}</p>
         </div>
       </div>
@@ -110,7 +110,7 @@ export default function EliminarComunidadPage() {
             <div style={{ display: 'flex', gap: 12, marginBottom: 16 }}>
               <AlertTriangle size={22} color={C.red} style={{ flexShrink: 0, marginTop: 2 }} />
               <div>
-                <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, color: C.red, marginBottom: 8 }}>Eliminación programada</h2>
+                <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 16, color: C.red, marginBottom: 8 }}>Eliminación programada</h2>
                 <p style={{ fontSize: 14, color: C.muted2, lineHeight: 1.7 }}>
                   Tu comunidad será eliminada el <strong style={{ color: C.text }}>{scheduledDate}</strong>.<br />
                   Todos los miembros fueron notificados. No se hacen cobros nuevos.<br />
@@ -121,9 +121,9 @@ export default function EliminarComunidadPage() {
           </div>
 
           <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 24 }}>
-            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, color: C.text, marginBottom: 8 }}>¿Cambiaste de opinión?</h3>
+            <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 16, color: C.text, marginBottom: 8 }}>¿Cambiaste de opinión?</h3>
             <p style={{ fontSize: 13, color: C.muted, marginBottom: 20, lineHeight: 1.6 }}>Puedes cancelar el proceso y tu comunidad volverá a estar activa normalmente.</p>
-            <button onClick={handleCancelDeletion} disabled={loading} style={{ padding: '12px 24px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', border: 'none', color: '#fff', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, opacity: loading ? 0.7 : 1 }}>
+            <button onClick={handleCancelDeletion} disabled={loading} style={{ padding: '12px 24px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', border: 'none', color: '#fff', cursor: 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14, opacity: loading ? 0.7 : 1 }}>
               {loading ? 'Cancelando...' : '↩️ Cancelar eliminación'}
             </button>
           </div>
@@ -132,7 +132,7 @@ export default function EliminarComunidadPage() {
         /* Initiate deletion */
         <div>
           <div style={{ background: 'rgba(255,77,106,0.06)', border: '1px solid rgba(255,77,106,0.2)', borderRadius: 20, padding: 24, marginBottom: 24 }}>
-            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, color: C.red, marginBottom: 12 }}>⚠️ Lee esto antes de continuar</h2>
+            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 16, color: C.red, marginBottom: 12 }}>⚠️ Lee esto antes de continuar</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {[
                 'Los miembros serán notificados inmediatamente',
@@ -163,7 +163,7 @@ export default function EliminarComunidadPage() {
             <button
               onClick={handleInitiateDeletion}
               disabled={confirm !== community.name || loading}
-              style={{ width: '100%', padding: '13px', borderRadius: 12, background: confirm === community.name ? 'linear-gradient(135deg, #FF4D6A, #cc3355)' : 'rgba(255,77,106,0.15)', border: 'none', color: confirm === community.name ? '#fff' : C.red, cursor: confirm === community.name ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, opacity: loading ? 0.7 : 1 }}
+              style={{ width: '100%', padding: '13px', borderRadius: 12, background: confirm === community.name ? 'linear-gradient(135deg, #FF4D6A, #cc3355)' : 'rgba(255,77,106,0.15)', border: 'none', color: confirm === community.name ? '#fff' : C.red, cursor: confirm === community.name ? 'pointer' : 'not-allowed', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14, opacity: loading ? 0.7 : 1 }}
             >
               {loading ? 'Iniciando proceso...' : '🗑️ Iniciar eliminación en 30 días'}
             </button>

@@ -31,10 +31,10 @@ export default function CreatorCursosPage() {
     <div style={{ padding: 32, maxWidth: 1000, margin: '0 auto' }}>
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 28 }}>
         <div>
-          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.04em', color: C.text, marginBottom: 6 }}>Mis Cursos</h1>
+          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.04em', color: C.text, marginBottom: 6 }}>Mis Cursos</h1>
           <p style={{ fontSize: 13, color: C.muted }}>{published} publicados · {courses.length - published} borradores · 0 estudiantes totales</p>
         </div>
-        <Link href="/creator/cursos/nuevo" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 20px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>
+        <Link href="/creator/cursos/nuevo" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 20px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>
           <Plus size={16} /> Nuevo curso
         </Link>
       </div>
@@ -47,7 +47,7 @@ export default function CreatorCursosPage() {
           { label: 'Estudiantes', value: 0, color: C.gold },
         ].map((s, i) => (
           <div key={i} style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16, padding: '18px 20px', textAlign: 'center' }}>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 32, color: s.color, letterSpacing: '-0.04em' }}>{s.value}</div>
+            <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 32, color: s.color, letterSpacing: '-0.04em' }}>{s.value}</div>
             <div style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>{s.label}</div>
           </div>
         ))}
@@ -75,9 +75,9 @@ export default function CreatorCursosPage() {
       ) : (
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: '60px 24px', textAlign: 'center' }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>📚</div>
-          <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, color: C.text, marginBottom: 8 }}>Sin cursos aún</h3>
+          <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 20, color: C.text, marginBottom: 8 }}>Sin cursos aún</h3>
           <p style={{ fontSize: 14, color: C.muted, marginBottom: 20 }}>Crea tu primer curso y empieza a monetizar tu conocimiento</p>
-          <Link href="/creator/cursos/nuevo" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 24px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>
+          <Link href="/creator/cursos/nuevo" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 24px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>
             <Plus size={16} /> Crear mi primer curso
           </Link>
         </div>

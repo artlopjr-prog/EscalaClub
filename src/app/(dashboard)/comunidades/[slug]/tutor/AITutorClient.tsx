@@ -144,14 +144,14 @@ export default function AITutorClient({ userId, community, config, conversations
                 {community.logo_url ? <img src={community.logo_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 9 }} /> : '🌐'}
               </div>
               <div>
-                <div style={{ fontSize: 12, fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>{community.name}</div>
+                <div style={{ fontSize: 12, fontWeight: 700, fontFamily: 'Outfit, sans-serif' }}>{community.name}</div>
                 <div style={{ fontSize: 10, color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: 3 }}>
                   <Sparkles size={9} /> Tutor IA
                 </div>
               </div>
             </div>
             <button onClick={startNewConversation}
-              style={{ width: '100%', padding: '9px 12px', borderRadius: 'var(--r-md)', background: `${accent}18`, border: `1px solid ${accent}33`, color: accent, fontSize: 12, fontWeight: 700, fontFamily: 'Inter, sans-serif', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all .15s' }}>
+              style={{ width: '100%', padding: '9px 12px', borderRadius: 'var(--r-md)', background: `${accent}18`, border: `1px solid ${accent}33`, color: accent, fontSize: 12, fontWeight: 700, fontFamily: 'Outfit, sans-serif', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all .15s' }}>
               <Plus size={14} /> Nueva conversación
             </button>
           </div>
@@ -181,7 +181,7 @@ export default function AITutorClient({ userId, community, config, conversations
           {isOwner && (
             <div style={{ padding: '10px 8px', borderTop: '1px solid var(--border)' }}>
               <button onClick={() => setConfigMode(!configMode)}
-                style={{ width: '100%', padding: '8px 12px', borderRadius: 'var(--r-sm)', background: 'transparent', border: 'none', color: 'var(--muted2)', fontSize: 12, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, fontFamily: 'Inter, sans-serif' }}>
+                style={{ width: '100%', padding: '8px 12px', borderRadius: 'var(--r-sm)', background: 'transparent', border: 'none', color: 'var(--muted2)', fontSize: 12, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, fontFamily: 'Outfit, sans-serif' }}>
                 <Settings size={13} /> Configurar tutor
               </button>
             </div>
@@ -198,7 +198,7 @@ export default function AITutorClient({ userId, community, config, conversations
             <div style={{ maxWidth: 600, margin: '0 auto' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 28 }}>
                 <Settings size={20} color={accent} />
-                <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20 }}>Configurar Tutor IA</h2>
+                <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 20 }}>Configurar Tutor IA</h2>
               </div>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
@@ -255,7 +255,7 @@ Cuanto más detallado, mejor responderá a tus miembros." />
                     <div style={{ width: 64, height: 64, borderRadius: 20, background: `${accent}18`, border: `1px solid ${accent}33`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: 28 }}>
                       <Sparkles size={28} color={accent} />
                     </div>
-                    <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 22, marginBottom: 8 }}>
+                    <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 22, marginBottom: 8 }}>
                       {tutorName}
                     </h2>
                     <p style={{ fontSize: 14, color: 'var(--muted2)', lineHeight: 1.6, maxWidth: 400, margin: '0 auto 28px' }}>
@@ -265,7 +265,7 @@ Cuanto más detallado, mejor responderá a tus miembros." />
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, maxWidth: 500, margin: '0 auto' }}>
                       {SUGGESTED.map((s, i) => (
                         <button key={i} onClick={() => sendMessage(s)}
-                          style={{ padding: '10px 14px', borderRadius: 'var(--r-md)', background: 'var(--bg2)', border: '1px solid var(--border2)', color: 'var(--text2)', fontSize: 12, cursor: 'pointer', textAlign: 'left', fontFamily: 'Inter, sans-serif', transition: 'all .15s', lineHeight: 1.4 }}
+                          style={{ padding: '10px 14px', borderRadius: 'var(--r-md)', background: 'var(--bg2)', border: '1px solid var(--border2)', color: 'var(--text2)', fontSize: 12, cursor: 'pointer', textAlign: 'left', fontFamily: 'Outfit, sans-serif', transition: 'all .15s', lineHeight: 1.4 }}
                           onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'var(--bg3)'; (e.currentTarget as HTMLElement).style.borderColor = `${accent}44` }}
                           onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = 'var(--bg2)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--border2)' }}>
                           {s}
@@ -280,7 +280,7 @@ Cuanto más detallado, mejor responderá a tus miembros." />
                   {messages.map(m => (
                     <div key={m.id} style={{ display: 'flex', gap: 12, alignItems: 'flex-start', flexDirection: m.role === 'user' ? 'row-reverse' : 'row' }}>
                       {/* Avatar */}
-                      <div style={{ width: 32, height: 32, borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, fontFamily: 'Inter, sans-serif', background: m.role === 'assistant' ? `${accent}22` : 'var(--bg3)', border: m.role === 'assistant' ? `1px solid ${accent}33` : '1px solid var(--border2)', color: m.role === 'assistant' ? accent : 'var(--text2)' }}>
+                      <div style={{ width: 32, height: 32, borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, fontWeight: 700, fontFamily: 'Outfit, sans-serif', background: m.role === 'assistant' ? `${accent}22` : 'var(--bg3)', border: m.role === 'assistant' ? `1px solid ${accent}33` : '1px solid var(--border2)', color: m.role === 'assistant' ? accent : 'var(--text2)' }}>
                         {m.role === 'assistant' ? <Sparkles size={15} /> : userProfile.name.slice(0, 2).toUpperCase()}
                       </div>
                       {/* Bubble */}
@@ -332,7 +332,7 @@ Cuanto más detallado, mejor responderá a tus miembros." />
                     placeholder={`Pregunta algo sobre ${community.name}...`}
                     disabled={loading}
                     rows={1}
-                    style={{ flex: 1, background: 'transparent', border: 'none', outline: 'none', color: 'var(--text)', fontSize: 14, fontFamily: 'Inter, sans-serif', resize: 'none', lineHeight: 1.5, maxHeight: 120, overflow: 'auto', padding: 0 }} />
+                    style={{ flex: 1, background: 'transparent', border: 'none', outline: 'none', color: 'var(--text)', fontSize: 14, fontFamily: 'Outfit, sans-serif', resize: 'none', lineHeight: 1.5, maxHeight: 120, overflow: 'auto', padding: 0 }} />
                   <button onClick={() => sendMessage()} disabled={!input.trim() || loading}
                     style={{ width: 34, height: 34, borderRadius: 10, background: input.trim() && !loading ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'var(--bg3)', border: 'none', cursor: input.trim() && !loading ? 'pointer' : 'default', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all .15s' }}>
                     <Send size={15} color={input.trim() && !loading ? '#fff' : 'var(--muted)'} />

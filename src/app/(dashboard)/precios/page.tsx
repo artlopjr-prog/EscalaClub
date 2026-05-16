@@ -76,9 +76,9 @@ export default function PreciosPage() {
           <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <Zap size={16} color="#fff" />
           </div>
-          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, color: C.text }}>Planes para Creadores</span>
+          <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 16, color: C.text }}>Planes para Creadores</span>
         </div>
-        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 42, letterSpacing: '-0.04em', color: C.text, marginBottom: 12, lineHeight: 1.1 }}>
+        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 42, letterSpacing: '-0.04em', color: C.text, marginBottom: 12, lineHeight: 1.1 }}>
           Construye tu<br />
           <span style={{ background: 'linear-gradient(135deg, #9F67FF, #7C3AED)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>comunidad ideal</span>
         </h1>
@@ -92,7 +92,7 @@ export default function PreciosPage() {
         <div style={{ display: 'inline-flex', background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 12, padding: 4 }}>
           {[{ val: 'monthly', label: 'Mensual' }, { val: 'annual', label: 'Anual -20%' }].map(opt => (
             <button key={opt.val} onClick={() => setBilling(opt.val as any)} style={{
-              padding: '8px 24px', borderRadius: 9, fontSize: 13, fontFamily: 'Inter, sans-serif', fontWeight: 700,
+              padding: '8px 24px', borderRadius: 9, fontSize: 13, fontFamily: 'Outfit, sans-serif', fontWeight: 700,
               background: billing === opt.val ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'transparent',
               color: billing === opt.val ? '#fff' : C.muted, border: 'none', cursor: 'pointer',
             }}>{opt.label}</button>
@@ -111,7 +111,7 @@ export default function PreciosPage() {
               borderRadius: 24, padding: 28, position: 'relative', display: 'flex', flexDirection: 'column',
             }}>
               {plan.popular && (
-                <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)', background: `linear-gradient(135deg, ${plan.color}, #9F67FF)`, color: '#fff', fontSize: 11, fontWeight: 800, padding: '4px 16px', borderRadius: 99, fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>
+                <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)', background: `linear-gradient(135deg, ${plan.color}, #9F67FF)`, color: '#fff', fontSize: 11, fontWeight: 800, padding: '4px 16px', borderRadius: 99, fontFamily: 'Outfit, sans-serif', whiteSpace: 'nowrap' }}>
                   ⚡ MÁS POPULAR
                 </div>
               )}
@@ -120,13 +120,13 @@ export default function PreciosPage() {
                   <plan.Icon size={22} color={plan.color} />
                 </div>
                 <div>
-                  <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 18, color: C.text }}>{plan.name}</div>
+                  <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 18, color: C.text }}>{plan.name}</div>
                   <div style={{ fontSize: 11, color: plan.color, fontWeight: 700 }}>{plan.limit}</div>
                 </div>
               </div>
               <p style={{ fontSize: 13, color: C.muted, marginBottom: 20, lineHeight: 1.5 }}>{plan.desc}</p>
               <div style={{ marginBottom: 24 }}>
-                <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 40, color: C.text }}>${price}</span>
+                <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 40, color: C.text }}>${price}</span>
                 <span style={{ fontSize: 14, color: C.muted }}>/{billing === 'monthly' ? 'mes' : 'año'}</span>
                 {billing === 'annual' && <div style={{ fontSize: 11, color: C.green, fontWeight: 600, marginTop: 4 }}>Ahorra ${(plan.monthly * 12) - plan.annual}/año</div>}
               </div>
@@ -147,7 +147,7 @@ export default function PreciosPage() {
                   width: '100%', padding: '13px', borderRadius: 12, cursor: isCurrentPlan ? 'default' : 'pointer',
                   background: isCurrentPlan ? 'rgba(0,214,143,0.1)' : plan.popular ? `linear-gradient(135deg, ${plan.color}, #9F67FF)` : plan.color + '20',
                   color: isCurrentPlan ? C.green : plan.popular ? '#fff' : plan.color,
-                  fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14,
+                  fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14,
                   opacity: loading && loading !== plan.id ? 0.5 : 1,
                   border: isCurrentPlan ? `1px solid rgba(0,214,143,0.3)` : 'none',
                 }}
@@ -161,7 +161,7 @@ export default function PreciosPage() {
 
       {/* FAQ */}
       <div style={{ maxWidth: 700, margin: '0 auto', padding: '40px 0', borderTop: `1px solid ${C.border}` }}>
-        <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 24, color: C.text, textAlign: 'center', marginBottom: 32 }}>Preguntas frecuentes</h2>
+        <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 24, color: C.text, textAlign: 'center', marginBottom: 32 }}>Preguntas frecuentes</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
           {[
             ['¿Puedo cambiar de plan?', 'Sí, puedes subir o bajar de plan en cualquier momento. El cambio aplica desde el siguiente ciclo de facturación.'],
@@ -171,7 +171,7 @@ export default function PreciosPage() {
             ['¿EscalaClub toma comisión de mis ventas?', 'No. EscalaClub cobra el plan mensual, y los pagos de tus miembros son 100% tuyos. Sin comisiones ocultas.'],
           ].map(([q, a]) => (
             <div key={q} style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 14, padding: '18px 22px' }}>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15, color: C.text, marginBottom: 8 }}>{q}</div>
+              <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 15, color: C.text, marginBottom: 8 }}>{q}</div>
               <div style={{ fontSize: 14, color: C.muted, lineHeight: 1.6 }}>{a}</div>
             </div>
           ))}

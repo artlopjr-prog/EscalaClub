@@ -211,7 +211,7 @@ export default function ForoClient({
               <div style={{ width: 22, height: 22, borderRadius: '50%', background: accent + '20', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <div style={{ width: 10, height: 10, borderRadius: '50%', background: accent }} />
               </div>
-              <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, color: C.text }}>Bienvenido — empieza aquí</span>
+              <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14, color: C.text }}>Bienvenido — empieza aquí</span>
             </div>
             {WELCOME_TASKS.map(task => (
               <div key={task.id} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: `1px solid ${C.border}` }}>
@@ -232,7 +232,7 @@ export default function ForoClient({
           {!composerFocused ? (
             /* Collapsed composer — like Skool */
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, cursor: 'text' }} onClick={() => setComposerFocused(true)}>
-              <div style={{ width: 36, height: 36, borderRadius: '50%', background: accent + '25', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13, color: accent, flexShrink: 0, overflow: 'hidden' }}>
+              <div style={{ width: 36, height: 36, borderRadius: '50%', background: accent + '25', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 13, color: accent, flexShrink: 0, overflow: 'hidden' }}>
                 {userAvatarUrl ? <img src={userAvatarUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : userDisplayName?.[0]?.toUpperCase() ?? '?'}
               </div>
               <div style={{ flex: 1, background: C.bg2, borderRadius: 99, padding: '10px 18px', color: C.muted, fontSize: 14 }}>
@@ -246,7 +246,7 @@ export default function ForoClient({
                 value={title}
                 onChange={e => setTitle(e.target.value)}
                 placeholder="Título (opcional)"
-                style={{ width: '100%', background: 'transparent', border: 'none', outline: 'none', color: C.text, fontSize: 16, fontFamily: 'Inter, sans-serif', fontWeight: 700, marginBottom: 10 }}
+                style={{ width: '100%', background: 'transparent', border: 'none', outline: 'none', color: C.text, fontSize: 16, fontFamily: 'Outfit, sans-serif', fontWeight: 700, marginBottom: 10 }}
                 autoFocus
               />
               <textarea
@@ -255,7 +255,7 @@ export default function ForoClient({
                 onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) submitPost() }}
                 placeholder="¿Qué quieres compartir con la comunidad?"
                 rows={4}
-                style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 14, outline: 'none', resize: 'none', fontFamily: 'Inter, sans-serif', boxSizing: 'border-box' }}
+                style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 14, outline: 'none', resize: 'none', fontFamily: 'Outfit, sans-serif', boxSizing: 'border-box' }}
               />
 
               {showImageInput && (
@@ -286,7 +286,7 @@ export default function ForoClient({
                 <button
                   onClick={submitPost}
                   disabled={posting || !content.trim()}
-                  style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 22px', borderRadius: 10, background: content.trim() ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'rgba(255,255,255,0.06)', color: content.trim() ? '#fff' : C.muted, border: 'none', cursor: content.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 22px', borderRadius: 10, background: content.trim() ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'rgba(255,255,255,0.06)', color: content.trim() ? '#fff' : C.muted, border: 'none', cursor: content.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13 }}
                 >
                   <Send size={13} /> {posting ? 'Publicando...' : 'Publicar'}
                 </button>
@@ -297,11 +297,11 @@ export default function ForoClient({
 
         {/* Category pills */}
         <div style={{ display: 'flex', gap: 8, marginBottom: 16, overflowX: 'auto', paddingBottom: 4 }}>
-          <button onClick={() => setFilterCat('all')} style={{ padding: '6px 16px', borderRadius: 99, fontSize: 12, fontWeight: 700, background: filterCat === 'all' ? accent : C.bg1, color: filterCat === 'all' ? '#fff' : C.muted, border: `1px solid ${filterCat === 'all' ? 'transparent' : C.border}`, cursor: 'pointer', whiteSpace: 'nowrap', fontFamily: 'Inter, sans-serif' }}>
+          <button onClick={() => setFilterCat('all')} style={{ padding: '6px 16px', borderRadius: 99, fontSize: 12, fontWeight: 700, background: filterCat === 'all' ? accent : C.bg1, color: filterCat === 'all' ? '#fff' : C.muted, border: `1px solid ${filterCat === 'all' ? 'transparent' : C.border}`, cursor: 'pointer', whiteSpace: 'nowrap', fontFamily: 'Outfit, sans-serif' }}>
             Todos
           </button>
           {categories.map(cat => (
-            <button key={cat.id} onClick={() => setFilterCat(cat.id)} style={{ padding: '6px 16px', borderRadius: 99, fontSize: 12, fontWeight: 700, background: filterCat === cat.id ? cat.color : C.bg1, color: filterCat === cat.id ? '#fff' : C.muted, border: `1px solid ${filterCat === cat.id ? 'transparent' : C.border}`, cursor: 'pointer', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: 5, fontFamily: 'Inter, sans-serif' }}>
+            <button key={cat.id} onClick={() => setFilterCat(cat.id)} style={{ padding: '6px 16px', borderRadius: 99, fontSize: 12, fontWeight: 700, background: filterCat === cat.id ? cat.color : C.bg1, color: filterCat === cat.id ? '#fff' : C.muted, border: `1px solid ${filterCat === cat.id ? 'transparent' : C.border}`, cursor: 'pointer', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: 5, fontFamily: 'Outfit, sans-serif' }}>
               {cat.emoji} {cat.name}
             </button>
           ))}
@@ -320,7 +320,7 @@ export default function ForoClient({
             <div key={post.id} style={{ background: C.bg1, border: `1px solid ${post.is_pinned ? accent + '50' : C.border}`, borderRadius: 16, padding: 18, marginBottom: 12 }}>
               {/* Author */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
-                <div style={{ width: 38, height: 38, borderRadius: '50%', background: accent + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: accent, flexShrink: 0, overflow: 'hidden', border: `2px solid ${accent}30` }}>
+                <div style={{ width: 38, height: 38, borderRadius: '50%', background: accent + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: accent, flexShrink: 0, overflow: 'hidden', border: `2px solid ${accent}30` }}>
                   {post.author?.avatar_url ? <img src={post.author.avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : (post.author?.display_name?.[0]?.toUpperCase() ?? '?')}
                 </div>
                 <div style={{ flex: 1 }}>
@@ -350,7 +350,7 @@ export default function ForoClient({
               {/* Content */}
               <div style={{ display: 'grid', gridTemplateColumns: post.media_urls?.length ? '1fr 140px' : '1fr', gap: 14, alignItems: 'start' }}>
                 <div>
-                  {post.title && <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: C.text, marginBottom: 6 }}>{post.title}</h3>}
+                  {post.title && <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 15, color: C.text, marginBottom: 6 }}>{post.title}</h3>}
                   <p style={{ fontSize: 14, color: C.muted2, lineHeight: 1.7, whiteSpace: 'pre-wrap', margin: 0 }}>{post.content}</p>
                 </div>
                 {post.media_urls && post.media_urls.length > 0 && (
@@ -413,7 +413,7 @@ export default function ForoClient({
         }) : (
           <div style={{ textAlign: 'center', padding: '60px 24px', background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16 }}>
             <div style={{ fontSize: 48, marginBottom: 16 }}>💬</div>
-            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text, marginBottom: 8 }}>Sé el primero en publicar</h3>
+            <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 18, color: C.text, marginBottom: 8 }}>Sé el primero en publicar</h3>
             <p style={{ fontSize: 14, color: C.muted }}>Comparte algo con la comunidad</p>
           </div>
         )}
@@ -432,7 +432,7 @@ export default function ForoClient({
             <div style={{ width: 48, height: 48, borderRadius: 12, background: community.logo_url ? undefined : accent + '30', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22, overflow: 'hidden', border: `3px solid ${C.bg1}`, marginTop: -24, marginBottom: 10 }}>
               {community.logo_url ? <img src={community.logo_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '🌐'}
             </div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: C.text, marginBottom: 4 }}>{community.name}</div>
+            <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 15, color: C.text, marginBottom: 4 }}>{community.name}</div>
             {community.description && <p style={{ fontSize: 12, color: C.muted, lineHeight: 1.6, marginBottom: 12 }}>{community.description.slice(0, 120)}...</p>}
 
             {/* Stats */}
@@ -443,7 +443,7 @@ export default function ForoClient({
                 { label: 'Posts', value: posts.length },
               ].map((s, i) => (
                 <div key={i} style={{ textAlign: 'center', padding: '8px 4px', background: C.bg2, borderRadius: 10 }}>
-                  <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, color: C.text }}>{s.value}</div>
+                  <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 16, color: C.text }}>{s.value}</div>
                   <div style={{ fontSize: 10, color: C.muted }}>{s.label}</div>
                 </div>
               ))}
@@ -468,7 +468,7 @@ export default function ForoClient({
         {leaderboard.length > 0 && (
           <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16, overflow: 'hidden' }}>
             <div style={{ padding: '14px 16px', borderBottom: `1px solid ${C.border}`, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13, color: C.text }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 13, color: C.text }}>
                 <Trophy size={14} color={C.gold} /> Leaderboard
               </div>
               <span style={{ fontSize: 10, color: C.muted }}>30 días</span>
@@ -483,7 +483,7 @@ export default function ForoClient({
                     {profile?.avatar_url ? <img src={profile.avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : profile?.display_name?.[0]?.toUpperCase() ?? '?'}
                   </div>
                   <span style={{ flex: 1, fontSize: 12, fontWeight: 600, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{profile?.display_name ?? 'Usuario'}</span>
-                  <span style={{ fontSize: 11, color: C.gold, fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>+{(entry.points ?? 0).toLocaleString()}</span>
+                  <span style={{ fontSize: 11, color: C.gold, fontWeight: 700, fontFamily: 'Outfit, sans-serif' }}>+{(entry.points ?? 0).toLocaleString()}</span>
                 </div>
               )
             })}

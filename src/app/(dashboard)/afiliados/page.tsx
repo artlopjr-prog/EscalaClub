@@ -16,7 +16,7 @@ export default async function AfiliadosPage() {
   return (
     <div style={{ padding: 32, maxWidth: 800, margin: '0 auto' }}>
       <div style={{ marginBottom: 32 }}>
-        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-0.04em', color: C.text, marginBottom: 4 }}>Programa de Afiliados 🤝</h1>
+        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-0.04em', color: C.text, marginBottom: 4 }}>Programa de Afiliados 🤝</h1>
         <p style={{ fontSize: 14, color: C.muted }}>Gana comisiones invitando creadores a EscalaClub</p>
       </div>
 
@@ -31,7 +31,7 @@ export default async function AfiliadosPage() {
             <div style={{ width: 36, height: 36, borderRadius: 10, background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
               <s.icon size={17} color={s.color} />
             </div>
-            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, color: s.color, letterSpacing: '-0.04em' }}>{s.value}</div>
+            <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, color: s.color, letterSpacing: '-0.04em' }}>{s.value}</div>
             <div style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>{s.label}</div>
           </div>
         ))}
@@ -39,14 +39,14 @@ export default async function AfiliadosPage() {
 
       {/* Referral link */}
       <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 28, marginBottom: 20 }}>
-        <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, color: C.text, marginBottom: 16 }}>Tu enlace de referido</h2>
+        <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 16, color: C.text, marginBottom: 16 }}>Tu enlace de referido</h2>
         <div style={{ display: 'flex', gap: 10 }}>
           <div style={{ flex: 1, background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 16px', fontSize: 13, color: C.muted2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
             {referralLink}
           </div>
           <button
             
-            style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '12px 18px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }}>
+            style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '12px 18px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }}>
             <Copy size={14} /> Copiar
           </button>
         </div>
@@ -58,7 +58,7 @@ export default async function AfiliadosPage() {
       {/* Coming soon */}
       <div style={{ background: 'rgba(240,165,0,0.06)', border: '1px solid rgba(240,165,0,0.2)', borderRadius: 20, padding: 24, textAlign: 'center' }}>
         <div style={{ fontSize: 36, marginBottom: 12 }}>🚀</div>
-        <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, color: C.text, marginBottom: 8 }}>Dashboard de afiliados en construcción</h3>
+        <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 16, color: C.text, marginBottom: 8 }}>Dashboard de afiliados en construcción</h3>
         <p style={{ fontSize: 13, color: C.muted, lineHeight: 1.6 }}>Pronto podrás ver tus referidos, comisiones y solicitar pagos directamente desde aquí.</p>
       </div>
     </div>

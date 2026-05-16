@@ -126,7 +126,7 @@ export default function JoinButton({ communityId, communityName, communitySlug, 
 
   // Already a member
   if (joined) return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 20px', borderRadius: 12, background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', color: C.green, fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 20px', borderRadius: 12, background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.3)', color: C.green, fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>
       <Check size={16} /> Miembro activo
     </div>
   )
@@ -168,7 +168,7 @@ export default function JoinButton({ communityId, communityName, communitySlug, 
           padding: '12px 24px', borderRadius: 12,
           background: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)`,
           color: '#fff', border: 'none', cursor: loading ? 'not-allowed' : 'pointer',
-          fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14,
+          fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14,
           opacity: loading ? 0.7 : 1, transition: 'all 0.2s',
           boxShadow: `0 0 20px ${accentColor}44`,
         }}
@@ -187,9 +187,9 @@ export default function JoinButton({ communityId, communityName, communitySlug, 
 
             <div style={{ textAlign: 'center', marginBottom: 24 }}>
               <div style={{ width: 56, height: 56, borderRadius: 16, background: accentColor + '20', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px', fontSize: 28 }}>🌐</div>
-              <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 20, color: C.text, marginBottom: 6 }}>Unirse a {communityName}</h2>
+              <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 20, color: C.text, marginBottom: 6 }}>Unirse a {communityName}</h2>
               <p style={{ fontSize: 14, color: C.muted, marginBottom: 4 }}>Membresía mensual</p>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 36, color: C.text }}>${priceMonthly}<span style={{ fontSize: 16, color: C.muted, fontWeight: 400 }}>/mes</span></div>
+              <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 36, color: C.text }}>${priceMonthly}<span style={{ fontSize: 16, color: C.muted, fontWeight: 400 }}>/mes</span></div>
             </div>
 
             <div style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 16px', marginBottom: 20, fontSize: 12, color: C.muted, lineHeight: 1.6 }}>
