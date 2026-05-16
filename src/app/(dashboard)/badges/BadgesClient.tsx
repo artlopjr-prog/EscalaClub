@@ -53,7 +53,7 @@ export default function BadgesClient({ userId, badges, earnedCount, totalCount, 
       {/* HEADER */}
       <div style={{ marginBottom: 32 }}>
         <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 8 }}>EscalaClub</p>
-        <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 'clamp(28px,5vw,42px)', letterSpacing: '-0.04em', marginBottom: 6 }}>
+        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 'clamp(28px,5vw,42px)', letterSpacing: '-0.04em', marginBottom: 6 }}>
           🎖 Mis Badges
         </h1>
         <p style={{ fontSize: 14, color: 'var(--muted2)' }}>Logros que demuestran tu progreso en EscalaClub</p>
@@ -62,7 +62,7 @@ export default function BadgesClient({ userId, badges, earnedCount, totalCount, 
       {/* PROGRESS HERO */}
       <div style={{ background: 'linear-gradient(135deg, rgba(123,94,248,0.1), rgba(233,160,32,0.05))', border: '1px solid rgba(123,94,248,0.2)', borderRadius: 20, padding: '24px 28px', marginBottom: 28, display: 'flex', gap: 28, alignItems: 'center' }}>
         <div style={{ textAlign: 'center', flexShrink: 0 }}>
-          <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 52, lineHeight: 1, color: 'var(--purple2)' }}>{earnedCount}</div>
+          <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 52, lineHeight: 1, color: 'var(--purple2)' }}>{earnedCount}</div>
           <div style={{ fontSize: 12, color: 'var(--muted)', marginTop: 3 }}>de {totalCount} badges</div>
         </div>
         <div style={{ flex: 1 }}>
@@ -94,7 +94,7 @@ export default function BadgesClient({ userId, badges, earnedCount, totalCount, 
         <div style={{ display: 'flex', gap: 3, background: 'var(--bg1)', borderRadius: 10, padding: 3, border: '1px solid var(--border)' }}>
           {[['all','Todos','🏅'], ['earned','Obtenidos','✅'], ...Object.entries(CAT_CONFIG).map(([k,v]) => [k, v.label, v.emoji])].map(([k, label, emoji]) => (
             <button key={k} onClick={() => setFilter(k)}
-              style={{ padding: '6px 12px', borderRadius: 8, fontSize: 12, fontWeight: 600, border: 'none', cursor: 'pointer', fontFamily: 'Plus Jakarta Sans, sans-serif', background: filter === k ? 'var(--bg3)' : 'transparent', color: filter === k ? 'var(--text)' : 'var(--muted2)', transition: 'all .15s', whiteSpace: 'nowrap' }}>
+              style={{ padding: '6px 12px', borderRadius: 8, fontSize: 12, fontWeight: 600, border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', background: filter === k ? 'var(--bg3)' : 'transparent', color: filter === k ? 'var(--text)' : 'var(--muted2)', transition: 'all .15s', whiteSpace: 'nowrap' }}>
               {emoji} {label}
             </button>
           ))}
@@ -102,10 +102,10 @@ export default function BadgesClient({ userId, badges, earnedCount, totalCount, 
 
         {/* Rarity */}
         <div style={{ display: 'flex', gap: 3, background: 'var(--bg1)', borderRadius: 10, padding: 3, border: '1px solid var(--border)' }}>
-          <button onClick={() => setRarityFilter('all')} style={{ padding: '6px 10px', borderRadius: 8, fontSize: 11, fontWeight: 600, border: 'none', cursor: 'pointer', fontFamily: 'Plus Jakarta Sans, sans-serif', background: rarityFilter === 'all' ? 'var(--bg3)' : 'transparent', color: rarityFilter === 'all' ? 'var(--text)' : 'var(--muted)', transition: 'all .15s' }}>Todos</button>
+          <button onClick={() => setRarityFilter('all')} style={{ padding: '6px 10px', borderRadius: 8, fontSize: 11, fontWeight: 600, border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', background: rarityFilter === 'all' ? 'var(--bg3)' : 'transparent', color: rarityFilter === 'all' ? 'var(--text)' : 'var(--muted)', transition: 'all .15s' }}>Todos</button>
           {Object.entries(RARITY_CONFIG).map(([rarity, cfg]) => (
             <button key={rarity} onClick={() => setRarityFilter(rarity)}
-              style={{ padding: '6px 10px', borderRadius: 8, fontSize: 11, fontWeight: 700, border: 'none', cursor: 'pointer', fontFamily: 'Syne, sans-serif', background: rarityFilter === rarity ? cfg.border : 'transparent', color: rarityFilter === rarity ? cfg.color : 'var(--muted)', transition: 'all .15s' }}>
+              style={{ padding: '6px 10px', borderRadius: 8, fontSize: 11, fontWeight: 700, border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', background: rarityFilter === rarity ? cfg.border : 'transparent', color: rarityFilter === rarity ? cfg.color : 'var(--muted)', transition: 'all .15s' }}>
               {cfg.label}
             </button>
           ))}
@@ -161,7 +161,7 @@ export default function BadgesClient({ userId, badges, earnedCount, totalCount, 
               </div>
 
               {/* Name */}
-              <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 12, color: b.earned ? 'var(--text)' : 'var(--muted)', marginBottom: 4, lineHeight: 1.2 }}>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 12, color: b.earned ? 'var(--text)' : 'var(--muted)', marginBottom: 4, lineHeight: 1.2 }}>
                 {b.name}
               </div>
 
@@ -204,7 +204,7 @@ export default function BadgesClient({ userId, badges, earnedCount, totalCount, 
             </div>
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
-                <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 16 }}>{selected.name}</div>
+                <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 16 }}>{selected.name}</div>
                 <span style={{ fontSize: 9, fontWeight: 800, color: cfg.color, background: `${cfg.color}18`, borderRadius: 99, padding: '2px 7px', textTransform: 'uppercase', letterSpacing: '.06em' }}>{cfg.label}</span>
               </div>
               <div style={{ fontSize: 13, color: 'var(--muted2)', lineHeight: 1.5, marginBottom: 8 }}>{selected.description}</div>

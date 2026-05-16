@@ -27,7 +27,7 @@ function wrap(content: string, preheader = '') {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>EscalaClub</title>
 </head>
-<body style="margin:0;padding:0;background:${BG};font-family:'Plus Jakarta Sans',system-ui,sans-serif;">
+<body style="margin:0;padding:0;background:${BG};font-family:'Inter',system-ui,sans-serif;">
 ${preheader ? `<div style="display:none;max-height:0;overflow:hidden;">${preheader}</div>` : ''}
 <table width="100%" cellpadding="0" cellspacing="0" style="background:${BG};padding:32px 16px;">
 <tr><td align="center">

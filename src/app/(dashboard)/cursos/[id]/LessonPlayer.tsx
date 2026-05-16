@@ -95,7 +95,7 @@ export default function LessonPlayer({ lesson, courseId, userId, nextLesson, isC
       <div style={{ flex: 1, overflowY: 'auto', padding: '24px 28px' }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, marginBottom: 20, flexWrap: 'wrap' }}>
           <div>
-            <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.04em', color: C.text, marginBottom: 6 }}>
+            <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 22, letterSpacing: '-0.04em', color: C.text, marginBottom: 6 }}>
               {lesson.title}
             </h1>
             {lesson.duration_min && (
@@ -115,7 +115,7 @@ export default function LessonPlayer({ lesson, courseId, userId, nextLesson, isC
               </button>
             )}
             {nextLesson && (
-              <button onClick={markAndNext} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 18px', borderRadius: 10, background: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)`, color: '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13 }}>
+              <button onClick={markAndNext} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 18px', borderRadius: 10, background: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)`, color: '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
                 Siguiente <ChevronRight size={15} />
               </button>
             )}
@@ -125,7 +125,7 @@ export default function LessonPlayer({ lesson, courseId, userId, nextLesson, isC
         {/* Content */}
         {lesson.content && (
           <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16, padding: 24 }}>
-            <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14, color: C.text, marginBottom: 12 }}>Notas de la lección</h3>
+            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, color: C.text, marginBottom: 12 }}>Notas de la lección</h3>
             <div style={{ fontSize: 14, color: C.muted2, lineHeight: 1.8, whiteSpace: 'pre-wrap' }}>{lesson.content}</div>
           </div>
         )}
@@ -133,7 +133,7 @@ export default function LessonPlayer({ lesson, courseId, userId, nextLesson, isC
         {/* Attachments */}
         {lesson.attachments && lesson.attachments.length > 0 && (
           <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16, padding: 20, marginTop: 16 }}>
-            <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13, color: C.text, marginBottom: 12 }}>Recursos descargables</h3>
+            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13, color: C.text, marginBottom: 12 }}>Recursos descargables</h3>
             {lesson.attachments.map((att: any, i: number) => (
               <a key={i} href={att.url} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, background: C.bg2, textDecoration: 'none', marginBottom: 8, color: C.text, fontSize: 13 }}>
                 📎 {att.name}

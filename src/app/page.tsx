@@ -71,17 +71,17 @@ export default function HomePage() {
             <div style={{ width: 30, height: 30, borderRadius: 8, background: 'linear-gradient(135deg,var(--purple),var(--purple2))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Zap size={16} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Syne,sans-serif', fontWeight: 900, fontSize: 17, letterSpacing: '-.03em' }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 17, letterSpacing: '-.03em' }}>EscalaClub</span>
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             {user ? (
-              <Link href="/dashboard" style={{ padding: '8px 18px', borderRadius: 10, background: 'linear-gradient(135deg,var(--purple),var(--purple2))', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 700, fontFamily: 'Syne,sans-serif' }}>
+              <Link href="/dashboard" style={{ padding: '8px 18px', borderRadius: 10, background: 'linear-gradient(135deg,var(--purple),var(--purple2))', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 700, fontFamily: 'Inter,sans-serif' }}>
                 Mi dashboard →
               </Link>
             ) : (
               <>
                 <Link href="/login" style={{ padding: '8px 16px', borderRadius: 10, color: 'var(--muted2)', textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>Entrar</Link>
-                <Link href="/registro" style={{ padding: '8px 18px', borderRadius: 10, background: 'linear-gradient(135deg,var(--purple),var(--purple2))', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 700, fontFamily: 'Syne,sans-serif', boxShadow: '0 4px 14px rgba(123,94,248,0.3)' }}>Registrarme</Link>
+                <Link href="/registro" style={{ padding: '8px 18px', borderRadius: 10, background: 'linear-gradient(135deg,var(--purple),var(--purple2))', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 700, fontFamily: 'Inter,sans-serif', boxShadow: '0 4px 14px rgba(123,94,248,0.3)' }}>Registrarme</Link>
               </>
             )}
           </div>
@@ -93,7 +93,7 @@ export default function HomePage() {
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 28 }}>
             <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--purple2)', letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: 12 }}>La plataforma de comunidades de LATAM</p>
-            <h1 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 900, fontSize: 'clamp(28px,6vw,52px)', letterSpacing: '-.04em', lineHeight: 1.05, marginBottom: 10 }}>Descubre comunidades</h1>
+            <h1 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 'clamp(28px,6vw,52px)', letterSpacing: '-.04em', lineHeight: 1.05, marginBottom: 10 }}>Descubre comunidades</h1>
             <p style={{ fontSize: 15, color: 'var(--muted2)', maxWidth: 460, margin: '0 auto' }}>
               {loading ? 'Cargando...' : `${filtered.length} comunidades · Únete gratis o con membresía`}
             </p>
@@ -112,7 +112,7 @@ export default function HomePage() {
                 background: cat === c.label ? 'linear-gradient(135deg,#7B5EF8,#A78BFF)' : 'var(--bg2)',
                 color: cat === c.label ? '#fff' : 'var(--muted2)',
                 border: `1px solid ${cat === c.label ? 'transparent' : 'var(--border)'}`,
-                cursor: 'pointer', transition: 'all .15s', fontFamily: 'Plus Jakarta Sans,sans-serif',
+                cursor: 'pointer', transition: 'all .15s', fontFamily: 'Inter,sans-serif',
                 display: 'flex', alignItems: 'center', gap: 5,
               }}>
                 <span>{c.emoji}</span> {c.label}
@@ -127,10 +127,10 @@ export default function HomePage() {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 10 }}>
           <div style={{ display: 'flex', gap: 4, background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 10, padding: 3 }}>
             {[{ val: 'all', label: 'Todas' }, { val: 'free', label: 'Gratis' }, { val: 'paid', label: 'De pago' }].map(a => (
-              <button key={a.val} onClick={() => setAccess(a.val)} style={{ padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 600, background: access === a.val ? 'var(--bg3)' : 'transparent', color: access === a.val ? 'var(--text)' : 'var(--muted)', border: 'none', cursor: 'pointer', fontFamily: 'Plus Jakarta Sans,sans-serif' }}>{a.label}</button>
+              <button key={a.val} onClick={() => setAccess(a.val)} style={{ padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 600, background: access === a.val ? 'var(--bg3)' : 'transparent', color: access === a.val ? 'var(--text)' : 'var(--muted)', border: 'none', cursor: 'pointer', fontFamily: 'Inter,sans-serif' }}>{a.label}</button>
             ))}
           </div>
-          <Link href="/registro" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, background: 'linear-gradient(135deg,#7B5EF8,#A78BFF)', color: '#fff', textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Syne,sans-serif', boxShadow: '0 4px 14px rgba(123,94,248,0.3)' }}>
+          <Link href="/registro" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, background: 'linear-gradient(135deg,#7B5EF8,#A78BFF)', color: '#fff', textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Inter,sans-serif', boxShadow: '0 4px 14px rgba(123,94,248,0.3)' }}>
             Crear mi comunidad gratis
           </Link>
         </div>
@@ -142,8 +142,8 @@ export default function HomePage() {
         ) : filtered.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px 24px' }}>
             <div style={{ fontSize: 48, marginBottom: 16 }}>🔍</div>
-            <h3 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 20, marginBottom: 8 }}>Sin resultados</h3>
-            <button onClick={() => { setQ(''); setCat('Todas'); setAccess('all') }} style={{ padding: '10px 20px', borderRadius: 12, background: 'rgba(123,94,248,0.12)', color: '#A78BFF', border: '1px solid rgba(123,94,248,0.3)', cursor: 'pointer', fontSize: 13, fontWeight: 700, fontFamily: 'Syne,sans-serif', marginTop: 12 }}>
+            <h3 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 20, marginBottom: 8 }}>Sin resultados</h3>
+            <button onClick={() => { setQ(''); setCat('Todas'); setAccess('all') }} style={{ padding: '10px 20px', borderRadius: 12, background: 'rgba(123,94,248,0.12)', color: '#A78BFF', border: '1px solid rgba(123,94,248,0.3)', cursor: 'pointer', fontSize: 13, fontWeight: 700, fontFamily: 'Inter,sans-serif', marginTop: 12 }}>
               Limpiar filtros
             </button>
           </div>
@@ -163,11 +163,11 @@ export default function HomePage() {
                       {c.banner_url && <img src={c.banner_url} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} />}
                       <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom,transparent 25%,rgba(6,6,10,0.88) 100%)' }} />
                       {idx < 3 && (
-                        <div style={{ position:'absolute', top:10, left:10, width:28, height:28, borderRadius:8, background:RANK_BG[idx], display:'flex', alignItems:'center', justifyContent:'center', fontFamily:'Syne,sans-serif', fontWeight:900, fontSize:12, color:RANK_COLOR[idx], boxShadow:'0 2px 8px rgba(0,0,0,0.4)' }}>
+                        <div style={{ position:'absolute', top:10, left:10, width:28, height:28, borderRadius:8, background:RANK_BG[idx], display:'flex', alignItems:'center', justifyContent:'center', fontFamily:'Inter,sans-serif', fontWeight:900, fontSize:12, color:RANK_COLOR[idx], boxShadow:'0 2px 8px rgba(0,0,0,0.4)' }}>
                           #{idx+1}
                         </div>
                       )}
-                      <div style={{ position:'absolute', top:10, right:10, padding:'3px 10px', borderRadius:99, background:'rgba(0,0,0,0.75)', backdropFilter:'blur(8px)', fontSize:11, fontFamily:'Syne,sans-serif', fontWeight:700, color:isFree?'#00D68F':accent }}>
+                      <div style={{ position:'absolute', top:10, right:10, padding:'3px 10px', borderRadius:99, background:'rgba(0,0,0,0.75)', backdropFilter:'blur(8px)', fontSize:11, fontFamily:'Inter,sans-serif', fontWeight:700, color:isFree?'#00D68F':accent }}>
                         {isFree?'GRATIS':`$${c.price_monthly}/mes`}
                       </div>
                       <div style={{ position:'absolute', bottom:-18, left:16, zIndex:2 }}>
@@ -177,7 +177,7 @@ export default function HomePage() {
                       </div>
                     </div>
                     <div style={{ padding:'24px 16px 16px' }}>
-                      <h3 style={{ fontFamily:'Syne,sans-serif', fontWeight:800, fontSize:15, letterSpacing:'-.03em', marginBottom:4, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{c.name}</h3>
+                      <h3 style={{ fontFamily:'Inter,sans-serif', fontWeight:800, fontSize:15, letterSpacing:'-.03em', marginBottom:4, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{c.name}</h3>
                       {c.tagline && <p style={{ fontSize:12, color:'var(--muted2)', marginBottom:10, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', lineHeight:1.4 }}>{c.tagline}</p>}
                       <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginTop:8 }}>
                         <div style={{ display:'flex', alignItems:'center', gap:6, minWidth:0 }}>
@@ -202,9 +202,9 @@ export default function HomePage() {
 
         {!loading && (
           <div style={{ marginTop: 48, textAlign: 'center', padding: '32px 24px', background: 'linear-gradient(135deg,rgba(123,94,248,0.08),rgba(123,94,248,0.03))', border: '1px solid rgba(123,94,248,0.15)', borderRadius: 20 }}>
-            <p style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 6 }}>¿Quieres crear tu propia comunidad?</p>
+            <p style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 6 }}>¿Quieres crear tu propia comunidad?</p>
             <p style={{ fontSize: 14, color: 'var(--muted2)', marginBottom: 18 }}>Sin comisiones · Con PayPal · En español · Para LATAM</p>
-            <Link href="/registro" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 28px', borderRadius: 12, background: 'linear-gradient(135deg,#7B5EF8,#A78BFF)', color: '#fff', textDecoration: 'none', fontFamily: 'Syne,sans-serif', fontWeight: 700, fontSize: 14, boxShadow: '0 4px 20px rgba(123,94,248,0.35)' }}>
+            <Link href="/registro" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 28px', borderRadius: 12, background: 'linear-gradient(135deg,#7B5EF8,#A78BFF)', color: '#fff', textDecoration: 'none', fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: 14, boxShadow: '0 4px 20px rgba(123,94,248,0.35)' }}>
               Crear mi comunidad gratis
             </Link>
           </div>

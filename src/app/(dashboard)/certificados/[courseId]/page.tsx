@@ -25,9 +25,9 @@ export default async function CertificadoPage({ params }: { params: Promise<{ co
     return (
       <div style={{ padding: 32, maxWidth: 600, margin: '0 auto', textAlign: 'center' }}>
         <div style={{ fontSize: 64, marginBottom: 20 }}>🔒</div>
-        <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 24, color: C.text, marginBottom: 12 }}>Curso no completado</h2>
+        <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 24, color: C.text, marginBottom: 12 }}>Curso no completado</h2>
         <p style={{ fontSize: 15, color: C.muted, marginBottom: 24 }}>Completa todas las lecciones para obtener tu certificado.</p>
-        <Link href={`/cursos/${courseId}`} style={{ display: 'inline-flex', padding: '12px 24px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14 }}>
+        <Link href={`/cursos/${courseId}`} style={{ display: 'inline-flex', padding: '12px 24px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>
           Continuar curso
         </Link>
       </div>
@@ -38,7 +38,7 @@ export default async function CertificadoPage({ params }: { params: Promise<{ co
 
   return (
     <div style={{ padding: 32, maxWidth: 800, margin: '0 auto' }}>
-      <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: C.text, marginBottom: 28 }}>🎓 Tu certificado</h1>
+      <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: C.text, marginBottom: 28 }}>🎓 Tu certificado</h1>
 
       {/* Certificate */}
       <div style={{ background: 'linear-gradient(135deg, #0D0D14, #1A1A26)', border: '2px solid rgba(240,165,0,0.3)', borderRadius: 24, padding: '48px 40px', textAlign: 'center', marginBottom: 24, position: 'relative', overflow: 'hidden' }}>
@@ -49,11 +49,11 @@ export default async function CertificadoPage({ params }: { params: Promise<{ co
         <div style={{ position: 'absolute', bottom: 16, right: 16, width: 40, height: 40, borderBottom: '3px solid rgba(240,165,0,0.4)', borderRight: '3px solid rgba(240,165,0,0.4)', borderRadius: '0 0 4px 0' }} />
 
         <div style={{ fontSize: 56, marginBottom: 16 }}>🏆</div>
-        <div style={{ fontSize: 12, letterSpacing: '0.2em', color: C.gold, fontFamily: 'Syne, sans-serif', fontWeight: 700, textTransform: 'uppercase', marginBottom: 20 }}>Certificado de Completación</div>
+        <div style={{ fontSize: 12, letterSpacing: '0.2em', color: C.gold, fontFamily: 'Inter, sans-serif', fontWeight: 700, textTransform: 'uppercase', marginBottom: 20 }}>Certificado de Completación</div>
         <div style={{ fontSize: 16, color: C.muted, marginBottom: 8 }}>Esto certifica que</div>
-        <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-0.04em', color: C.text, marginBottom: 8 }}>{profile?.display_name ?? 'Estudiante'}</h2>
+        <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-0.04em', color: C.text, marginBottom: 8 }}>{profile?.display_name ?? 'Estudiante'}</h2>
         <div style={{ fontSize: 16, color: C.muted, marginBottom: 8 }}>ha completado exitosamente el curso</div>
-        <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 24, color: C.gold, marginBottom: 24, letterSpacing: '-0.03em' }}>{course?.title}</h3>
+        <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 24, color: C.gold, marginBottom: 24, letterSpacing: '-0.03em' }}>{course?.title}</h3>
         <div style={{ width: 120, height: 2, background: 'linear-gradient(90deg, transparent, rgba(240,165,0,0.4), transparent)', margin: '0 auto 20px' }} />
         <div style={{ fontSize: 13, color: C.muted }}>Emitido el {issuedDate}</div>
         <div style={{ marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 16px', borderRadius: 99, background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.2)', color: C.green, fontSize: 12, fontWeight: 700 }}>
@@ -62,7 +62,7 @@ export default async function CertificadoPage({ params }: { params: Promise<{ co
       </div>
 
       <div style={{ textAlign: 'center' }}>
-        <button style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 24px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14 }}>
+        <button style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 24px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>
           <Download size={16} /> Descargar / Imprimir
         </button>
       </div>

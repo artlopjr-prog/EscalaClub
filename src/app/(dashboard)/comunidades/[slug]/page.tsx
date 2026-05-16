@@ -128,7 +128,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                 {community.logo_url ? <img src={community.logo_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '🌐'}
               </div>
               <div style={{ paddingBottom: 4, flex: 1 }}>
-                <h1 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 900, fontSize: 'clamp(20px,4vw,30px)', letterSpacing: '-.04em', marginBottom: 4 }}>{community.name}</h1>
+                <h1 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 'clamp(20px,4vw,30px)', letterSpacing: '-.04em', marginBottom: 4 }}>{community.name}</h1>
                 {community.tagline && <p style={{ fontSize: 14, color: 'var(--muted2)' }}>{community.tagline}</p>}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginTop: 8, flexWrap: 'wrap' }}>
                   <span style={{ fontSize: 13, color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: 4 }}>
@@ -160,7 +160,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
             {/* DESCRIPCIÓN */}
             {community.description && (
               <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, padding: 22 }}>
-                <h2 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 15, marginBottom: 12 }}>Acerca de esta comunidad</h2>
+                <h2 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 15, marginBottom: 12 }}>Acerca de esta comunidad</h2>
                 <p style={{ fontSize: 14, color: 'var(--muted2)', lineHeight: 1.75, whiteSpace: 'pre-wrap', margin: 0 }}>{community.description}</p>
               </div>
             )}
@@ -169,7 +169,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
             {hasAccess ? (
               <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, overflow: 'hidden' }}>
                 <div style={{ padding: '18px 22px', borderBottom: '1px solid var(--border)' }}>
-                  <h2 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 15 }}>Espacios de la comunidad</h2>
+                  <h2 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 15 }}>Espacios de la comunidad</h2>
                 </div>
                 <div style={{ padding: 16, display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(160px,1fr))', gap: 12 }}>
                   {SECTIONS.map(s => (
@@ -177,7 +177,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                       <div style={{ background: 'var(--bg2)', border: '1px solid var(--border)', borderRadius: 16, padding: '16px', display: 'flex', alignItems: 'center', gap: 12, transition: 'all .15s' }}>
                         <div style={{ width: 40, height: 40, borderRadius: 12, background: s.color + '18', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0 }}>{s.emoji}</div>
                         <div>
-                          <div style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 13, marginBottom: 2 }}>{s.label}</div>
+                          <div style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 13, marginBottom: 2 }}>{s.label}</div>
                           <div style={{ fontSize: 11, color: 'var(--muted)' }}>{s.desc}</div>
                         </div>
                       </div>
@@ -188,13 +188,13 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
             ) : isBanned ? (
               <div style={{ background: 'rgba(255,77,106,0.06)', border: '1px solid rgba(255,77,106,0.2)', borderRadius: 20, padding: 32, textAlign: 'center' }}>
                 <div style={{ fontSize: 36, marginBottom: 12 }}>🚫</div>
-                <h3 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 18, color: '#FF4D6A', marginBottom: 8 }}>Acceso restringido</h3>
+                <h3 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 18, color: '#FF4D6A', marginBottom: 8 }}>Acceso restringido</h3>
                 <p style={{ fontSize: 14, color: 'var(--muted2)' }}>Fuiste removido de esta comunidad.</p>
               </div>
             ) : (
               <div style={{ background: `linear-gradient(135deg,${accentColor}12,rgba(0,0,0,0))`, border: `1px solid ${accentColor}33`, borderRadius: 20, padding: 32, textAlign: 'center' }}>
                 <Lock size={36} color={accentColor} style={{ marginBottom: 14 }} />
-                <h3 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 8 }}>Contenido exclusivo para miembros</h3>
+                <h3 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 8 }}>Contenido exclusivo para miembros</h3>
                 <p style={{ fontSize: 14, color: 'var(--muted)', lineHeight: 1.6 }}>Únete para acceder al foro, cursos, eventos y todo el contenido exclusivo.</p>
               </div>
             )}
@@ -203,7 +203,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
             {courses && courses.length > 0 && (
               <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, overflow: 'hidden' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', borderBottom: '1px solid var(--border)' }}>
-                  <h2 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 15 }}>Cursos incluidos</h2>
+                  <h2 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 15 }}>Cursos incluidos</h2>
                   {hasAccess && <Link href="/cursos" style={{ fontSize: 12, color: 'var(--muted)', textDecoration: 'none' }}>Ver todos →</Link>}
                 </div>
                 <div style={{ padding: 16, display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(180px,1fr))', gap: 12 }}>
@@ -234,17 +234,17 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               {/* Stats */}
               <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: 16, paddingBottom: 16, borderBottom: '1px solid var(--border)' }}>
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontFamily: 'Syne,sans-serif', fontWeight: 900, fontSize: 20 }}>{(community.member_count ?? 0).toLocaleString()}</div>
+                  <div style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 20 }}>{(community.member_count ?? 0).toLocaleString()}</div>
                   <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 2 }}>Miembros</div>
                 </div>
                 <div style={{ width: 1, background: 'var(--border)' }} />
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontFamily: 'Syne,sans-serif', fontWeight: 900, fontSize: 20 }}>{courses?.length ?? 0}</div>
+                  <div style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 20 }}>{courses?.length ?? 0}</div>
                   <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 2 }}>Cursos</div>
                 </div>
                 <div style={{ width: 1, background: 'var(--border)' }} />
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontFamily: 'Syne,sans-serif', fontWeight: 900, fontSize: 20 }}>{events?.length ?? 0}</div>
+                  <div style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 20 }}>{events?.length ?? 0}</div>
                   <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 2 }}>Eventos</div>
                 </div>
               </div>
@@ -270,7 +270,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               {/* Precio */}
               {!isFree && !hasAccess && (
                 <div style={{ marginBottom: 14, textAlign: 'center' }}>
-                  <div style={{ fontFamily: 'Syne,sans-serif', fontWeight: 900, fontSize: 26, color: accentColor }}>${community.price_monthly}<span style={{ fontSize: 13, fontWeight: 500, color: 'var(--muted)' }}>/mes</span></div>
+                  <div style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 26, color: accentColor }}>${community.price_monthly}<span style={{ fontSize: 13, fontWeight: 500, color: 'var(--muted)' }}>/mes</span></div>
                   {community.price_yearly && <div style={{ fontSize: 11, color: 'var(--green)', marginTop: 2 }}>o ${community.price_yearly}/año · Ahorra ${Math.round((community.price_monthly ?? 0) * 12 - community.price_yearly)}</div>}
                 </div>
               )}
@@ -279,18 +279,18 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               <div style={{ width: '100%' }}>
                 {!user ? (
                   // Visitante sin cuenta — redirigir a registro
-                  <Link href={`/registro?redirect=/comunidades/${slug}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '14px 20px', borderRadius: 12, background: `linear-gradient(135deg,${accentColor},${accentColor}cc)`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 15, boxSizing: 'border-box', boxShadow: `0 4px 20px ${accentColor}44` }}>
+                  <Link href={`/registro?redirect=/comunidades/${slug}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '14px 20px', borderRadius: 12, background: `linear-gradient(135deg,${accentColor},${accentColor}cc)`, color: '#fff', textDecoration: 'none', fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 15, boxSizing: 'border-box', boxShadow: `0 4px 20px ${accentColor}44` }}>
                     {isFree ? '🚀 Únete gratis' : `Unirse · $${community.price_monthly}/mes`}
                   </Link>
                 ) : isOwner ? (
-                  <Link href="/creator/comunidad" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '13px 20px', borderRadius: 12, background: 'rgba(255,255,255,0.07)', color: 'var(--text)', textDecoration: 'none', fontFamily: 'Syne,sans-serif', fontWeight: 700, fontSize: 14, border: '1px solid var(--border)', boxSizing: 'border-box' }}>
+                  <Link href="/creator/comunidad" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '13px 20px', borderRadius: 12, background: 'rgba(255,255,255,0.07)', color: 'var(--text)', textDecoration: 'none', fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: 14, border: '1px solid var(--border)', boxSizing: 'border-box' }}>
                     <Settings size={15} /> Gestionar comunidad
                   </Link>
                 ) : isBanned ? (
                   <RejoinButton membershipId={membership!.id} communityName={community.name} alreadyRequested={!!membership?.rejoin_requested_at} />
                 ) : isMember ? (
                   <div>
-                    <Link href={`/comunidades/${slug}/foro`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '13px 20px', borderRadius: 12, background: `linear-gradient(135deg,${accentColor},${accentColor}cc)`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne,sans-serif', fontWeight: 700, fontSize: 14, boxSizing: 'border-box', marginBottom: 8 }}>
+                    <Link href={`/comunidades/${slug}/foro`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '13px 20px', borderRadius: 12, background: `linear-gradient(135deg,${accentColor},${accentColor}cc)`, color: '#fff', textDecoration: 'none', fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: 14, boxSizing: 'border-box', marginBottom: 8 }}>
                       💬 Ir al foro
                     </Link>
                     <LeaveButton communityId={community.id} communityName={community.name} membershipId={membership!.id} userId={user.id!} isPaid={(community.access_type === 'paid')} accessUntil={membership?.access_until ?? null} />
@@ -323,7 +323,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
             <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 16, padding: 18 }}>
               <div style={{ fontSize: 10, fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '.08em', marginBottom: 12 }}>Creado por</div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div style={{ width: 44, height: 44, borderRadius: '50%', background: accentColor + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 16, color: accentColor, overflow: 'hidden', flexShrink: 0 }}>
+                <div style={{ width: 44, height: 44, borderRadius: '50%', background: accentColor + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 16, color: accentColor, overflow: 'hidden', flexShrink: 0 }}>
                   {ownerProfile?.avatar_url ? <img src={ownerProfile.avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : ownerProfile?.display_name?.[0]?.toUpperCase() ?? '?'}
                 </div>
                 <div>
@@ -347,7 +347,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
             {/* EVENTOS */}
             {events && events.length > 0 && (
               <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 16, overflow: 'hidden' }}>
-                <div style={{ padding: '14px 16px', borderBottom: '1px solid var(--border)', fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 13 }}>Próximos eventos</div>
+                <div style={{ padding: '14px 16px', borderBottom: '1px solid var(--border)', fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 13 }}>Próximos eventos</div>
                 {events.map((ev, i) => (
                   <div key={ev.id} style={{ padding: '12px 16px', borderBottom: i < events.length - 1 ? '1px solid var(--border)' : 'none' }}>
                     <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 3 }}>{ev.title}</div>

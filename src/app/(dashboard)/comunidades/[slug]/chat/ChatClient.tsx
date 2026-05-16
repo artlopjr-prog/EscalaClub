@@ -96,7 +96,7 @@ export default function ChatClient({ community, messages: initialMessages, userI
           <ArrowLeft size={13} /> Volver
         </Link>
         <div style={{ flex: 1 }}>
-          <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, color: C.text }}>💭 Chat — {community.name}</div>
+          <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: C.text }}>💭 Chat — {community.name}</div>
           <div style={{ fontSize: 11, color: C.muted, display: 'flex', alignItems: 'center', gap: 5 }}>
             {chatMode === 'open' ? <><Unlock size={10} /> Chat abierto</> : <><Lock size={10} /> Solo el creador escribe</>}
           </div>

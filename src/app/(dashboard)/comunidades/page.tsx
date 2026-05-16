@@ -74,7 +74,7 @@ export default function ComunidadesPage() {
       <div style={{ background: 'linear-gradient(180deg,var(--bg1) 0%,var(--bg) 100%)', borderBottom: '1px solid var(--border)', padding: '36px 32px 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
           <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 10 }}>EscalaClub</p>
-          <h1 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 900, fontSize: 'clamp(26px,5vw,42px)', letterSpacing: '-.04em', marginBottom: 6 }}>
+          <h1 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 'clamp(26px,5vw,42px)', letterSpacing: '-.04em', marginBottom: 6 }}>
             Descubre comunidades
           </h1>
           <p style={{ fontSize: 14, color: 'var(--muted2)', marginBottom: 22 }}>
@@ -102,7 +102,7 @@ export default function ComunidadesPage() {
                 background: cat === c.label ? 'linear-gradient(135deg,#7B5EF8,#A78BFF)' : 'var(--bg2)',
                 color: cat === c.label ? '#fff' : 'var(--muted2)',
                 border: `1px solid ${cat === c.label ? 'transparent' : 'var(--border)'}`,
-                cursor: 'pointer', transition: 'all .15s', fontFamily: 'Plus Jakarta Sans,sans-serif',
+                cursor: 'pointer', transition: 'all .15s', fontFamily: 'Inter,sans-serif',
                 display: 'flex', alignItems: 'center', gap: 5,
               }}>
                 <span>{c.emoji}</span> {c.label}
@@ -123,11 +123,11 @@ export default function ComunidadesPage() {
                 padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 600,
                 background: access === a.val ? 'var(--bg3)' : 'transparent',
                 color: access === a.val ? 'var(--text)' : 'var(--muted)',
-                border: 'none', cursor: 'pointer', fontFamily: 'Plus Jakarta Sans,sans-serif',
+                border: 'none', cursor: 'pointer', fontFamily: 'Inter,sans-serif',
               }}>{a.label}</button>
             ))}
           </div>
-          <Link href="/creator/comunidad" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, background: 'linear-gradient(135deg,#7B5EF8,#A78BFF)', color: '#fff', textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Syne,sans-serif', boxShadow: '0 4px 14px rgba(123,94,248,0.3)' }}>
+          <Link href="/creator/comunidad" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, background: 'linear-gradient(135deg,#7B5EF8,#A78BFF)', color: '#fff', textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Inter,sans-serif', boxShadow: '0 4px 14px rgba(123,94,248,0.3)' }}>
             <Plus size={13} /> Crear mi comunidad
           </Link>
         </div>
@@ -142,10 +142,10 @@ export default function ComunidadesPage() {
         ) : filtered.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px 24px', background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20 }}>
             <div style={{ fontSize: 48, marginBottom: 16 }}>🔍</div>
-            <h3 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 20, marginBottom: 8 }}>Sin resultados</h3>
+            <h3 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 20, marginBottom: 8 }}>Sin resultados</h3>
             <p style={{ fontSize: 14, color: 'var(--muted)', marginBottom: 20 }}>Intenta con otros términos o categoría</p>
             <button onClick={() => { setQ(''); setCat('Todas'); setAccess('all') }}
-              style={{ padding: '10px 20px', borderRadius: 12, background: 'rgba(123,94,248,0.12)', color: '#A78BFF', border: '1px solid rgba(123,94,248,0.3)', cursor: 'pointer', fontSize: 13, fontWeight: 700, fontFamily: 'Syne,sans-serif' }}>
+              style={{ padding: '10px 20px', borderRadius: 12, background: 'rgba(123,94,248,0.12)', color: '#A78BFF', border: '1px solid rgba(123,94,248,0.3)', cursor: 'pointer', fontSize: 13, fontWeight: 700, fontFamily: 'Inter,sans-serif' }}>
               Limpiar filtros
             </button>
           </div>
@@ -174,7 +174,7 @@ export default function ComunidadesPage() {
 
                       {/* Ranking badge */}
                       {idx < 3 && (
-                        <div style={{ position: 'absolute', top: 10, left: 10, width: 28, height: 28, borderRadius: 8, background: RANK_BG[idx], display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Syne,sans-serif', fontWeight: 900, fontSize: 12, color: RANK_COLOR[idx], boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
+                        <div style={{ position: 'absolute', top: 10, left: 10, width: 28, height: 28, borderRadius: 8, background: RANK_BG[idx], display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 12, color: RANK_COLOR[idx], boxShadow: '0 2px 8px rgba(0,0,0,0.4)' }}>
                           #{idx + 1}
                         </div>
                       )}
@@ -184,10 +184,10 @@ export default function ComunidadesPage() {
                         {isMember && (
                           <div style={{ padding: '3px 9px', borderRadius: 99, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)', display: 'flex', alignItems: 'center', gap: 4 }}>
                             <div style={{ width: 5, height: 5, borderRadius: '50%', background: '#00D68F' }} />
-                            <span style={{ fontSize: 9, fontFamily: 'Syne,sans-serif', fontWeight: 700, color: '#00D68F' }}>Miembro</span>
+                            <span style={{ fontSize: 9, fontFamily: 'Inter,sans-serif', fontWeight: 700, color: '#00D68F' }}>Miembro</span>
                           </div>
                         )}
-                        <div style={{ padding: '3px 9px', borderRadius: 99, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)', fontSize: 10, fontFamily: 'Syne,sans-serif', fontWeight: 700, color: isFree ? '#00D68F' : accent }}>
+                        <div style={{ padding: '3px 9px', borderRadius: 99, background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(8px)', fontSize: 10, fontFamily: 'Inter,sans-serif', fontWeight: 700, color: isFree ? '#00D68F' : accent }}>
                           {isFree ? 'GRATIS' : `$${c.price_monthly}/mes`}
                         </div>
                       </div>
@@ -202,7 +202,7 @@ export default function ComunidadesPage() {
 
                     {/* BODY */}
                     <div style={{ padding: '24px 16px 16px' }}>
-                      <h3 style={{ fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 15, letterSpacing: '-.03em', marginBottom: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <h3 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 15, letterSpacing: '-.03em', marginBottom: 4, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {c.name}
                       </h3>
                       {c.tagline && (

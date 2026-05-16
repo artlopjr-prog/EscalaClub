@@ -147,7 +147,7 @@ export default function MiembrosPage() {
           <ArrowLeft size={13} /> Volver
         </Link>
         <div>
-          <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>👥 Miembros</h1>
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>👥 Miembros</h1>
           <p style={{ fontSize: 12, color: C.muted }}>{members.length} activos · {banned.length} baneados · {rejoinRequests.length} solicitudes pendientes</p>
         </div>
       </div>
@@ -163,7 +163,7 @@ export default function MiembrosPage() {
             onClick={() => setTab(i === 0 ? 'active' : i === 1 ? 'banned' : 'requests')}>
             <s.icon size={18} color={s.color} />
             <div>
-              <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 22, color: s.color }}>{s.value}</div>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 22, color: s.color }}>{s.value}</div>
               <div style={{ fontSize: 11, color: C.muted }}>{s.label}</div>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function MiembrosPage() {
       <div style={{ display: 'flex', gap: 8, marginBottom: 16 }}>
         {[['active','Activos'],['banned','Baneados'],['requests','Solicitudes de regreso']].map(([val, label]) => (
           <button key={val} onClick={() => setTab(val as any)} style={{
-            padding: '7px 16px', borderRadius: 10, fontSize: 12, fontFamily: 'Syne, sans-serif', fontWeight: 700,
+            padding: '7px 16px', borderRadius: 10, fontSize: 12, fontFamily: 'Inter, sans-serif', fontWeight: 700,
             background: tab === val ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : C.bg1,
             color: tab === val ? '#fff' : C.muted, border: `1px solid ${tab === val ? 'transparent' : C.border}`, cursor: 'pointer',
           }}>{label}{val === 'requests' && rejoinRequests.length > 0 ? ` (${rejoinRequests.length})` : ''}</button>
@@ -195,7 +195,7 @@ export default function MiembrosPage() {
           return (
             <div key={m.id} style={{ padding: '16px 20px', borderBottom: i < filtered.length - 1 ? `1px solid ${C.border}` : 'none', display: 'flex', alignItems: 'center', gap: 14, position: 'relative' }}>
               {/* Avatar */}
-              <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'rgba(124,58,237,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, color: C.purple2, flexShrink: 0, overflow: 'hidden' }}>
+              <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'rgba(124,58,237,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: C.purple2, flexShrink: 0, overflow: 'hidden' }}>
                 {profile?.avatar_url ? <img src={profile.avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : (profile?.display_name?.[0]?.toUpperCase() ?? '?')}
               </div>
 
@@ -265,16 +265,16 @@ export default function MiembrosPage() {
                 <AlertTriangle size={22} color={C.red} />
               </div>
               <div>
-                <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 18, color: C.text }}>Banear miembro</h2>
+                <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 18, color: C.text }}>Banear miembro</h2>
                 <p style={{ fontSize: 13, color: C.muted }}>Se le notificará y podrá pedir volver</p>
               </div>
             </div>
             <p style={{ fontSize: 14, color: C.muted2, marginBottom: 16 }}>Estás a punto de banear a <strong style={{ color: C.text }}>{banModal.name}</strong>. Recibirá una notificación con el motivo.</p>
-            <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: C.muted2, marginBottom: 8, fontFamily: 'Syne, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Motivo (opcional)</label>
-            <textarea value={banReason} onChange={e => setBanReason(e.target.value)} placeholder="Ej: Spam, comportamiento inapropiado, incumplimiento de reglas..." style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 13, outline: 'none', resize: 'vertical', minHeight: 80, boxSizing: 'border-box', fontFamily: 'Plus Jakarta Sans, sans-serif' }} />
+            <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: C.muted2, marginBottom: 8, fontFamily: 'Inter, sans-serif', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Motivo (opcional)</label>
+            <textarea value={banReason} onChange={e => setBanReason(e.target.value)} placeholder="Ej: Spam, comportamiento inapropiado, incumplimiento de reglas..." style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 13, outline: 'none', resize: 'vertical', minHeight: 80, boxSizing: 'border-box', fontFamily: 'Inter, sans-serif' }} />
             <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
-              <button onClick={() => { setBanModal(null); setBanReason('') }} style={{ flex: 1, padding: '12px', borderRadius: 12, background: C.bg2, border: `1px solid ${C.border}`, color: C.muted, cursor: 'pointer', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14 }}>Cancelar</button>
-              <button onClick={confirmBan} style={{ flex: 1, padding: '12px', borderRadius: 12, background: 'linear-gradient(135deg, #FF4D6A, #cc3355)', border: 'none', color: '#fff', cursor: 'pointer', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14 }}>Confirmar ban</button>
+              <button onClick={() => { setBanModal(null); setBanReason('') }} style={{ flex: 1, padding: '12px', borderRadius: 12, background: C.bg2, border: `1px solid ${C.border}`, color: C.muted, cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>Cancelar</button>
+              <button onClick={confirmBan} style={{ flex: 1, padding: '12px', borderRadius: 12, background: 'linear-gradient(135deg, #FF4D6A, #cc3355)', border: 'none', color: '#fff', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>Confirmar ban</button>
             </div>
           </div>
         </div>

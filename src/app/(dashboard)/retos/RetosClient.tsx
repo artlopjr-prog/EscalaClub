@@ -25,11 +25,11 @@ const C = {
 const INP: React.CSSProperties = {
   width: '100%', background: C.bg2, border: `1px solid ${C.border2}`,
   borderRadius: 10, padding: '10px 13px', color: C.text,
-  fontSize: 13, outline: 'none', fontFamily: 'Plus Jakarta Sans, sans-serif',
+  fontSize: 13, outline: 'none', fontFamily: 'Inter, sans-serif',
 }
 const LBL: React.CSSProperties = {
   fontSize: 11, fontWeight: 700, color: C.muted2, marginBottom: 6,
-  fontFamily: 'Syne, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase',
+  fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase',
   display: 'block',
 }
 
@@ -216,7 +216,7 @@ export default function RetosClient({
       {/* HEADER */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
         <div>
-          <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: C.text, marginBottom: 4 }}>
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: C.text, marginBottom: 4 }}>
             ⚡ Retos
           </h1>
           <p style={{ fontSize: 13, color: C.muted2 }}>
@@ -241,7 +241,7 @@ export default function RetosClient({
           { val: participations.filter(p => p.status === 'completed').length, label: 'Completados', color: C.text },
         ].map((s, i) => (
           <div key={i} style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 14, padding: '14px 16px' }}>
-            <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 22, color: s.color }}>{s.val}</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 22, color: s.color }}>{s.val}</div>
             <div style={{ fontSize: 11, color: C.muted, marginTop: 3 }}>{s.label}</div>
           </div>
         ))}
@@ -254,7 +254,7 @@ export default function RetosClient({
           const active = view === v
           return (
             <button key={v} onClick={() => v !== 'detail' ? setView(v) : (selectedChallenge && setView(v))}
-              style={{ padding: '7px 14px', borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: 'pointer', border: 'none', background: active ? C.bg3 : 'transparent', color: active ? C.text : C.muted2, fontFamily: 'Plus Jakarta Sans, sans-serif', transition: 'all .15s' }}>
+              style={{ padding: '7px 14px', borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: 'pointer', border: 'none', background: active ? C.bg3 : 'transparent', color: active ? C.text : C.muted2, fontFamily: 'Inter, sans-serif', transition: 'all .15s' }}>
               {labels[v]}
             </button>
           )
@@ -327,7 +327,7 @@ export default function RetosClient({
                   {c.community && (
                     <div style={{ fontSize: 11, color: C.purpleL, marginBottom: 3 }}>🌐 {c.community.name}</div>
                   )}
-                  <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 20, marginBottom: 4 }}>{c.title}</h2>
+                  <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 20, marginBottom: 4 }}>{c.title}</h2>
                   <p style={{ fontSize: 13, color: C.muted2 }}>{c.description}</p>
                   <div style={{ display: 'flex', gap: 6, marginTop: 8, flexWrap: 'wrap' }}>
                     <Pill color={C.dangerDim} text={C.danger} label={c.status === 'active' ? '🔴 Activo' : '⏳ Próximo'} />
@@ -344,7 +344,7 @@ export default function RetosClient({
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <span style={{ fontSize: 24 }}>🔥</span>
                     <div>
-                      <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 30, color: C.gold, lineHeight: 1 }}>{p.current_streak}</div>
+                      <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 30, color: C.gold, lineHeight: 1 }}>{p.current_streak}</div>
                       <div style={{ fontSize: 11, color: C.muted }}>días seguidos</div>
                     </div>
                   </div>
@@ -386,7 +386,7 @@ export default function RetosClient({
                   disabled={checkedToday}
                   style={{
                     width: '100%', padding: 13, borderRadius: 10, border: checkedToday ? `1px solid ${C.success}44` : 'none',
-                    fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14, cursor: checkedToday ? 'default' : 'pointer',
+                    fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, cursor: checkedToday ? 'default' : 'pointer',
                     background: checkedToday ? C.successDim : `linear-gradient(135deg,${C.purple},${C.purpleL})`,
                     color: checkedToday ? C.success : '#fff',
                     display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 18,
@@ -428,7 +428,7 @@ export default function RetosClient({
                     <button key={t} onClick={() => loadLeaderboard(c.id, t)} style={{
                       padding: '5px 12px', borderRadius: 7, fontSize: 11, fontWeight: 600, cursor: 'pointer',
                       border: 'none', background: lbTab === t ? C.bg3 : 'transparent',
-                      color: lbTab === t ? C.text : C.muted2, fontFamily: 'Plus Jakarta Sans, sans-serif',
+                      color: lbTab === t ? C.text : C.muted2, fontFamily: 'Inter, sans-serif',
                     }}>{labels[i]}</button>
                   )
                 })}
@@ -453,7 +453,7 @@ export default function RetosClient({
                         background: isMe ? `rgba(124,58,237,0.07)` : 'transparent',
                         transition: 'background .12s',
                       }}>
-                        <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 12, width: 22, textAlign: 'center', color: i < 3 ? [C.gold, '#9ba8b5', '#c47c2a'][i] : isMe ? C.purpleL : C.muted }}>
+                        <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 12, width: 22, textAlign: 'center', color: i < 3 ? [C.gold, '#9ba8b5', '#c47c2a'][i] : isMe ? C.purpleL : C.muted }}>
                           {i < 3 ? medals[i] : `#${i + 1}`}
                         </div>
                         <div style={{ width: 30, height: 30, borderRadius: '50%', background: `linear-gradient(135deg,${C.purple},${C.purpleL})`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, flexShrink: 0, overflow: 'hidden' }}>
@@ -463,7 +463,7 @@ export default function RetosClient({
                           <div style={{ fontSize: 12, fontWeight: 600, color: isMe ? C.purpleL : C.text }}>{name}{isMe ? ' (tú)' : ''}</div>
                           <div style={{ fontSize: 10, color: C.muted2 }}>🔥 {row.current_streak} días · {row.days_completed} completados</div>
                         </div>
-                        <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13, color: i === 0 ? C.gold : isMe ? C.purpleL : C.muted2 }}>{row.current_streak}🔥</div>
+                        <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13, color: i === 0 ? C.gold : isMe ? C.purpleL : C.muted2 }}>{row.current_streak}🔥</div>
                       </div>
                     )
                   })}
@@ -477,14 +477,14 @@ export default function RetosClient({
       {/* ═══ VIEW: LEADERBOARD GLOBAL ═══ */}
       {view === 'leaderboard' && (
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16, padding: 22 }}>
-          <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 18, marginBottom: 4 }}>🏆 Leaderboard Global de Retos</div>
+          <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 18, marginBottom: 4 }}>🏆 Leaderboard Global de Retos</div>
           <p style={{ fontSize: 13, color: C.muted2, marginBottom: 16 }}>Rankings de participantes en todos los retos de la plataforma</p>
           <div style={{ display: 'flex', gap: 3, marginBottom: 14, background: C.bg2, borderRadius: 9, padding: 3, width: 'fit-content', border: `1px solid ${C.border}` }}>
             {(['global','country'] as LBTab[]).map((t, i) => {
               const labels = ['🌎 Global', '🗺 Mi País']
               return (
                 <button key={t} onClick={() => { setLbTab(t); if (platformChallenges[0]) loadLeaderboard(platformChallenges[0].id, t) }}
-                  style={{ padding: '6px 14px', borderRadius: 7, fontSize: 12, fontWeight: 600, cursor: 'pointer', border: 'none', background: lbTab === t ? C.bg3 : 'transparent', color: lbTab === t ? C.text : C.muted2, fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+                  style={{ padding: '6px 14px', borderRadius: 7, fontSize: 12, fontWeight: 600, cursor: 'pointer', border: 'none', background: lbTab === t ? C.bg3 : 'transparent', color: lbTab === t ? C.text : C.muted2, fontFamily: 'Inter, sans-serif' }}>
                   {labels[i]}
                 </button>
               )
@@ -504,7 +504,7 @@ export default function RetosClient({
                 const name = row.profile?.display_name ?? 'Usuario'
                 return (
                   <div key={row.user_id} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderBottom: `1px solid ${C.border}`, background: isMe ? `rgba(124,58,237,0.07)` : 'transparent' }}>
-                    <div style={{ width: 26, textAlign: 'center', fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 13, color: i < 3 ? [C.gold, '#9ba8b5', '#c47c2a'][i] : isMe ? C.purpleL : C.muted }}>
+                    <div style={{ width: 26, textAlign: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13, color: i < 3 ? [C.gold, '#9ba8b5', '#c47c2a'][i] : isMe ? C.purpleL : C.muted }}>
                       {i < 3 ? medals[i] : `#${i + 1}`}
                     </div>
                     <div style={{ width: 32, height: 32, borderRadius: '50%', background: `linear-gradient(135deg,${C.purple},${C.purpleL})`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, flexShrink: 0 }}>
@@ -514,7 +514,7 @@ export default function RetosClient({
                       <div style={{ fontSize: 13, fontWeight: 600, color: isMe ? C.purpleL : C.text }}>{name}{isMe ? ' (tú) 👑' : ''}</div>
                       <div style={{ fontSize: 11, color: C.muted2 }}>{row.days_completed} días completados</div>
                     </div>
-                    <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14, color: i === 0 ? C.gold : isMe ? C.purpleL : C.muted2 }}>{row.current_streak}🔥</div>
+                    <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, color: i === 0 ? C.gold : isMe ? C.purpleL : C.muted2 }}>{row.current_streak}🔥</div>
                   </div>
                 )
               })}
@@ -526,7 +526,7 @@ export default function RetosClient({
       {/* ═══ VIEW: CREAR ═══ */}
       {view === 'crear' && canCreate && (
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16, padding: 24 }}>
-          <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 19, marginBottom: 3 }}>Crear Nuevo Reto</div>
+          <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 19, marginBottom: 3 }}>Crear Nuevo Reto</div>
           <p style={{ fontSize: 13, color: C.muted2, marginBottom: 22 }}>Configura el reto para tu comunidad{isAdmin ? ' o para toda la plataforma' : ''}</p>
 
           {/* Origen */}
@@ -538,7 +538,7 @@ export default function RetosClient({
                   <button key={o.val} onClick={() => setForm(f => ({ ...f, origin: o.val }))} style={{
                     padding: '9px 16px', borderRadius: 10, border: `1px solid ${form.origin === o.val ? C.borderGold : C.border2}`,
                     background: form.origin === o.val ? C.goldDim : C.bg2, color: form.origin === o.val ? C.goldL : C.muted2,
-                    fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'Plus Jakarta Sans, sans-serif',
+                    fontSize: 13, fontWeight: 600, cursor: 'pointer', fontFamily: 'Inter, sans-serif',
                   }}>{o.label}</button>
                 ))}
               </div>
@@ -585,7 +585,7 @@ export default function RetosClient({
                   <button key={d} onClick={() => setForm(f => ({ ...f, duration_days: d }))} style={{
                     padding: '7px 14px', borderRadius: 99, border: `1px solid ${form.duration_days === d ? C.purple : C.border2}`,
                     background: form.duration_days === d ? C.purpleDim : C.bg2, color: form.duration_days === d ? C.purpleL : C.muted2,
-                    fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'Plus Jakarta Sans, sans-serif',
+                    fontSize: 12, fontWeight: 600, cursor: 'pointer', fontFamily: 'Inter, sans-serif',
                   }}>{d} días</button>
                 ))}
               </div>
@@ -649,7 +649,7 @@ export default function RetosClient({
 function SectionHeader({ title, badge, badgeColor, badgeText }: { title: string; badge: string; badgeColor: string; badgeText: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14, marginTop: 4 }}>
-      <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15 }}>{title}</div>
+      <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15 }}>{title}</div>
       <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
       <div style={{ fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 99, background: badgeColor, color: badgeText }}>{badge}</div>
     </div>
@@ -710,7 +710,7 @@ function ChallengeCard({ challenge: c, participation: p, todayDone, dayNum, onOp
         <div style={{ fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.08em', color: '#6B6A80', marginBottom: 4 }}>
           {c.challenge_type === 'habit' ? '🗓 Hábito' : c.challenge_type === 'educational' ? '📚 Educativo' : '✍️ Publicación'} · {c.duration_days} días
         </div>
-        <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14, marginBottom: 5, lineHeight: 1.2 }}>{c.title}</div>
+        <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, marginBottom: 5, lineHeight: 1.2 }}>{c.title}</div>
         <div style={{ fontSize: 12, color: '#9998B0', lineHeight: 1.5, marginBottom: 10, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{c.description}</div>
 
         {/* Progress */}
@@ -736,10 +736,10 @@ function ChallengeCard({ challenge: c, participation: p, todayDone, dayNum, onOp
                 padding: '5px 12px', borderRadius: 8, border: 'none', fontSize: 11, fontWeight: 700,
                 background: todayDone ? 'rgba(0,214,143,0.15)' : 'linear-gradient(135deg,#7C3AED,#9F67FF)',
                 color: todayDone ? '#00D68F' : '#fff', cursor: todayDone ? 'default' : 'pointer',
-                fontFamily: 'Plus Jakarta Sans, sans-serif',
+                fontFamily: 'Inter, sans-serif',
               }}>{todayDone ? '✅ Hecho' : `⬜ Día ${dayNum}`}</button>
             ) : (
-              <button onClick={onJoin} style={{ padding: '5px 12px', borderRadius: 8, border: 'none', fontSize: 11, fontWeight: 700, background: 'rgba(124,58,237,0.2)', color: '#9F67FF', cursor: 'pointer', fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+              <button onClick={onJoin} style={{ padding: '5px 12px', borderRadius: 8, border: 'none', fontSize: 11, fontWeight: 700, background: 'rgba(124,58,237,0.2)', color: '#9F67FF', cursor: 'pointer', fontFamily: 'Inter, sans-serif' }}>
                 + Unirme
               </button>
             )
@@ -754,7 +754,7 @@ function EmptyState({ icon, title, sub }: { icon: React.ReactNode; title: string
   return (
     <div style={{ textAlign: 'center', padding: '40px 20px', background: '#0D0D14', borderRadius: 14, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 24 }}>
       <div style={{ marginBottom: 12 }}>{icon}</div>
-      <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 15, marginBottom: 6 }}>{title}</div>
+      <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15, marginBottom: 6 }}>{title}</div>
       <div style={{ fontSize: 13, color: '#6B6A80' }}>{sub}</div>
     </div>
   )

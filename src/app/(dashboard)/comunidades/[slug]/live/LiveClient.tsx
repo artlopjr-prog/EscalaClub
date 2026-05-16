@@ -7,7 +7,7 @@ import { ArrowLeft, Plus, X, Radio, ExternalLink, Trash2, Play } from 'lucide-re
 
 const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', red: '#FF4D6A', gold: '#F0A500' }
 const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '11px 14px', color: '#EEEDF5', fontSize: 13, outline: 'none' }
-const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 7, fontFamily: 'Syne, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
+const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
 
 function getYoutubeId(url: string) {
   return url.match(/(?:youtube\.com\/(?:watch\?v=|live\/)|youtu\.be\/)([^&\n?#]+)/)?.[1] ?? null
@@ -95,7 +95,7 @@ export default function LiveClient({ community, sessions: initialSessions, userI
           </div>
         )}
         <div style={{ padding: '14px 16px' }}>
-          <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14, color: C.text, marginBottom: 4 }}>{session.title}</h3>
+          <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.text, marginBottom: 4 }}>{session.title}</h3>
           {session.description && <p style={{ fontSize: 12, color: C.muted, marginBottom: 10, lineHeight: 1.5 }}>{session.description}</p>}
           {session.starts_at && <div style={{ fontSize: 11, color: C.muted, marginBottom: 10 }}>{new Date(session.starts_at).toLocaleDateString('es', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</div>}
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -132,7 +132,7 @@ export default function LiveClient({ community, sessions: initialSessions, userI
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.9)', zIndex: 100, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 20 }}>
           <div style={{ width: '100%', maxWidth: 900 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-              <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 18, color: '#fff' }}>{watchSession.title}</h2>
+              <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: '#fff' }}>{watchSession.title}</h2>
               <button onClick={() => setWatchSession(null)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', cursor: 'pointer', color: '#fff', padding: '8px', borderRadius: 8, display: 'flex' }}>
                 <X size={20} />
               </button>
@@ -161,9 +161,9 @@ export default function LiveClient({ community, sessions: initialSessions, userI
         <Link href={`/comunidades/${community.slug}`} style={{ display: 'flex', alignItems: 'center', gap: 5, color: C.muted, textDecoration: 'none', fontSize: 12, padding: '6px 10px', borderRadius: 8, border: `1px solid ${C.border}` }}>
           <ArrowLeft size={13} /> Volver
         </Link>
-        <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 16, color: C.text, flex: 1 }}>🔴 Lives / Directos — {community.name}</h1>
+        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 16, color: C.text, flex: 1 }}>🔴 Lives / Directos — {community.name}</h1>
         {isOwner ? (
-          <button onClick={() => setShowCreate(!showCreate)} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 10, background: showCreate ? 'rgba(255,255,255,0.06)' : `linear-gradient(135deg, ${C.red}, #FF6B6B)`, color: showCreate ? C.muted : '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13 }}>
+          <button onClick={() => setShowCreate(!showCreate)} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 10, background: showCreate ? 'rgba(255,255,255,0.06)' : `linear-gradient(135deg, ${C.red}, #FF6B6B)`, color: showCreate ? C.muted : '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
             {showCreate ? <><X size={14} /> Cancelar</> : <><Plus size={14} /> Programar live</>}
           </button>
         ) : (
@@ -177,7 +177,7 @@ export default function LiveClient({ community, sessions: initialSessions, userI
         {/* Create form */}
         {showCreate && isOwner && (
           <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 22, marginBottom: 24 }}>
-            <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, color: C.text, marginBottom: 18 }}>🎥 Nueva sesión en vivo</h2>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: C.text, marginBottom: 18 }}>🎥 Nueva sesión en vivo</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div><label style={L}>Título *</label><input value={form.title} onChange={e => set('title', e.target.value)} placeholder="Ej: Sesión en vivo — Estrategias de crecimiento" style={INP} /></div>
               <div><label style={L}>Descripción</label><textarea value={form.description} onChange={e => set('description', e.target.value)} placeholder="¿De qué se trata esta sesión?" rows={2} style={{ ...INP, resize: 'vertical' }} /></div>
@@ -193,7 +193,7 @@ export default function LiveClient({ community, sessions: initialSessions, userI
               </div>
               <div><label style={L}>URL del stream *</label><input value={form.stream_url} onChange={e => set('stream_url', e.target.value)} placeholder="https://youtube.com/live/... o https://zoom.us/j/..." style={INP} /></div>
               <div><label style={L}>Fecha y hora (opcional)</label><input type="datetime-local" value={form.starts_at} onChange={e => set('starts_at', e.target.value)} style={{ ...INP, colorScheme: 'dark' }} /></div>
-              <button onClick={createSession} disabled={saving} style={{ padding: '13px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14, opacity: saving ? 0.7 : 1 }}>
+              <button onClick={createSession} disabled={saving} style={{ padding: '13px', borderRadius: 12, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, opacity: saving ? 0.7 : 1 }}>
                 {saving ? 'Creando...' : '🎥 Crear sesión'}
               </button>
             </div>
@@ -203,7 +203,7 @@ export default function LiveClient({ community, sessions: initialSessions, userI
         {/* Live now */}
         {liveNow.length > 0 && (
           <div style={{ marginBottom: 28 }}>
-            <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 13, color: C.red, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 14, display: 'flex', alignItems: 'center', gap: 6 }}>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13, color: C.red, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 14, display: 'flex', alignItems: 'center', gap: 6 }}>
               <div style={{ width: 8, height: 8, borderRadius: '50%', background: C.red }} /> En vivo ahora
             </h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }}>
@@ -215,7 +215,7 @@ export default function LiveClient({ community, sessions: initialSessions, userI
         {/* Scheduled */}
         {scheduled.length > 0 && (
           <div style={{ marginBottom: 28 }}>
-            <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 13, color: C.muted, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 14 }}>Próximas sesiones</h2>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13, color: C.muted, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 14 }}>Próximas sesiones</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }}>
               {scheduled.map(s => <SessionCard key={s.id} session={s} />)}
             </div>
@@ -225,7 +225,7 @@ export default function LiveClient({ community, sessions: initialSessions, userI
         {/* Past */}
         {past.length > 0 && (
           <div>
-            <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 13, color: C.muted, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 14 }}>Grabaciones anteriores</h2>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13, color: C.muted, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 14 }}>Grabaciones anteriores</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 16 }}>
               {past.map(s => <SessionCard key={s.id} session={s} />)}
             </div>
@@ -235,7 +235,7 @@ export default function LiveClient({ community, sessions: initialSessions, userI
         {sessions.length === 0 && (
           <div style={{ textAlign: 'center', padding: '80px 24px', background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20 }}>
             <div style={{ fontSize: 56, marginBottom: 16 }}>🎥</div>
-            <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 20, color: C.text, marginBottom: 8 }}>Sin sesiones aún</h3>
+            <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, color: C.text, marginBottom: 8 }}>Sin sesiones aún</h3>
             <p style={{ fontSize: 14, color: C.muted }}>{isOwner ? 'Crea tu primera sesión en vivo para tu comunidad.' : 'El creador aún no ha programado sesiones en vivo.'}</p>
           </div>
         )}

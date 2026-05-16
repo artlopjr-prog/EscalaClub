@@ -62,7 +62,7 @@ export default async function CursoPage({ params, searchParams }: { params: Prom
           <Link href="/cursos" style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, color: C.muted, textDecoration: 'none', marginBottom: 12 }}>
             <ArrowLeft size={12} /> Volver a cursos
           </Link>
-          <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14, letterSpacing: '-0.03em', color: C.text, marginBottom: 8, lineHeight: 1.3 }}>{course.title}</h2>
+          <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, letterSpacing: '-0.03em', color: C.text, marginBottom: 8, lineHeight: 1.3 }}>{course.title}</h2>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
             <div style={{ flex: 1, height: 4, background: 'rgba(255,255,255,0.07)', borderRadius: 99, overflow: 'hidden' }}>
               <div style={{ width: `${progressPct}%`, height: '100%', background: `linear-gradient(90deg, ${accentColor}, ${accentColor}cc)`, borderRadius: 99, transition: 'width 0.5s' }} />
@@ -76,7 +76,7 @@ export default async function CursoPage({ params, searchParams }: { params: Prom
         <div style={{ flex: 1, overflowY: 'auto', padding: '8px 0' }}>
           {modules?.map((mod: any) => (
             <div key={mod.id}>
-              <div style={{ padding: '10px 16px 6px', fontSize: 10, fontFamily: 'Syne, sans-serif', fontWeight: 700, color: C.muted, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+              <div style={{ padding: '10px 16px 6px', fontSize: 10, fontFamily: 'Inter, sans-serif', fontWeight: 700, color: C.muted, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
                 {mod.title}
               </div>
               {(mod.lessons ?? []).sort((a: any, b: any) => a.position - b.position).map((lesson: any) => {
@@ -119,9 +119,9 @@ export default async function CursoPage({ params, searchParams }: { params: Prom
           <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 40, textAlign: 'center' }}>
             <div>
               <div style={{ fontSize: 64, marginBottom: 20 }}>🔒</div>
-              <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 24, color: C.text, marginBottom: 12 }}>Contenido exclusivo</h2>
+              <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 24, color: C.text, marginBottom: 12 }}>Contenido exclusivo</h2>
               <p style={{ fontSize: 15, color: C.muted, marginBottom: 24, lineHeight: 1.6 }}>Únete a la comunidad para acceder a este curso y todo su contenido.</p>
-              <Link href={`/comunidades/${community?.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 28px', borderRadius: 12, background: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 15 }}>
+              <Link href={`/comunidades/${community?.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 28px', borderRadius: 12, background: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)`, color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15 }}>
                 Unirse a {community?.name}
               </Link>
             </div>

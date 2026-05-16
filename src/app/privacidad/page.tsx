@@ -5,18 +5,18 @@ const C = { bg: '#06060A', bg1: '#0D0D14', border: 'rgba(255,255,255,0.07)', tex
 
 export default function PrivacidadPage() {
   return (
-    <div style={{ minHeight: '100vh', background: C.bg, color: C.text, fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
+    <div style={{ minHeight: '100vh', background: C.bg, color: C.text, fontFamily: 'Inter, sans-serif' }}>
       <div style={{ maxWidth: 800, margin: '0 auto', padding: '48px 24px 80px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 48 }}>
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
             <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Zap size={15} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>EscalaClub</span>
           </Link>
         </div>
 
-        <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 40, letterSpacing: '-0.04em', marginBottom: 12 }}>Política de Privacidad</h1>
+        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 40, letterSpacing: '-0.04em', marginBottom: 12 }}>Política de Privacidad</h1>
         <p style={{ color: C.muted, fontSize: 14, marginBottom: 48 }}>Última actualización: Mayo 2026 · Versión 1.0</p>
 
         {[
@@ -66,7 +66,7 @@ export default function PrivacidadPage() {
           },
         ].map(section => (
           <div key={section.title} style={{ marginBottom: 36 }}>
-            <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 12, color: C.text }}>{section.title}</h2>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 12, color: C.text }}>{section.title}</h2>
             <div style={{ fontSize: 15, color: C.muted2, lineHeight: 1.8, whiteSpace: 'pre-line' }}>{section.content}</div>
           </div>
         ))}
