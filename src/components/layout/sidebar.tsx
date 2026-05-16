@@ -36,6 +36,7 @@ const MEMBER_NAV = [
   { href: '/comunidades',   icon: Globe,           label: 'Comunidades' },
   { href: '/cursos',        icon: BookOpen,        label: 'Cursos' },
   { href: '/retos',         icon: Zap,             label: 'Retos ⚡' },
+  { href: '/juegos',        icon: Trophy,          label: 'Juegos 🎮' },
   { href: '/comunidad',     icon: MessageSquare,   label: 'Foro' },
   { href: '/eventos',       icon: Calendar,        label: 'Eventos' },
   { href: '/leaderboard',   icon: Trophy,          label: 'Leaderboard' },

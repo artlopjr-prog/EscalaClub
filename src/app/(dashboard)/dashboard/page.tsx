@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import Link from 'next/link'
-import { ArrowRight, BookOpen, Globe, Trophy, Calendar, Play, ChevronRight, Zap } from 'lucide-react'
+import { ArrowRight, ChevronRight, Zap, Play, Calendar, Trophy, Flame } from 'lucide-react'
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -13,207 +13,279 @@ export default async function DashboardPage() {
     { data: myMemberships },
     { data: events },
     { data: topMembers },
-    { data: recentPosts },
+    { data: recentChallenges },
+    { data: myParticipations },
   ] = await Promise.all([
     supabase.from('ec_profiles').select('*').eq('id', user.id).single(),
     supabase.from('ec_community_members')
       .select('community_id, role, points, level, community:ec_communities(id,name,slug,logo_url,primary_color,member_count,access_type)')
-      .eq('user_id', user.id).eq('status', 'active').limit(5),
+      .eq('user_id', user.id).eq('status', 'active').limit(6),
     supabase.from('ec_events')
-      .select('id,title,starts_at,meet_url,community_id')
+      .select('id,title,starts_at,meet_url')
       .gte('starts_at', new Date().toISOString())
       .order('starts_at').limit(3),
     supabase.from('ec_community_members')
-      .select('user_id, points, level, profile:ec_profiles(display_name,avatar_url)')
+      .select('user_id, points, profile:ec_profiles(display_name,avatar_url)')
       .order('points', { ascending: false }).limit(5),
-    supabase.from('ec_posts')
-      .select('id,content,created_at,author_id')
-      .order('created_at', { ascending: false }).limit(4),
+    supabase.from('ec_challenges')
+      .select('id,title,emoji,status,participant_count,duration_days,origin')
+      .in('status', ['active','upcoming']).limit(3),
+    supabase.from('ec_challenge_participants')
+      .select('challenge_id, current_streak, days_completed')
+      .eq('user_id', user.id).eq('status', 'active'),
   ])
 
-  const greeting = new Date().getHours() < 12 ? 'Buenos días' : new Date().getHours() < 18 ? 'Buenas tardes' : 'Buenas noches'
-  const firstName = profile?.display_name?.split(' ')[0] ?? 'Creador'
-  const totalPoints = myMemberships?.reduce((s, m) => s + (m.points ?? 0), 0) ?? 0
+  const h = new Date().getHours()
+  const greeting = h < 12 ? 'Buenos días' : h < 18 ? 'Buenas tardes' : 'Buenas noches'
+  const firstName = profile?.display_name?.split(' ')[0] ?? 'ahí'
+  const totalPoints = myMemberships?.reduce((s, m) => s + ((m as any).points ?? 0), 0) ?? 0
+  const maxStreak = myParticipations?.reduce((m, p) => Math.max(m, p.current_streak ?? 0), 0) ?? 0
+  const hasActivity = (myMemberships?.length ?? 0) > 0
 
   return (
-    <div style={{ padding: '32px', maxWidth: 1200, margin: '0 auto' }}>
+    <div style={{ padding: '40px 36px', maxWidth: 1100, margin: '0 auto' }}>
 
-      {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 32, gap: 16, flexWrap: 'wrap' }}>
-        <div>
-          <p style={{ fontSize: 13, color: 'var(--muted)', marginBottom: 4 }}>{greeting},</p>
-          <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-0.04em', lineHeight: 1.1 }}>
-            {firstName} 👋
+      {/* ── HERO HEADER — sin card, tipografía domina ── */}
+      <div style={{ marginBottom: 52 }}>
+        <p style={{ fontSize: 12, fontWeight: 600, color: 'var(--muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>{greeting}</p>
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+          <h1 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 5vw, 52px)', letterSpacing: '-0.04em', lineHeight: 1 }}>
+            {firstName} <span className="text-gradient">👋</span>
           </h1>
+          {/* Stats como números flotantes — sin cards */}
+          {hasActivity && (
+            <div style={{ display: 'flex', gap: 36, alignItems: 'flex-end' }}>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--gold)', lineHeight: 1 }}>{totalPoints.toLocaleString()}</div>
+                <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 3 }}>puntos totales</div>
+              </div>
+              {maxStreak > 0 && (
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--green)', lineHeight: 1 }}>🔥 {maxStreak}</div>
+                  <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 3 }}>días de racha</div>
+                </div>
+              )}
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--purple2)', lineHeight: 1 }}>{myMemberships?.length ?? 0}</div>
+                <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 3 }}>comunidades</div>
+              </div>
+            </div>
+          )}
         </div>
-        {totalPoints > 0 && (
-          <div style={{ textAlign: 'right' }}>
-            <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 20, color: 'var(--gold)' }}>
-              {totalPoints.toLocaleString()} pts
-            </div>
-            <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 2 }}>puntos totales</div>
-          </div>
-        )}
       </div>
 
-      {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 150px), 1fr))', gap: 12, marginBottom: 24 }}>
-        {[
-          { label: 'Comunidades', value: myMemberships?.length ?? 0, icon: Globe, color: 'var(--purple2)', bg: 'rgba(159,103,255,0.1)' },
-          { label: 'Puntos', value: totalPoints.toLocaleString(), icon: Trophy, color: 'var(--gold)', bg: 'rgba(240,165,0,0.1)' },
-          { label: 'Eventos próximos', value: events?.length ?? 0, icon: Calendar, color: 'var(--green)', bg: 'rgba(0,214,143,0.1)' },
-          { label: 'Posts recientes', value: recentPosts?.length ?? 0, icon: BookOpen, color: '#FF7849', bg: 'rgba(255,120,73,0.1)' },
-        ].map((s, i) => (
-          <div key={i} style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 16, padding: '18px' }}>
-            <div style={{ width: 36, height: 36, borderRadius: 10, background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
-              <s.icon size={18} color={s.color} />
+      {/* ── RETOS ACTIVOS — el highlight si hay ── */}
+      {(recentChallenges?.length ?? 0) > 0 && (
+        <div style={{ marginBottom: 40 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <Zap size={16} color="var(--gold)" />
+              <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14 }}>Retos activos</span>
             </div>
-            <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 26, letterSpacing: '-0.04em', color: s.color, lineHeight: 1 }}>
-              {s.value}
-            </div>
-            <div style={{ fontSize: 12, color: 'var(--muted)', marginTop: 4 }}>{s.label}</div>
+            <Link href="/retos" style={{ fontSize: 12, color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: 3 }}>
+              Ver todos <ArrowRight size={12} />
+            </Link>
           </div>
-        ))}
-      </div>
+          <div style={{ display: 'flex', gap: 12, overflowX: 'auto', paddingBottom: 4, scrollbarWidth: 'none' }}>
+            {recentChallenges?.map((c: any) => {
+              const myP = myParticipations?.find(p => p.challenge_id === c.id)
+              const pct = myP ? Math.round((myP.days_completed / c.duration_days) * 100) : 0
+              return (
+                <Link key={c.id} href="/retos" style={{ textDecoration: 'none', flexShrink: 0, width: 220 }}>
+                  <div style={{
+                    background: c.origin === 'platform'
+                      ? 'linear-gradient(135deg, rgba(233,160,32,0.08), rgba(233,160,32,0.03))'
+                      : 'var(--bg1)',
+                    border: `1px solid ${c.origin === 'platform' ? 'rgba(233,160,32,0.2)' : 'var(--border)'}`,
+                    borderRadius: 'var(--r-lg)',
+                    padding: '16px',
+                    transition: 'all 0.2s',
+                    cursor: 'pointer',
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                      <span style={{ fontSize: 22 }}>{c.emoji}</span>
+                      {c.origin === 'platform' && <span style={{ fontSize: 9, fontWeight: 800, color: 'var(--gold)', background: 'rgba(233,160,32,0.12)', borderRadius: 99, padding: '2px 7px', textTransform: 'uppercase', letterSpacing: '.06em' }}>Oficial</span>}
+                    </div>
+                    <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 13, marginBottom: 6, lineHeight: 1.2 }}>{c.title}</div>
+                    {myP ? (
+                      <>
+                        <div className="progress-bar" style={{ marginBottom: 6 }}>
+                          <div className={`progress-fill ${c.origin === 'platform' ? 'progress-fill-gold' : ''}`} style={{ width: `${pct}%` }} />
+                        </div>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--muted)' }}>
+                          <span>{pct}% completado</span>
+                          <span style={{ color: 'var(--gold)' }}>🔥 {myP.current_streak}</span>
+                        </div>
+                      </>
+                    ) : (
+                      <div style={{ fontSize: 11, color: 'var(--muted)' }}>{c.participant_count} participantes · {c.duration_days} días</div>
+                    )}
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 20, alignItems: 'start' }}>
-        {/* Left */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+      {/* ── MAIN GRID ── */}
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 24, alignItems: 'start' }}>
+
+        {/* LEFT */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
 
           {/* Mis comunidades */}
-          <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, overflow: 'hidden' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', borderBottom: '1px solid var(--border)' }}>
-              <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, letterSpacing: '-0.03em' }}>Mis comunidades</h2>
-              <Link href="/comunidades" style={{ fontSize: 12, color: 'var(--muted)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 3 }}>
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+              <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14 }}>Mis comunidades</span>
+              <Link href="/comunidades" style={{ fontSize: 12, color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: 3 }}>
                 Explorar <ArrowRight size={12} />
               </Link>
             </div>
+
             {myMemberships && myMemberships.length > 0 ? (
-              <div>
-                {myMemberships.map((m: any) => (
-                  <Link key={m.id} href={`/comunidades/${m.community?.slug}`} style={{ textDecoration: 'none' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 22px', borderBottom: '1px solid var(--border)', cursor: 'pointer', transition: 'background 0.15s' }}>
-                      <div style={{ width: 40, height: 40, borderRadius: 10, background: (m.community?.primary_color ?? '#7C3AED') + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, flexShrink: 0, overflow: 'hidden' }}>
-                        {m.community?.logo_url ? <img src={m.community.logo_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '🌐'}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                {myMemberships.map((m: any, i: number) => (
+                  <Link key={i} href={`/comunidades/${m.community?.slug}`} style={{ textDecoration: 'none' }}>
+                    <div style={{
+                      display: 'flex', alignItems: 'center', gap: 12, padding: '11px 14px',
+                      borderRadius: 'var(--r-md)', transition: 'background 0.15s', cursor: 'pointer',
+                    }}
+                      onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.04)')}
+                      onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}>
+                      <div style={{
+                        width: 38, height: 38, borderRadius: 10, flexShrink: 0,
+                        background: (m.community?.primary_color ?? '#7B5EF8') + '18',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontSize: 18, overflow: 'hidden',
+                        border: `1px solid ${(m.community?.primary_color ?? '#7B5EF8') + '30'}`,
+                      }}>
+                        {m.community?.logo_url
+                          ? <img src={m.community.logo_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          : '🌐'}
                       </div>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ fontSize: 14, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{m.community?.name}</div>
-                        <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 2 }}>{m.community?.member_count ?? 0} miembros · {m.points ?? 0} pts</div>
+                        <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 1 }}>{m.community?.member_count ?? 0} miembros</div>
                       </div>
-                      <ChevronRight size={14} color="var(--muted)" />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                        {(m.points ?? 0) > 0 && <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--gold)' }}>{(m.points ?? 0).toLocaleString()} pts</span>}
+                        <ChevronRight size={14} color="var(--muted)" />
+                      </div>
                     </div>
                   </Link>
                 ))}
               </div>
             ) : (
-              <div style={{ padding: '40px 22px', textAlign: 'center' }}>
-                <div style={{ fontSize: 40, marginBottom: 12 }}>🌐</div>
-                <p style={{ fontSize: 14, color: 'var(--muted)', marginBottom: 16 }}>Aún no eres miembro de ninguna comunidad</p>
-                <Link href="/comunidades" className="btn-primary" style={{ padding: '9px 20px', fontSize: 13, display: 'inline-flex', gap: 6, alignItems: 'center' }}>
+              <div style={{ padding: '48px 0', textAlign: 'center' }}>
+                <div style={{ fontSize: 44, marginBottom: 14 }}>🌐</div>
+                <p style={{ fontSize: 14, color: 'var(--muted)', marginBottom: 18, lineHeight: 1.6 }}>
+                  Aún no eres miembro de ninguna comunidad.<br />
+                  <span style={{ color: 'var(--text2)' }}>Explora y únete a las mejores de LATAM.</span>
+                </p>
+                <Link href="/comunidades" className="btn-primary" style={{ fontSize: 13 }}>
                   Explorar comunidades <ArrowRight size={14} />
                 </Link>
               </div>
             )}
           </div>
 
-          {/* Feed reciente */}
-          {recentPosts && recentPosts.length > 0 && (
-            <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, overflow: 'hidden' }}>
-              <div style={{ padding: '18px 22px', borderBottom: '1px solid var(--border)' }}>
-                <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 15, letterSpacing: '-0.03em' }}>Actividad reciente</h2>
-              </div>
-              {recentPosts.map((post: any) => (
-                <div key={post.id} style={{ padding: '14px 22px', borderBottom: '1px solid var(--border)', display: 'flex', gap: 10 }}>
-                  <div style={{ width: 30, height: 30, borderRadius: '50%', background: 'rgba(124,58,237,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 11, color: '#A78BFA', flexShrink: 0 }}>
-                    {'?'}
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 2 }}>{'Miembro'}</div>
-                    <div style={{ fontSize: 12, color: 'var(--muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{post.content}</div>
-                  </div>
+          {/* Próximos eventos */}
+          {events && events.length > 0 && (
+            <div>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <Calendar size={14} color="var(--blue2)" />
+                  <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14 }}>Próximos eventos</span>
                 </div>
-              ))}
+                <Link href="/eventos" style={{ fontSize: 12, color: 'var(--muted)', display: 'flex', alignItems: 'center', gap: 3 }}>
+                  Ver todos <ArrowRight size={12} />
+                </Link>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                {events.map((e: any) => {
+                  const d = new Date(e.starts_at)
+                  const isToday = d.toDateString() === new Date().toDateString()
+                  return (
+                    <div key={e.id} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px', borderRadius: 'var(--r-md)' }}>
+                      <div style={{ width: 38, textAlign: 'center', flexShrink: 0 }}>
+                        <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 16, color: isToday ? 'var(--red)' : 'var(--purple2)' }}>
+                          {d.getDate()}
+                        </div>
+                        <div style={{ fontSize: 9, fontWeight: 700, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '.06em' }}>
+                          {d.toLocaleString('es', { month: 'short' })}
+                        </div>
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 13, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{e.title}</div>
+                        <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 1 }}>
+                          {d.toLocaleTimeString('es', { hour: '2-digit', minute: '2-digit' })}
+                          {isToday && <span style={{ marginLeft: 6, color: 'var(--red)', fontWeight: 700 }}>Hoy</span>}
+                        </div>
+                      </div>
+                      {e.meet_url && (
+                        <a href={e.meet_url} target="_blank" rel="noopener noreferrer"
+                          style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 11, fontWeight: 700, color: 'var(--green)', textDecoration: 'none' }}>
+                          <Play size={11} fill="currentColor" /> Unirse
+                        </a>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
             </div>
           )}
         </div>
 
-        {/* Right */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-
-          {/* Eventos */}
-          <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, overflow: 'hidden' }}>
-            <div style={{ padding: '16px 18px', borderBottom: '1px solid var(--border)' }}>
-              <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14, letterSpacing: '-0.03em' }}>Próximos eventos</h2>
-            </div>
-            {events && events.length > 0 ? (
-              <div style={{ padding: '8px' }}>
-                {events.map((ev: any) => (
-                  <div key={ev.id} style={{ display: 'flex', gap: 10, padding: '10px', borderRadius: 10, cursor: 'pointer', transition: 'background 0.15s' }}>
-                    <div style={{ width: 4, borderRadius: 99, background: 'var(--grad-purple)', flexShrink: 0 }} />
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 12, fontWeight: 600, marginBottom: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{ev.title}</div>
-                      <div style={{ fontSize: 11, color: 'var(--muted)' }}>
-                        {new Date(ev.starts_at).toLocaleDateString('es', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div style={{ padding: '24px', textAlign: 'center' }}>
-                <div style={{ fontSize: 28, marginBottom: 8 }}>📅</div>
-                <p style={{ fontSize: 12, color: 'var(--muted)' }}>Sin eventos próximos</p>
-              </div>
-            )}
+        {/* RIGHT — Leaderboard mini */}
+        <div style={{ position: 'sticky', top: 24 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 14 }}>
+            <Trophy size={14} color="var(--gold)" />
+            <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: 14 }}>Top miembros</span>
           </div>
-
-          {/* Leaderboard */}
-          <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, overflow: 'hidden' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 18px', borderBottom: '1px solid var(--border)' }}>
-              <h2 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14, letterSpacing: '-0.03em' }}>Leaderboard</h2>
-              <Link href="/leaderboard" style={{ fontSize: 11, color: 'var(--muted)', textDecoration: 'none' }}>Ver todo →</Link>
-            </div>
-            <div style={{ padding: '8px' }}>
-              {topMembers?.map((m: any, i: number) => {
-                const medals = ['🥇','🥈','🥉']
+          {topMembers && topMembers.length > 0 ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {topMembers.map((m: any, i: number) => {
                 const isMe = m.user_id === user.id
+                const medals = ['🥇', '🥈', '🥉']
+                const name = (m.profile as any)?.display_name ?? 'Usuario'
+                const initials = name.slice(0, 2).toUpperCase()
                 return (
-                  <div key={m.user_id ?? i} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 10px', borderRadius: 10, background: isMe ? 'rgba(124,58,237,0.08)' : 'transparent', border: isMe ? '1px solid rgba(124,58,237,0.15)' : '1px solid transparent', marginBottom: 3 }}>
-                    <div style={{ width: 18, textAlign: 'center', fontSize: i < 3 ? 14 : 10, color: 'var(--muted)', fontWeight: 700, flexShrink: 0 }}>
-                      {i < 3 ? medals[i] : `${i + 1}`}
+                  <div key={m.user_id} style={{
+                    display: 'flex', alignItems: 'center', gap: 10, padding: '9px 12px',
+                    borderRadius: 'var(--r-md)',
+                    background: isMe ? 'rgba(123,94,248,0.07)' : 'transparent',
+                  }}>
+                    <div style={{ width: 20, textAlign: 'center', fontSize: 14, flexShrink: 0 }}>
+                      {i < 3 ? medals[i] : <span style={{ fontSize: 11, fontFamily: 'Syne, sans-serif', fontWeight: 700, color: 'var(--muted)' }}>#{i+1}</span>}
                     </div>
-                    <div style={{ width: 26, height: 26, borderRadius: '50%', background: 'rgba(124,58,237,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 10, color: '#A78BFA', flexShrink: 0 }}>
-                      {(m.profile as any)?.display_name?.[0] ?? '?'}
+                    <div className="avatar avatar-sm avatar-purple" style={{ background: isMe ? 'linear-gradient(135deg, var(--purple), var(--purple2))' : 'var(--bg3)' }}>
+                      {(m.profile as any)?.avatar_url
+                        ? <img src={(m.profile as any).avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
+                        : initials}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ fontSize: 11, fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {(m.profile as any)?.display_name ?? 'Usuario'} {isMe && <span style={{ color: 'var(--purple2)', fontSize: 9 }}>• tú</span>}
+                      <div style={{ fontSize: 12, fontWeight: 600, color: isMe ? 'var(--purple2)' : 'var(--text)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {name}{isMe ? ' (tú)' : ''}
                       </div>
                     </div>
-                    <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 12, color: 'var(--gold)', flexShrink: 0 }}>
+                    <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 12, color: i === 0 ? 'var(--gold)' : isMe ? 'var(--purple2)' : 'var(--muted2)' }}>
                       {(m.points ?? 0).toLocaleString()}
                     </div>
                   </div>
                 )
               })}
-              {(!topMembers || topMembers.length === 0) && (
-                <div style={{ padding: '20px', textAlign: 'center' }}>
-                  <p style={{ fontSize: 12, color: 'var(--muted)' }}>Sé el primero en el ranking 🏆</p>
-                </div>
-              )}
+              <Link href="/leaderboard" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, padding: '10px', fontSize: 12, color: 'var(--muted)', textDecoration: 'none', marginTop: 4 }}>
+                Ver ranking completo <ArrowRight size={12} />
+              </Link>
             </div>
-          </div>
-
-          {/* CTA crear comunidad */}
-          <div style={{ background: 'rgba(124,58,237,0.08)', border: '1px solid rgba(124,58,237,0.2)', borderRadius: 20, padding: '20px' }}>
-            <div style={{ fontSize: 24, marginBottom: 10 }}>🚀</div>
-            <h3 style={{ fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: 14, marginBottom: 6, letterSpacing: '-0.03em' }}>¿Listo para crear tu comunidad?</h3>
-            <p style={{ fontSize: 12, color: 'var(--muted)', marginBottom: 14, lineHeight: 1.5 }}>Monetiza tu conocimiento y construye tu audiencia en LATAM.</p>
-            <Link href="/precios" className="btn-primary" style={{ padding: '9px 16px', fontSize: 12, display: 'inline-flex', gap: 5, alignItems: 'center' }}>
-              Ver planes <Zap size={13} />
-            </Link>
-          </div>
+          ) : (
+            <div style={{ padding: '24px 0', textAlign: 'center', color: 'var(--muted)', fontSize: 13 }}>
+              Sé el primero en el ranking 🏆
+            </div>
+          )}
         </div>
+
       </div>
     </div>
   )
