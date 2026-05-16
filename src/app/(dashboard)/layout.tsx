@@ -15,14 +15,15 @@ export default async function DashboardLayout({ children }: { children: React.Re
     .maybeSingle()
 
   if (!profile) {
-    const isAdmin = ['artlopjr@gmail.com','arturo@scalon.co','arturo@scalon.com'].includes(user.email ?? '')
+    const isAdminEmail = ['artlopjr@gmail.com','arturo@scalon.co','arturo@scalon.com',
+      'alopezvierk@gmail.com','artlopjr2510@gmail.com'].includes(user.email ?? '')
     const { data: newProfile } = await supabase
       .from('ec_profiles')
       .insert({
         id: user.id,
         username: user.email?.split('@')[0] ?? 'user',
         display_name: user.user_metadata?.full_name ?? user.email?.split('@')[0] ?? 'Usuario',
-        role_platform: isAdmin ? 'super_admin' : 'user',
+        role_platform: isAdminEmail ? 'super_admin' : 'user',
         onboarding_completed: false,
       })
       .select()
@@ -31,15 +32,19 @@ export default async function DashboardLayout({ children }: { children: React.Re
   }
 
   const isSuperAdmin = profile?.role_platform === 'super_admin'
+  const isInstructor = profile?.role_platform === 'instructor'
 
+  // isCreator: solo super_admin o instructor con comunidad activa
+  // Un usuario con role 'user' NUNCA ve el panel creador aunque tenga comunidades
   let isCreator = false
   if (isSuperAdmin) {
     isCreator = true
-  } else {
+  } else if (isInstructor) {
     const { data: ownedCommunity } = await supabase
       .from('ec_communities')
       .select('id')
       .eq('owner_id', user.id)
+      .eq('status', 'active')
       .maybeSingle()
     isCreator = !!ownedCommunity
   }
@@ -61,7 +66,6 @@ export default async function DashboardLayout({ children }: { children: React.Re
 
   return (
     <div style={{ display: 'flex', minHeight: '100vh', background: '#1F2335' }}>
-      {/* Sidebar — hidden on mobile via CSS class */}
       <div className="desktop-sidebar">
         <Sidebar user={member} unread={unread ?? 0} isCreator={isCreator} />
       </div>

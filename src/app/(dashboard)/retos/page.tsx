@@ -15,7 +15,8 @@ export default async function RetosPage() {
     .maybeSingle()
 
   const isAdmin = profile?.role_platform === 'super_admin'
-  const isCreatorOrAdmin = isAdmin || profile?.role_platform === 'instructor'
+  const isInstructor = profile?.role_platform === 'instructor'
+  const isCreatorOrAdmin = isAdmin || isInstructor
 
   // Retos de plataforma activos y próximos
   const { data: platformChallenges } = await supabase
