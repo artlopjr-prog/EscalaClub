@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Settings, MessageSquare, BookOpen, Calendar, Users, Trophy, Info, LogOut } from 'lucide-react'
+import { Settings, MessageSquare, BookOpen, Calendar, Users, Trophy, Info, LogOut, Sparkles } from 'lucide-react'
 
 interface Props {
   community: {
@@ -26,7 +26,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
   const TABS = [
     { href: `/comunidades/${slug}/foro`,      label: 'Comunidad',  icon: MessageSquare },
     { href: `/comunidades/${slug}/cursos`,     label: 'Cursos',     icon: BookOpen },
-    { href: `/comunidades/${slug}/tutor`,      label: '✨ Tutor IA', icon: null },
+    { href: `/comunidades/${slug}/tutor`,      label: '✨ Tutor IA', icon: Sparkles },
     { href: `/comunidades/${slug}/calendario`, label: 'Calendario', icon: Calendar },
     { href: `/comunidades/${slug}/miembros-lista`, label: 'Miembros', icon: Users },
     { href: `/comunidades/${slug}/ranking`,    label: 'Ranking',    icon: Trophy },
