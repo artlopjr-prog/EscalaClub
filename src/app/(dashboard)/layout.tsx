@@ -6,7 +6,12 @@ import { MobileNav } from '@/components/layout/MobileNav'
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  // /comunidades y /comunidades/[slug] son públicas — no redirigir
+  // El middleware ya maneja la redirección para rutas privadas
+  if (!user) {
+    // Permitir acceso sin auth — el middleware ya filtró las rutas privadas
+    return <>{children}</>
+  }
 
   let { data: profile } = await supabase
     .from('ec_profiles')
