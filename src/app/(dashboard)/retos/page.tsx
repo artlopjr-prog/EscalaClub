@@ -15,6 +15,7 @@ export default async function RetosPage() {
     .maybeSingle()
 
   const isAdmin = profile?.role_platform === 'super_admin'
+  const isCreatorOrAdmin = isAdmin || profile?.role_platform === 'instructor'
 
   // Retos de plataforma activos y próximos
   const { data: platformChallenges } = await supabase
@@ -72,18 +73,24 @@ export default async function RetosPage() {
   const activeCount = myParticipations?.filter(p => p.status === 'active').length ?? 0
   const totalXP = (myParticipations?.reduce((sum, p) => sum + (p.days_completed ?? 0), 0) ?? 0) * 10
 
-  // Mis comunidades para crear retos (si es creador)
-  const { data: ownedCommunities } = await supabase
-    .from('ec_communities')
-    .select('id, name, primary_color')
-    .eq('owner_id', user.id)
-    .eq('status', 'active')
+  // Solo cargar comunidades propias si es creador o admin
+  const { data: ownedCommunities } = isCreatorOrAdmin
+    ? await supabase
+        .from('ec_communities')
+        .select('id, name, primary_color')
+        .eq('owner_id', user.id)
+        .eq('status', 'active')
+    : { data: [] }
+
+  // Puede crear retos: admin siempre, creador solo si tiene comunidades
+  const canCreate = isAdmin || (isCreatorOrAdmin && (ownedCommunities?.length ?? 0) > 0)
 
   return (
     <RetosClient
       userId={user.id}
       userCountry={profile?.country ?? 'PA'}
       isAdmin={isAdmin}
+      canCreate={canCreate}
       platformChallenges={platformChallenges ?? []}
       communityChallenges={(communityChallenges ?? []) as any}
       myParticipations={myParticipations ?? []}

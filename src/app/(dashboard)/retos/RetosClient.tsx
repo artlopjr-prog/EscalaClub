@@ -62,6 +62,7 @@ interface Props {
   userId: string
   userCountry: string
   isAdmin: boolean
+  canCreate: boolean
   platformChallenges: Challenge[]
   communityChallenges: Challenge[]
   myParticipations: Participation[]
@@ -73,7 +74,7 @@ type View = 'home' | 'detail' | 'leaderboard' | 'crear'
 type LBTab = 'global' | 'country' | 'community'
 
 export default function RetosClient({
-  userId, userCountry, isAdmin,
+  userId, userCountry, isAdmin, canCreate,
   platformChallenges, communityChallenges,
   myParticipations, ownedCommunities, stats,
 }: Props) {
@@ -223,7 +224,7 @@ export default function RetosClient({
           </p>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
-          {(isAdmin || ownedCommunities.length > 0) && (
+          {canCreate && (
             <button className="btn-primary" onClick={() => setView('crear')} style={{ gap: 6 }}>
               <Plus size={15} /> Crear Reto
             </button>
@@ -248,13 +249,13 @@ export default function RetosClient({
 
       {/* TABS */}
       <div style={{ display: 'flex', gap: 3, marginBottom: 22, background: C.bg1, borderRadius: 10, padding: 3, width: 'fit-content', border: `1px solid ${C.border}` }}>
-        {(['home','detail','leaderboard','crear'] as View[]).map((v, i) => {
-          const labels = ['🏠 Todos', '⚡ Detalle', '🏆 Leaderboard', '＋ Crear']
+        {(['home','detail','leaderboard', ...(canCreate ? ['crear'] : [])] as View[]).map((v, i) => {
+          const labels: Record<string, string> = { home: '🏠 Todos', detail: '⚡ Detalle', leaderboard: '🏆 Leaderboard', crear: '＋ Crear' }
           const active = view === v
           return (
             <button key={v} onClick={() => v !== 'detail' ? setView(v) : (selectedChallenge && setView(v))}
               style={{ padding: '7px 14px', borderRadius: 8, fontSize: 12, fontWeight: 600, cursor: 'pointer', border: 'none', background: active ? C.bg3 : 'transparent', color: active ? C.text : C.muted2, fontFamily: 'Plus Jakarta Sans, sans-serif', transition: 'all .15s' }}>
-              {labels[i]}
+              {labels[v]}
             </button>
           )
         })}
@@ -523,7 +524,7 @@ export default function RetosClient({
       )}
 
       {/* ═══ VIEW: CREAR ═══ */}
-      {view === 'crear' && (
+      {view === 'crear' && canCreate && (
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16, padding: 24 }}>
           <div style={{ fontFamily: 'Syne, sans-serif', fontWeight: 900, fontSize: 19, marginBottom: 3 }}>Crear Nuevo Reto</div>
           <p style={{ fontSize: 13, color: C.muted2, marginBottom: 22 }}>Configura el reto para tu comunidad{isAdmin ? ' o para toda la plataforma' : ''}</p>
