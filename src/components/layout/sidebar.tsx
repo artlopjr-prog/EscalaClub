@@ -205,6 +205,23 @@ export function Sidebar({ user, unread, isCreator }: Props) {
         })}
       </nav>
 
+      {/* Theme toggle */}
+      {!collapsed && (
+        <div style={{ padding: '8px 14px', borderTop: `1px solid ${C.border}`, flexShrink: 0 }}>
+          <button
+            onClick={() => {
+              const current = document.documentElement.getAttribute('data-theme') ?? 'dark'
+              const next = current === 'dark' ? 'light' : 'dark'
+              document.documentElement.setAttribute('data-theme', next)
+              localStorage.setItem('ec-theme', next)
+            }}
+            style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 8, padding: '7px 10px', borderRadius: 9, background: 'rgba(255,255,255,0.04)', border: `1px solid ${C.border}`, cursor: 'pointer', color: C.muted, fontSize: 11, fontFamily: 'Plus Jakarta Sans, sans-serif', fontWeight: 500 }}>
+            <span style={{ fontSize: 14 }}>🌓</span>
+            <span>Cambiar tema</span>
+          </button>
+        </div>
+      )}
+
       {/* User footer */}
       <div style={{ borderTop: `1px solid ${C.border}`, padding: collapsed ? '10px 0' : '12px 14px', flexShrink: 0, background: 'rgba(0,0,0,0.15)' }}>
         {!collapsed ? (

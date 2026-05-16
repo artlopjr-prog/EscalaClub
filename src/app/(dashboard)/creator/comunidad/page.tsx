@@ -197,7 +197,7 @@ export default function CreatorComunidadPage() {
           </p>
         </div>
         {community && (
-          <Link href={`/comunidades/${community.slug}`} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)', fontSize: 12, color: '#9998B0' }}>
+          <Link href={`/comunidades/${community.slug}`} target="_blank" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)', fontSize: 12, color: '#9998B0' }}>
             <Eye size={13} /> Ver pública
           </Link>
         )}
@@ -471,10 +471,10 @@ export default function CreatorComunidadPage() {
 
           {/* Video de presentación */}
           <div style={{ marginBottom: 20 }}>
-            <label style={S.label}>Video de presentación (YouTube)</label>
+            <label style={S.label}>Video de presentación</label>
             <input value={(form as any).intro_video_url ?? ''} onChange={e => set('intro_video_url' as any, e.target.value)}
-              placeholder="https://youtube.com/watch?v=... o https://youtu.be/..." className="input" />
-            <div style={S.hint}>Se muestra en la página pública de tu comunidad. Usa YouTube — gratuito y confiable.</div>
+              placeholder="YouTube: https://youtu.be/... · Vimeo: https://vimeo.com/..." className="input" />
+            <div style={S.hint}>Aparece en la página pública de tu comunidad. Compatible con YouTube y Vimeo.</div>
           </div>
 
           {/* Redes sociales */}

@@ -4,7 +4,6 @@ import { createServerClient } from '@supabase/ssr'
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl
 
-  // Never intercept static files, API routes, or Next.js internals
   if (
     pathname.startsWith('/_next') ||
     pathname.startsWith('/api') ||
@@ -14,15 +13,22 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Public paths — never redirect
+  // ── RUTAS PÚBLICAS — no requieren login ──
   const publicPaths = ['/', '/login', '/registro', '/recuperar', '/terminos', '/privacidad']
-  if (publicPaths.includes(pathname)) {
+
+  // Explorador de comunidades público
+  const isPublicCommunities = pathname === '/comunidades'
+
+  // Página pública de cada comunidad (solo la landing, no subrutas)
+  const isCommunityLanding = /^\/comunidades\/[^\/]+$/.test(pathname)
+
+  if (publicPaths.includes(pathname) || isPublicCommunities || isCommunityLanding) {
     return NextResponse.next()
   }
 
-  // Check auth for all other paths
+  // ── RUTAS PRIVADAS — requieren login ──
   let response = NextResponse.next()
-  
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,

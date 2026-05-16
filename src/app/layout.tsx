@@ -23,6 +23,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            try {
+              var t = localStorage.getItem('ec-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+              document.documentElement.setAttribute('data-theme', t);
+              document.documentElement.style.background = t === 'light' ? '#F5F5F7' : '#0A0A12';
+            } catch(e) {}
+          })();
+        ` }} />
         <style>{`
           * { box-sizing: border-box; margin: 0; padding: 0; }
           html, body { 

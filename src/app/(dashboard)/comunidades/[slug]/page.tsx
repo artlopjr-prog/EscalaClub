@@ -12,7 +12,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
   const { slug } = await params
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  if (!user) redirect('/login')
+  // No redirect — página pública. user puede ser null (visitante sin cuenta)
 
   const { data: community } = await supabase
     .from('ec_communities')
@@ -33,13 +33,13 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
     .from('ec_community_members')
     .select('id, role, points, status, access_until, rejoin_requested_at, ban_reason')
     .eq('community_id', community.id)
-    .eq('user_id', user.id)
+    .eq('user_id', user?.id ?? '')
     .maybeSingle()
 
   const isBanned = membership?.status === 'banned'
   const isMember = !!membership && membership.status === 'active'
-  const isOwner = community.owner_id === user.id
-  const hasAccess = isMember || isOwner
+  const isOwner = !!user && community.owner_id === user.id
+  const hasAccess = !!user && (isMember || isOwner)
   const { data: courses } = await supabase
     .from('ec_courses')
     .select('id, title, cover_url')
@@ -81,11 +81,21 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
     .limit(8)
 
   const isFree = !community.price_monthly || community.price_monthly === 0
-  const videoId = community.intro_video_url
-    ? (community.intro_video_url.includes('youtu.be/')
-        ? community.intro_video_url.split('youtu.be/')[1]?.split('?')[0]
-        : community.intro_video_url.split('v=')[1]?.split('&')[0])
-    : null
+  // Detect video provider and extract embed URL
+  let videoEmbedUrl: string | null = null
+  if (community.intro_video_url) {
+    const url = community.intro_video_url
+    if (url.includes('youtu.be/')) {
+      const id = url.split('youtu.be/')[1]?.split('?')[0]
+      videoEmbedUrl = `https://www.youtube.com/embed/${id}`
+    } else if (url.includes('youtube.com')) {
+      const id = url.split('v=')[1]?.split('&')[0]
+      videoEmbedUrl = `https://www.youtube.com/embed/${id}`
+    } else if (url.includes('vimeo.com')) {
+      const id = url.split('vimeo.com/')[1]?.split('?')[0]
+      videoEmbedUrl = `https://player.vimeo.com/video/${id}`
+    }
+  }
 
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
@@ -134,11 +144,11 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
             </div>
 
             {/* VIDEO de presentación */}
-            {videoId && (
+            {videoEmbedUrl && (
               <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, overflow: 'hidden' }}>
                 <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
                   <iframe
-                    src={`https://www.youtube.com/embed/${videoId}`}
+                    src={videoEmbedUrl!}
                     style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
@@ -267,7 +277,12 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
 
               {/* BOTÓN PRINCIPAL */}
               <div style={{ width: '100%' }}>
-                {isOwner ? (
+                {!user ? (
+                  // Visitante sin cuenta — redirigir a registro
+                  <Link href={`/registro?redirect=/comunidades/${slug}`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '14px 20px', borderRadius: 12, background: `linear-gradient(135deg,${accentColor},${accentColor}cc)`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne,sans-serif', fontWeight: 800, fontSize: 15, boxSizing: 'border-box', boxShadow: `0 4px 20px ${accentColor}44` }}>
+                    {isFree ? '🚀 Únete gratis' : `Unirse · $${community.price_monthly}/mes`}
+                  </Link>
+                ) : isOwner ? (
                   <Link href="/creator/comunidad" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '13px 20px', borderRadius: 12, background: 'rgba(255,255,255,0.07)', color: 'var(--text)', textDecoration: 'none', fontFamily: 'Syne,sans-serif', fontWeight: 700, fontSize: 14, border: '1px solid var(--border)', boxSizing: 'border-box' }}>
                     <Settings size={15} /> Gestionar comunidad
                   </Link>
@@ -278,7 +293,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                     <Link href={`/comunidades/${slug}/foro`} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '13px 20px', borderRadius: 12, background: `linear-gradient(135deg,${accentColor},${accentColor}cc)`, color: '#fff', textDecoration: 'none', fontFamily: 'Syne,sans-serif', fontWeight: 700, fontSize: 14, boxSizing: 'border-box', marginBottom: 8 }}>
                       💬 Ir al foro
                     </Link>
-                    <LeaveButton communityId={community.id} communityName={community.name} membershipId={membership!.id} userId={user.id} isPaid={(community.access_type === 'paid')} accessUntil={membership?.access_until ?? null} />
+                    <LeaveButton communityId={community.id} communityName={community.name} membershipId={membership!.id} userId={user.id!} isPaid={(community.access_type === 'paid')} accessUntil={membership?.access_until ?? null} />
                   </div>
                 ) : (
                   <JoinButton
@@ -290,14 +305,16 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                     paypalEmail={community.paypal_account_email ?? null}
                     isMember={false}
                     accentColor={accentColor}
-                    userId={user.id}
+                    userId={user.id!}
                   />
                 )}
               </div>
 
-              {!isMember && !isOwner && (
+              {(!isMember && !isOwner) && (
                 <p style={{ fontSize: 11, color: 'var(--muted)', textAlign: 'center', marginTop: 10 }}>
-                  {isFree ? '✓ Gratis · Sin tarjeta de crédito' : '✓ Cancela cuando quieras · Pagos seguros vía PayPal'}
+                  {!user
+                    ? 'Crea tu cuenta gratis en EscalaClub'
+                    : isFree ? '✓ Gratis · Sin tarjeta de crédito' : '✓ Cancela cuando quieras · Pagos seguros vía PayPal'}
                 </p>
               )}
             </div>
