@@ -150,9 +150,7 @@ export default async function DashboardPage() {
                     <div style={{
                       display: 'flex', alignItems: 'center', gap: 12, padding: '11px 14px',
                       borderRadius: 'var(--r-md)', transition: 'background 0.15s', cursor: 'pointer',
-                    }}
-                      onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255,255,255,0.04)')}
-                      onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}>
+                    }}>
                       <div style={{
                         width: 38, height: 38, borderRadius: 10, flexShrink: 0,
                         background: (m.community?.primary_color ?? '#7B5EF8') + '18',
