@@ -103,7 +103,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
             <div style={{ width: 30, height: 30, borderRadius: 9, background: 'linear-gradient(135deg, #6366F1, #818CF8)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 0 16px rgba(99,102,241,0.4)' }}>
               <Zap size={15} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 15, color: C.text, letterSpacing: '-0.03em' }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 15, color: C.text, letterSpacing: '-0.03em' }}>EscalaClub</span>
           </Link>
         )}
         <button onClick={() => setCollapsed(!collapsed)} style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${C.border}`, borderRadius: 7, cursor: 'pointer', color: C.muted, padding: '4px 5px', display: 'flex', flexShrink: 0 }}>
@@ -119,7 +119,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
               flex: 1, padding: '7px 4px', borderRadius: 8, border: 'none', cursor: 'pointer',
               background: mode === 'member' ? 'rgba(99,102,241,0.2)' : 'transparent',
               color: mode === 'member' ? C.purple2 : C.muted,
-              fontSize: 11, fontFamily: 'Outfit, sans-serif', fontWeight: 700,
+              fontSize: 11, fontFamily: 'Inter, sans-serif', fontWeight: 700,
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4,
             }}>
               <User size={11} /> Miembro
@@ -128,7 +128,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
               flex: 1, padding: '7px 4px', borderRadius: 8, border: 'none', cursor: 'pointer',
               background: mode === 'creator' ? 'rgba(240,165,0,0.18)' : 'transparent',
               color: mode === 'creator' ? C.gold : C.muted,
-              fontSize: 11, fontFamily: 'Outfit, sans-serif', fontWeight: 700,
+              fontSize: 11, fontFamily: 'Inter, sans-serif', fontWeight: 700,
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4,
             }}>
               <Zap size={11} /> Creador
@@ -139,7 +139,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
 
       {/* Section label */}
       {!collapsed && (
-        <div style={{ padding: '10px 16px 4px', fontSize: 10, fontFamily: 'Outfit, sans-serif', fontWeight: 700, color: modeColor, letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.7 }}>
+        <div style={{ padding: '10px 16px 4px', fontSize: 10, fontFamily: 'Inter, sans-serif', fontWeight: 700, color: modeColor, letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.7 }}>
           {mode === 'creator' ? '⚡ Panel Creador' : '👤 Miembro'}
         </div>
       )}
@@ -162,7 +162,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
               }}>
                 <item.icon size={16} strokeWidth={active ? 2.5 : 1.8} />
                 {!collapsed && (
-                  <span style={{ fontSize: 13, fontWeight: active ? 700 : 400, fontFamily: 'Outfit, sans-serif', flex: 1 }}>
+                  <span style={{ fontSize: 13, fontWeight: active ? 700 : 400, fontFamily: 'Inter, sans-serif', flex: 1 }}>
                     {item.label}
                   </span>
                 )}
@@ -193,7 +193,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
                 <item.icon size={16} strokeWidth={active ? 2.5 : 1.8} />
                 {!collapsed && (
                   <>
-                    <span style={{ fontSize: 13, fontWeight: active ? 700 : 400, fontFamily: 'Outfit, sans-serif', flex: 1 }}>{item.label}</span>
+                    <span style={{ fontSize: 13, fontWeight: active ? 700 : 400, fontFamily: 'Inter, sans-serif', flex: 1 }}>{item.label}</span>
                     {item.badge > 0 && (
                       <span style={{ background: C.purple, color: '#fff', borderRadius: 99, padding: '2px 7px', fontSize: 10, fontWeight: 700 }}>{item.badge}</span>
                     )}
@@ -215,7 +215,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
               document.documentElement.setAttribute('data-theme', next)
               localStorage.setItem('ec-theme', next)
             }}
-            style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 8, padding: '7px 10px', borderRadius: 9, background: 'rgba(255,255,255,0.04)', border: `1px solid ${C.border}`, cursor: 'pointer', color: C.muted, fontSize: 11, fontFamily: 'Outfit, sans-serif', fontWeight: 500 }}>
+            style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 8, padding: '7px 10px', borderRadius: 9, background: 'rgba(255,255,255,0.04)', border: `1px solid ${C.border}`, cursor: 'pointer', color: C.muted, fontSize: 11, fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>
             <span style={{ fontSize: 14 }}>🌓</span>
             <span>Cambiar tema</span>
           </button>
@@ -226,7 +226,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
       <div style={{ borderTop: `1px solid ${C.border}`, padding: collapsed ? '10px 0' : '12px 14px', flexShrink: 0, background: 'rgba(0,0,0,0.15)' }}>
         {!collapsed ? (
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{ width: 34, height: 34, borderRadius: '50%', background: 'rgba(99,102,241,0.2)', border: '2px solid rgba(99,102,241,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 13, color: C.purple2, flexShrink: 0, overflow: 'hidden' }}>
+            <div style={{ width: 34, height: 34, borderRadius: '50%', background: 'rgba(99,102,241,0.2)', border: '2px solid rgba(99,102,241,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13, color: C.purple2, flexShrink: 0, overflow: 'hidden' }}>
               {user.avatar_url ? <img src={user.avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : user.display_name?.[0]?.toUpperCase()}
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>

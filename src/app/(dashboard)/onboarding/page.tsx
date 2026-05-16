@@ -61,7 +61,7 @@ export default function OnboardingPage() {
       background: enabled ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'rgba(255,255,255,0.06)',
       color: enabled ? '#fff' : '#6B6A80', border: 'none',
       cursor: enabled ? 'pointer' : 'not-allowed',
-      fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 15,
+      fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15,
       display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
       transition: 'all 0.2s',
     }}>
@@ -78,7 +78,7 @@ export default function OnboardingPage() {
           <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(124,58,237,0.4)' }}>
             <Zap size={16} color="#fff" />
           </div>
-          <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 18, letterSpacing: '-0.04em', color: '#EEEDF5' }}>EscalaClub</span>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, letterSpacing: '-0.04em', color: '#EEEDF5' }}>EscalaClub</span>
         </div>
 
         {/* Progress */}
@@ -97,7 +97,7 @@ export default function OnboardingPage() {
           <div>
             <div style={{ textAlign: 'center', marginBottom: 32 }}>
               <div style={{ fontSize: 40, marginBottom: 16 }}>🚀</div>
-              <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: '#EEEDF5', marginBottom: 8 }}>
+              <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: '#EEEDF5', marginBottom: 8 }}>
                 ¿Cómo vas a usar EscalaClub?
               </h1>
               <p style={{ fontSize: 14, color: '#6B6A80' }}>Esto nos ayuda a personalizar tu experiencia</p>
@@ -115,7 +115,7 @@ export default function OnboardingPage() {
                   cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s',
                 }}>
                   <div style={{ fontSize: 32, marginBottom: 12 }}>{opt.emoji}</div>
-                  <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 16, marginBottom: 8, color: '#EEEDF5' }}>{opt.title}</h3>
+                  <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, marginBottom: 8, color: '#EEEDF5' }}>{opt.title}</h3>
                   <p style={{ fontSize: 12, color: '#6B6A80', lineHeight: 1.5 }}>{opt.desc}</p>
                   {role === opt.id && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 10, color: opt.color, fontSize: 12, fontWeight: 600 }}>
@@ -135,7 +135,7 @@ export default function OnboardingPage() {
           <div>
             <div style={{ textAlign: 'center', marginBottom: 32 }}>
               <div style={{ fontSize: 40, marginBottom: 16 }}>⭐</div>
-              <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: '#EEEDF5', marginBottom: 8 }}>
+              <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: '#EEEDF5', marginBottom: 8 }}>
                 {role === 'creator' ? '¿Cuál es tu objetivo?' : '¿Qué quieres lograr?'}
               </h1>
               <p style={{ fontSize: 14, color: '#6B6A80' }}>Selecciona todos los que apliquen</p>
@@ -170,7 +170,7 @@ export default function OnboardingPage() {
           <div>
             <div style={{ textAlign: 'center', marginBottom: 32 }}>
               <div style={{ fontSize: 40, marginBottom: 16 }}>🌍</div>
-              <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: '#EEEDF5', marginBottom: 8 }}>
+              <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: '#EEEDF5', marginBottom: 8 }}>
                 ¿Qué temas te interesan?
               </h1>
               <p style={{ fontSize: 14, color: '#6B6A80' }}>Selecciona al menos 2</p>
@@ -233,7 +233,7 @@ export default function OnboardingPage() {
                   background: totalTopics >= 2 ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'rgba(255,255,255,0.06)',
                   color: totalTopics >= 2 ? '#fff' : '#6B6A80', border: 'none',
                   cursor: totalTopics >= 2 ? 'pointer' : 'not-allowed',
-                  fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 15,
+                  fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15,
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                 }}>
                 {loading ? 'Entrando...' : role === 'creator' ? '🚀 Crear mi comunidad' : '🎉 Entrar a EscalaClub'}

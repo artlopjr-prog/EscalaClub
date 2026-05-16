@@ -54,7 +54,7 @@ export default function CommunityLayout({ community, ownerProfile, isOwner, isMe
           {/* Name + chevron */}
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 16, color: C.text, letterSpacing: '-0.02em' }}>{community.name}</span>
+              <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 16, color: C.text, letterSpacing: '-0.02em' }}>{community.name}</span>
               <span style={{ fontSize: 10, padding: '2px 7px', borderRadius: 99, background: 'rgba(0,214,143,0.12)', color: '#00D68F', fontWeight: 700 }}>● Activa</span>
             </div>
             {community.tagline && <p style={{ fontSize: 11, color: C.muted, margin: 0 }}>{community.tagline}</p>}
@@ -62,7 +62,7 @@ export default function CommunityLayout({ community, ownerProfile, isOwner, isMe
           {/* Right actions */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             {isOwner && (
-              <Link href="/creator" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 14px', borderRadius: 9, background: 'rgba(99,102,241,0.12)', border: `1px solid rgba(99,102,241,0.25)`, color: C.purple2, textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Outfit, sans-serif' }}>
+              <Link href="/creator" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 14px', borderRadius: 9, background: 'rgba(99,102,241,0.12)', border: `1px solid rgba(99,102,241,0.25)`, color: C.purple2, textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Inter, sans-serif' }}>
                 <Settings size={13} /> Panel Creador
               </Link>
             )}
@@ -81,7 +81,7 @@ export default function CommunityLayout({ community, ownerProfile, isOwner, isMe
                   color: active ? C.text : C.muted,
                   borderBottom: `2px solid ${active ? accent : 'transparent'}`,
                   transition: 'all 0.15s', cursor: 'pointer',
-                  fontFamily: active ? 'Outfit, sans-serif' : 'Outfit, sans-serif',
+                  fontFamily: active ? 'Inter, sans-serif' : 'Inter, sans-serif',
                 }}>
                   <tab.icon size={14} />
                   {tab.label}

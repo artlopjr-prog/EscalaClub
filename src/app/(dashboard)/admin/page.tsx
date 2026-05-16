@@ -39,10 +39,10 @@ export default async function AdminPage() {
           <ShieldCheck size={20} color={C.purple2} />
         </div>
         <div>
-          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>Admin Panel</h1>
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>Admin Panel</h1>
           <p style={{ fontSize: 13, color: C.muted }}>Vista general de EscalaClub</p>
         </div>
-        <div style={{ marginLeft: 'auto', padding: '4px 12px', borderRadius: 99, background: 'rgba(124,58,237,0.15)', color: C.purple2, fontSize: 11, fontFamily: 'Outfit, sans-serif', fontWeight: 700 }}>
+        <div style={{ marginLeft: 'auto', padding: '4px 12px', borderRadius: 99, background: 'rgba(124,58,237,0.15)', color: C.purple2, fontSize: 11, fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
           SUPER ADMIN
         </div>
       </div>
@@ -59,7 +59,7 @@ export default async function AdminPage() {
             <div style={{ width: 38, height: 38, borderRadius: 10, background: s.bg, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 14 }}>
               <s.icon size={18} color={s.color} />
             </div>
-            <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.04em', color: s.color, lineHeight: 1 }}>{s.value}</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.04em', color: s.color, lineHeight: 1 }}>{s.value}</div>
             <div style={{ fontSize: 12, color: C.muted, marginTop: 6 }}>{s.label}</div>
           </div>
         ))}
@@ -69,13 +69,13 @@ export default async function AdminPage() {
         {/* Recent users */}
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 22px', borderBottom: `1px solid ${C.border}` }}>
-            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>Usuarios recientes</h2>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>Usuarios recientes</h2>
             <Link href="/admin/instructores" style={{ fontSize: 12, color: C.muted, textDecoration: 'none' }}>Ver todos →</Link>
           </div>
           <div>
             {recentUsers?.map((u, i) => (
               <div key={u.id} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 22px', borderBottom: i < (recentUsers.length - 1) ? `1px solid ${C.border}` : 'none' }}>
-                <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(124,58,237,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 12, color: C.purple2, flexShrink: 0 }}>
+                <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(124,58,237,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 12, color: C.purple2, flexShrink: 0 }}>
                   {u.display_name?.[0]?.toUpperCase() ?? '?'}
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
@@ -93,7 +93,7 @@ export default async function AdminPage() {
         {/* Recent communities */}
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
           <div style={{ padding: '18px 22px', borderBottom: `1px solid ${C.border}` }}>
-            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>Comunidades recientes</h2>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>Comunidades recientes</h2>
           </div>
           <div>
             {recentCommunities?.map((c, i) => (
@@ -116,13 +116,13 @@ export default async function AdminPage() {
       {subscriptions && subscriptions.length > 0 && (
         <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
           <div style={{ padding: '18px 22px', borderBottom: `1px solid ${C.border}` }}>
-            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>Suscripciones de creadores</h2>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>Suscripciones de creadores</h2>
           </div>
           <div>
             {subscriptions.map((s, i) => (
               <div key={s.id} style={{ display: 'grid', gridTemplateColumns: '1fr 100px 100px 100px', gap: 16, alignItems: 'center', padding: '12px 22px', borderBottom: i < subscriptions.length - 1 ? `1px solid ${C.border}` : 'none' }}>
                 <div style={{ fontSize: 13, fontWeight: 600, color: C.text, textTransform: 'capitalize' }}>{s.plan}</div>
-                <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14, color: C.green }}>${s.amount}/mes</div>
+                <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, color: C.green }}>${s.amount}/mes</div>
                 <div style={{ padding: '2px 9px', borderRadius: 99, background: s.status === 'active' ? 'rgba(0,214,143,0.12)' : 'rgba(255,77,106,0.12)', color: s.status === 'active' ? C.green : C.red, fontSize: 10, fontWeight: 700, width: 'fit-content' }}>{s.status}</div>
                 <div style={{ fontSize: 11, color: C.muted }}>{new Date(s.created_at).toLocaleDateString('es')}</div>
               </div>

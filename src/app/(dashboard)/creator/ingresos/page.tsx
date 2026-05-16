@@ -42,7 +42,7 @@ export default function CreatorIngresosPage() {
   return (
     <div style={{ padding: 32, maxWidth: 900, margin: '0 auto' }}>
       <div style={{ marginBottom: 28 }}>
-        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.04em', color: C.text, marginBottom: 6 }}>Ingresos</h1>
+        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.04em', color: C.text, marginBottom: 6 }}>Ingresos</h1>
         <p style={{ fontSize: 13, color: C.muted }}>Resumen de tus ganancias en EscalaClub</p>
       </div>
 
@@ -55,7 +55,7 @@ export default function CreatorIngresosPage() {
               </div>
               <div style={{ fontSize: 11, color: C.muted }}>{s.sub}</div>
             </div>
-            <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: s.color, marginBottom: 4 }}>{s.value}</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: s.color, marginBottom: 4 }}>{s.value}</div>
             <div style={{ fontSize: 12, fontWeight: 600, color: C.text }}>{s.label}</div>
           </div>
         ))}
@@ -64,14 +64,14 @@ export default function CreatorIngresosPage() {
       {/* Net income */}
       <div style={{ background: 'rgba(0,214,143,0.06)', border: '1px solid rgba(0,214,143,0.2)', borderRadius: 16, padding: '20px 24px', marginBottom: 24 }}>
         <div style={{ fontSize: 12, color: C.muted, marginBottom: 6 }}>Ingreso neto estimado</div>
-        <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-0.04em', color: netMrr >= 0 ? C.green : C.red }}>${netMrr.toFixed(0)}/mes</div>
+        <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-0.04em', color: netMrr >= 0 ? C.green : C.red }}>${netMrr.toFixed(0)}/mes</div>
         <div style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>MRR comunidad + ventas de cursos – plan EscalaClub</div>
       </div>
 
       {/* Sales history */}
       <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
         <div style={{ padding: '18px 22px', borderBottom: `1px solid ${C.border}` }}>
-          <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 15, color: C.text }}>Historial de ventas</h2>
+          <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: C.text }}>Historial de ventas</h2>
         </div>
         <div style={{ padding: '48px 24px', textAlign: 'center' }}>
           <div style={{ fontSize: 40, marginBottom: 12 }}>💰</div>

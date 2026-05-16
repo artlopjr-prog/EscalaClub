@@ -19,7 +19,7 @@ html {
 body {
   background: #0A0A12 !important;
   color: #ECEDF5 !important;
-  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
@@ -93,7 +93,7 @@ body {
 
 /* ── TYPOGRAPHY — jerarquía brutal ── */
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Outfit', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   letter-spacing: -0.025em;
   color: var(--text);
   margin: 0;
@@ -104,7 +104,7 @@ h1, h2, h3, h4, h5, h6 {
 .label {
   font-size: 10px;
   font-weight: 700;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--muted);
@@ -123,7 +123,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: var(--r-md);
   background: var(--grad-purple);
   color: #fff !important;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 13px;
   border: none;
@@ -151,7 +151,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: var(--r-md);
   background: rgba(255,255,255,0.04);
   color: var(--text2) !important;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 13px;
   border: 1px solid var(--border2);
@@ -174,7 +174,7 @@ a { text-decoration: none; color: inherit; }
   border-radius: var(--r-md);
   padding: 11px 15px;
   color: var(--text) !important;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   outline: none;
   transition: border-color 0.15s, box-shadow 0.15s;
@@ -234,7 +234,7 @@ textarea.input { resize: vertical; min-height: 100px; }
   gap: 4px;
 }
 .stat-hero-value {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 900;
   font-size: 32px;
   letter-spacing: -0.025em;
@@ -260,7 +260,7 @@ textarea.input { resize: vertical; min-height: 100px; }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 800;
   overflow: hidden;
   flex-shrink: 0;
@@ -282,7 +282,7 @@ textarea.input { resize: vertical; min-height: 100px; }
   border-radius: 99px;
   font-size: 11px;
   font-weight: 600;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   white-space: nowrap;
 }
 .badge-purple { background: rgba(123,94,248,0.12);  color: var(--purple2); }
@@ -381,7 +381,7 @@ textarea.input { resize: vertical; min-height: 100px; }
 table { border-collapse: collapse; width: 100%; }
 th {
   text-align: left;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 700;
   color: var(--muted);
@@ -520,7 +520,7 @@ input[type="radio"] { accent-color: var(--purple); }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 800;
   font-size: 18px;
   cursor: pointer;

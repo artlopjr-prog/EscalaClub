@@ -87,7 +87,7 @@ export default function AnunciosPage() {
           <ArrowLeft size={13} /> Volver
         </Link>
         <div>
-          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>📢 Anuncios</h1>
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>📢 Anuncios</h1>
           <p style={{ fontSize: 12, color: C.muted }}>Los anuncios se destacan en el foro y notifican a todos tus miembros</p>
         </div>
       </div>
@@ -96,28 +96,28 @@ export default function AnunciosPage() {
       <div style={{ background: C.bg1, border: `1px solid rgba(240,165,0,0.2)`, borderRadius: 20, padding: 22, marginBottom: 24 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
           <Megaphone size={16} color={C.gold} />
-          <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.gold }}>Nuevo anuncio</span>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.gold }}>Nuevo anuncio</span>
         </div>
-        <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Título del anuncio (opcional)" style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '11px 14px', color: C.text, fontSize: 14, outline: 'none', marginBottom: 10, fontFamily: 'Outfit, sans-serif', fontWeight: 700 }} />
-        <textarea value={content} onChange={e => setContent(e.target.value)} placeholder="Escribe tu anuncio aquí. Todos los miembros recibirán una notificación..." rows={4} style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 14, outline: 'none', resize: 'vertical', fontFamily: 'Outfit, sans-serif', lineHeight: 1.6 }} />
+        <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Título del anuncio (opcional)" style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '11px 14px', color: C.text, fontSize: 14, outline: 'none', marginBottom: 10, fontFamily: 'Inter, sans-serif', fontWeight: 700 }} />
+        <textarea value={content} onChange={e => setContent(e.target.value)} placeholder="Escribe tu anuncio aquí. Todos los miembros recibirán una notificación..." rows={4} style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 14, outline: 'none', resize: 'vertical', fontFamily: 'Inter, sans-serif', lineHeight: 1.6 }} />
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 14 }}>
           <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: 13, color: C.muted2 }}>
             <input type="checkbox" checked={pinned} onChange={e => setPinned(e.target.checked)} style={{ width: 16, height: 16, accentColor: C.gold, cursor: 'pointer' }} />
             <Pin size={13} color={pinned ? C.gold : C.muted} /> Anclar al foro
           </label>
-          <button onClick={publish} disabled={posting || !content.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 22px', borderRadius: 12, background: content.trim() ? `linear-gradient(135deg, ${C.gold}, #E09400)` : 'rgba(255,255,255,0.06)', color: content.trim() ? '#000' : C.muted, border: 'none', cursor: content.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 13 }}>
+          <button onClick={publish} disabled={posting || !content.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 22px', borderRadius: 12, background: content.trim() ? `linear-gradient(135deg, ${C.gold}, #E09400)` : 'rgba(255,255,255,0.06)', color: content.trim() ? '#000' : C.muted, border: 'none', cursor: content.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13 }}>
             <Send size={14} /> {posting ? 'Publicando...' : 'Publicar y notificar'}
           </button>
         </div>
       </div>
 
       {/* Past announcements */}
-      <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.muted, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 14 }}>Anuncios anteriores</h2>
+      <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.muted, letterSpacing: '0.05em', textTransform: 'uppercase', marginBottom: 14 }}>Anuncios anteriores</h2>
       {announcements.length > 0 ? announcements.map((a, i) => (
         <div key={a.id} style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 16, padding: 18, marginBottom: 10 }}>
           <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12 }}>
             <div style={{ flex: 1 }}>
-              {a.title && <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14, color: C.text, marginBottom: 4 }}>{a.title}</div>}
+              {a.title && <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, color: C.text, marginBottom: 4 }}>{a.title}</div>}
               <p style={{ fontSize: 13, color: C.muted2, margin: 0, lineHeight: 1.6 }}>{a.content}</p>
               <div style={{ display: 'flex', gap: 10, marginTop: 10, fontSize: 11, color: C.muted }}>
                 <span>{new Date(a.created_at).toLocaleDateString('es', { day: 'numeric', month: 'long', year: 'numeric' })}</span>

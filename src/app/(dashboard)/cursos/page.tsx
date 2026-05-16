@@ -43,7 +43,7 @@ export default async function CursosPage({ searchParams }: { searchParams: Promi
   return (
     <div style={{ padding: '32px', maxWidth: 1200, margin: '0 auto' }}>
       <div style={{ marginBottom: 28 }}>
-        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-0.04em', marginBottom: 4 }}>Cursos 📚</h1>
+        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-0.04em', marginBottom: 4 }}>Cursos 📚</h1>
         <p style={{ fontSize: 14, color: 'var(--muted)' }}>Contenido de tus comunidades</p>
       </div>
 
@@ -85,12 +85,12 @@ export default async function CursosPage({ searchParams }: { searchParams: Promi
                         <span style={{ fontSize: 10, color: 'var(--muted)', fontWeight: 500 }}>{comm.name}</span>
                       </div>
                     )}
-                    <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, letterSpacing: '-0.03em', marginBottom: 12, lineHeight: 1.3 }}>{course.title}</h3>
+                    <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, letterSpacing: '-0.03em', marginBottom: 12, lineHeight: 1.3 }}>{course.title}</h3>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                       <span style={{ fontSize: 11, color: 'var(--muted)' }}>
                         {new Date(course.created_at).toLocaleDateString('es', { day: 'numeric', month: 'short' })}
                       </span>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontFamily: 'Outfit, sans-serif', fontWeight: 700, color: 'var(--purple2)' }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12, fontFamily: 'Inter, sans-serif', fontWeight: 700, color: 'var(--purple2)' }}>
                         Ver curso <ChevronRight size={13} />
                       </div>
                     </div>
@@ -103,7 +103,7 @@ export default async function CursosPage({ searchParams }: { searchParams: Promi
       ) : (
         <div style={{ textAlign: 'center', padding: '80px 24px', background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20 }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>📚</div>
-          <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 20, marginBottom: 8 }}>Sin cursos disponibles</h3>
+          <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, marginBottom: 8 }}>Sin cursos disponibles</h3>
           <p style={{ fontSize: 14, color: 'var(--muted)', marginBottom: 20 }}>
             {communityIds.length === 0
               ? 'Únete a una comunidad para acceder a sus cursos'

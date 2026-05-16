@@ -49,7 +49,7 @@ export default function LeaveButton({ communityId, communityName, membershipId, 
 
   return (
     <>
-      <button onClick={() => setShowModal(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '10px 16px', borderRadius: 12, background: 'rgba(255,77,106,0.08)', border: '1px solid rgba(255,77,106,0.2)', color: C.red, cursor: 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 13 }}>
+      <button onClick={() => setShowModal(true)} style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '10px 16px', borderRadius: 12, background: 'rgba(255,77,106,0.08)', border: '1px solid rgba(255,77,106,0.2)', color: C.red, cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
         <LogOut size={14} /> Salir de la comunidad
       </button>
 
@@ -62,7 +62,7 @@ export default function LeaveButton({ communityId, communityName, membershipId, 
             <div style={{ width: 52, height: 52, borderRadius: 14, background: 'rgba(255,77,106,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20 }}>
               <LogOut size={24} color={C.red} />
             </div>
-            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 20, color: C.text, marginBottom: 10 }}>¿Salir de {communityName}?</h2>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 20, color: C.text, marginBottom: 10 }}>¿Salir de {communityName}?</h2>
             {isPaid ? (
               <p style={{ fontSize: 14, color: C.muted2, lineHeight: 1.6, marginBottom: 24 }}>
                 Mantendrás acceso hasta el final de tu período pagado. No se realizarán cobros futuros.
@@ -74,8 +74,8 @@ export default function LeaveButton({ communityId, communityName, membershipId, 
               </p>
             )}
             <div style={{ display: 'flex', gap: 10 }}>
-              <button onClick={() => setShowModal(false)} style={{ flex: 1, padding: '12px', borderRadius: 12, background: 'rgba(255,255,255,0.06)', border: `1px solid ${C.border}`, color: C.muted, cursor: 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14 }}>Cancelar</button>
-              <button onClick={handleLeave} disabled={loading} style={{ flex: 1, padding: '12px', borderRadius: 12, background: 'linear-gradient(135deg, #FF4D6A, #cc3355)', border: 'none', color: '#fff', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 14, opacity: loading ? 0.7 : 1 }}>
+              <button onClick={() => setShowModal(false)} style={{ flex: 1, padding: '12px', borderRadius: 12, background: 'rgba(255,255,255,0.06)', border: `1px solid ${C.border}`, color: C.muted, cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14 }}>Cancelar</button>
+              <button onClick={handleLeave} disabled={loading} style={{ flex: 1, padding: '12px', borderRadius: 12, background: 'linear-gradient(135deg, #FF4D6A, #cc3355)', border: 'none', color: '#fff', cursor: loading ? 'not-allowed' : 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, opacity: loading ? 0.7 : 1 }}>
                 {loading ? 'Saliendo...' : 'Confirmar salida'}
               </button>
             </div>

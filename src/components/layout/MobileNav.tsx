@@ -80,7 +80,7 @@ export function MobileNav() {
           return (
             <Link key={item.href} href={item.href} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, padding: '6px 14px', borderRadius: 10, minWidth: 52 }}>
               <item.icon size={21} color={active ? C.purple2 : C.muted} strokeWidth={active ? 2.5 : 1.8} />
-              <span style={{ fontSize: 10, fontWeight: active ? 700 : 400, color: active ? C.purple2 : C.muted, fontFamily: 'Outfit, sans-serif' }}>
+              <span style={{ fontSize: 10, fontWeight: active ? 700 : 400, color: active ? C.purple2 : C.muted, fontFamily: 'Inter, sans-serif' }}>
                 {item.label}
               </span>
             </Link>
@@ -91,7 +91,7 @@ export function MobileNav() {
           style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3, padding: '6px 14px', borderRadius: 10, background: 'none', border: 'none', cursor: 'pointer', minWidth: 52 }}
         >
           <MoreHorizontal size={21} color={C.muted} strokeWidth={1.8} />
-          <span style={{ fontSize: 10, color: C.muted, fontFamily: 'Outfit, sans-serif' }}>Más</span>
+          <span style={{ fontSize: 10, color: C.muted, fontFamily: 'Inter, sans-serif' }}>Más</span>
         </button>
       </nav>
 
@@ -116,7 +116,7 @@ export function MobileNav() {
 
             {/* Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 20px 16px' }}>
-              <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 17, color: C.text }}>Menú</span>
+              <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 17, color: C.text }}>Menú</span>
               <button onClick={() => setMenuOpen(false)} style={{ background: 'rgba(255,255,255,0.07)', border: `1px solid ${C.border}`, borderRadius: 10, padding: '6px 7px', cursor: 'pointer', display: 'flex' }}>
                 <X size={16} color={C.muted} />
               </button>
@@ -124,7 +124,7 @@ export function MobileNav() {
 
             {/* Member section */}
             <div style={{ padding: '0 16px 16px' }}>
-              <div style={{ fontSize: 10, fontFamily: 'Outfit, sans-serif', fontWeight: 700, color: C.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10, paddingLeft: 4 }}>
+              <div style={{ fontSize: 10, fontFamily: 'Inter, sans-serif', fontWeight: 700, color: C.muted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10, paddingLeft: 4 }}>
                 👤 Miembro
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
@@ -145,7 +145,7 @@ export function MobileNav() {
             {/* Creator section */}
             {isCreator && (
               <div style={{ padding: '0 16px 16px', borderTop: `1px solid ${C.border}`, paddingTop: 16 }}>
-                <div style={{ fontSize: 10, fontFamily: 'Outfit, sans-serif', fontWeight: 700, color: '#F0A500', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10, paddingLeft: 4 }}>
+                <div style={{ fontSize: 10, fontFamily: 'Inter, sans-serif', fontWeight: 700, color: '#F0A500', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10, paddingLeft: 4 }}>
                   ⚡ Creador
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>

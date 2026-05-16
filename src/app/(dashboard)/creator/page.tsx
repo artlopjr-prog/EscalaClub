@@ -20,9 +20,9 @@ export default async function CreatorPage() {
     return (
       <div style={{ padding: 32, maxWidth: 600, margin: '80px auto', textAlign: 'center' }}>
         <div style={{ fontSize: 64, marginBottom: 20 }}>🚀</div>
-        <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, color: C.text, marginBottom: 12 }}>Crea tu comunidad</h1>
+        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, color: C.text, marginBottom: 12 }}>Crea tu comunidad</h1>
         <p style={{ fontSize: 15, color: C.muted, marginBottom: 28, lineHeight: 1.6 }}>Empieza a construir tu audiencia en EscalaClub.</p>
-        <Link href="/creator/comunidad" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 28px', borderRadius: 14, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Outfit, sans-serif', fontWeight: 700, fontSize: 15 }}>
+        <Link href="/creator/comunidad" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 28px', borderRadius: 14, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15 }}>
           Crear mi comunidad →
         </Link>
       </div>
@@ -63,7 +63,7 @@ export default async function CreatorPage() {
             {community.logo_url ? <img src={community.logo_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '🌐'}
           </div>
           <div>
-            <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.04em', color: C.text, marginBottom: 3 }}>{community.name}</h1>
+            <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.04em', color: C.text, marginBottom: 3 }}>{community.name}</h1>
             <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
               <span style={{ padding: '2px 10px', borderRadius: 99, background: 'rgba(0,214,143,0.12)', color: C.green, fontSize: 11, fontWeight: 700 }}>● Activa</span>
               <span style={{ fontSize: 12, color: C.muted }}>escalaclub.com/comunidades/{community.slug}</span>
@@ -77,7 +77,7 @@ export default async function CreatorPage() {
           <Link href="/creator/comunidad" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, border: `1px solid ${C.border}`, color: C.muted, textDecoration: 'none', fontSize: 13 }}>
             <Settings size={14} /> Configurar
           </Link>
-          <Link href={`/comunidades/${community.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, background: `linear-gradient(135deg, ${accent}, ${accent}cc)`, color: '#fff', textDecoration: 'none', fontSize: 13, fontFamily: 'Outfit, sans-serif', fontWeight: 700 }}>
+          <Link href={`/comunidades/${community.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, background: `linear-gradient(135deg, ${accent}, ${accent}cc)`, color: '#fff', textDecoration: 'none', fontSize: 13, fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
             Ver comunidad <ArrowUpRight size={14} />
           </Link>
         </div>
@@ -93,7 +93,7 @@ export default async function CreatorPage() {
               </div>
               <span style={{ fontSize: 11, color: C.muted }}>{s.delta}</span>
             </div>
-            <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-0.04em', color: s.color, lineHeight: 1 }}>{s.value.toLocaleString()}</div>
+            <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-0.04em', color: s.color, lineHeight: 1 }}>{s.value.toLocaleString()}</div>
             <div style={{ fontSize: 12, color: C.muted, marginTop: 6 }}>{s.label}</div>
           </div>
         ))}
@@ -104,7 +104,7 @@ export default async function CreatorPage() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
           {/* Quick actions */}
           <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 20 }}>
-            <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.text, marginBottom: 14 }}>Acciones rápidas</h2>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.text, marginBottom: 14 }}>Acciones rápidas</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
               {[
                 { label: 'Nuevo anuncio', icon: '📢', href: '/creator/anuncios', color: C.gold },
@@ -116,7 +116,7 @@ export default async function CreatorPage() {
               ].map((a, i) => (
                 <Link key={i} href={a.href} style={{ textDecoration: 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, padding: '16px 12px', borderRadius: 14, background: C.bg2, border: `1px solid ${C.border}`, transition: 'all 0.15s' }}>
                   <span style={{ fontSize: 24 }}>{a.icon}</span>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: a.color, textAlign: 'center', fontFamily: 'Outfit, sans-serif' }}>{a.label}</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: a.color, textAlign: 'center', fontFamily: 'Inter, sans-serif' }}>{a.label}</span>
                 </Link>
               ))}
             </div>
@@ -125,7 +125,7 @@ export default async function CreatorPage() {
           {/* Recent posts */}
           <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px', borderBottom: `1px solid ${C.border}` }}>
-              <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>Actividad reciente</h2>
+              <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>Actividad reciente</h2>
               <Link href={`/comunidades/${community.slug}/foro`} style={{ fontSize: 12, color: C.muted, textDecoration: 'none' }}>Ver todo →</Link>
             </div>
             {recentPosts && recentPosts.length > 0 ? recentPosts.map((post, i) => (
@@ -145,12 +145,12 @@ export default async function CreatorPage() {
           {/* Recent members */}
           <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 18px', borderBottom: `1px solid ${C.border}` }}>
-              <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 13, color: C.text }}>Miembros recientes</h3>
+              <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13, color: C.text }}>Miembros recientes</h3>
               <Link href="/creator/miembros" style={{ fontSize: 11, color: C.muted, textDecoration: 'none' }}>Ver todos →</Link>
             </div>
             {recentMembers && recentMembers.length > 0 ? recentMembers.map((m: any, i) => (
               <div key={m.id} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 18px', borderBottom: i < recentMembers.length - 1 ? `1px solid ${C.border}` : 'none' }}>
-                <div style={{ width: 32, height: 32, borderRadius: '50%', background: accent + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 12, color: accent, flexShrink: 0, overflow: 'hidden' }}>
+                <div style={{ width: 32, height: 32, borderRadius: '50%', background: accent + '22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 12, color: accent, flexShrink: 0, overflow: 'hidden' }}>
                   {(m.profile as any)?.avatar_url ? <img src={(m.profile as any).avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : ((m.profile as any)?.display_name?.[0]?.toUpperCase() ?? '?')}
                 </div>
                 <div style={{ flex: 1, minWidth: 0 }}>
@@ -165,7 +165,7 @@ export default async function CreatorPage() {
           {upcomingEvents && upcomingEvents.length > 0 && (
             <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, overflow: 'hidden' }}>
               <div style={{ padding: '14px 18px', borderBottom: `1px solid ${C.border}` }}>
-                <h3 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 13, color: C.text }}>Próximos eventos</h3>
+                <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13, color: C.text }}>Próximos eventos</h3>
               </div>
               {upcomingEvents.map((ev, i) => (
                 <div key={ev.id} style={{ padding: '12px 18px', borderBottom: i < upcomingEvents.length - 1 ? `1px solid ${C.border}` : 'none' }}>

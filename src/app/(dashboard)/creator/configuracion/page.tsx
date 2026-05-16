@@ -70,7 +70,7 @@ export default function ConfiguracionPage() {
           <ArrowLeft size={13} /> Volver
         </Link>
         <div>
-          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>⚙️ Permisos</h1>
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 24, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>⚙️ Permisos</h1>
           <p style={{ fontSize: 12, color: C.muted }}>Controla qué pueden hacer tus miembros</p>
         </div>
       </div>
@@ -78,7 +78,7 @@ export default function ConfiguracionPage() {
       {/* Foro permisos */}
       <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: '4px 20px 0', marginBottom: 14 }}>
         <div style={{ padding: '14px 0 10px', borderBottom: `1px solid ${C.border}` }}>
-          <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>💬 Foro</div>
+          <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>💬 Foro</div>
         </div>
         <Toggle value={config.members_can_post} onChange={(v: boolean) => setConfig(c => ({ ...c, members_can_post: v }))} label="Miembros pueden crear posts" description="Si está desactivado, solo tú publicas. Miembros solo comentan." icon={MessageSquare} color="#9F67FF" />
         <Toggle value={config.members_can_upload_images} onChange={(v: boolean) => setConfig(c => ({ ...c, members_can_upload_images: v }))} label="Miembros pueden subir imágenes" description="Permite imágenes en posts del foro." icon={ImageIcon} color="#3B82F6" />
@@ -88,7 +88,7 @@ export default function ConfiguracionPage() {
 
       {/* Chat */}
       <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: 20, marginBottom: 14 }}>
-        <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.text, marginBottom: 14 }}>💭 Chat</div>
+        <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.text, marginBottom: 14 }}>💭 Chat</div>
         {[
           { value: 'open', label: 'Chat abierto', desc: 'Todos los miembros pueden escribir', icon: '💬' },
           { value: 'announcement', label: 'Solo el creador escribe', desc: 'Los miembros solo leen', icon: '📢' },
@@ -115,13 +115,13 @@ export default function ConfiguracionPage() {
       {/* Q&A */}
       <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 20, padding: '4px 20px 0', marginBottom: 24 }}>
         <div style={{ padding: '14px 0 10px', borderBottom: `1px solid ${C.border}` }}>
-          <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>❓ Q&A</div>
+          <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: C.text }}>❓ Q&A</div>
         </div>
         <Toggle value={config.qa_enabled} onChange={(v: boolean) => setConfig(c => ({ ...c, qa_enabled: v }))} label="Habilitar preguntas y respuestas" description="Los miembros pueden enviar preguntas que tú respondes públicamente." icon={HelpCircle} color={C.gold} />
         <div style={{ padding: '4px 0' }} />
       </div>
 
-      <button onClick={save} disabled={saving} style={{ width: '100%', padding: '14px', borderRadius: 14, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: saving ? 'not-allowed' : 'pointer', fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 15, opacity: saving ? 0.7 : 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+      <button onClick={save} disabled={saving} style={{ width: '100%', padding: '14px', borderRadius: 14, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: saving ? 'not-allowed' : 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, opacity: saving ? 0.7 : 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
         <Save size={16} /> {saving ? 'Guardando...' : 'Guardar configuración'}
       </button>
     </div>

@@ -40,11 +40,11 @@ export default function LoginPage() {
           <div style={{ width: 36, height: 36, borderRadius: 10, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 20px ${C.purple}44` }}>
             <Zap size={18} color="#fff" />
           </div>
-          <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 20, color: C.text, letterSpacing: '-0.03em' }}>EscalaClub</span>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, color: C.text, letterSpacing: '-0.03em' }}>EscalaClub</span>
         </div>
         <div>
           <div style={{ fontSize: 44, marginBottom: 24 }}>👋</div>
-          <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 40, letterSpacing: '-0.04em', lineHeight: 1.1, marginBottom: 16, color: C.text }}>
+          <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 40, letterSpacing: '-0.04em', lineHeight: 1.1, marginBottom: 16, color: C.text }}>
             Welcome back.<br />
             <span style={{ background: `linear-gradient(135deg, ${C.purple2}, ${C.purple})`, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Your community<br />is waiting for you.</span>
           </h2>
@@ -55,7 +55,7 @@ export default function LoginPage() {
         <div style={{ display: 'flex', gap: 32 }}>
           {[['$2.4M','Generados'],['>200','Comunidades'],['>10K','Miembros']].map(([v,l]) => (
             <div key={l}>
-              <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 22, color: C.text }}>{v}</div>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 22, color: C.text }}>{v}</div>
               <div style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>{l}</div>
             </div>
           ))}
@@ -70,17 +70,17 @@ export default function LoginPage() {
             <div style={{ width: 32, height: 32, borderRadius: 9, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Zap size={15} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>EscalaClub</span>
           </div>
 
-          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', marginBottom: 6, color: C.text }}>Iniciar sesión</h1>
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', marginBottom: 6, color: C.text }}>Iniciar sesión</h1>
           <p style={{ fontSize: 14, color: C.muted, marginBottom: 28 }}>
             ¿Sin cuenta? <Link href="/registro" style={{ color: C.purple2, textDecoration: 'none', fontWeight: 600 }}>Regístrate gratis →</Link>
           </p>
 
           <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <div>
-              <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: C.muted2, marginBottom: 7, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Email</label>
+              <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: C.muted2, marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Email</label>
               <div style={{ position: 'relative' }}>
                 <Mail size={15} color={C.muted} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} />
                 <input type="email" value={email} onChange={e => setEmail(e.target.value)}
@@ -90,7 +90,7 @@ export default function LoginPage() {
 
             <div>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 7 }}>
-                <label style={{ fontSize: 11, fontWeight: 700, color: C.muted2, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Contraseña</label>
+                <label style={{ fontSize: 11, fontWeight: 700, color: C.muted2, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Contraseña</label>
                 <Link href="/recuperar" style={{ fontSize: 12, color: C.purple2, textDecoration: 'none' }}>¿Olvidaste?</Link>
               </div>
               <div style={{ position: 'relative' }}>

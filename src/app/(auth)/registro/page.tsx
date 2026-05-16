@@ -74,11 +74,11 @@ export default function RegistroPage() {
           <div style={{ width: 36, height: 36, borderRadius: 10, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(124,58,237,0.4)' }}>
             <Zap size={18} color="#fff" />
           </div>
-          <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 20, letterSpacing: '-0.04em', color: C.text }}>EscalaClub</span>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, letterSpacing: '-0.04em', color: C.text }}>EscalaClub</span>
         </div>
         <div>
           <div style={{ fontSize: 48, marginBottom: 24 }}>🚀</div>
-          <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 40, letterSpacing: '-0.04em', lineHeight: 1.1, marginBottom: 16, color: C.text }}>
+          <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 40, letterSpacing: '-0.04em', lineHeight: 1.1, marginBottom: 16, color: C.text }}>
             Empieza hoy.<br />
             <span style={{ background: 'linear-gradient(135deg, #9F67FF, #7C3AED)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Sin límites.</span>
           </h2>
@@ -89,7 +89,7 @@ export default function RegistroPage() {
         <div style={{ display: 'flex', gap: 32 }}>
           {[['$0','Costo inicial'],['100%','Tus ingresos'],['LATAM','Tu mercado']].map(([v,l]) => (
             <div key={l}>
-              <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 22, letterSpacing: '-0.04em', color: C.text }}>{v}</div>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 22, letterSpacing: '-0.04em', color: C.text }}>{v}</div>
               <div style={{ fontSize: 12, color: C.muted, marginTop: 2 }}>{l}</div>
             </div>
           ))}
@@ -104,17 +104,17 @@ export default function RegistroPage() {
             <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Zap size={15} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>EscalaClub</span>
           </div>
 
-          <h1 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.04em', marginBottom: 6, color: C.text }}>Crear cuenta gratis</h1>
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.04em', marginBottom: 6, color: C.text }}>Crear cuenta gratis</h1>
           <p style={{ fontSize: 14, color: C.muted, marginBottom: 28 }}>
             ¿Ya tienes cuenta? <Link href="/login" style={{ color: C.purple2, textDecoration: 'none', fontWeight: 600 }}>Inicia sesión →</Link>
           </p>
 
           {/* Role selector */}
           <div style={{ marginBottom: 24 }}>
-            <p style={{ fontSize: 12, fontWeight: 700, color: C.muted2, letterSpacing: '0.05em', textTransform: 'uppercase', fontFamily: 'Outfit, sans-serif', marginBottom: 10 }}>Quiero unirme como</p>
+            <p style={{ fontSize: 12, fontWeight: 700, color: C.muted2, letterSpacing: '0.05em', textTransform: 'uppercase', fontFamily: 'Inter, sans-serif', marginBottom: 10 }}>Quiero unirme como</p>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
               {/* Miembro */}
               <button type="button" onClick={() => setRole('member')} style={{
@@ -125,7 +125,7 @@ export default function RegistroPage() {
                 <div style={{ width: 36, height: 36, borderRadius: 10, background: role === 'member' ? 'rgba(124,58,237,0.2)' : 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
                   <Users size={18} color={role === 'member' ? C.purple2 : C.muted} />
                 </div>
-                <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: role === 'member' ? C.text : C.muted, marginBottom: 3 }}>Miembro</div>
+                <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: role === 'member' ? C.text : C.muted, marginBottom: 3 }}>Miembro</div>
                 <div style={{ fontSize: 11, color: C.muted, lineHeight: 1.4 }}>Únete a comunidades y aprende</div>
               </button>
 
@@ -136,11 +136,11 @@ export default function RegistroPage() {
                 border: `2px solid ${role === 'creator' ? C.gold : C.border}`,
                 position: 'relative',
               }}>
-                <div style={{ position: 'absolute', top: 10, right: 10, fontSize: 9, fontWeight: 700, background: 'rgba(240,165,0,0.15)', color: C.gold, padding: '2px 7px', borderRadius: 99, fontFamily: 'Outfit, sans-serif' }}>PLANES DESDE $39</div>
+                <div style={{ position: 'absolute', top: 10, right: 10, fontSize: 9, fontWeight: 700, background: 'rgba(240,165,0,0.15)', color: C.gold, padding: '2px 7px', borderRadius: 99, fontFamily: 'Inter, sans-serif' }}>PLANES DESDE $39</div>
                 <div style={{ width: 36, height: 36, borderRadius: 10, background: role === 'creator' ? 'rgba(240,165,0,0.15)' : 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
                   <Sparkles size={18} color={role === 'creator' ? C.gold : C.muted} />
                 </div>
-                <div style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 800, fontSize: 14, color: role === 'creator' ? C.text : C.muted, marginBottom: 3 }}>Creador</div>
+                <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: role === 'creator' ? C.text : C.muted, marginBottom: 3 }}>Creador</div>
                 <div style={{ fontSize: 11, color: C.muted, lineHeight: 1.4 }}>Crea tu comunidad y cobra</div>
               </button>
             </div>
@@ -156,7 +156,7 @@ export default function RegistroPage() {
             <div style={{ display: 'flex', background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 12, padding: 4 }}>
               {[['es','🇪🇸 Español'],['pt','🇧🇷 Português']].map(([lang, label]) => (
                 <button key={lang} type="button" onClick={() => set('language', lang)} style={{
-                  flex: 1, padding: '7px', borderRadius: 9, fontSize: 12, fontFamily: 'Outfit, sans-serif', fontWeight: 700,
+                  flex: 1, padding: '7px', borderRadius: 9, fontSize: 12, fontFamily: 'Inter, sans-serif', fontWeight: 700,
                   background: form.language === lang ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'transparent',
                   color: form.language === lang ? '#fff' : C.muted,
                   border: 'none', cursor: 'pointer',
@@ -166,7 +166,7 @@ export default function RegistroPage() {
 
             {/* Name */}
             <div>
-              <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: C.muted2, marginBottom: 7, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+              <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: C.muted2, marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
                 {form.language === 'es' ? 'Nombre completo' : 'Nome completo'}
               </label>
               <div style={{ position: 'relative' }}>
@@ -178,7 +178,7 @@ export default function RegistroPage() {
 
             {/* Email */}
             <div>
-              <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: C.muted2, marginBottom: 7, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Email</label>
+              <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: C.muted2, marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Email</label>
               <div style={{ position: 'relative' }}>
                 <Mail size={15} color={C.muted} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} />
                 <input type="email" value={form.email} onChange={e => set('email', e.target.value)}
@@ -188,7 +188,7 @@ export default function RegistroPage() {
 
             {/* Password */}
             <div>
-              <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: C.muted2, marginBottom: 7, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+              <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: C.muted2, marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
                 {form.language === 'es' ? 'Contraseña' : 'Senha'}
               </label>
               <div style={{ position: 'relative' }}>
@@ -203,7 +203,7 @@ export default function RegistroPage() {
 
             {/* Country */}
             <div>
-              <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: C.muted2, marginBottom: 7, fontFamily: 'Outfit, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>País</label>
+              <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: C.muted2, marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em', textTransform: 'uppercase' }}>País</label>
               <div style={{ position: 'relative' }}>
                 <Globe size={15} color={C.muted} style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} />
                 <select value={form.country} onChange={e => set('country', e.target.value)} className="input" style={{ paddingLeft: 40, cursor: 'pointer' }}>
