@@ -8,7 +8,7 @@ import {
   LayoutDashboard, Globe, BookOpen, MessageSquare, Calendar,
   Trophy, TrendingUp, Bell, User, ChevronLeft, ChevronRight,
   LogOut, Settings, Shield, Zap, Users, BarChart2, Megaphone,
-  DollarSign, Lock
+  DollarSign, Lock, Star
 } from 'lucide-react'
 
 const C = {
@@ -37,6 +37,7 @@ const MEMBER_NAV = [
   { href: '/cursos',        icon: BookOpen,        label: 'Cursos' },
   { href: '/retos',         icon: Zap,             label: 'Retos ⚡' },
   { href: '/juegos',        icon: Trophy,          label: 'Juegos 🎮' },
+  { href: '/badges',        icon: Star,            label: 'Badges 🎖' },
   { href: '/comunidad',     icon: MessageSquare,   label: 'Foro' },
   { href: '/eventos',       icon: Calendar,        label: 'Eventos' },
   { href: '/leaderboard',   icon: Trophy,          label: 'Leaderboard' },
