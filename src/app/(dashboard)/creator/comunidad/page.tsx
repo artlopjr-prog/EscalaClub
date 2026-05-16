@@ -469,6 +469,14 @@ export default function CreatorComunidadPage() {
             <div style={S.hint}>Aparece cuando un nuevo miembro se une — hazlo personal y motivador</div>
           </div>
 
+          {/* Video de presentación */}
+          <div style={{ marginBottom: 20 }}>
+            <label style={S.label}>Video de presentación (YouTube)</label>
+            <input value={(form as any).intro_video_url ?? ''} onChange={e => set('intro_video_url' as any, e.target.value)}
+              placeholder="https://youtube.com/watch?v=... o https://youtu.be/..." className="input" />
+            <div style={S.hint}>Se muestra en la página pública de tu comunidad. Usa YouTube — gratuito y confiable.</div>
+          </div>
+
           {/* Redes sociales */}
           <div style={{ marginBottom: 8 }}>
             <label style={S.label}>Redes sociales del creador</label>
