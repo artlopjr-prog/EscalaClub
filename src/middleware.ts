@@ -13,21 +13,25 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // ── RUTAS PÚBLICAS — no requieren login ──
+  // Pasar el pathname como header para que los layouts lo lean
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set('x-pathname', pathname)
+
+  // Rutas completamente públicas
   const publicPaths = ['/', '/login', '/registro', '/recuperar', '/terminos', '/privacidad']
 
   // Explorador de comunidades público
   const isPublicCommunities = pathname === '/comunidades'
 
-  // Página pública de cada comunidad (solo la landing, no subrutas)
+  // Landing pública de cada comunidad (solo /comunidades/[slug] exacto, NO subrutas)
   const isCommunityLanding = /^\/comunidades\/[^\/]+$/.test(pathname)
 
   if (publicPaths.includes(pathname) || isPublicCommunities || isCommunityLanding) {
-    return NextResponse.next()
+    return NextResponse.next({ request: { headers: requestHeaders } })
   }
 
-  // ── RUTAS PRIVADAS — requieren login ──
-  let response = NextResponse.next()
+  // Todo lo demás requiere auth
+  let response = NextResponse.next({ request: { headers: requestHeaders } })
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
