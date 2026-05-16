@@ -93,7 +93,7 @@ export default function PricingPage({ currentPlan, memberId }: PricingPageProps)
             status: 'active',
             paypal_subscription_id: subscriptionId,
             billing_cycle: cycle,
-            price_usd: PLAN_PRICES[planTier][cycle],
+            price_usd: PLAN_PRICES[planTier as keyof typeof PLAN_PRICES][cycle as "monthly" | "annual"],
             current_period_start: new Date().toISOString(),
             current_period_end: new Date(Date.now() + (cycle === 'monthly' ? 30 : 365) * 86400000).toISOString(),
           }, { onConflict: 'member_id' })
