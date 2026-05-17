@@ -22,13 +22,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
         <script dangerouslySetInnerHTML={{ __html: `
           (function() {
             try {
-              var t = localStorage.getItem('ec-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+              var t = localStorage.getItem('ec-theme') || 'light';
               document.documentElement.setAttribute('data-theme', t);
-              document.documentElement.style.background = t === 'light' ? '#F5F5F7' : '#0A0A12';
+              document.documentElement.style.background = t === 'dark' ? '#0A0A0F' : '#FFFFFF';
             } catch(e) {}
           })();
         ` }} />

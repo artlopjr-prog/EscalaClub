@@ -12,12 +12,12 @@ import {
 } from 'lucide-react'
 
 const C = {
-  sidebar:  '#181B2E',
-  border:   'rgba(255,255,255,0.08)',
-  text:     '#E8E9F0',
-  muted:    '#7B7FA8',
-  muted2:   '#A8AACC',
-  purple:   '#6366F1',
+  sidebar:  'var(--sidebar)',
+  border:   'var(--border)',
+  text:     'var(--text)',
+  muted:    'var(--muted)',
+  muted2:   'var(--muted2)',
+  purple:   'var(--purple)',
   purple2:  '#818CF8',
   gold:     '#F0A500',
   green:    '#00D68F',
@@ -106,7 +106,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
             <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 15, color: C.text, letterSpacing: '-0.03em' }}>EscalaClub</span>
           </Link>
         )}
-        <button onClick={() => setCollapsed(!collapsed)} style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${C.border}`, borderRadius: 7, cursor: 'pointer', color: C.muted, padding: '4px 5px', display: 'flex', flexShrink: 0 }}>
+        <button onClick={() => setCollapsed(!collapsed)} style={{ background: 'var(--bg1)', border: `1px solid ${C.border}`, borderRadius: 7, cursor: 'pointer', color: C.muted, padding: '4px 5px', display: 'flex', flexShrink: 0 }}>
           {collapsed ? <ChevronRight size={14} /> : <ChevronLeft size={14} />}
         </button>
       </div>
@@ -215,7 +215,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
               document.documentElement.setAttribute('data-theme', next)
               localStorage.setItem('ec-theme', next)
             }}
-            style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 8, padding: '7px 10px', borderRadius: 9, background: 'rgba(255,255,255,0.04)', border: `1px solid ${C.border}`, cursor: 'pointer', color: C.muted, fontSize: 11, fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>
+            style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 8, padding: '7px 10px', borderRadius: 9, background: 'var(--bg1)', border: `1px solid ${C.border}`, cursor: 'pointer', color: C.muted, fontSize: 11, fontFamily: 'Inter, sans-serif', fontWeight: 500 }}>
             <span style={{ fontSize: 14 }}>🌓</span>
             <span>Cambiar tema</span>
           </button>
@@ -233,7 +233,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
               <div style={{ fontSize: 12, fontWeight: 700, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.display_name}</div>
               <div style={{ fontSize: 10, color: modeColor, fontWeight: 600, marginTop: 1 }}>{mode === 'creator' ? '⚡ Creador' : '👤 Miembro'}</div>
             </div>
-            <button onClick={handleLogout} title="Cerrar sesión" style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${C.border}`, borderRadius: 7, cursor: 'pointer', color: C.muted, padding: '5px 6px', display: 'flex' }}>
+            <button onClick={handleLogout} title="Cerrar sesión" style={{ background: 'var(--bg1)', border: `1px solid ${C.border}`, borderRadius: 7, cursor: 'pointer', color: C.muted, padding: '5px 6px', display: 'flex' }}>
               <LogOut size={13} />
             </button>
           </div>
