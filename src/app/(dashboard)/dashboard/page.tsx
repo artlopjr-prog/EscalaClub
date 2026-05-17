@@ -48,13 +48,13 @@ export default async function DashboardPage() {
       {/* ── HERO HEADER — sin card, tipografía domina ── */}
       <div style={{ marginBottom: 52 }}>
         <p style={{ fontSize: 12, fontWeight: 600, color: 'var(--muted)', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>{greeting}</p>
-        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
           <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 'clamp(32px, 5vw, 52px)', letterSpacing: '-0.04em', lineHeight: 1 }}>
             {firstName} <span className="text-gradient">👋</span>
           </h1>
           {/* Stats como números flotantes — sin cards */}
           {hasActivity && (
-            <div style={{ display: 'flex', gap: 20, alignItems: 'flex-end', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 16, alignItems: 'flex-end', flexWrap: 'wrap' }}>
               <div style={{ textAlign: 'right' }}>
                 <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--gold)', lineHeight: 1 }}>{totalPoints.toLocaleString()}</div>
                 <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 3 }}>puntos totales</div>
@@ -129,7 +129,7 @@ export default async function DashboardPage() {
       )}
 
       {/* ── MAIN GRID ── */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 280px', gap: 24, alignItems: 'start' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr)', gap: 20, alignItems: 'start' }} className="dashboard-main-grid">
 
         {/* LEFT */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
