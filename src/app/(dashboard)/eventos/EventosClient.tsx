@@ -5,9 +5,9 @@ import { createClient } from '@/lib/supabase/client'
 import toast from 'react-hot-toast'
 import { Calendar, Clock, Video, Users, Plus, X, Check, MapPin } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500' }
-const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '11px 14px', color: '#EEEDF5', fontSize: 13, outline: 'none', fontFamily: 'Inter, sans-serif' }
-const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500' }
+const INP: React.CSSProperties = { width: '100%', background: 'var(--bg1)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '11px 14px', color: 'var(--text)', fontSize: 13, outline: 'none', fontFamily: 'Inter, sans-serif' }
+const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--muted)', marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
 
 interface Event {
   id: string; community_id: string; title: string; description?: string
@@ -116,7 +116,7 @@ export default function EventosClient({ events: initialEvents, rsvpIds: initialR
               {hasRsvp ? <><Check size={14} /> Confirmado</> : <><Calendar size={14} /> Asistir</>}
             </button>
             {event.meet_url && !isPast && (
-              <a href={event.meet_url} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 18px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', color: C.text, textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>
+              <a href={event.meet_url} target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 18px', borderRadius: 10, background: 'var(--border)', color: C.text, textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>
                 <Video size={14} /> Unirse
               </a>
             )}
@@ -134,7 +134,7 @@ export default function EventosClient({ events: initialEvents, rsvpIds: initialR
           <p style={{ fontSize: 13, color: C.muted }}>{upcoming.length} eventos próximos</p>
         </div>
         {isCreator && ownedCommunities.length > 0 && (
-          <button onClick={() => setShowCreate(!showCreate)} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 18px', borderRadius: 12, background: showCreate ? 'rgba(255,255,255,0.06)' : 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
+          <button onClick={() => setShowCreate(!showCreate)} style={{ display: 'flex', alignItems: 'center', gap: 7, padding: '10px 18px', borderRadius: 12, background: showCreate ? 'var(--border)' : 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
             {showCreate ? <><X size={15} /> Cancelar</> : <><Plus size={15} /> Crear evento</>}
           </button>
         )}
@@ -149,7 +149,7 @@ export default function EventosClient({ events: initialEvents, rsvpIds: initialR
               <div>
                 <label style={L}>Comunidad</label>
                 <select value={form.community_id} onChange={e => set('community_id', e.target.value)} style={{ ...INP, cursor: 'pointer' }}>
-                  {ownedCommunities.map(c => <option key={c.id} value={c.id} style={{ background: '#13131C' }}>{c.name}</option>)}
+                  {ownedCommunities.map(c => <option key={c.id} value={c.id} style={{ background: 'var(--bg1)' }}>{c.name}</option>)}
                 </select>
               </div>
             )}

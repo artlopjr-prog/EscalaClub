@@ -13,10 +13,10 @@ const PURPLE = '#7B5EF8'
 const PURPLE2= '#A78BFF'
 const GOLD   = '#E9A020'
 const GREEN  = '#00CF88'
-const BG     = '#0A0A12'
-const BG2    = '#141420'
-const TEXT   = '#ECEDF5'
-const MUTED  = '#9596B5'
+const BG     = 'var(--bg)'
+const BG2    = 'var(--bg2)'
+const TEXT   = 'var(--text)'
+const MUTED  = 'var(--muted2)'
 
 // ── WRAPPER BASE ──
 function wrap(content: string, preheader = '') {
@@ -42,16 +42,16 @@ ${preheader ? `<div style="display:none;max-height:0;overflow:hidden;">${prehead
   </td></tr>
 
   <!-- CONTENT -->
-  <tr><td style="background:${BG2};border-radius:20px;border:1px solid rgba(255,255,255,0.07);overflow:hidden;">
+  <tr><td style="background:${BG2};border-radius:20px;border:1px solid var(--border);overflow:hidden;">
     ${content}
   </td></tr>
 
   <!-- FOOTER -->
   <tr><td style="padding:20px 0;text-align:center;">
-    <p style="font-size:11px;color:#4A4A6A;margin:0 0 4px;">EscalaClub · La plataforma de comunidades de LATAM</p>
-    <p style="font-size:11px;color:#4A4A6A;margin:0;">
-      <a href="${BASE}/notificaciones" style="color:#4A4A6A;">Gestionar notificaciones</a> · 
-      <a href="${BASE}" style="color:#4A4A6A;">Ir a la plataforma</a>
+    <p style="font-size:11px;color:var(--muted);margin:0 0 4px;">EscalaClub · La plataforma de comunidades de LATAM</p>
+    <p style="font-size:11px;color:var(--muted);margin:0;">
+      <a href="${BASE}/notificaciones" style="color:var(--muted);">Gestionar notificaciones</a> · 
+      <a href="${BASE}" style="color:var(--muted);">Ir a la plataforma</a>
     </p>
   </td></tr>
 
@@ -84,7 +84,7 @@ function body(content: string) {
 
 // ── STAT CARD ──
 function stat(emoji: string, label: string, value: string, color = PURPLE2) {
-  return `<td style="width:33%;text-align:center;padding:14px 8px;background:rgba(255,255,255,0.03);border-radius:10px;">
+  return `<td style="width:33%;text-align:center;padding:14px 8px;background:var(--bg1);border-radius:10px;">
     <div style="font-size:22px;margin-bottom:4px;">${emoji}</div>
     <div style="font-size:18px;font-weight:900;color:${color};margin-bottom:2px;">${value}</div>
     <div style="font-size:11px;color:${MUTED};">${label}</div>
@@ -114,7 +114,7 @@ export async function sendWelcomeEmail(email: string, name: string) {
             ['🎮','Juega y gana XP','Spin diario, trivia y más — gana badges exclusivos'],
             ['🤖','Tutor IA','Pregunta lo que quieras a tu asistente de comunidad'],
           ].map(([e,t,d]) => `<tr>
-            <td style="padding:10px;background:rgba(255,255,255,0.03);border-radius:10px;margin-bottom:8px;">
+            <td style="padding:10px;background:var(--bg1);border-radius:10px;margin-bottom:8px;">
               <span style="font-size:18px;">${e}</span>
               <strong style="color:${TEXT};font-size:13px;margin-left:8px;">${t}</strong>
               <span style="color:${MUTED};font-size:12px;"> — ${d}</span>
@@ -248,7 +248,7 @@ export async function sendNewBadgeEmail(email: string, name: string, badgeName: 
   const resend = getResend()
   if (!resend) return { skipped: true }
   const first = name.split(' ')[0]
-  const rarityColors: Record<string,string> = { common: '#9596B5', rare: '#3B8EF5', epic: PURPLE2, legendary: GOLD }
+  const rarityColors: Record<string,string> = { common: 'var(--muted2)', rare: '#3B8EF5', epic: PURPLE2, legendary: GOLD }
   const color = rarityColors[rarity] ?? PURPLE2
   return resend.emails.send({
     from: FROM, to: email,
@@ -256,7 +256,7 @@ export async function sendNewBadgeEmail(email: string, name: string, badgeName: 
     html: wrap(
       hero(badgeEmoji, '¡Nuevo badge desbloqueado!', `${first}, acabas de conseguir algo especial`, PURPLE, PURPLE2) +
       body(`
-        <table width="100%" cellpadding="0" cellspacing="0" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;text-align:center;margin-bottom:20px;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:var(--bg1);border:1px solid var(--border);border-radius:14px;text-align:center;margin-bottom:20px;">
           <tr><td style="padding:24px;">
             <div style="font-size:52px;margin-bottom:12px;">${badgeEmoji}</div>
             <div style="font-size:18px;font-weight:900;color:${TEXT};margin-bottom:6px;">${badgeName}</div>
@@ -338,7 +338,7 @@ export async function sendCreatorPaymentEmail(creatorEmail: string, creatorName:
               <span style="font-size:13px;color:${MUTED};">Fee EscalaClub (1.5%)</span>
               <span style="color:${MUTED};">−$${platformFee.toFixed(2)} USD</span>
             </div>
-            <div style="border-top:1px solid rgba(255,255,255,0.06);padding-top:8px;display:flex;justify-content:space-between;">
+            <div style="border-top:1px solid var(--border);padding-top:8px;display:flex;justify-content:space-between;">
               <strong style="font-size:14px;color:${TEXT};">Tu ingreso neto</strong>
               <strong style="font-size:16px;color:${GOLD};">$${net.toFixed(2)} USD</strong>
             </div>

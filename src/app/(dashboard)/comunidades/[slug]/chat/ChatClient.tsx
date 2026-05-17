@@ -5,7 +5,7 @@ import Link from 'next/link'
 import toast from 'react-hot-toast'
 import { ArrowLeft, Send, Settings, Lock, Unlock, Trash2 } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', red: '#FF4D6A' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', red: '#FF4D6A' }
 
 interface Message { id: string; content: string; author_id: string; created_at: string; author?: any }
 
@@ -165,7 +165,7 @@ export default function ChatClient({ community, messages: initialMessages, userI
               placeholder="Escribe un mensaje..."
               style={{ flex: 1, background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '11px 16px', color: C.text, fontSize: 14, outline: 'none' }}
             />
-            <button onClick={sendMessage} disabled={!text.trim() || sending} style={{ width: 44, height: 44, borderRadius: 12, background: text.trim() ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'rgba(255,255,255,0.06)', color: text.trim() ? '#fff' : C.muted, border: 'none', cursor: text.trim() ? 'pointer' : 'not-allowed', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <button onClick={sendMessage} disabled={!text.trim() || sending} style={{ width: 44, height: 44, borderRadius: 12, background: text.trim() ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'var(--border)', color: text.trim() ? '#fff' : C.muted, border: 'none', cursor: text.trim() ? 'pointer' : 'not-allowed', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
               <Send size={18} />
             </button>
           </div>

@@ -13,8 +13,8 @@ const PRIZES = [
   { label: '+5 días 🔥',type: 'streak',  amount: 5,    color: '#FF6B35', emoji: '🔥', weight: 8  },
   { label: 'Badge 🎖',  type: 'badge',   amount: 1,    color: '#00CF88', emoji: '🎖', weight: 5  },
   { label: '+500 XP',   type: 'jackpot', amount: 500,  color: '#E9A020', emoji: '💰', weight: 2  },
-  { label: 'Suerte 😅', type: 'nothing', amount: 0,    color: '#6E6E90', emoji: '😅', weight: 15 },
-  { label: '+25 XP',    type: 'xp',      amount: 25,   color: '#9596B5', emoji: '⚡', weight: 10 },
+  { label: 'Suerte 😅', type: 'nothing', amount: 0,    color: 'var(--muted)', emoji: '😅', weight: 15 },
+  { label: '+25 XP',    type: 'xp',      amount: 25,   color: 'var(--muted2)', emoji: '⚡', weight: 10 },
 ]
 
 // ── TRIVIA QUESTIONS ──
@@ -90,7 +90,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
       ctx.closePath()
       ctx.fillStyle = i % 2 === 0 ? p.color + 'EE' : p.color + 'AA'
       ctx.fill()
-      ctx.strokeStyle = 'rgba(0,0,0,0.3)'
+      ctx.strokeStyle = 'var(--border2)'
       ctx.lineWidth = 1.5
       ctx.stroke()
 
@@ -320,7 +320,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
               </div>
             ) : topWinners.map((w: any, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 0', borderBottom: i < topWinners.length - 1 ? '1px solid var(--border)' : 'none' }}>
-                <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'linear-gradient(135deg,var(--gold),var(--gold2))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, fontFamily: 'Inter, sans-serif', color: '#0A0A12', flexShrink: 0 }}>
+                <div style={{ width: 28, height: 28, borderRadius: '50%', background: 'linear-gradient(135deg,var(--gold),var(--gold2))', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 10, fontWeight: 700, fontFamily: 'Inter, sans-serif', color: 'var(--bg)', flexShrink: 0 }}>
                   {(w.profile?.display_name ?? 'U').slice(0, 2).toUpperCase()}
                 </div>
                 <div style={{ flex: 1 }}>
@@ -389,7 +389,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
                   return (
                     <button key={i} onClick={() => answerTrivia(i)} disabled={triviaAnswered}
                       style={{ width: '100%', padding: '13px 16px', borderRadius: 12, background: bg, border: `1px solid ${border}`, color, fontSize: 14, fontFamily: 'Inter, sans-serif', fontWeight: 500, cursor: triviaAnswered ? 'default' : 'pointer', textAlign: 'left', display: 'flex', alignItems: 'center', gap: 10, transition: 'all .15s' }}>
-                      <span style={{ width: 22, height: 22, borderRadius: '50%', background: 'rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>
+                      <span style={{ width: 22, height: 22, borderRadius: '50%', background: 'var(--border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 11, fontWeight: 700, fontFamily: 'Inter, sans-serif', flexShrink: 0 }}>
                         {['A', 'B', 'C', 'D'][i]}
                       </span>
                       <span style={{ flex: 1 }}>{opt}</span>

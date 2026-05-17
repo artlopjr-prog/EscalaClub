@@ -6,9 +6,9 @@ import toast from 'react-hot-toast'
 import Link from 'next/link'
 import { ArrowLeft, Save } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0' }
-const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 8, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
-const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '12px 16px', color: '#EEEDF5', fontSize: 14, outline: 'none', fontFamily: 'Inter, sans-serif' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)' }
+const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--muted)', marginBottom: 8, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
+const INP: React.CSSProperties = { width: '100%', background: 'var(--bg1)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '12px 16px', color: 'var(--text)', fontSize: 14, outline: 'none', fontFamily: 'Inter, sans-serif' }
 
 export default function NuevoCursoPage() {
   const router = useRouter()

@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Lock, Star, Zap, Trophy, Shield } from 'lucide-react'
 
 const RARITY_CONFIG = {
-  common:    { label: 'Común',     color: '#9596B5', glow: 'rgba(149,150,181,0.2)',  border: 'rgba(149,150,181,0.25)', order: 1 },
+  common:    { label: 'Común',     color: 'var(--muted2)', glow: 'rgba(149,150,181,0.2)',  border: 'rgba(149,150,181,0.25)', order: 1 },
   rare:      { label: 'Raro',      color: '#3B8EF5', glow: 'rgba(59,142,245,0.25)',  border: 'rgba(59,142,245,0.3)',   order: 2 },
   epic:      { label: 'Épico',     color: '#A78BFF', glow: 'rgba(167,139,255,0.3)',  border: 'rgba(167,139,255,0.35)', order: 3 },
   legendary: { label: 'Legendario',color: '#E9A020', glow: 'rgba(233,160,32,0.35)', border: 'rgba(233,160,32,0.4)',   order: 4 },

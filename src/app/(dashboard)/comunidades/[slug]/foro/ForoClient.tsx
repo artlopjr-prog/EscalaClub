@@ -8,7 +8,7 @@ import { Send, Heart, MessageCircle, Trash2, ChevronDown, ChevronUp, Image as Im
 
 const C = {
   bg: '#1F2335', bg1: '#262B42', bg2: '#2D3452', bg3: '#343C5C',
-  border: 'rgba(255,255,255,0.08)', text: '#E8E9F0',
+  border: 'var(--border)', text: 'var(--text)',
   muted: '#7B7FA8', muted2: '#A8AACC',
   purple: '#6366F1', purple2: '#818CF8',
   green: '#00D68F', red: '#FF4D6A', gold: '#F0A500',
@@ -286,7 +286,7 @@ export default function ForoClient({
                 <button
                   onClick={submitPost}
                   disabled={posting || !content.trim()}
-                  style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 22px', borderRadius: 10, background: content.trim() ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'rgba(255,255,255,0.06)', color: content.trim() ? '#fff' : C.muted, border: 'none', cursor: content.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}
+                  style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 22px', borderRadius: 10, background: content.trim() ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'var(--border)', color: content.trim() ? '#fff' : C.muted, border: 'none', cursor: content.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}
                 >
                   <Send size={13} /> {posting ? 'Publicando...' : 'Publicar'}
                 </button>
@@ -335,7 +335,7 @@ export default function ForoClient({
                 </div>
                 <div style={{ display: 'flex', gap: 4 }}>
                   {isOwnerOrAdmin && (
-                    <button onClick={() => togglePin(post)} title={post.is_pinned ? 'Desanclar' : 'Anclar'} style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${C.border}`, borderRadius: 7, cursor: 'pointer', color: post.is_pinned ? C.gold : C.muted, padding: '5px 6px', display: 'flex' }}>
+                    <button onClick={() => togglePin(post)} title={post.is_pinned ? 'Desanclar' : 'Anclar'} style={{ background: 'var(--bg1)', border: `1px solid ${C.border}`, borderRadius: 7, cursor: 'pointer', color: post.is_pinned ? C.gold : C.muted, padding: '5px 6px', display: 'flex' }}>
                       <Pin size={12} />
                     </button>
                   )}
@@ -402,7 +402,7 @@ export default function ForoClient({
                       placeholder="Escribe un comentario... (Enter)"
                       style={{ flex: 1, background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 10, padding: '9px 14px', color: C.text, fontSize: 13, outline: 'none' }}
                     />
-                    <button onClick={() => submitComment(post.id)} disabled={!commentText[post.id]?.trim()} style={{ padding: '9px 14px', borderRadius: 10, background: commentText[post.id]?.trim() ? accent : 'rgba(255,255,255,0.06)', color: commentText[post.id]?.trim() ? '#fff' : C.muted, border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                    <button onClick={() => submitComment(post.id)} disabled={!commentText[post.id]?.trim()} style={{ padding: '9px 14px', borderRadius: 10, background: commentText[post.id]?.trim() ? accent : 'var(--border)', color: commentText[post.id]?.trim() ? '#fff' : C.muted, border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
                       <Send size={14} />
                     </button>
                   </div>

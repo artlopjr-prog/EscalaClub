@@ -9,9 +9,9 @@ import toast from 'react-hot-toast'
 const COUNTRIES = ['Argentina','Bolivia','Brasil','Chile','Colombia','Costa Rica','Ecuador','El Salvador','Guatemala','Honduras','México','Nicaragua','Panamá','Paraguay','Perú','Puerto Rico','República Dominicana','Uruguay','Venezuela','Otro']
 
 const C = {
-  bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C',
-  border: 'rgba(255,255,255,0.07)',
-  text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0',
+  bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)',
+  border: 'var(--border)',
+  text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)',
   purple: '#7C3AED', purple2: '#9F67FF',
   green: '#00D68F', gold: '#F0A500',
 }
@@ -122,7 +122,7 @@ export default function RegistroPage() {
                 background: role === 'member' ? 'rgba(124,58,237,0.12)' : C.bg1,
                 border: `2px solid ${role === 'member' ? C.purple : C.border}`,
               }}>
-                <div style={{ width: 36, height: 36, borderRadius: 10, background: role === 'member' ? 'rgba(124,58,237,0.2)' : 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: role === 'member' ? 'rgba(124,58,237,0.2)' : 'var(--bg1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
                   <Users size={18} color={role === 'member' ? C.purple2 : C.muted} />
                 </div>
                 <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: role === 'member' ? C.text : C.muted, marginBottom: 3 }}>Miembro</div>
@@ -137,7 +137,7 @@ export default function RegistroPage() {
                 position: 'relative',
               }}>
                 <div style={{ position: 'absolute', top: 10, right: 10, fontSize: 9, fontWeight: 700, background: 'rgba(240,165,0,0.15)', color: C.gold, padding: '2px 7px', borderRadius: 99, fontFamily: 'Inter, sans-serif' }}>PLANES DESDE $39</div>
-                <div style={{ width: 36, height: 36, borderRadius: 10, background: role === 'creator' ? 'rgba(240,165,0,0.15)' : 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
+                <div style={{ width: 36, height: 36, borderRadius: 10, background: role === 'creator' ? 'rgba(240,165,0,0.15)' : 'var(--bg1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 10 }}>
                   <Sparkles size={18} color={role === 'creator' ? C.gold : C.muted} />
                 </div>
                 <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: role === 'creator' ? C.text : C.muted, marginBottom: 3 }}>Creador</div>

@@ -27,7 +27,7 @@ const RANK_BG = [
   'linear-gradient(135deg,#9ba8b5,#c8d0d8)',
   'linear-gradient(135deg,#c47c2a,#e8a44a)',
 ]
-const RANK_COLOR = ['#0A0A12', '#1a1a2e', '#fff']
+const RANK_COLOR = ['var(--bg)', '#1a1a2e', '#fff']
 
 export default function ComunidadesPage() {
   const supabase = createClient()

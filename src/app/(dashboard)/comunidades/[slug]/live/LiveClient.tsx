@@ -5,9 +5,9 @@ import Link from 'next/link'
 import toast from 'react-hot-toast'
 import { ArrowLeft, Plus, X, Radio, ExternalLink, Trash2, Play } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', red: '#FF4D6A', gold: '#F0A500' }
-const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '11px 14px', color: '#EEEDF5', fontSize: 13, outline: 'none' }
-const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', red: '#FF4D6A', gold: '#F0A500' }
+const INP: React.CSSProperties = { width: '100%', background: 'var(--bg1)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '11px 14px', color: 'var(--text)', fontSize: 13, outline: 'none' }
+const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--muted)', marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
 
 function getYoutubeId(url: string) {
   return url.match(/(?:youtube\.com\/(?:watch\?v=|live\/)|youtu\.be\/)([^&\n?#]+)/)?.[1] ?? null
@@ -110,7 +110,7 @@ export default function LiveClient({ community, sessions: initialSessions, userI
               </button>
             )}
             {isOwner && isLive && (
-              <button onClick={() => endLive(session.id)} style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '7px 14px', borderRadius: 9, background: 'rgba(255,255,255,0.06)', color: C.muted, border: `1px solid ${C.border}`, cursor: 'pointer', fontSize: 12, fontWeight: 700 }}>
+              <button onClick={() => endLive(session.id)} style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '7px 14px', borderRadius: 9, background: 'var(--border)', color: C.muted, border: `1px solid ${C.border}`, cursor: 'pointer', fontSize: 12, fontWeight: 700 }}>
                 Finalizar
               </button>
             )}
@@ -133,7 +133,7 @@ export default function LiveClient({ community, sessions: initialSessions, userI
           <div style={{ width: '100%', maxWidth: 900 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
               <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: '#fff' }}>{watchSession.title}</h2>
-              <button onClick={() => setWatchSession(null)} style={{ background: 'rgba(255,255,255,0.1)', border: 'none', cursor: 'pointer', color: '#fff', padding: '8px', borderRadius: 8, display: 'flex' }}>
+              <button onClick={() => setWatchSession(null)} style={{ background: 'var(--border2)', border: 'none', cursor: 'pointer', color: '#fff', padding: '8px', borderRadius: 8, display: 'flex' }}>
                 <X size={20} />
               </button>
             </div>
@@ -163,11 +163,11 @@ export default function LiveClient({ community, sessions: initialSessions, userI
         </Link>
         <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 16, color: C.text, flex: 1 }}>🔴 Lives / Directos — {community.name}</h1>
         {isOwner ? (
-          <button onClick={() => setShowCreate(!showCreate)} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 10, background: showCreate ? 'rgba(255,255,255,0.06)' : `linear-gradient(135deg, ${C.red}, #FF6B6B)`, color: showCreate ? C.muted : '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
+          <button onClick={() => setShowCreate(!showCreate)} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 16px', borderRadius: 10, background: showCreate ? 'var(--border)' : `linear-gradient(135deg, ${C.red}, #FF6B6B)`, color: showCreate ? C.muted : '#fff', border: 'none', cursor: 'pointer', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
             {showCreate ? <><X size={14} /> Cancelar</> : <><Plus size={14} /> Programar live</>}
           </button>
         ) : (
-          <div style={{ padding: '6px 14px', borderRadius: 99, background: 'rgba(255,255,255,0.06)', color: C.muted, fontSize: 11 }}>
+          <div style={{ padding: '6px 14px', borderRadius: 99, background: 'var(--border)', color: C.muted, fontSize: 11 }}>
             Solo el creador puede iniciar lives
           </div>
         )}

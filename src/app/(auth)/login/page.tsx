@@ -9,8 +9,8 @@ import toast from 'react-hot-toast'
 
 const C = {
   bg: '#1F2335', bg1: '#262B42', bg2: '#2D3452',
-  border: 'rgba(255,255,255,0.08)',
-  text: '#E8E9F0', muted: '#7B7FA8', muted2: '#A8AACC',
+  border: 'var(--border)',
+  text: 'var(--text)', muted: '#7B7FA8', muted2: '#A8AACC',
   purple: '#6366F1', purple2: '#818CF8',
   green: '#00D68F', red: '#FF4D6A',
 }

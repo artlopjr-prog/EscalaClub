@@ -6,9 +6,9 @@ import toast from 'react-hot-toast'
 import Link from 'next/link'
 import { ArrowLeft, Plus, Save, Eye, EyeOff, Trash2, ChevronDown, ChevronRight, Play, GripVertical, Video } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', red: '#FF4D6A' }
-const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
-const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '11px 14px', color: '#EEEDF5', fontSize: 13, outline: 'none', fontFamily: 'Inter, sans-serif' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', red: '#FF4D6A' }
+const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--muted)', marginBottom: 7, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
+const INP: React.CSSProperties = { width: '100%', background: 'var(--bg1)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '11px 14px', color: 'var(--text)', fontSize: 13, outline: 'none', fontFamily: 'Inter, sans-serif' }
 
 function getVideoThumb(url: string) {
   if (!url) return null
@@ -208,7 +208,7 @@ export default function EditCursoPage() {
                           <input type="number" value={editLesson.duration_min ?? ''} onChange={e => setEditLesson((l: any) => ({ ...l, duration_min: e.target.value }))} style={{ ...INP, fontSize: 13, padding: '9px 12px' }} placeholder="Duración en minutos" />
                           <div style={{ display: 'flex', gap: 8 }}>
                             <button onClick={saveLesson} style={{ flex: 1, padding: '9px', borderRadius: 10, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: 13 }}>Guardar</button>
-                            <button onClick={() => setEditLesson(null)} style={{ padding: '9px 14px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', color: C.muted, border: 'none', cursor: 'pointer', fontSize: 13 }}>Cancelar</button>
+                            <button onClick={() => setEditLesson(null)} style={{ padding: '9px 14px', borderRadius: 10, background: 'var(--border)', color: C.muted, border: 'none', cursor: 'pointer', fontSize: 13 }}>Cancelar</button>
                           </div>
                         </div>
                       </div>
@@ -249,7 +249,7 @@ export default function EditCursoPage() {
                       <textarea value={newLesson[mod.id]?.content ?? ''} onChange={e => setNL(mod.id, 'content', e.target.value)} placeholder="Notas (opcional)" rows={2} style={{ ...INP, fontSize: 12, padding: '9px 12px', resize: 'none' }} />
                       <input type="number" value={newLesson[mod.id]?.duration_min ?? ''} onChange={e => setNL(mod.id, 'duration_min', e.target.value)} placeholder="Min" style={{ ...INP, fontSize: 12, padding: '9px 12px' }} />
                     </div>
-                    <button onClick={() => addLesson(mod.id)} disabled={!newLesson[mod.id]?.title?.trim()} style={{ padding: '9px', borderRadius: 10, background: newLesson[mod.id]?.title?.trim() ? 'rgba(124,58,237,0.15)' : 'rgba(255,255,255,0.04)', color: newLesson[mod.id]?.title?.trim() ? C.purple2 : C.muted, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700 }}>
+                    <button onClick={() => addLesson(mod.id)} disabled={!newLesson[mod.id]?.title?.trim()} style={{ padding: '9px', borderRadius: 10, background: newLesson[mod.id]?.title?.trim() ? 'rgba(124,58,237,0.15)' : 'var(--bg1)', color: newLesson[mod.id]?.title?.trim() ? C.purple2 : C.muted, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 700 }}>
                       + Agregar lección
                     </button>
                   </div>
@@ -263,7 +263,7 @@ export default function EditCursoPage() {
         <div style={{ padding: 16 }}>
           <div style={{ display: 'flex', gap: 10 }}>
             <input value={newModTitle} onChange={e => setNewModTitle(e.target.value)} onKeyDown={e => e.key === 'Enter' && addModule()} placeholder="Nombre del nuevo módulo..." style={{ ...INP, flex: 1 }} />
-            <button onClick={addModule} disabled={!newModTitle.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '11px 16px', borderRadius: 12, background: newModTitle.trim() ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'rgba(255,255,255,0.06)', color: newModTitle.trim() ? '#fff' : C.muted, border: 'none', cursor: newModTitle.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }}>
+            <button onClick={addModule} disabled={!newModTitle.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '11px 16px', borderRadius: 12, background: newModTitle.trim() ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'var(--border)', color: newModTitle.trim() ? '#fff' : C.muted, border: 'none', cursor: newModTitle.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13, whiteSpace: 'nowrap' }}>
               <Plus size={14} /> Módulo
             </button>
           </div>

@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { Users, Globe, BookOpen, DollarSign, TrendingUp, ShieldCheck, Activity } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500', red: '#FF4D6A' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500', red: '#FF4D6A' }
 
 export default async function AdminPage() {
   const supabase = await createClient()
@@ -82,7 +82,7 @@ export default async function AdminPage() {
                   <div style={{ fontSize: 13, fontWeight: 600, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{u.display_name}</div>
                   <div style={{ fontSize: 11, color: C.muted }}>{new Date(u.created_at).toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
                 </div>
-                <div style={{ padding: '2px 9px', borderRadius: 99, background: u.role_platform === 'super_admin' ? 'rgba(124,58,237,0.15)' : 'rgba(255,255,255,0.06)', color: u.role_platform === 'super_admin' ? C.purple2 : C.muted, fontSize: 10, fontWeight: 700, flexShrink: 0 }}>
+                <div style={{ padding: '2px 9px', borderRadius: 99, background: u.role_platform === 'super_admin' ? 'rgba(124,58,237,0.15)' : 'var(--border)', color: u.role_platform === 'super_admin' ? C.purple2 : C.muted, fontSize: 10, fontWeight: 700, flexShrink: 0 }}>
                   {u.role_platform === 'super_admin' ? '👑 Admin' : 'Usuario'}
                 </div>
               </div>

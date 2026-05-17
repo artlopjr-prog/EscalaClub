@@ -28,20 +28,20 @@ interface Community {
 const S = {
   page: { padding: '32px', maxWidth: 760, margin: '0 auto' },
   header: { marginBottom: 28 },
-  title: { fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: '#EEEDF5', marginBottom: 4 },
-  subtitle: { fontSize: 13, color: '#6B6A80' },
-  tabs: { display: 'flex', gap: 4, padding: 4, background: '#0D0D14', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 12, width: 'fit-content', marginBottom: 24 },
+  title: { fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: 'var(--text)', marginBottom: 4 },
+  subtitle: { fontSize: 13, color: 'var(--muted)' },
+  tabs: { display: 'flex', gap: 4, padding: 4, background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 12, width: 'fit-content', marginBottom: 24 },
   tab: (active: boolean): React.CSSProperties => ({
     padding: '8px 18px', borderRadius: 9, fontSize: 13, fontFamily: 'Inter, sans-serif', fontWeight: 700,
     background: active ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'transparent',
-    color: active ? '#fff' : '#6B6A80', border: 'none', cursor: 'pointer', transition: 'all 0.2s',
+    color: active ? '#fff' : 'var(--muted)', border: 'none', cursor: 'pointer', transition: 'all 0.2s',
   }),
-  card: { background: '#0D0D14', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20, padding: '24px', marginBottom: 16 },
-  label: { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 8, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' as const },
+  card: { background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, padding: '24px', marginBottom: 16 },
+  label: { display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--muted)', marginBottom: 8, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' as const },
   required: { color: '#FF4D6A', marginLeft: 2 },
-  hint: { fontSize: 11, color: '#6B6A80', marginTop: 5, lineHeight: 1.5 },
+  hint: { fontSize: 11, color: 'var(--muted)', marginTop: 5, lineHeight: 1.5 },
   row2: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 200px), 1fr))', gap: 16 },
-  divider: { height: 1, background: 'rgba(255,255,255,0.06)', margin: '4px 0 16px' },
+  divider: { height: 1, background: 'var(--border)', margin: '4px 0 16px' },
 }
 
 const PLAN_LIMITS: Record<string, number> = {
@@ -170,7 +170,7 @@ export default function CreatorComunidadPage() {
 
   if (loading) return (
     <div style={{ ...S.page, display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 300 }}>
-      <div style={{ color: '#6B6A80', fontSize: 14 }}>Cargando...</div>
+      <div style={{ color: 'var(--muted)', fontSize: 14 }}>Cargando...</div>
     </div>
   )
 
@@ -182,7 +182,7 @@ export default function CreatorComunidadPage() {
       <div style={{ ...S.header, display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
         <div>
           <h1 style={S.title}>Mis comunidades</h1>
-          <p style={{ fontSize: 13, color: '#6B6A80' }}>
+          <p style={{ fontSize: 13, color: 'var(--muted)' }}>
             {allCommunities.length} de {planLimit} comunidades usadas
             {!isSuperAdmin && creatorPlan && (
               <span style={{ marginLeft: 8, padding: '2px 8px', borderRadius: 99, background: 'rgba(124,58,237,0.15)', color: '#9F67FF', fontSize: 11, fontWeight: 700 }}>
@@ -197,7 +197,7 @@ export default function CreatorComunidadPage() {
           </p>
         </div>
         {community && (
-          <Link href={`/comunidades/${community.slug}`} target="_blank" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 10, border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.04)', fontSize: 12, color: '#9998B0' }}>
+          <Link href={`/comunidades/${community.slug}`} target="_blank" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', borderRadius: 10, border: '1px solid var(--border2)', background: 'var(--bg1)', fontSize: 12, color: 'var(--muted2)' }}>
             <Eye size={13} /> Ver pública
           </Link>
         )}
@@ -209,9 +209,9 @@ export default function CreatorComunidadPage() {
           {allCommunities.map(c => (
             <button key={c.id} onClick={() => selectCommunity(c.id)} style={{
               padding: '7px 14px', borderRadius: 10, fontSize: 12, fontFamily: 'Inter, sans-serif', fontWeight: 700,
-              background: selectedCommunityId === c.id ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'rgba(255,255,255,0.04)',
-              color: selectedCommunityId === c.id ? '#fff' : '#9998B0',
-              border: `1px solid ${selectedCommunityId === c.id ? 'transparent' : 'rgba(255,255,255,0.1)'}`,
+              background: selectedCommunityId === c.id ? 'linear-gradient(135deg, #7C3AED, #9F67FF)' : 'var(--bg1)',
+              color: selectedCommunityId === c.id ? '#fff' : 'var(--muted2)',
+              border: `1px solid ${selectedCommunityId === c.id ? 'transparent' : 'var(--border2)'}`,
               cursor: 'pointer',
             }}>{c.name}</button>
           ))}
@@ -271,7 +271,7 @@ export default function CreatorComunidadPage() {
           <div style={{ marginBottom: 20 }}>
             <label style={S.label}>URL de tu comunidad</label>
             <div style={{ display: 'flex', alignItems: 'center', gap: 0 }}>
-              <span style={{ padding: '12px 14px', background: '#1A1A26', border: '1px solid rgba(255,255,255,0.09)', borderRight: 'none', borderRadius: '12px 0 0 12px', fontSize: 12, color: '#6B6A80', whiteSpace: 'nowrap' }}>
+              <span style={{ padding: '12px 14px', background: 'var(--bg2)', border: '1px solid rgba(255,255,255,0.09)', borderRight: 'none', borderRadius: '12px 0 0 12px', fontSize: 12, color: 'var(--muted)', whiteSpace: 'nowrap' }}>
                 escalaclub.com/comunidades/
               </span>
               <input value={form.slug ?? ''} onChange={e => set('slug', slugify(e.target.value))}
@@ -290,7 +290,7 @@ export default function CreatorComunidadPage() {
 
           <div style={S.row2}>
             <div>
-              <label style={S.label}>Categoría <span style={{fontSize:10,color:'#6B6A80',fontWeight:400,textTransform:'none'}}>— escribe la tuya</span></label>
+              <label style={S.label}>Categoría <span style={{fontSize:10,color:'var(--muted)',fontWeight:400,textTransform:'none'}}>— escribe la tuya</span></label>
               <input
                 list="cat-suggestions"
                 value={form.category ?? ''}
@@ -305,8 +305,8 @@ export default function CreatorComunidadPage() {
             <div>
               <label style={S.label}>Idioma</label>
               <select value={form.locale ?? 'es'} onChange={e => set('locale', e.target.value)} className="input">
-                <option value="es" style={{ background: '#0D0D14' }}>🇪🇸 Español</option>
-                <option value="pt" style={{ background: '#0D0D14' }}>🇧🇷 Português</option>
+                <option value="es" style={{ background: 'var(--bg1)' }}>🇪🇸 Español</option>
+                <option value="pt" style={{ background: 'var(--bg1)' }}>🇧🇷 Português</option>
               </select>
             </div>
           </div>
@@ -326,11 +326,11 @@ export default function CreatorComunidadPage() {
                 <button key={opt.val} onClick={() => set('access_type', opt.val)} style={{
                   flex: 1, padding: '14px 16px', borderRadius: 14, textAlign: 'left', cursor: 'pointer',
                   border: `2px solid ${form.access_type === opt.val ? '#7C3AED' : 'rgba(255,255,255,0.09)'}`,
-                  background: form.access_type === opt.val ? 'rgba(124,58,237,0.1)' : '#13131C',
+                  background: form.access_type === opt.val ? 'rgba(124,58,237,0.1)' : 'var(--bg1)',
                   transition: 'all 0.2s',
                 }}>
-                  <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, color: '#EEEDF5', marginBottom: 4 }}>{opt.label}</div>
-                  <div style={{ fontSize: 11, color: '#6B6A80' }}>{opt.desc}</div>
+                  <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, color: 'var(--text)', marginBottom: 4 }}>{opt.label}</div>
+                  <div style={{ fontSize: 11, color: 'var(--muted)' }}>{opt.desc}</div>
                 </button>
               ))}
             </div>
@@ -341,7 +341,7 @@ export default function CreatorComunidadPage() {
               <div style={{ marginBottom: 16 }}>
                 <label style={S.label}>Precio mensual (USD) <span style={S.required}>*</span></label>
                 <div style={{ position: 'relative' }}>
-                  <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: '#6B6A80', fontSize: 15 }}>$</span>
+                  <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--muted)', fontSize: 15 }}>$</span>
                   <input type="number" value={form.price_monthly ?? ''} onChange={e => set('price_monthly', e.target.value)}
                     placeholder="29" min="1" className="input" style={{ paddingLeft: 28 }} />
                 </div>
@@ -361,9 +361,9 @@ export default function CreatorComunidadPage() {
               </div>
 
               <div style={{ marginBottom: 16 }}>
-                <label style={S.label}>Precio anual (USD) <span style={{ color: '#6B6A80', fontSize: 10, fontWeight: 400 }}>— opcional</span></label>
+                <label style={S.label}>Precio anual (USD) <span style={{ color: 'var(--muted)', fontSize: 10, fontWeight: 400 }}>— opcional</span></label>
                 <div style={{ position: 'relative' }}>
-                  <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: '#6B6A80', fontSize: 15 }}>$</span>
+                  <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: 'var(--muted)', fontSize: 15 }}>$</span>
                   <input type="number" value={form.price_yearly ?? ''} onChange={e => set('price_yearly', e.target.value)}
                     placeholder={`${Math.round(Number(form.price_monthly || 29) * 10)} (≈2 meses gratis)`}
                     min="1" className="input" style={{ paddingLeft: 28 }} />
@@ -371,8 +371,8 @@ export default function CreatorComunidadPage() {
               </div>
 
               {form.price_monthly && (
-                <div style={{ padding: '14px 16px', background: '#13131C', borderRadius: 12, border: '1px solid rgba(255,255,255,0.07)' }}>
-                  <div style={{ fontSize: 11, color: '#6B6A80', marginBottom: 6 }}>Preview de tu precio público:</div>
+                <div style={{ padding: '14px 16px', background: 'var(--bg1)', borderRadius: 12, border: '1px solid var(--border)' }}>
+                  <div style={{ fontSize: 11, color: 'var(--muted)', marginBottom: 6 }}>Preview de tu precio público:</div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, color: '#9F67FF' }}>${form.price_monthly}/mes</span>
                     {form.price_yearly && Number(form.price_yearly) > 0 && (
@@ -389,7 +389,7 @@ export default function CreatorComunidadPage() {
           {form.access_type === 'public' || form.access_type === 'free' && (
             <div style={{ padding: '14px 16px', background: 'rgba(0,214,143,0.06)', borderRadius: 12, border: '1px solid rgba(0,214,143,0.2)' }}>
               <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13, color: '#00D68F', marginBottom: 4 }}>✓ Comunidad gratuita</div>
-              <div style={{ fontSize: 12, color: '#6B6A80', lineHeight: 1.5 }}>
+              <div style={{ fontSize: 12, color: 'var(--muted)', lineHeight: 1.5 }}>
                 Cualquier persona puede unirse. Puedes monetizar con cursos de pago dentro de la comunidad.
               </div>
             </div>
@@ -401,14 +401,14 @@ export default function CreatorComunidadPage() {
       {tab === 'appearance' && (
         <div style={S.card}>
           {/* Live preview */}
-          <div style={{ marginBottom: 24, borderRadius: 14, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div style={{ marginBottom: 24, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)' }}>
             <div style={{ height: 80, background: form.banner_url ? `url(${form.banner_url}) center/cover` : `linear-gradient(135deg, ${form.primary_color ?? '#6366F1'}44, ${form.primary_color ?? '#6366F1'}11)`, position: 'relative' }}>
               <div style={{ position: 'absolute', bottom: -20, left: 16, width: 44, height: 44, borderRadius: 12, background: form.logo_url ? undefined : (form.primary_color ?? '#6366F1') + '30', border: '3px solid #1F2335', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>
                 {form.logo_url ? <img src={form.logo_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '🌐'}
               </div>
             </div>
             <div style={{ padding: '28px 16px 12px', background: '#262B42' }}>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: '#E8E9F0' }}>{form.name || 'Tu comunidad'}</div>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: 'var(--text)' }}>{form.name || 'Tu comunidad'}</div>
               <div style={{ fontSize: 11, color: form.primary_color ?? '#6366F1', marginTop: 2 }}>● {form.tagline || 'Tu tagline aquí'}</div>
             </div>
           </div>
@@ -427,7 +427,7 @@ export default function CreatorComunidadPage() {
               ))}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <input type="color" value={form.primary_color ?? '#6366F1'} onChange={e => set('primary_color', e.target.value)} style={{ width: 36, height: 36, borderRadius: 8, border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer', padding: 2, background: 'transparent' }} />
+              <input type="color" value={form.primary_color ?? '#6366F1'} onChange={e => set('primary_color', e.target.value)} style={{ width: 36, height: 36, borderRadius: 8, border: '1px solid var(--border2)', cursor: 'pointer', padding: 2, background: 'transparent' }} />
               <span style={{ fontSize: 12, color: '#7B7FA8' }}>Color personalizado</span>
             </div>
           </div>
@@ -516,7 +516,7 @@ export default function CreatorComunidadPage() {
       {community && (
         <div style={{ marginTop: 40, paddingTop: 28, borderTop: '1px solid rgba(255,77,106,0.15)' }}>
           <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: '#FF4D6A', marginBottom: 8 }}>⚠️ Zona de peligro</h3>
-          <p style={{ fontSize: 13, color: '#6B6A80', marginBottom: 14, lineHeight: 1.6 }}>
+          <p style={{ fontSize: 13, color: 'var(--muted)', marginBottom: 14, lineHeight: 1.6 }}>
             Eliminar tu comunidad notificará a todos los miembros y dará 30 días antes del cierre definitivo.
           </p>
           <a href="/creator/eliminar-comunidad" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, padding: '9px 18px', borderRadius: 10, background: 'rgba(255,77,106,0.08)', border: '1px solid rgba(255,77,106,0.2)', color: '#FF4D6A', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>

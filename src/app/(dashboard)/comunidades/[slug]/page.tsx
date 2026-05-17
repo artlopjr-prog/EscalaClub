@@ -6,7 +6,7 @@ import JoinButton from './JoinButton'
 import LeaveButton from './LeaveButton'
 import RejoinButton from './RejoinButton'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500', red: '#FF4D6A' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500', red: '#FF4D6A' }
 
 export default async function ComunidadPublicaPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
@@ -138,7 +138,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                     ? <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--green)', background: 'rgba(0,214,143,0.1)', borderRadius: 99, padding: '2px 10px' }}>Gratis</span>
                     : <span style={{ fontSize: 12, fontWeight: 700, color: accentColor, background: accentColor + '15', borderRadius: 99, padding: '2px 10px' }}>💎 ${community.price_monthly}/mes</span>
                   }
-                  {community.category && <span style={{ fontSize: 11, padding: '2px 9px', borderRadius: 99, background: 'rgba(255,255,255,0.05)', color: 'var(--muted)' }}>{community.category}</span>}
+                  {community.category && <span style={{ fontSize: 11, padding: '2px 9px', borderRadius: 99, background: 'var(--bg1)', color: 'var(--muted)' }}>{community.category}</span>}
                 </div>
               </div>
             </div>
@@ -210,7 +210,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                   {courses.map(course => (
                     <Link key={course.id} href={hasAccess ? `/cursos/${course.id}` : '#'} style={{ textDecoration: 'none' }}>
                       <div style={{ background: 'var(--bg2)', borderRadius: 14, overflow: 'hidden', position: 'relative' }}>
-                        <div style={{ height: 90, background: course.cover_url ? undefined : `linear-gradient(135deg,${accentColor}22,rgba(0,0,0,0.3))`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32 }}>
+                        <div style={{ height: 90, background: course.cover_url ? undefined : `linear-gradient(135deg,${accentColor}22,var(--border2))`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32 }}>
                           {course.cover_url ? <img src={course.cover_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '📚'}
                         </div>
                         {!hasAccess && <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Lock size={20} color="rgba(255,255,255,0.6)" /></div>}
@@ -283,7 +283,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
                     {isFree ? '🚀 Únete gratis' : `Unirse · $${community.price_monthly}/mes`}
                   </Link>
                 ) : isOwner ? (
-                  <Link href="/creator/comunidad" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '13px 20px', borderRadius: 12, background: 'rgba(255,255,255,0.07)', color: 'var(--text)', textDecoration: 'none', fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: 14, border: '1px solid var(--border)', boxSizing: 'border-box' }}>
+                  <Link href="/creator/comunidad" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, width: '100%', padding: '13px 20px', borderRadius: 12, background: 'var(--border)', color: 'var(--text)', textDecoration: 'none', fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: 14, border: '1px solid var(--border)', boxSizing: 'border-box' }}>
                     <Settings size={15} /> Gestionar comunidad
                   </Link>
                 ) : isBanned ? (

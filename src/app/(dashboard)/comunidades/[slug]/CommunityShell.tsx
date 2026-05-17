@@ -42,13 +42,13 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
     <div style={{ minHeight: '100vh', background: bgColor, overflowX: 'hidden' }}>
       {/* Community top bar */}
       <div style={{
-        background: 'rgba(0,0,0,0.3)',
+        background: 'var(--border2)',
         backdropFilter: 'blur(20px)',
-        borderBottom: `1px solid rgba(255,255,255,0.08)`,
+        borderBottom: `1px solid var(--border)`,
         position: 'sticky', top: 0, zIndex: 30,
       }}>
         {/* Header row */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 24px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 24px', borderBottom: '1px solid var(--border)' }}>
           {/* Logo */}
           <div style={{ width: 36, height: 36, borderRadius: 10, background: community.logo_url ? undefined : accent + '30', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, overflow: 'hidden', flexShrink: 0, border: `2px solid ${accent}40` }}>
             {community.logo_url
@@ -59,7 +59,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
           {/* Name */}
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 15, color: '#E8E9F0', letterSpacing: '-0.02em' }}>
+              <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 15, color: 'var(--text)', letterSpacing: '-0.02em' }}>
                 {community.name}
               </span>
               <span style={{ fontSize: 10, padding: '2px 8px', borderRadius: 99, background: 'rgba(0,214,143,0.12)', color: '#00D68F', fontWeight: 700, border: '1px solid rgba(0,214,143,0.2)' }}>
@@ -74,7 +74,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
           {/* Members count */}
           <div className="community-header-stats" style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <div style={{ textAlign: 'center' }}>
-              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: '#E8E9F0' }}>{community.member_count ?? 0}</div>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: 'var(--text)' }}>{community.member_count ?? 0}</div>
               <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)' }}>miembros</div>
             </div>
             {isOwner && (
@@ -97,7 +97,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
                   fontSize: 13,
                   fontWeight: active ? 700 : 400,
                   fontFamily: active ? 'Inter, sans-serif' : 'Inter, sans-serif',
-                  color: active ? '#E8E9F0' : 'rgba(255,255,255,0.4)',
+                  color: active ? 'var(--text)' : 'rgba(255,255,255,0.4)',
                   borderBottom: `2px solid ${active ? accent : 'transparent'}`,
                   transition: 'all 0.15s',
                   cursor: 'pointer',

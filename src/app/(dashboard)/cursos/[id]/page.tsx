@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { ArrowLeft, Play, Lock, CheckCircle, Clock, BookOpen, Users } from 'lucide-react'
 import LessonPlayer from './LessonPlayer'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F' }
 
 export default async function CursoPage({ params, searchParams }: { params: Promise<{ id: string }>, searchParams: Promise<{ lesson?: string }> }) {
   const { id } = await params
@@ -64,7 +64,7 @@ export default async function CursoPage({ params, searchParams }: { params: Prom
           </Link>
           <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, letterSpacing: '-0.03em', color: C.text, marginBottom: 8, lineHeight: 1.3 }}>{course.title}</h2>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
-            <div style={{ flex: 1, height: 4, background: 'rgba(255,255,255,0.07)', borderRadius: 99, overflow: 'hidden' }}>
+            <div style={{ flex: 1, height: 4, background: 'var(--border)', borderRadius: 99, overflow: 'hidden' }}>
               <div style={{ width: `${progressPct}%`, height: '100%', background: `linear-gradient(90deg, ${accentColor}, ${accentColor}cc)`, borderRadius: 99, transition: 'width 0.5s' }} />
             </div>
             <span style={{ fontSize: 10, color: C.muted, whiteSpace: 'nowrap', fontWeight: 600 }}>{progressPct}%</span>

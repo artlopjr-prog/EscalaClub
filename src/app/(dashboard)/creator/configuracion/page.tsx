@@ -6,12 +6,12 @@ import toast from 'react-hot-toast'
 import Link from 'next/link'
 import { ArrowLeft, Save, MessageSquare, ImageIcon, Video, HelpCircle } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', red: '#FF4D6A', gold: '#F0A500' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', red: '#FF4D6A', gold: '#F0A500' }
 
 function Toggle({ value, onChange, label, description, icon: Icon, color = '#9F67FF' }: any) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '16px 0', borderBottom: `1px solid ${C.border}` }}>
-      <div style={{ width: 38, height: 38, borderRadius: 11, background: value ? color + '18' : 'rgba(255,255,255,0.04)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s' }}>
+      <div style={{ width: 38, height: 38, borderRadius: 11, background: value ? color + '18' : 'var(--bg1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s' }}>
         <Icon size={17} color={value ? color : C.muted} />
       </div>
       <div style={{ flex: 1 }}>
@@ -20,7 +20,7 @@ function Toggle({ value, onChange, label, description, icon: Icon, color = '#9F6
       </div>
       <button onClick={() => onChange(!value)} style={{
         width: 48, height: 26, borderRadius: 99, border: 'none', cursor: 'pointer',
-        background: value ? color : 'rgba(255,255,255,0.1)',
+        background: value ? color : 'var(--border2)',
         position: 'relative', transition: 'all 0.2s', flexShrink: 0,
       }}>
         <div style={{

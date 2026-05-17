@@ -7,9 +7,9 @@ import Link from 'next/link'
 import { Save, Globe, BookOpen, Award, TrendingUp, Users } from 'lucide-react'
 import ImageUpload from '@/components/ui/ImageUpload'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500' }
-const INP: React.CSSProperties = { width: '100%', background: '#13131C', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '12px 16px', color: '#EEEDF5', fontSize: 14, outline: 'none', fontFamily: 'Inter, sans-serif' }
-const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: '#6B6A80', marginBottom: 8, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500' }
+const INP: React.CSSProperties = { width: '100%', background: 'var(--bg1)', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 12, padding: '12px 16px', color: 'var(--text)', fontSize: 14, outline: 'none', fontFamily: 'Inter, sans-serif' }
+const L: React.CSSProperties = { display: 'block', fontSize: 11, fontWeight: 700, color: 'var(--muted)', marginBottom: 8, fontFamily: 'Inter, sans-serif', letterSpacing: '0.06em', textTransform: 'uppercase' }
 
 const COUNTRIES = ['Argentina','Bolivia','Brasil','Chile','Colombia','Costa Rica','Ecuador','El Salvador','Guatemala','Honduras','México','Nicaragua','Panamá','Paraguay','Perú','Puerto Rico','República Dominicana','Uruguay','Venezuela','Otro']
 
@@ -72,7 +72,7 @@ export default function PerfilPage() {
         <div style={{ height: 100, background: 'linear-gradient(135deg, rgba(124,58,237,0.3), rgba(159,103,255,0.1))' }} />
         <div style={{ padding: '0 24px 24px', marginTop: -40 }}>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: 16, flexWrap: 'wrap' }}>
-            <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(124,58,237,0.2)', border: '4px solid #0D0D14', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 32, color: C.purple2, overflow: 'hidden', flexShrink: 0 }}>
+            <div style={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(124,58,237,0.2)', border: '4px solid var(--bg1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 32, color: C.purple2, overflow: 'hidden', flexShrink: 0 }}>
               {profile?.avatar_url ? <img src={profile.avatar_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : (profile?.display_name?.[0]?.toUpperCase() ?? '?')}
             </div>
             <div style={{ paddingBottom: 4, flex: 1 }}>
@@ -104,7 +104,7 @@ export default function PerfilPage() {
               <span>Nivel {level}</span>
               <span>{xpToNext} pts para nivel {level + 1}</span>
             </div>
-            <div style={{ height: 6, background: 'rgba(255,255,255,0.07)', borderRadius: 99, overflow: 'hidden' }}>
+            <div style={{ height: 6, background: 'var(--border)', borderRadius: 99, overflow: 'hidden' }}>
               <div style={{ width: `${100 - xpToNext}%`, height: '100%', background: `linear-gradient(90deg, #7C3AED, #9F67FF)`, borderRadius: 99, transition: 'width 0.5s' }} />
             </div>
           </div>
@@ -135,7 +135,7 @@ export default function PerfilPage() {
             <label style={L}>País</label>
             <select value={profile?.country ?? ''} onChange={e => setProfile((p: any) => ({ ...p, country: e.target.value }))} style={{ ...INP, cursor: 'pointer' }}>
               <option value="">Selecciona tu país</option>
-              {COUNTRIES.map(c => <option key={c} value={c} style={{ background: '#13131C' }}>{c}</option>)}
+              {COUNTRIES.map(c => <option key={c} value={c} style={{ background: 'var(--bg1)' }}>{c}</option>)}
             </select>
           </div>
           <div>

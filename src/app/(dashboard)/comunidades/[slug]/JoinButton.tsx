@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import toast from 'react-hot-toast'
 import { Users, Check, CreditCard, X } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', green: '#00D68F' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', green: '#00D68F' }
 
 interface Props {
   communityId: string
@@ -181,7 +181,7 @@ export default function JoinButton({ communityId, communityName, communitySlug, 
       {showPayPal && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.85)', backdropFilter: 'blur(8px)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 24 }}>
           <div style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 24, padding: 32, width: '100%', maxWidth: 420, position: 'relative' }}>
-            <button onClick={() => setShowPayPal(false)} style={{ position: 'absolute', top: 16, right: 16, background: 'rgba(255,255,255,0.06)', border: 'none', borderRadius: 8, width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: C.muted }}>
+            <button onClick={() => setShowPayPal(false)} style={{ position: 'absolute', top: 16, right: 16, background: 'var(--border)', border: 'none', borderRadius: 8, width: 32, height: 32, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', color: C.muted }}>
               <X size={16} />
             </button>
 
@@ -192,7 +192,7 @@ export default function JoinButton({ communityId, communityName, communitySlug, 
               <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 36, color: C.text }}>${priceMonthly}<span style={{ fontSize: 16, color: C.muted, fontWeight: 400 }}>/mes</span></div>
             </div>
 
-            <div style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 16px', marginBottom: 20, fontSize: 12, color: C.muted, lineHeight: 1.6 }}>
+            <div style={{ background: 'var(--bg1)', border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 16px', marginBottom: 20, fontSize: 12, color: C.muted, lineHeight: 1.6 }}>
               ✅ Acceso inmediato al foro, chat, cursos y eventos<br />
               ✅ El pago va directo al creador por PayPal<br />
               ✅ Cancela cuando quieras

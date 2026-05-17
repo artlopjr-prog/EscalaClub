@@ -190,7 +190,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
             </div>
 
             {/* Por qué conectar */}
-            <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 12, padding: '14px 16px' }}>
+            <div style={{ background: 'var(--bg1)', borderRadius: 12, padding: '14px 16px' }}>
               <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '.08em' }}>Por qué conectar WhatsApp</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 {['Recordatorios de retos antes de que pierdas tu racha', 'Notificaciones de eventos en tus comunidades', 'Alertas de nuevos badges desbloqueados', 'Todo donde ya estás — sin abrir otra app'].map((b, i) => (
@@ -268,7 +268,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
               return (
                 <div key={n.key} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 14px', borderRadius: 12, transition: 'background .12s', cursor: 'pointer' }}
                   onClick={() => savePrefs(n.key, !enabled)}
-                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.03)'}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'var(--bg1)'}
                   onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = 'transparent'}>
                   <span style={{ fontSize: 20, flexShrink: 0 }}>{n.emoji}</span>
                   <div style={{ flex: 1 }}>
@@ -278,7 +278,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
                   {/* Toggle */}
                   <div onClick={e => { e.stopPropagation(); savePrefs(n.key, !enabled) }}
                     style={{ width: 44, height: 24, borderRadius: 99, background: enabled ? WA_GREEN : 'var(--bg3)', border: `1px solid ${enabled ? WA_GREEN : 'var(--border2)'}`, position: 'relative', cursor: 'pointer', transition: 'all .2s', flexShrink: 0 }}>
-                    <div style={{ width: 18, height: 18, borderRadius: '50%', background: '#fff', position: 'absolute', top: 2, left: enabled ? 22 : 2, transition: 'left .2s', boxShadow: '0 1px 4px rgba(0,0,0,0.3)' }} />
+                    <div style={{ width: 18, height: 18, borderRadius: '50%', background: '#fff', position: 'absolute', top: 2, left: enabled ? 22 : 2, transition: 'left .2s', boxShadow: '0 1px 4px var(--border2)' }} />
                   </div>
                 </div>
               )

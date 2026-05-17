@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import { Plus, BookOpen, Eye, EyeOff, ChevronRight } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500' }
 
 export default function CreatorCursosPage() {
   const supabase = createClient()
@@ -63,7 +63,7 @@ export default function CreatorCursosPage() {
                 <div style={{ fontSize: 11, color: C.muted }}>{new Date(course.created_at).toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '4px 12px', borderRadius: 99, background: course.is_published ? 'rgba(0,214,143,0.12)' : 'rgba(255,255,255,0.06)', color: course.is_published ? C.green : C.muted, fontSize: 11, fontWeight: 700 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '4px 12px', borderRadius: 99, background: course.is_published ? 'rgba(0,214,143,0.12)' : 'var(--border)', color: course.is_published ? C.green : C.muted, fontSize: 11, fontWeight: 700 }}>
                   {course.is_published ? <Eye size={11} /> : <EyeOff size={11} />}
                   {course.is_published ? 'Publicado' : 'Borrador'}
                 </div>

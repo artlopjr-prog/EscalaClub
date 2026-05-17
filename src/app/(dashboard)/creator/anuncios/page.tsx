@@ -6,7 +6,7 @@ import toast from 'react-hot-toast'
 import Link from 'next/link'
 import { ArrowLeft, Megaphone, Send, Trash2, Pin } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500', red: '#FF4D6A' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500', red: '#FF4D6A' }
 
 export default function AnunciosPage() {
   const supabase = createClient()
@@ -105,7 +105,7 @@ export default function AnunciosPage() {
             <input type="checkbox" checked={pinned} onChange={e => setPinned(e.target.checked)} style={{ width: 16, height: 16, accentColor: C.gold, cursor: 'pointer' }} />
             <Pin size={13} color={pinned ? C.gold : C.muted} /> Anclar al foro
           </label>
-          <button onClick={publish} disabled={posting || !content.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 22px', borderRadius: 12, background: content.trim() ? `linear-gradient(135deg, ${C.gold}, #E09400)` : 'rgba(255,255,255,0.06)', color: content.trim() ? '#000' : C.muted, border: 'none', cursor: content.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13 }}>
+          <button onClick={publish} disabled={posting || !content.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 22px', borderRadius: 12, background: content.trim() ? `linear-gradient(135deg, ${C.gold}, #E09400)` : 'var(--border)', color: content.trim() ? '#000' : C.muted, border: 'none', cursor: content.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 13 }}>
             <Send size={14} /> {posting ? 'Publicando...' : 'Publicar y notificar'}
           </button>
         </div>

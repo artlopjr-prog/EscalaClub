@@ -68,7 +68,7 @@ export default async function CursosPage({ searchParams }: { searchParams: Promi
                       ? <img src={course.cover_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                       : <div style={{ fontSize: 48 }}>📚</div>
                     }
-                    <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.2s' }}>
+                    <div style={{ position: 'absolute', inset: 0, background: 'var(--border2)', display: 'flex', alignItems: 'center', justifyContent: 'center', opacity: 0, transition: 'opacity 0.2s' }}>
                       <div style={{ width: 40, height: 40, borderRadius: '50%', background: 'rgba(124,58,237,0.8)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         <Play size={17} color="#fff" fill="#fff" style={{ marginLeft: 2 }} />
                       </div>

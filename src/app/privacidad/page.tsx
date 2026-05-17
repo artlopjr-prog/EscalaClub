@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Zap } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple2: '#9F67FF' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple2: '#9F67FF' }
 
 export default function PrivacidadPage() {
   return (

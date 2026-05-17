@@ -8,7 +8,7 @@ import { createClient } from '@/lib/supabase/client'
 
 const C = {
   bg: '#1F2335', bg1: '#262B42', bg2: '#2D3452',
-  border: 'rgba(255,255,255,0.08)', text: '#E8E9F0',
+  border: 'var(--border)', text: 'var(--text)',
   muted: '#7B7FA8', purple: '#6366F1', purple2: '#818CF8',
 }
 
@@ -117,7 +117,7 @@ export function MobileNav() {
             {/* Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 20px 16px' }}>
               <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 17, color: C.text }}>Menú</span>
-              <button onClick={() => setMenuOpen(false)} style={{ background: 'rgba(255,255,255,0.07)', border: `1px solid ${C.border}`, borderRadius: 10, padding: '6px 7px', cursor: 'pointer', display: 'flex' }}>
+              <button onClick={() => setMenuOpen(false)} style={{ background: 'var(--border)', border: `1px solid ${C.border}`, borderRadius: 10, padding: '6px 7px', cursor: 'pointer', display: 'flex' }}>
                 <X size={16} color={C.muted} />
               </button>
             </div>

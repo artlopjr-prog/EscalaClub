@@ -5,7 +5,7 @@ import Link from 'next/link'
 import toast from 'react-hot-toast'
 import { ArrowLeft, Send, ChevronUp, Check, Pin, Trash2, MessageCircle } from 'lucide-react'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500', red: '#FF4D6A' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple: '#7C3AED', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500', red: '#FF4D6A' }
 
 interface Question { id: string; question: string; answer?: string; author_id: string; answered_by?: string; answered_at?: string; is_pinned: boolean; upvotes: number; created_at: string; author?: any; answerer?: any }
 
@@ -93,7 +93,7 @@ export default function QAClient({ community, questions: initialQ, userId, isOwn
           <div style={{ fontSize: 13, fontWeight: 700, color: C.text, marginBottom: 10 }}>🙋 Hacer una pregunta</div>
           <textarea value={newQ} onChange={e => setNewQ(e.target.value)} placeholder="¿Qué quieres preguntarle al creador?" rows={3} style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 14, outline: 'none', resize: 'none', fontFamily: 'Inter, sans-serif' }} />
           <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: 10 }}>
-            <button onClick={submitQuestion} disabled={submitting || !newQ.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 20px', borderRadius: 10, background: newQ.trim() ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'rgba(255,255,255,0.06)', color: newQ.trim() ? '#fff' : C.muted, border: 'none', cursor: newQ.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
+            <button onClick={submitQuestion} disabled={submitting || !newQ.trim()} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 20px', borderRadius: 10, background: newQ.trim() ? `linear-gradient(135deg, ${accent}, ${accent}cc)` : 'var(--border)', color: newQ.trim() ? '#fff' : C.muted, border: 'none', cursor: newQ.trim() ? 'pointer' : 'not-allowed', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 13 }}>
               <Send size={13} /> {submitting ? 'Enviando...' : 'Preguntar'}
             </button>
           </div>
@@ -105,7 +105,7 @@ export default function QAClient({ community, questions: initialQ, userId, isOwn
             <div style={{ display: 'flex', gap: 10 }}>
               {/* Upvote */}
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4, flexShrink: 0, paddingTop: 4 }}>
-                <button onClick={() => upvote(q.id)} style={{ background: myUpvotes.has(q.id) ? accent + '20' : 'rgba(255,255,255,0.05)', border: `1px solid ${myUpvotes.has(q.id) ? accent : C.border}`, borderRadius: 8, padding: '5px 8px', cursor: 'pointer', color: myUpvotes.has(q.id) ? accent : C.muted, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
+                <button onClick={() => upvote(q.id)} style={{ background: myUpvotes.has(q.id) ? accent + '20' : 'var(--bg1)', border: `1px solid ${myUpvotes.has(q.id) ? accent : C.border}`, borderRadius: 8, padding: '5px 8px', cursor: 'pointer', color: myUpvotes.has(q.id) ? accent : C.muted, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
                   <ChevronUp size={14} />
                   <span style={{ fontSize: 11, fontWeight: 700 }}>{q.upvotes}</span>
                 </button>
@@ -149,7 +149,7 @@ export default function QAClient({ community, questions: initialQ, userId, isOwn
                           <button onClick={() => submitAnswer(q.id)} style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '8px 16px', borderRadius: 9, background: C.green, color: '#000', border: 'none', cursor: 'pointer', fontSize: 12, fontWeight: 800 }}>
                             <Check size={13} /> Publicar respuesta
                           </button>
-                          <button onClick={() => setShowAnswer(null)} style={{ padding: '8px 12px', borderRadius: 9, background: 'rgba(255,255,255,0.06)', color: C.muted, border: 'none', cursor: 'pointer', fontSize: 12 }}>Cancelar</button>
+                          <button onClick={() => setShowAnswer(null)} style={{ padding: '8px 12px', borderRadius: 9, background: 'var(--border)', color: C.muted, border: 'none', cursor: 'pointer', fontSize: 12 }}>Cancelar</button>
                         </div>
                       </div>
                     ) : (

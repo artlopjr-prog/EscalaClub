@@ -111,7 +111,7 @@ export default function PricingPage({ currentPlan, memberId }: PricingPageProps)
   }
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] text-white py-16 px-4">
+    <div className="min-h-screen bg-[var(--bg)] text-white py-16 px-4">
       {/* Header */}
       <div className="text-center mb-12">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-sm font-medium mb-6">
@@ -172,7 +172,7 @@ export default function PricingPage({ currentPlan, memberId }: PricingPageProps)
                 plan.highlight
                   ? 'border-violet-500/50 bg-gradient-to-b from-violet-500/10 to-purple-500/5 shadow-[0_0_40px_rgba(139,92,246,0.15)]'
                   : 'border-white/10 bg-white/3 hover:bg-white/5'
-              } ${isSelected ? 'ring-2 ring-violet-500 ring-offset-2 ring-offset-[#0A0A0F]' : ''}`}
+              } ${isSelected ? 'ring-2 ring-violet-500 ring-offset-2 ring-offset-[var(--bg)]' : ''}`}
             >
               {/* Popular badge */}
               {plan.highlight && (

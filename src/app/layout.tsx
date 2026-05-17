@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             try {
               var t = localStorage.getItem('ec-theme') || 'light';
               document.documentElement.setAttribute('data-theme', t);
-              document.documentElement.style.background = t === 'dark' ? '#0A0A0F' : '#FFFFFF';
+              document.documentElement.style.background = t === 'dark' ? 'var(--bg)' : '#FFFFFF';
             } catch(e) {}
           })();
         ` }} />
@@ -36,21 +36,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           * { box-sizing: border-box; margin: 0; padding: 0; }
           html, body { 
             background: #1F2335 !important; 
-            color: #E8E9F0 !important; 
+            color: var(--text) !important; 
             font-family: 'Inter', system-ui, sans-serif; 
             min-height: 100vh;
             overflow-x: hidden;
           }
         `}</style>
       </head>
-      <body style={{ background: '#1F2335', color: '#E8E9F0', minHeight: '100vh', overflowX: 'hidden' }}>
+      <body style={{ background: '#1F2335', color: 'var(--text)', minHeight: '100vh', overflowX: 'hidden' }}>
         <Toaster
           position="top-right"
           toastOptions={{
             style: {
               background: '#262B42',
-              color: '#E8E9F0',
-              border: '1px solid rgba(255,255,255,0.1)',
+              color: 'var(--text)',
+              border: '1px solid var(--border2)',
               borderRadius: '12px',
               fontSize: '14px',
             },

@@ -57,11 +57,11 @@ export default function ImageUpload({ bucket, folder, onUpload, currentUrl, acce
           <img src={preview} alt="" style={{
             width: rounded ? 80 : '100%', height: rounded ? 80 : 160,
             objectFit: 'cover', borderRadius: rounded ? '50%' : 12,
-            border: '1px solid rgba(255,255,255,0.07)',
+            border: '1px solid var(--border)',
           }} />
           <button onClick={() => { setPreview(''); onUpload('') }} style={{
             position: 'absolute', top: -8, right: -8, width: 24, height: 24,
-            borderRadius: '50%', background: '#FF4D6A', border: '2px solid #06060A',
+            borderRadius: '50%', background: '#FF4D6A', border: '2px solid var(--bg)',
             color: '#fff', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
             <X size={12} />

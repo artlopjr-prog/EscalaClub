@@ -6,7 +6,7 @@ import { createClient } from '@/lib/supabase/client'
 import { CheckCircle, ChevronRight, ChevronLeft } from 'lucide-react'
 import toast from 'react-hot-toast'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', green: '#00D68F' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', green: '#00D68F' }
 
 interface Props {
   lesson: any
@@ -82,7 +82,7 @@ export default function LessonPlayer({ lesson, courseId, userId, nextLesson, isC
         ) : lesson.video_url ? (
           <video src={lesson.video_url} controls style={{ width: '100%', height: '100%' }} />
         ) : (
-          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0D0D14' }}>
+          <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'var(--bg1)' }}>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontSize: 48, marginBottom: 12 }}>📄</div>
               <p style={{ color: C.muted, fontSize: 14 }}>Esta lección no tiene video</p>
@@ -110,7 +110,7 @@ export default function LessonPlayer({ lesson, courseId, userId, nextLesson, isC
                 <CheckCircle size={15} /> Completada
               </div>
             ) : (
-              <button onClick={markComplete} disabled={marking} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 18px', borderRadius: 10, background: 'rgba(255,255,255,0.06)', border: `1px solid ${C.border}`, color: C.muted2, cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>
+              <button onClick={markComplete} disabled={marking} style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '10px 18px', borderRadius: 10, background: 'var(--border)', border: `1px solid ${C.border}`, color: C.muted2, cursor: 'pointer', fontSize: 13, fontWeight: 600 }}>
                 <CheckCircle size={15} /> {marking ? 'Marcando...' : 'Marcar como vista'}
               </button>
             )}

@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import { ShieldCheck, Users } from 'lucide-react'
 
-const C = { bg1: '#0D0D14', bg2: '#13131C', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500' }
+const C = { bg1: 'var(--bg1)', bg2: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple2: '#9F67FF', green: '#00D68F', gold: '#F0A500' }
 
 export default async function AdminInstructoresPage() {
   const supabase = await createClient()
@@ -39,7 +39,7 @@ export default async function AdminInstructoresPage() {
               <div style={{ fontSize: 13, fontWeight: 600, color: C.text, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{u.display_name}</div>
             </div>
             <div style={{ fontSize: 12, color: C.muted }}>{u.country ?? '—'}</div>
-            <div style={{ padding: '3px 10px', borderRadius: 99, background: u.role_platform === 'super_admin' ? 'rgba(124,58,237,0.15)' : 'rgba(255,255,255,0.06)', color: u.role_platform === 'super_admin' ? C.purple2 : C.muted, fontSize: 10, fontWeight: 700, width: 'fit-content' }}>
+            <div style={{ padding: '3px 10px', borderRadius: 99, background: u.role_platform === 'super_admin' ? 'rgba(124,58,237,0.15)' : 'var(--border)', color: u.role_platform === 'super_admin' ? C.purple2 : C.muted, fontSize: 10, fontWeight: 700, width: 'fit-content' }}>
               {u.role_platform === 'super_admin' ? '👑 Admin' : 'Usuario'}
             </div>
             <div style={{ fontSize: 11, color: C.muted }}>{new Date(u.created_at).toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' })}</div>

@@ -11,10 +11,10 @@ import {
 } from 'lucide-react'
 
 const C = {
-  bg:      '#06060A', bg1: '#0D0D14', bg2: '#13131C', bg3: '#1A1A26',
-  border:  'rgba(255,255,255,0.06)', border2: 'rgba(255,255,255,0.1)',
+  bg:      'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg1)', bg3: 'var(--bg2)',
+  border:  'var(--border)', border2: 'var(--border2)',
   borderGold:   'rgba(240,165,0,0.25)', borderPurple: 'rgba(124,58,237,0.3)',
-  text:    '#EEEDF5', muted: '#6B6A80', muted2: '#9998B0',
+  text:    'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)',
   purple:  '#7C3AED', purpleL: '#9F67FF', purpleDim: 'rgba(124,58,237,0.12)',
   gold:    '#F0A500', goldL: '#FFD166',   goldDim: 'rgba(240,165,0,0.1)',
   success: '#00D68F', successDim: 'rgba(0,214,143,0.1)',
@@ -650,7 +650,7 @@ function SectionHeader({ title, badge, badgeColor, badgeText }: { title: string;
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14, marginTop: 4 }}>
       <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15 }}>{title}</div>
-      <div style={{ flex: 1, height: 1, background: 'rgba(255,255,255,0.06)' }} />
+      <div style={{ flex: 1, height: 1, background: 'var(--border)' }} />
       <div style={{ fontSize: 10, fontWeight: 700, padding: '3px 10px', borderRadius: 99, background: badgeColor, color: badgeText }}>{badge}</div>
     </div>
   )
@@ -664,12 +664,12 @@ function Pill({ color, text, label }: { color: string; text: string; label: stri
 
 function RewardCard({ icon, name, desc, unlocked, special }: { icon: string; name: string; desc: string; unlocked?: boolean; special?: boolean }) {
   const C_bg = special ? 'rgba(240,165,0,0.1)' : unlocked ? 'rgba(0,214,143,0.08)' : 'rgba(255,255,255,0.02)'
-  const C_border = special ? 'rgba(240,165,0,0.25)' : unlocked ? 'rgba(0,214,143,0.2)' : 'rgba(255,255,255,0.06)'
+  const C_border = special ? 'rgba(240,165,0,0.25)' : unlocked ? 'rgba(0,214,143,0.2)' : 'var(--border)'
   return (
     <div style={{ background: C_bg, border: `1px solid ${C_border}`, borderRadius: 10, padding: '12px', textAlign: 'center' }}>
       <div style={{ fontSize: 22, marginBottom: 6 }}>{icon}</div>
       <div style={{ fontSize: 11, fontWeight: 600, marginBottom: 3 }}>{name}</div>
-      <div style={{ fontSize: 10, color: '#6B6A80', lineHeight: 1.4 }}>{desc}</div>
+      <div style={{ fontSize: 10, color: 'var(--muted)', lineHeight: 1.4 }}>{desc}</div>
     </div>
   )
 }
@@ -689,13 +689,13 @@ function ChallengeCard({ challenge: c, participation: p, todayDone, dayNum, onOp
 
   return (
     <div onClick={onOpen} style={{
-      background: isOfficial ? 'linear-gradient(135deg,rgba(240,165,0,0.06),rgba(240,165,0,0.02))' : '#0D0D14',
-      border: `1px solid ${isOfficial ? 'rgba(240,165,0,0.2)' : 'rgba(255,255,255,0.06)'}`,
+      background: isOfficial ? 'linear-gradient(135deg,rgba(240,165,0,0.06),rgba(240,165,0,0.02))' : 'var(--bg1)',
+      border: `1px solid ${isOfficial ? 'rgba(240,165,0,0.2)' : 'var(--border)'}`,
       borderRadius: 14, overflow: 'hidden', cursor: 'pointer',
       transition: 'border-color .2s, transform .18s',
     }}
-      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLElement).style.borderColor = isOfficial ? 'rgba(240,165,0,0.4)' : 'rgba(255,255,255,0.12)' }}
-      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = ''; (e.currentTarget as HTMLElement).style.borderColor = isOfficial ? 'rgba(240,165,0,0.2)' : 'rgba(255,255,255,0.06)' }}>
+      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)'; (e.currentTarget as HTMLElement).style.borderColor = isOfficial ? 'rgba(240,165,0,0.4)' : 'var(--border2)' }}
+      onMouseLeave={e => { (e.currentTarget as HTMLElement).style.transform = ''; (e.currentTarget as HTMLElement).style.borderColor = isOfficial ? 'rgba(240,165,0,0.2)' : 'var(--border)' }}>
 
       {/* Cover */}
       <div style={{ height: 100, background: coverColors[c.challenge_type] ?? coverColors.habit, position: 'relative', display: 'flex', alignItems: 'flex-end', padding: '12px 14px' }}>
@@ -707,18 +707,18 @@ function ChallengeCard({ challenge: c, participation: p, todayDone, dayNum, onOp
 
       {/* Body */}
       <div style={{ padding: '13px 14px' }}>
-        <div style={{ fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.08em', color: '#6B6A80', marginBottom: 4 }}>
+        <div style={{ fontSize: 10, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.08em', color: 'var(--muted)', marginBottom: 4 }}>
           {c.challenge_type === 'habit' ? '🗓 Hábito' : c.challenge_type === 'educational' ? '📚 Educativo' : '✍️ Publicación'} · {c.duration_days} días
         </div>
         <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, marginBottom: 5, lineHeight: 1.2 }}>{c.title}</div>
-        <div style={{ fontSize: 12, color: '#9998B0', lineHeight: 1.5, marginBottom: 10, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{c.description}</div>
+        <div style={{ fontSize: 12, color: 'var(--muted2)', lineHeight: 1.5, marginBottom: 10, display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden' }}>{c.description}</div>
 
         {/* Progress */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: '#6B6A80', marginBottom: 5 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11, color: 'var(--muted)', marginBottom: 5 }}>
           {p ? <span>Día {p.days_completed} de {c.duration_days}</span> : <span>{c.participant_count.toLocaleString()} participantes</span>}
-          {p ? <span style={{ color: '#F0A500' }}>🔥 {p.current_streak}</span> : <span style={{ color: '#9998B0' }}>{c.duration_days} días</span>}
+          {p ? <span style={{ color: '#F0A500' }}>🔥 {p.current_streak}</span> : <span style={{ color: 'var(--muted2)' }}>{c.duration_days} días</span>}
         </div>
-        <div style={{ height: 3, background: '#1A1A26', borderRadius: 99, overflow: 'hidden', marginBottom: 11 }}>
+        <div style={{ height: 3, background: 'var(--bg2)', borderRadius: 99, overflow: 'hidden', marginBottom: 11 }}>
           <div style={{ height: '100%', width: `${progress}%`, background: isOfficial ? 'linear-gradient(90deg,#b87a00,#F0A500)' : 'linear-gradient(90deg,#7C3AED,#9F67FF)', borderRadius: 99 }} />
         </div>
 
@@ -752,10 +752,10 @@ function ChallengeCard({ challenge: c, participation: p, todayDone, dayNum, onOp
 
 function EmptyState({ icon, title, sub }: { icon: React.ReactNode; title: string; sub: string }) {
   return (
-    <div style={{ textAlign: 'center', padding: '40px 20px', background: '#0D0D14', borderRadius: 14, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 24 }}>
+    <div style={{ textAlign: 'center', padding: '40px 20px', background: 'var(--bg1)', borderRadius: 14, border: '1px solid var(--border)', marginBottom: 24 }}>
       <div style={{ marginBottom: 12 }}>{icon}</div>
       <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15, marginBottom: 6 }}>{title}</div>
-      <div style={{ fontSize: 13, color: '#6B6A80' }}>{sub}</div>
+      <div style={{ fontSize: 13, color: 'var(--muted)' }}>{sub}</div>
     </div>
   )
 }

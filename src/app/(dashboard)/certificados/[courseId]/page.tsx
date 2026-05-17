@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation'
 import { Award, Download } from 'lucide-react'
 import Link from 'next/link'
 
-const C = { bg: '#06060A', bg1: '#0D0D14', border: 'rgba(255,255,255,0.07)', text: '#EEEDF5', muted: '#6B6A80', purple: '#7C3AED', purple2: '#9F67FF', gold: '#F0A500', green: '#00D68F' }
+const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', purple: '#7C3AED', purple2: '#9F67FF', gold: '#F0A500', green: '#00D68F' }
 
 export default async function CertificadoPage({ params }: { params: Promise<{ courseId: string }> }) {
   const { courseId } = await params
@@ -41,7 +41,7 @@ export default async function CertificadoPage({ params }: { params: Promise<{ co
       <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: C.text, marginBottom: 28 }}>🎓 Tu certificado</h1>
 
       {/* Certificate */}
-      <div style={{ background: 'linear-gradient(135deg, #0D0D14, #1A1A26)', border: '2px solid rgba(240,165,0,0.3)', borderRadius: 24, padding: '48px 40px', textAlign: 'center', marginBottom: 24, position: 'relative', overflow: 'hidden' }}>
+      <div style={{ background: 'linear-gradient(135deg, var(--bg1), var(--bg2))', border: '2px solid rgba(240,165,0,0.3)', borderRadius: 24, padding: '48px 40px', textAlign: 'center', marginBottom: 24, position: 'relative', overflow: 'hidden' }}>
         {/* Decorative corners */}
         <div style={{ position: 'absolute', top: 16, left: 16, width: 40, height: 40, borderTop: '3px solid rgba(240,165,0,0.4)', borderLeft: '3px solid rgba(240,165,0,0.4)', borderRadius: '4px 0 0 0' }} />
         <div style={{ position: 'absolute', top: 16, right: 16, width: 40, height: 40, borderTop: '3px solid rgba(240,165,0,0.4)', borderRight: '3px solid rgba(240,165,0,0.4)', borderRadius: '0 4px 0 0' }} />

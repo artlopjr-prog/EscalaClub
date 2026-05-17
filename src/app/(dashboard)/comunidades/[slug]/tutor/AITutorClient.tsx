@@ -164,8 +164,8 @@ export default function AITutorClient({ userId, community, config, conversations
               </div>
             ) : conversations.map(c => (
               <div key={c.id} onClick={() => loadConversation(c.id)}
-                style={{ padding: '9px 10px', borderRadius: 'var(--r-sm)', cursor: 'pointer', marginBottom: 2, background: c.id === convId ? 'rgba(255,255,255,0.06)' : 'transparent', transition: 'background .12s' }}
-                onMouseEnter={e => { if (c.id !== convId) (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.03)' }}
+                style={{ padding: '9px 10px', borderRadius: 'var(--r-sm)', cursor: 'pointer', marginBottom: 2, background: c.id === convId ? 'var(--border)' : 'transparent', transition: 'background .12s' }}
+                onMouseEnter={e => { if (c.id !== convId) (e.currentTarget as HTMLElement).style.background = 'var(--bg1)' }}
                 onMouseLeave={e => { if (c.id !== convId) (e.currentTarget as HTMLElement).style.background = 'transparent' }}>
                 <div style={{ fontSize: 12, fontWeight: 500, color: c.id === convId ? 'var(--text)' : 'var(--muted2)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {c.title}
@@ -290,7 +290,7 @@ Cuanto más detallado, mejor responderá a tus miembros." />
                         </div>
                         <div style={{
                           padding: '12px 16px', borderRadius: m.role === 'assistant' ? '4px 14px 14px 14px' : '14px 4px 14px 14px',
-                          background: m.role === 'assistant' ? `linear-gradient(135deg, ${accent}12, ${accent}06)` : 'rgba(255,255,255,0.05)',
+                          background: m.role === 'assistant' ? `linear-gradient(135deg, ${accent}12, ${accent}06)` : 'var(--bg1)',
                           border: m.role === 'assistant' ? `1px solid ${accent}20` : '1px solid var(--border)',
                           fontSize: 14, lineHeight: 1.65, color: 'var(--text)', whiteSpace: 'pre-wrap', wordBreak: 'break-word',
                         }}>
