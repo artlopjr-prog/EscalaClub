@@ -65,7 +65,7 @@ export default function HomePage() {
   return (
     <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
       {/* NAVBAR */}
-      <nav style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(10,10,18,0.9)', backdropFilter: 'blur(20px)', borderBottom: '1px solid var(--border)', padding: '0 24px' }}>
+      <nav style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(20px)', borderBottom: '1px solid var(--border)', padding: '0 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
             <div style={{ width: 30, height: 30, borderRadius: 8, background: 'linear-gradient(135deg,var(--purple),var(--purple2))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 import { Send, Heart, MessageCircle, Trash2, ChevronDown, ChevronUp, Image as ImageIcon, Pin, Trophy, Users, CheckCircle, Circle } from 'lucide-react'
 
 const C = {
-  bg: '#1F2335', bg1: '#262B42', bg2: '#2D3452', bg3: '#343C5C',
+  bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg2)', bg3: 'var(--bg3)',
   border: 'var(--border)', text: 'var(--text)',
   muted: '#7B7FA8', muted2: '#A8AACC',
   purple: '#6366F1', purple2: '#818CF8',

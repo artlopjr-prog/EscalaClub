@@ -70,7 +70,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
   }
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: '#1F2335' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg)' }}>
       <div className="desktop-sidebar">
         <Sidebar user={member} unread={unread ?? 0} isCreator={isCreator} />
       </div>

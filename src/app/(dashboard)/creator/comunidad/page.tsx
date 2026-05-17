@@ -403,11 +403,11 @@ export default function CreatorComunidadPage() {
           {/* Live preview */}
           <div style={{ marginBottom: 24, borderRadius: 14, overflow: 'hidden', border: '1px solid var(--border)' }}>
             <div style={{ height: 80, background: form.banner_url ? `url(${form.banner_url}) center/cover` : `linear-gradient(135deg, ${form.primary_color ?? '#6366F1'}44, ${form.primary_color ?? '#6366F1'}11)`, position: 'relative' }}>
-              <div style={{ position: 'absolute', bottom: -20, left: 16, width: 44, height: 44, borderRadius: 12, background: form.logo_url ? undefined : (form.primary_color ?? '#6366F1') + '30', border: '3px solid #1F2335', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>
+              <div style={{ position: 'absolute', bottom: -20, left: 16, width: 44, height: 44, borderRadius: 12, background: form.logo_url ? undefined : (form.primary_color ?? '#6366F1') + '30', border: '3px solid var(--bg)', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20 }}>
                 {form.logo_url ? <img src={form.logo_url} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : '🌐'}
               </div>
             </div>
-            <div style={{ padding: '28px 16px 12px', background: '#262B42' }}>
+            <div style={{ padding: '28px 16px 12px', background: 'var(--bg1)' }}>
               <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 14, color: 'var(--text)' }}>{form.name || 'Tu comunidad'}</div>
               <div style={{ fontSize: 11, color: form.primary_color ?? '#6366F1', marginTop: 2 }}>● {form.tagline || 'Tu tagline aquí'}</div>
             </div>

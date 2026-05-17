@@ -8,9 +8,9 @@ import { Zap, Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react'
 import toast from 'react-hot-toast'
 
 const C = {
-  bg: '#1F2335', bg1: '#262B42', bg2: '#2D3452',
+  bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg2)',
   border: 'var(--border)',
-  text: 'var(--text)', muted: '#7B7FA8', muted2: '#A8AACC',
+  text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)',
   purple: '#6366F1', purple2: '#818CF8',
   green: '#00D68F', red: '#FF4D6A',
 }

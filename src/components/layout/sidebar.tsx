@@ -22,7 +22,7 @@ const C = {
   gold:     '#F0A500',
   green:    '#00D68F',
   red:      '#FF4D6A',
-  bg1:      '#262B42',
+  bg1:      'var(--bg1)',
 }
 
 interface Props {

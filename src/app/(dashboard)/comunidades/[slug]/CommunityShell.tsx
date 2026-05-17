@@ -21,7 +21,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
   const pathname = usePathname()
   const slug = community.slug
   const accent = community.primary_color ?? '#6366F1'
-  const bgColor = community.bg_color ?? '#1F2335'
+  const bgColor = community.bg_color ?? 'var(--bg)'
 
   const TABS = [
     { href: `/comunidades/${slug}/foro`,      label: 'Comunidad',  icon: MessageSquare },
