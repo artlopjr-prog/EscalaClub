@@ -40,11 +40,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <style>{`
           * { box-sizing: border-box; margin: 0; padding: 0; }
           html, body { 
-            background: var(--bg) !important; 
-            color: var(--text) !important; 
+            background: #FFFFFF !important; 
+            color: #0F0F0F !important; 
             font-family: 'Inter', system-ui, sans-serif; 
             min-height: 100vh;
             overflow-x: hidden;
+          }
+          html[data-theme="dark"], html[data-theme="dark"] body { 
+            background: #0A0A0F !important; 
+            color: #EDEDED !important; 
           }
         `}</style>
       </head>

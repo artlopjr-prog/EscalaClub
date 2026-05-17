@@ -91,11 +91,18 @@
 }
 
 /* ── BASE ── */
-html { scroll-behavior: smooth; }
+/* Force light mode as default — dark only when explicitly set */
+html {
+  scroll-behavior: smooth;
+  background: #FFFFFF;
+}
+html[data-theme="dark"] {
+  background: #0A0A0F;
+}
 
 body {
-  background: var(--bg) !important;
-  color: var(--text) !important;
+  background: #FFFFFF !important;
+  color: #0F0F0F !important;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -104,6 +111,12 @@ body {
   padding: 0;
   font-size: 14px;
   line-height: 1.5;
+}
+
+/* Dark mode body override */
+[data-theme="dark"] body {
+  background: #0A0A0F !important;
+  color: #EDEDED !important;
 }
 
 /* Smooth theme transitions */
