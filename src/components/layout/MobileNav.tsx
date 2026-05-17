@@ -9,7 +9,7 @@ import { createClient } from '@/lib/supabase/client'
 const C = {
   bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg2)',
   border: 'var(--border)', text: 'var(--text)',
-  muted: '#7B7FA8', purple: '#6366F1', purple2: '#818CF8',
+  muted: 'var(--muted)', purple: '#6366F1', purple2: '#818CF8',
 }
 
 const NAV = [
@@ -69,7 +69,7 @@ export function MobileNav() {
       {/* Bottom nav bar */}
       <nav style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 50,
-        background: `rgba(24,27,46,0.97)`,
+        background: 'var(--bg)',
         backdropFilter: 'blur(24px)',
         borderTop: `1px solid ${C.border}`,
         display: 'flex', alignItems: 'center', justifyContent: 'space-around',
@@ -111,7 +111,7 @@ export function MobileNav() {
           }}>
             {/* Handle */}
             <div style={{ display: 'flex', justifyContent: 'center', padding: '12px 0 4px' }}>
-              <div style={{ width: 36, height: 4, borderRadius: 99, background: 'rgba(255,255,255,0.15)' }} />
+              <div style={{ width: 36, height: 4, borderRadius: 99, background: 'var(--border2)' }} />
             </div>
 
             {/* Header */}
