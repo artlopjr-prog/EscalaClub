@@ -43,7 +43,7 @@ export default async function DashboardPage() {
   const hasActivity = (myMemberships?.length ?? 0) > 0
 
   return (
-    <div style={{ padding: '40px 36px', maxWidth: 1100, margin: '0 auto' }}>
+    <div style={{ padding: 'clamp(20px, 4vw, 40px) clamp(16px, 4vw, 36px)', maxWidth: 1100, margin: '0 auto' }}>
 
       {/* ── HERO HEADER — sin card, tipografía domina ── */}
       <div style={{ marginBottom: 52 }}>
@@ -54,7 +54,7 @@ export default async function DashboardPage() {
           </h1>
           {/* Stats como números flotantes — sin cards */}
           {hasActivity && (
-            <div style={{ display: 'flex', gap: 36, alignItems: 'flex-end' }}>
+            <div style={{ display: 'flex', gap: 20, alignItems: 'flex-end', flexWrap: 'wrap' }}>
               <div style={{ textAlign: 'right' }}>
                 <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, color: 'var(--gold)', lineHeight: 1 }}>{totalPoints.toLocaleString()}</div>
                 <div style={{ fontSize: 11, color: 'var(--muted)', marginTop: 3 }}>puntos totales</div>

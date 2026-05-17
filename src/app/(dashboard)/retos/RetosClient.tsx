@@ -233,7 +233,7 @@ export default function RetosClient({
       </div>
 
       {/* STATS */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 12, marginBottom: 24 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 10, marginBottom: 24 }}>
         {[
           { val: `🔥 ${mainStreak}`, label: 'Mejor racha activa', color: C.goldL },
           { val: platformParticipating + communityParticipating, label: 'Retos activos', color: C.purpleL },

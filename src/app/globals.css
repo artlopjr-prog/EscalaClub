@@ -539,3 +539,58 @@ a:focus-visible      { outline: 2px solid var(--purple); outline-offset: 2px; }
     min-width: 0 !important;
   }
 }
+
+/* ── MOBILE RESPONSIVE FIXES ── */
+@media (max-width: 767px) {
+  /* Dashboard grid — single column on mobile */
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Padding reduction on mobile */
+  .page-padding {
+    padding: 20px 16px !important;
+  }
+  
+  /* Stat numbers smaller on mobile */
+  .stat-val {
+    font-size: 20px !important;
+  }
+  
+  /* Cards full width */
+  .card-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Challenge strip — horizontal scroll */
+  .challenge-strip {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .challenge-strip::-webkit-scrollbar { display: none; }
+  
+  /* Tables — scrollable */
+  .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Sidebar in community layout */
+  .foro-sidebar {
+    display: none !important;
+  }
+  
+  /* Two column to one */
+  .grid-2, .grid-3, .grid-4 {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Community tabs scrollable */
+  .community-tabs {
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-wrap: nowrap !important;
+  }
+}
