@@ -26,14 +26,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: `
           (function() {
             try {
-              var saved = localStorage.getItem('ec-theme-v3');
-              if (!saved) {
-                localStorage.removeItem('ec-theme');
-                localStorage.setItem('ec-theme-v3', 'light');
-                saved = 'light';
-              }
-              document.documentElement.setAttribute('data-theme', saved);
-              document.documentElement.style.background = saved === 'dark' ? '#0A0A0F' : '#FFFFFF';
+              // Siempre forzar light mode — borrar cualquier preferencia dark anterior
+              localStorage.removeItem('ec-theme');
+              localStorage.removeItem('ec-theme-v3');
+              localStorage.removeItem('theme');
+              document.documentElement.setAttribute('data-theme', 'light');
+              document.documentElement.style.background = '#FFFFFF';
+              document.documentElement.style.color = '#0F0F0F';
             } catch(e) {}
           })();
         ` }} />
