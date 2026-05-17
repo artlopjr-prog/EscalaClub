@@ -516,3 +516,26 @@ a:focus-visible      { outline: 2px solid var(--purple); outline-offset: 2px; }
 /* ── COMMUNITY COLOR ── */
 .community-accent { color: var(--accent, var(--purple)); }
 .community-accent-bg { background: rgba(var(--accent-rgb, 108,71,255), 0.08); }
+
+/* ── DESKTOP SIDEBAR — hidden on mobile ── */
+.desktop-sidebar {
+  display: flex;
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .desktop-sidebar {
+    display: none !important;
+  }
+  
+  /* Bottom nav space */
+  main, .main-content {
+    padding-bottom: 80px !important;
+  }
+  
+  /* Full width on mobile */
+  .main-area {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+}
