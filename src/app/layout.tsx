@@ -12,12 +12,12 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: '#1F2335',
+  themeColor: 'var(--bg)',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" suppressHydrationWarning style={{ background: '#1F2335' }}>
+    <html lang="es" suppressHydrationWarning style={{ background: 'var(--bg)' }}>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,16 +26,21 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: `
           (function() {
             try {
-              var t = localStorage.getItem('ec-theme') || 'light';
-              document.documentElement.setAttribute('data-theme', t);
-              document.documentElement.style.background = t === 'dark' ? 'var(--bg)' : '#FFFFFF';
+              var saved = localStorage.getItem('ec-theme-v3');
+              if (!saved) {
+                localStorage.removeItem('ec-theme');
+                localStorage.setItem('ec-theme-v3', 'light');
+                saved = 'light';
+              }
+              document.documentElement.setAttribute('data-theme', saved);
+              document.documentElement.style.background = saved === 'dark' ? '#0A0A0F' : '#FFFFFF';
             } catch(e) {}
           })();
         ` }} />
         <style>{`
           * { box-sizing: border-box; margin: 0; padding: 0; }
           html, body { 
-            background: #1F2335 !important; 
+            background: var(--bg) !important; 
             color: var(--text) !important; 
             font-family: 'Inter', system-ui, sans-serif; 
             min-height: 100vh;
@@ -43,12 +48,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }
         `}</style>
       </head>
-      <body style={{ background: '#1F2335', color: 'var(--text)', minHeight: '100vh', overflowX: 'hidden' }}>
+      <body style={{ background: 'var(--bg)', color: 'var(--text)', minHeight: '100vh', overflowX: 'hidden' }}>
         <Toaster
           position="top-right"
           toastOptions={{
             style: {
-              background: '#262B42',
+              background: 'var(--bg1)',
               color: 'var(--text)',
               border: '1px solid var(--border2)',
               borderRadius: '12px',
