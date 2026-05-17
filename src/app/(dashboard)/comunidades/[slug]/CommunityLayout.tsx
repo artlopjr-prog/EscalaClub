@@ -6,7 +6,7 @@ import { Settings, Bell, Users, BookOpen, Calendar, Trophy, Info, Radio, HelpCir
 const C = {
   bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg2)',
   border: 'var(--border)', text: 'var(--text)',
-  muted: '#7B7FA8', muted2: '#A8AACC',
+  muted: 'var(--muted)', muted2: 'var(--muted2)',
   purple: '#6366F1', purple2: '#818CF8',
 }
 

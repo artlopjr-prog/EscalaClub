@@ -663,7 +663,7 @@ function Pill({ color, text, label }: { color: string; text: string; label: stri
 }
 
 function RewardCard({ icon, name, desc, unlocked, special }: { icon: string; name: string; desc: string; unlocked?: boolean; special?: boolean }) {
-  const C_bg = special ? 'rgba(240,165,0,0.1)' : unlocked ? 'rgba(0,214,143,0.08)' : 'rgba(255,255,255,0.02)'
+  const C_bg = special ? 'rgba(240,165,0,0.1)' : unlocked ? 'rgba(0,214,143,0.08)' : 'var(--bg1)'
   const C_border = special ? 'rgba(240,165,0,0.25)' : unlocked ? 'rgba(0,214,143,0.2)' : 'var(--border)'
   return (
     <div style={{ background: C_bg, border: `1px solid ${C_border}`, borderRadius: 10, padding: '12px', textAlign: 'center' }}>
@@ -702,7 +702,7 @@ function ChallengeCard({ challenge: c, participation: p, todayDone, dayNum, onOp
         {isOfficial && <div style={{ position: 'absolute', top: 10, left: 10, fontSize: 9, fontWeight: 800, color: '#F0A500', textTransform: 'uppercase', letterSpacing: '.06em', background: 'rgba(240,165,0,0.15)', border: '1px solid rgba(240,165,0,0.3)', borderRadius: 99, padding: '2px 8px' }}>⭐ Oficial</div>}
         <div style={{ position: 'absolute', top: 10, right: 10, fontSize: 10, fontWeight: 700, padding: '3px 9px', borderRadius: 99, background: `${statusColor}22`, color: statusColor, border: `1px solid ${statusColor}44` }}>{statusLabel}</div>
         <div style={{ position: 'relative', zIndex: 1, fontSize: 34, filter: 'drop-shadow(0 2px 8px rgba(0,0,0,.6))' }}>{c.emoji}</div>
-        {c.community && <div style={{ position: 'absolute', bottom: 10, right: 12, fontSize: 10, color: 'rgba(255,255,255,0.6)' }}>🌐 {c.community.name}</div>}
+        {c.community && <div style={{ position: 'absolute', bottom: 10, right: 12, fontSize: 10, color: 'var(--muted)' }}>🌐 {c.community.name}</div>}
       </div>
 
       {/* Body */}

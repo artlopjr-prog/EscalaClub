@@ -21,7 +21,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
   const pathname = usePathname()
   const slug = community.slug
   const accent = community.primary_color ?? '#6366F1'
-  const bgColor = community.bg_color ?? 'var(--bg)'
+  const bgColor = community.bg_color ?? 'transparent'
 
   const TABS = [
     { href: `/comunidades/${slug}/foro`,      label: 'Comunidad',  icon: MessageSquare },
@@ -39,12 +39,12 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: bgColor, overflowX: 'hidden' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg)', overflowX: 'hidden' }}>
       {/* Community top bar */}
       <div style={{
-        background: 'var(--border2)',
+        background: 'var(--bg1)',
         backdropFilter: 'blur(20px)',
-        borderBottom: `1px solid var(--border)`,
+        borderBottom: '1px solid var(--border)',
         position: 'sticky', top: 0, zIndex: 30,
       }}>
         {/* Header row */}
@@ -67,7 +67,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
               </span>
             </div>
             {community.tagline && (
-              <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.3 }}>{community.tagline}</p>
+              <p style={{ fontSize: 11, color: 'var(--muted)', margin: 0, lineHeight: 1.3 }}>{community.tagline}</p>
             )}
           </div>
 
@@ -75,7 +75,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
           <div className="community-header-stats" style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <div style={{ textAlign: 'center' }}>
               <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: 'var(--text)' }}>{community.member_count ?? 0}</div>
-              <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)' }}>miembros</div>
+              <div style={{ fontSize: 10, color: 'var(--muted)' }}>miembros</div>
             </div>
             {isOwner && (
               <Link href="/creator/comunidad" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '7px 14px', borderRadius: 9, background: `${accent}20`, border: `1px solid ${accent}40`, color: accent, textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Inter, sans-serif', whiteSpace: 'nowrap' }}>
@@ -97,7 +97,7 @@ export default function CommunityShell({ community, ownerProfile, isOwner, isMem
                   fontSize: 13,
                   fontWeight: active ? 700 : 400,
                   fontFamily: active ? 'Inter, sans-serif' : 'Inter, sans-serif',
-                  color: active ? 'var(--text)' : 'rgba(255,255,255,0.4)',
+                  color: active ? 'var(--text)' : 'var(--muted)',
                   borderBottom: `2px solid ${active ? accent : 'transparent'}`,
                   transition: 'all 0.15s',
                   cursor: 'pointer',
