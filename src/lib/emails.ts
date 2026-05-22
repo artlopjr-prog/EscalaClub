@@ -8,7 +8,7 @@ function getResend() {
 }
 
 const FROM   = process.env.EMAIL_FROM ?? 'Komunio <hola@komunio.app>'
-const BASE   = process.env.NEXT_PUBLIC_APP_URL ?? 'https://escala-club.vercel.app'
+const BASE   = process.env.NEXT_PUBLIC_APP_URL ?? 'https://komunio-artlopjr-progs-projects.vercel.app'
 const PURPLE = '#7B5EF8'
 const PURPLE2= '#A78BFF'
 const GOLD   = '#E9A020'

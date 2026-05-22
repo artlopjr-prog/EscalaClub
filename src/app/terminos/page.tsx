@@ -55,7 +55,7 @@ export default function TerminosPage() {
           },
           {
             title: '9. Privacidad',
-            content: `El uso de la plataforma está sujeto a nuestra Política de Privacidad, disponible en escala-club.vercel.app/privacidad. Al usar Komunio, aceptas las prácticas de recopilación y uso de datos descritas en dicha política.`
+            content: `El uso de la plataforma está sujeto a nuestra Política de Privacidad, disponible en komunio-artlopjr-progs-projects.vercel.app/privacidad. Al usar Komunio, aceptas las prácticas de recopilación y uso de datos descritas en dicha política.`
           },
           {
             title: '10. Terminación',

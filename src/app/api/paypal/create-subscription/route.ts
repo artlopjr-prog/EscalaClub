@@ -23,7 +23,7 @@ export async function POST(req: NextRequest) {
     const paypalPlanId = planId ?? community.paypal_plan_id_monthly
     if (!paypalPlanId) return NextResponse.json({ error: 'No PayPal plan configured for this community' }, { status: 400 })
 
-    const BASE = process.env.NEXT_PUBLIC_APP_URL ?? 'https://escala-club.vercel.app'
+    const BASE = process.env.NEXT_PUBLIC_APP_URL ?? 'https://komunio-artlopjr-progs-projects.vercel.app'
 
     // Crear suscripción en PayPal
     const subscription = await paypalAPI('POST', '/v1/billing/subscriptions', {
