@@ -57,7 +57,7 @@ export default async function CertificadoPage({ params }: { params: Promise<{ co
         <div style={{ width: 120, height: 2, background: 'linear-gradient(90deg, transparent, rgba(240,165,0,0.4), transparent)', margin: '0 auto 20px' }} />
         <div style={{ fontSize: 13, color: C.muted }}>Emitido el {issuedDate}</div>
         <div style={{ marginTop: 16, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 16px', borderRadius: 99, background: 'rgba(0,214,143,0.1)', border: '1px solid rgba(0,214,143,0.2)', color: C.green, fontSize: 12, fontWeight: 700 }}>
-          ✅ Verificado por EscalaClub
+          ✅ Verificado por Komunio
         </div>
       </div>
 

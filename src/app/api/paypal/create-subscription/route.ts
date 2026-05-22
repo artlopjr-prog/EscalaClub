@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
         email_address: user.email,
       },
       application_context: {
-        brand_name: 'EscalaClub',
+        brand_name: 'Komunio',
         locale: 'es-PA',
         shipping_preference: 'NO_SHIPPING',
         user_action: 'SUBSCRIBE_NOW',

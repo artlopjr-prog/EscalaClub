@@ -40,7 +40,7 @@ export default async function AdminPage() {
         </div>
         <div>
           <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: C.text, marginBottom: 2 }}>Admin Panel</h1>
-          <p style={{ fontSize: 13, color: C.muted }}>Vista general de EscalaClub</p>
+          <p style={{ fontSize: 13, color: C.muted }}>Vista general de Komunio</p>
         </div>
         <div style={{ marginLeft: 'auto', padding: '4px 12px', borderRadius: 99, background: 'rgba(124,58,237,0.15)', color: C.purple2, fontSize: 11, fontFamily: 'Inter, sans-serif', fontWeight: 700 }}>
           SUPER ADMIN

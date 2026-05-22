@@ -220,7 +220,7 @@ export default function RetosClient({
             ⚡ Retos
           </h1>
           <p style={{ fontSize: 13, color: C.muted2 }}>
-            Retos oficiales de EscalaClub + desafíos de tus comunidades
+            Retos oficiales de Komunio + desafíos de tus comunidades
           </p>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
@@ -265,7 +265,7 @@ export default function RetosClient({
       {view === 'home' && (
         <div>
           {/* RETOS OFICIALES */}
-          <SectionHeader title="⭐ Retos Oficiales EscalaClub" badge="Toda la plataforma" badgeColor={C.goldDim} badgeText={C.gold} />
+          <SectionHeader title="⭐ Retos Oficiales Komunio" badge="Toda la plataforma" badgeColor={C.goldDim} badgeText={C.gold} />
 
           {platformChallenges.length === 0 ? (
             <EmptyState icon={<Star size={32} color={C.gold} />} title="Sin retos oficiales activos" sub="Vuelve pronto — se publican nuevos retos cada mes" />
@@ -322,7 +322,7 @@ export default function RetosClient({
                 <div style={{ width: 52, height: 52, borderRadius: 12, background: COVER_COLORS.cv1, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 26, flexShrink: 0 }}>{c.emoji}</div>
                 <div style={{ flex: 1 }}>
                   {c.origin === 'platform' && (
-                    <div style={{ fontSize: 10, fontWeight: 800, color: C.gold, textTransform: 'uppercase', letterSpacing: '.08em', marginBottom: 3 }}>⭐ Reto Oficial EscalaClub</div>
+                    <div style={{ fontSize: 10, fontWeight: 800, color: C.gold, textTransform: 'uppercase', letterSpacing: '.08em', marginBottom: 3 }}>⭐ Reto Oficial Komunio</div>
                   )}
                   {c.community && (
                     <div style={{ fontSize: 11, color: C.purpleL, marginBottom: 3 }}>🌐 {c.community.name}</div>
@@ -405,7 +405,7 @@ export default function RetosClient({
 
               {/* Rewards */}
               <div style={{ fontSize: 10, fontWeight: 700, color: C.muted, textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: 10 }}>
-                {c.origin === 'platform' ? 'Recompensas exclusivas EscalaClub' : 'Recompensas al completar'}
+                {c.origin === 'platform' ? 'Recompensas exclusivas Komunio' : 'Recompensas al completar'}
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 9, marginBottom: 20 }}>
                 {c.reward_badge && <RewardCard icon="🎖" name="Badge Exclusivo" desc="En tu perfil para siempre" special={c.origin === 'platform'} />}
@@ -534,7 +534,7 @@ export default function RetosClient({
             <div style={{ marginBottom: 16 }}>
               <label style={LBL}>¿Quién organiza?</label>
               <div style={{ display: 'flex', gap: 8 }}>
-                {[{ val: 'community', label: '🌐 Mi Comunidad' }, { val: 'platform', label: '⭐ EscalaClub Oficial' }].map(o => (
+                {[{ val: 'community', label: '🌐 Mi Comunidad' }, { val: 'platform', label: '⭐ Komunio Oficial' }].map(o => (
                   <button key={o.val} onClick={() => setForm(f => ({ ...f, origin: o.val }))} style={{
                     padding: '9px 16px', borderRadius: 10, border: `1px solid ${form.origin === o.val ? C.borderGold : C.border2}`,
                     background: form.origin === o.val ? C.goldDim : C.bg2, color: form.origin === o.val ? C.goldL : C.muted2,

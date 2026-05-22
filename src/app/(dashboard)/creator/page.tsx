@@ -21,7 +21,7 @@ export default async function CreatorPage() {
       <div style={{ padding: 32, maxWidth: 600, margin: '80px auto', textAlign: 'center' }}>
         <div style={{ fontSize: 64, marginBottom: 20 }}>🚀</div>
         <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, color: C.text, marginBottom: 12 }}>Crea tu comunidad</h1>
-        <p style={{ fontSize: 15, color: C.muted, marginBottom: 28, lineHeight: 1.6 }}>Empieza a construir tu audiencia en EscalaClub.</p>
+        <p style={{ fontSize: 15, color: C.muted, marginBottom: 28, lineHeight: 1.6 }}>Empieza a construir tu audiencia en Komunio.</p>
         <Link href="/creator/comunidad" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 28px', borderRadius: 14, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15 }}>
           Crear mi comunidad →
         </Link>

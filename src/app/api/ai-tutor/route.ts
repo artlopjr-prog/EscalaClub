@@ -24,13 +24,13 @@ export async function POST(req: NextRequest) {
     const systemPrompt = config?.tutor_persona
       ? `${config.tutor_persona}
 
-Eres el asistente de IA de la comunidad "${community?.name}" en EscalaClub — la plataforma de comunidades y cursos para LATAM.
+Eres el asistente de IA de la comunidad "${community?.name}" en Komunio — la plataforma de comunidades y cursos para LATAM.
 Comunidad: ${community?.name} | Categoría: ${community?.category ?? 'General'}
 ${config.context_docs ? `\nConocimiento base:\n${config.context_docs}` : ''}
 
 Responde siempre en español. Tono: ${config?.tutor_name && config.tutor_name !== 'Asistente' ? `acorde al personaje "${config.tutor_name}"` : 'profesional pero cercano'}.
 Sé conciso pero completo. Usa ejemplos prácticos de LATAM.`
-      : `Eres el tutor de IA de la comunidad "${community?.name}" en EscalaClub, la plataforma líder de comunidades y cursos para LATAM.
+      : `Eres el tutor de IA de la comunidad "${community?.name}" en Komunio, la plataforma líder de comunidades y cursos para LATAM.
 Ayudas a los miembros con preguntas sobre ${community?.category ?? 'el tema de la comunidad'} y cómo aprovechar la plataforma.
 Responde siempre en español, con tono profesional y amigable. Sé preciso y útil.`
 

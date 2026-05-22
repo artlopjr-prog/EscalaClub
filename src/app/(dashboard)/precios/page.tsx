@@ -86,7 +86,7 @@ export default function PreciosPage() {
           Sin comisiones por venta. Tú cobras directo a tus miembros por PayPal.
         </p>
         <p style={{ fontSize: 13, color: C.muted, maxWidth: 440, margin: '0 auto 32px' }}>
-          Lo que cobres a tus miembros es 100% tuyo. EscalaClub solo cobra el plan mensual.
+          Lo que cobres a tus miembros es 100% tuyo. Komunio solo cobra el plan mensual.
         </p>
 
         <div style={{ display: 'inline-flex', background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 12, padding: 4 }}>
@@ -166,9 +166,9 @@ export default function PreciosPage() {
           {[
             ['¿Puedo cambiar de plan?', 'Sí, puedes subir o bajar de plan en cualquier momento. El cambio aplica desde el siguiente ciclo de facturación.'],
             ['¿Qué pasa con mis miembros si cancelo?', 'Tendrás acceso hasta el final del período pagado. Luego tu comunidad se pausará y los miembros no podrán acceder hasta que reactives.'],
-            ['¿Cómo cobro a mis miembros?', 'Conectas tu cuenta PayPal en la configuración de tu comunidad. Tú defines el precio y el dinero llega directo a ti — sin comisiones de EscalaClub.'],
+            ['¿Cómo cobro a mis miembros?', 'Conectas tu cuenta PayPal en la configuración de tu comunidad. Tú defines el precio y el dinero llega directo a ti — sin comisiones de Komunio.'],
             ['¿Hay un período de prueba?', 'Puedes crear tu perfil y configurar tu comunidad gratis. El plan se activa cuando decides publicarla y cobrar.'],
-            ['¿EscalaClub toma comisión de mis ventas?', 'No. EscalaClub cobra el plan mensual, y los pagos de tus miembros son 100% tuyos. Sin comisiones ocultas.'],
+            ['¿Komunio toma comisión de mis ventas?', 'No. Komunio cobra el plan mensual, y los pagos de tus miembros son 100% tuyos. Sin comisiones ocultas.'],
           ].map(([q, a]) => (
             <div key={q} style={{ background: C.bg1, border: `1px solid ${C.border}`, borderRadius: 14, padding: '18px 22px' }}>
               <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15, color: C.text, marginBottom: 8 }}>{q}</div>

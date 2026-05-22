@@ -26,8 +26,8 @@ export async function POST(req: NextRequest) {
   try {
     // 1. Crear producto
     const product = await paypalAPI('POST', '/v1/catalogs/products', {
-      name: 'EscalaClub Creator Subscription',
-      description: 'Suscripción de creador en EscalaClub — La plataforma de comunidades de LATAM',
+      name: 'Komunio Creator Subscription',
+      description: 'Suscripción de creador en Komunio — La plataforma de comunidades de LATAM',
       type: 'SERVICE',
       category: 'SOFTWARE',
     })
@@ -47,8 +47,8 @@ export async function POST(req: NextRequest) {
     for (const plan of plans) {
       const created = await paypalAPI('POST', '/v1/billing/plans', {
         product_id: product.id,
-        name: `EscalaClub ${plan.name}`,
-        description: `Plan ${plan.name} de EscalaClub para creadores de comunidades`,
+        name: `Komunio ${plan.name}`,
+        description: `Plan ${plan.name} de Komunio para creadores de comunidades`,
         status: 'ACTIVE',
         billing_cycles: [{
           frequency: { interval_unit: plan.interval, interval_count: 1 },

@@ -74,7 +74,7 @@ export default function RegistroPage() {
           <div style={{ width: 36, height: 36, borderRadius: 10, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(124,58,237,0.4)' }}>
             <Zap size={18} color="#fff" />
           </div>
-          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, letterSpacing: '-0.04em', color: C.text }}>EscalaClub</span>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, letterSpacing: '-0.04em', color: C.text }}>Komunio</span>
         </div>
         <div>
           <div style={{ fontSize: 48, marginBottom: 24 }}>🚀</div>
@@ -104,7 +104,7 @@ export default function RegistroPage() {
             <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Zap size={15} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>Komunio</span>
           </div>
 
           <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.04em', marginBottom: 6, color: C.text }}>Crear cuenta gratis</h1>
@@ -226,7 +226,7 @@ export default function RegistroPage() {
                 <Link href="/terminos" target="_blank" style={{ color: C.purple2, textDecoration: 'none', fontWeight: 600 }}>Términos y Condiciones</Link>
                 {' '}y la{' '}
                 <Link href="/privacidad" target="_blank" style={{ color: C.purple2, textDecoration: 'none', fontWeight: 600 }}>Política de Privacidad</Link>
-                {' '}de EscalaClub.
+                {' '}de Komunio.
               </span>
             </label>
 

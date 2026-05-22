@@ -40,7 +40,7 @@ export default function LoginPage() {
           <div style={{ width: 36, height: 36, borderRadius: 10, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 20px ${C.purple}44` }}>
             <Zap size={18} color="#fff" />
           </div>
-          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, color: C.text, letterSpacing: '-0.03em' }}>EscalaClub</span>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, color: C.text, letterSpacing: '-0.03em' }}>Komunio</span>
         </div>
         <div>
           <div style={{ fontSize: 44, marginBottom: 24 }}>👋</div>
@@ -70,7 +70,7 @@ export default function LoginPage() {
             <div style={{ width: 32, height: 32, borderRadius: 9, background: `linear-gradient(135deg, ${C.purple}, ${C.purple2})`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Zap size={15} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>Komunio</span>
           </div>
 
           <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', marginBottom: 6, color: C.text }}>Iniciar sesión</h1>

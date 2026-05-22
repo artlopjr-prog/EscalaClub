@@ -127,7 +127,7 @@ export default function NotificacionesClient({ userId, prefs, profile, recentLog
 
       {/* HEADER */}
       <div style={{ marginBottom: 32 }}>
-        <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 8 }}>EscalaClub</p>
+        <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 8 }}>Komunio</p>
         <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 'clamp(26px,5vw,38px)', letterSpacing: '-0.04em', marginBottom: 6 }}>
           🔔 Notificaciones
         </h1>

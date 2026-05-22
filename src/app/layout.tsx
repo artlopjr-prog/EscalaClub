@@ -3,7 +3,7 @@ import './globals.css'
 import { Toaster } from 'react-hot-toast'
 
 export const metadata: Metadata = {
-  title: 'EscalaClub — La plataforma de comunidades de LATAM',
+  title: 'Komunio — La plataforma de comunidades de LATAM',
   description: 'Crea tu comunidad, sube tus cursos, conecta con miles de emprendedores en Latinoamérica.',
 }
 

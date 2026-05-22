@@ -86,13 +86,13 @@ export async function sendWhatsApp(msg: WAMessage) {
 
 // ── TEMPLATES DE MENSAJES ──
 function formatTemplate(t: { name: string; language: string; components?: any[] }): string {
-  return `[EscalaClub] Tienes una nueva notificación`
+  return `[Komunio] Tienes una nueva notificación`
 }
 
 export const TEMPLATES = {
   // Nuevo post en comunidad
   new_post: (communityName: string, postPreview: string, link: string) =>
-    `🌐 *${communityName}* — Nuevo post\n\n"${postPreview.slice(0, 100)}${postPreview.length > 100 ? '...' : ''}"\n\n👉 Ver en EscalaClub: ${link}`,
+    `🌐 *${communityName}* — Nuevo post\n\n"${postPreview.slice(0, 100)}${postPreview.length > 100 ? '...' : ''}"\n\n👉 Ver en Komunio: ${link}`,
 
   // Recordatorio de reto diario
   challenge_reminder: (challengeName: string, dayNum: number, streak: number, link: string) =>
@@ -100,7 +100,7 @@ export const TEMPLATES = {
 
   // Reto completado
   challenge_complete: (challengeName: string, totalDays: number, link: string) =>
-    `🏆 *¡Felicitaciones!*\n\nCompletaste el reto *"${challengeName}"* — ${totalDays} días sin fallar.\n\n¡Eres parte de la élite de EscalaClub! 🌟\n${link}`,
+    `🏆 *¡Felicitaciones!*\n\nCompletaste el reto *"${challengeName}"* — ${totalDays} días sin fallar.\n\n¡Eres parte de la élite de Komunio! 🌟\n${link}`,
 
   // Nuevo evento
   new_event: (communityName: string, eventTitle: string, date: string, link: string) =>
@@ -112,7 +112,7 @@ export const TEMPLATES = {
 
   // Verificación de número
   verify_code: (code: string) =>
-    `🔐 *EscalaClub* — Código de verificación\n\nTu código es: *${code}*\n\nVálido por 10 minutos. No lo compartas con nadie.`,
+    `🔐 *Komunio* — Código de verificación\n\nTu código es: *${code}*\n\nVálido por 10 minutos. No lo compartas con nadie.`,
 
   // Spin diario recordatorio
   daily_spin: (link: string) =>
@@ -120,7 +120,7 @@ export const TEMPLATES = {
 
   // Bienvenida WhatsApp
   welcome: (userName: string) =>
-    `👋 *¡Hola ${userName}!*\n\nWhatsApp conectado exitosamente con EscalaClub ✅\n\nAhora recibirás notificaciones de tus retos, eventos y comunidades directamente aquí.\n\n_Para dejar de recibir notificaciones ve a Configuración → Notificaciones en la plataforma._`,
+    `👋 *¡Hola ${userName}!*\n\nWhatsApp conectado exitosamente con Komunio ✅\n\nAhora recibirás notificaciones de tus retos, eventos y comunidades directamente aquí.\n\n_Para dejar de recibir notificaciones ve a Configuración → Notificaciones en la plataforma._`,
 }
 
 // ── API ROUTE — enviar notificación ──

@@ -100,7 +100,7 @@ export default function PricingPage({ currentPlan, memberId }: PricingPageProps)
 
         if (error) throw error
 
-        toast.success(`🎉 ¡Plan ${planTier} activado! Bienvenido a EscalaClub`)
+        toast.success(`🎉 ¡Plan ${planTier} activado! Bienvenido a Komunio`)
         router.push('/comunidad/crear')
         router.refresh()
       } catch (err) {
@@ -268,7 +268,7 @@ export default function PricingPage({ currentPlan, memberId }: PricingPageProps)
       <div className="max-w-2xl mx-auto mt-12 text-center">
         <p className="text-white/40 text-sm">
           ¿Tienes dudas?{' '}
-          <a href="mailto:hola@escalaclub.com" className="text-violet-400 hover:text-violet-300 underline">
+          <a href="mailto:hola@komunio.app" className="text-violet-400 hover:text-violet-300 underline">
             Escríbenos
           </a>
           {' '}o visita nuestras{' '}

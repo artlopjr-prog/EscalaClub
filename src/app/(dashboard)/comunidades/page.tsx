@@ -73,7 +73,7 @@ export default function ComunidadesPage() {
       {/* HERO HEADER */}
       <div style={{ background: 'linear-gradient(180deg,var(--bg1) 0%,var(--bg) 100%)', borderBottom: '1px solid var(--border)', padding: '36px 32px 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 10 }}>EscalaClub</p>
+          <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 10 }}>Komunio</p>
           <h1 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 'clamp(26px,5vw,42px)', letterSpacing: '-.04em', marginBottom: 6 }}>
             Descubre comunidades
           </h1>

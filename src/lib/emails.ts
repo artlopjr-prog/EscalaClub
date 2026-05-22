@@ -7,7 +7,7 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
 }
 
-const FROM   = process.env.EMAIL_FROM ?? 'EscalaClub <hola@escalaclub.com>'
+const FROM   = process.env.EMAIL_FROM ?? 'Komunio <hola@komunio.app>'
 const BASE   = process.env.NEXT_PUBLIC_APP_URL ?? 'https://escala-club.vercel.app'
 const PURPLE = '#7B5EF8'
 const PURPLE2= '#A78BFF'
@@ -25,7 +25,7 @@ function wrap(content: string, preheader = '') {
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>EscalaClub</title>
+<title>Komunio</title>
 </head>
 <body style="margin:0;padding:0;background:${BG};font-family:'Outfit',system-ui,sans-serif;">
 ${preheader ? `<div style="display:none;max-height:0;overflow:hidden;">${preheader}</div>` : ''}
@@ -37,7 +37,7 @@ ${preheader ? `<div style="display:none;max-height:0;overflow:hidden;">${prehead
   <tr><td style="padding:0 0 20px;text-align:center;">
     <div style="display:inline-flex;align-items:center;gap:8px;">
       <div style="background:linear-gradient(135deg,${PURPLE},${PURPLE2});width:36px;height:36px;border-radius:10px;display:inline-block;line-height:36px;text-align:center;font-size:18px;">⚡</div>
-      <span style="font-size:20px;font-weight:900;color:${TEXT};letter-spacing:-0.04em;">EscalaClub</span>
+      <span style="font-size:20px;font-weight:900;color:${TEXT};letter-spacing:-0.04em;">Komunio</span>
     </div>
   </td></tr>
 
@@ -48,7 +48,7 @@ ${preheader ? `<div style="display:none;max-height:0;overflow:hidden;">${prehead
 
   <!-- FOOTER -->
   <tr><td style="padding:20px 0;text-align:center;">
-    <p style="font-size:11px;color:var(--muted);margin:0 0 4px;">EscalaClub · La plataforma de comunidades de LATAM</p>
+    <p style="font-size:11px;color:var(--muted);margin:0 0 4px;">Komunio · La plataforma de comunidades de LATAM</p>
     <p style="font-size:11px;color:var(--muted);margin:0;">
       <a href="${BASE}/notificaciones" style="color:var(--muted);">Gestionar notificaciones</a> · 
       <a href="${BASE}" style="color:var(--muted);">Ir a la plataforma</a>
@@ -102,7 +102,7 @@ export async function sendWelcomeEmail(email: string, name: string) {
   const first = name.split(' ')[0]
   return resend.emails.send({
     from: FROM, to: email,
-    subject: `¡Bienvenido a EscalaClub, ${first}! 🚀`,
+    subject: `¡Bienvenido a Komunio, ${first}! 🚀`,
     html: wrap(
       hero('👋', `¡Hola ${first}, bienvenido!`, 'Ya eres parte de la mejor plataforma de comunidades de LATAM') +
       body(`
@@ -122,7 +122,7 @@ export async function sendWelcomeEmail(email: string, name: string) {
         </table>
         ${btn('Explorar comunidades →', `${BASE}/comunidades`)}
       `),
-      `Bienvenido ${first} — tu cuenta en EscalaClub está lista`
+      `Bienvenido ${first} — tu cuenta en Komunio está lista`
     )
   })
 }
@@ -303,7 +303,7 @@ export async function sendPasswordResetEmail(email: string, name: string, resetU
   if (!resend) return { skipped: true }
   return resend.emails.send({
     from: FROM, to: email,
-    subject: 'Recupera tu contraseña en EscalaClub 🔐',
+    subject: 'Recupera tu contraseña en Komunio 🔐',
     html: wrap(
       hero('🔐', 'Recuperar contraseña', 'Haz clic abajo para crear una nueva contraseña') +
       body(`
@@ -335,7 +335,7 @@ export async function sendCreatorPaymentEmail(creatorEmail: string, creatorName:
               <strong style="color:${TEXT};">$${amount.toFixed(2)} USD</strong>
             </div>
             <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-              <span style="font-size:13px;color:${MUTED};">Fee EscalaClub (1.5%)</span>
+              <span style="font-size:13px;color:${MUTED};">Fee Komunio (1.5%)</span>
               <span style="color:${MUTED};">−$${platformFee.toFixed(2)} USD</span>
             </div>
             <div style="border-top:1px solid var(--border);padding-top:8px;display:flex;justify-content:space-between;">

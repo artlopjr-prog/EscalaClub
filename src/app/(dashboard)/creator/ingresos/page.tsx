@@ -36,14 +36,14 @@ export default function CreatorIngresosPage() {
     { label: 'MRR estimado', value: `$${mrr.toFixed(0)}`, sub: 'ingresos mensuales brutos', icon: DollarSign, color: C.green, bg: 'rgba(0,214,143,0.1)' },
     { label: 'Ventas de cursos', value: '$0', sub: 'ingresos por cursos', icon: TrendingUp, color: C.purple2, bg: 'rgba(124,58,237,0.1)' },
     { label: 'Miembros activos', value: memberCount, sub: 'en tu comunidad', icon: Users, color: C.gold, bg: 'rgba(240,165,0,0.1)' },
-    { label: 'Plan EscalaClub', value: `-$${planCost}/mes`, sub: 'costo de tu plan', icon: CreditCard, color: C.red, bg: 'rgba(255,77,106,0.1)' },
+    { label: 'Plan Komunio', value: `-$${planCost}/mes`, sub: 'costo de tu plan', icon: CreditCard, color: C.red, bg: 'rgba(255,77,106,0.1)' },
   ]
 
   return (
     <div style={{ padding: 32, maxWidth: 900, margin: '0 auto' }}>
       <div style={{ marginBottom: 28 }}>
         <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 30, letterSpacing: '-0.04em', color: C.text, marginBottom: 6 }}>Ingresos</h1>
-        <p style={{ fontSize: 13, color: C.muted }}>Resumen de tus ganancias en EscalaClub</p>
+        <p style={{ fontSize: 13, color: C.muted }}>Resumen de tus ganancias en Komunio</p>
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14, marginBottom: 24 }}>
@@ -65,7 +65,7 @@ export default function CreatorIngresosPage() {
       <div style={{ background: 'rgba(0,214,143,0.06)', border: '1px solid rgba(0,214,143,0.2)', borderRadius: 16, padding: '20px 24px', marginBottom: 24 }}>
         <div style={{ fontSize: 12, color: C.muted, marginBottom: 6 }}>Ingreso neto estimado</div>
         <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 36, letterSpacing: '-0.04em', color: netMrr >= 0 ? C.green : C.red }}>${netMrr.toFixed(0)}/mes</div>
-        <div style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>MRR comunidad + ventas de cursos – plan EscalaClub</div>
+        <div style={{ fontSize: 12, color: C.muted, marginTop: 4 }}>MRR comunidad + ventas de cursos – plan Komunio</div>
       </div>
 
       {/* Sales history */}

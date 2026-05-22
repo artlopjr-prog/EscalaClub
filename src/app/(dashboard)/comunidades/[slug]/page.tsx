@@ -313,7 +313,7 @@ export default async function ComunidadPublicaPage({ params }: { params: Promise
               {(!isMember && !isOwner) && (
                 <p style={{ fontSize: 11, color: 'var(--muted)', textAlign: 'center', marginTop: 10 }}>
                   {!user
-                    ? 'Crea tu cuenta gratis en EscalaClub'
+                    ? 'Crea tu cuenta gratis en Komunio'
                     : isFree ? '✓ Gratis · Sin tarjeta de crédito' : '✓ Cancela cuando quieras · Pagos seguros vía PayPal'}
                 </p>
               )}

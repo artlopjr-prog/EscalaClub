@@ -12,7 +12,7 @@ export default function PrivacidadPage() {
             <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Zap size={15} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>Komunio</span>
           </Link>
         </div>
 
@@ -22,11 +22,11 @@ export default function PrivacidadPage() {
         {[
           {
             title: '1. Información que Recopilamos',
-            content: `Recopilamos la siguiente información:\n\n• Información de registro: nombre, email, país e idioma.\n• Información de perfil: foto, biografía, redes sociales (opcional).\n• Información de pago: procesada por PayPal; EscalaClub no almacena datos de tarjetas.\n• Datos de uso: páginas visitadas, cursos completados, interacciones en el foro.\n• Información técnica: dirección IP, tipo de navegador, dispositivo.`
+            content: `Recopilamos la siguiente información:\n\n• Información de registro: nombre, email, país e idioma.\n• Información de perfil: foto, biografía, redes sociales (opcional).\n• Información de pago: procesada por PayPal; Komunio no almacena datos de tarjetas.\n• Datos de uso: páginas visitadas, cursos completados, interacciones en el foro.\n• Información técnica: dirección IP, tipo de navegador, dispositivo.`
           },
           {
             title: '2. Cómo Usamos tu Información',
-            content: `Utilizamos tu información para:\n\n• Proveer y mejorar el servicio de EscalaClub.\n• Procesar pagos y gestionar suscripciones.\n• Enviarte notificaciones sobre tu cuenta y actividad en la plataforma.\n• Enviar comunicaciones de marketing (puedes cancelar en cualquier momento).\n• Cumplir obligaciones legales.\n• Prevenir fraude y garantizar la seguridad de la plataforma.`
+            content: `Utilizamos tu información para:\n\n• Proveer y mejorar el servicio de Komunio.\n• Procesar pagos y gestionar suscripciones.\n• Enviarte notificaciones sobre tu cuenta y actividad en la plataforma.\n• Enviar comunicaciones de marketing (puedes cancelar en cualquier momento).\n• Cumplir obligaciones legales.\n• Prevenir fraude y garantizar la seguridad de la plataforma.`
           },
           {
             title: '3. Compartición de Información',
@@ -42,7 +42,7 @@ export default function PrivacidadPage() {
           },
           {
             title: '6. Tus Derechos',
-            content: `Tienes derecho a:\n\n• Acceder a los datos personales que tenemos sobre ti.\n• Corregir información incorrecta o incompleta.\n• Solicitar la eliminación de tu cuenta y datos asociados.\n• Exportar tu información en formato legible.\n• Oponerte al procesamiento de tus datos para marketing.\n\nPara ejercer estos derechos, escríbenos a: hola@escalaclub.com`
+            content: `Tienes derecho a:\n\n• Acceder a los datos personales que tenemos sobre ti.\n• Corregir información incorrecta o incompleta.\n• Solicitar la eliminación de tu cuenta y datos asociados.\n• Exportar tu información en formato legible.\n• Oponerte al procesamiento de tus datos para marketing.\n\nPara ejercer estos derechos, escríbenos a: hola@komunio.app`
           },
           {
             title: '7. Retención de Datos',
@@ -50,19 +50,19 @@ export default function PrivacidadPage() {
           },
           {
             title: '8. Menores de Edad',
-            content: `EscalaClub no está dirigido a personas menores de 18 años. Si eres menor de 18 años, no debes registrarte ni usar la plataforma. Si detectamos que un usuario es menor de edad, eliminaremos su cuenta inmediatamente.`
+            content: `Komunio no está dirigido a personas menores de 18 años. Si eres menor de 18 años, no debes registrarte ni usar la plataforma. Si detectamos que un usuario es menor de edad, eliminaremos su cuenta inmediatamente.`
           },
           {
             title: '9. Transferencias Internacionales',
-            content: `Tu información puede ser procesada en servidores ubicados fuera de tu país de residencia. Al usar EscalaClub, consientes estas transferencias. Nos aseguramos de que nuestros proveedores cumplan con estándares adecuados de protección de datos.`
+            content: `Tu información puede ser procesada en servidores ubicados fuera de tu país de residencia. Al usar Komunio, consientes estas transferencias. Nos aseguramos de que nuestros proveedores cumplan con estándares adecuados de protección de datos.`
           },
           {
             title: '10. Cambios a esta Política',
-            content: `Podemos actualizar esta Política de Privacidad periódicamente. Te notificaremos por email sobre cambios significativos. El uso continuado de EscalaClub después de los cambios constituye tu aceptación.`
+            content: `Podemos actualizar esta Política de Privacidad periódicamente. Te notificaremos por email sobre cambios significativos. El uso continuado de Komunio después de los cambios constituye tu aceptación.`
           },
           {
             title: '11. Contacto',
-            content: `Para consultas sobre privacidad o ejercer tus derechos:\n\nEmail: hola@escalaclub.com\nEmpresa: SCALON\nPaís: República de Panamá`
+            content: `Para consultas sobre privacidad o ejercer tus derechos:\n\nEmail: hola@komunio.app\nEmpresa: SCALON\nPaís: República de Panamá`
           },
         ].map(section => (
           <div key={section.title} style={{ marginBottom: 36 }}>

@@ -17,7 +17,7 @@ export default async function AfiliadosPage() {
     <div style={{ padding: 32, maxWidth: 800, margin: '0 auto' }}>
       <div style={{ marginBottom: 32 }}>
         <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 34, letterSpacing: '-0.04em', color: C.text, marginBottom: 4 }}>Programa de Afiliados 🤝</h1>
-        <p style={{ fontSize: 14, color: C.muted }}>Gana comisiones invitando creadores a EscalaClub</p>
+        <p style={{ fontSize: 14, color: C.muted }}>Gana comisiones invitando creadores a Komunio</p>
       </div>
 
       {/* Stats */}

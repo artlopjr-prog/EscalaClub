@@ -103,7 +103,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
             <div style={{ width: 30, height: 30, borderRadius: 9, background: 'linear-gradient(135deg, #6366F1, #818CF8)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, boxShadow: '0 0 16px rgba(99,102,241,0.4)' }}>
               <Zap size={15} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 15, color: C.text, letterSpacing: '-0.03em' }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 15, color: C.text, letterSpacing: '-0.03em' }}>Komunio</span>
           </Link>
         )}
         <button onClick={() => setCollapsed(!collapsed)} style={{ background: 'var(--bg1)', border: `1px solid ${C.border}`, borderRadius: 7, cursor: 'pointer', color: C.muted, padding: '4px 5px', display: 'flex', flexShrink: 0 }}>

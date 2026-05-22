@@ -71,7 +71,7 @@ export default function HomePage() {
             <div style={{ width: 30, height: 30, borderRadius: 8, background: 'linear-gradient(135deg,var(--purple),var(--purple2))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Zap size={16} color="#fff" />
             </div>
-            <span style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 17, letterSpacing: '-.03em' }}>EscalaClub</span>
+            <span style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 17, letterSpacing: '-.03em' }}>Komunio</span>
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             {user ? (

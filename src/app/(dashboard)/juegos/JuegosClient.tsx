@@ -211,7 +211,7 @@ export default function JuegosClient({ userId, profile, todaySpin, topWinners }:
 
       {/* HEADER */}
       <div style={{ marginBottom: 32 }}>
-        <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 8 }}>EscalaClub</p>
+        <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--muted)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 8 }}>Komunio</p>
         <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 'clamp(28px,5vw,42px)', letterSpacing: '-0.04em', lineHeight: 1, marginBottom: 8 }}>
           🎮 Juegos
         </h1>

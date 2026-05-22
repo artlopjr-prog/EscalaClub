@@ -51,7 +51,7 @@ export default function OnboardingPage() {
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) { router.push('/login'); return }
     await supabase.from('ec_profiles').update({ onboarding_completed: true }).eq('id', user.id)
-    toast.success('¡Bienvenido a EscalaClub! 🎉', { duration: 3000 })
+    toast.success('¡Bienvenido a Komunio! 🎉', { duration: 3000 })
     router.push(role === 'creator' ? '/creator/comunidad' : '/comunidades')
   }
 
@@ -78,7 +78,7 @@ export default function OnboardingPage() {
           <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(124,58,237,0.4)' }}>
             <Zap size={16} color="#fff" />
           </div>
-          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, letterSpacing: '-0.04em', color: 'var(--text)' }}>EscalaClub</span>
+          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, letterSpacing: '-0.04em', color: 'var(--text)' }}>Komunio</span>
         </div>
 
         {/* Progress */}
@@ -98,7 +98,7 @@ export default function OnboardingPage() {
             <div style={{ textAlign: 'center', marginBottom: 32 }}>
               <div style={{ fontSize: 40, marginBottom: 16 }}>🚀</div>
               <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 28, letterSpacing: '-0.04em', color: 'var(--text)', marginBottom: 8 }}>
-                ¿Cómo vas a usar EscalaClub?
+                ¿Cómo vas a usar Komunio?
               </h1>
               <p style={{ fontSize: 14, color: 'var(--muted)' }}>Esto nos ayuda a personalizar tu experiencia</p>
             </div>
@@ -236,7 +236,7 @@ export default function OnboardingPage() {
                   fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15,
                   display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                 }}>
-                {loading ? 'Entrando...' : role === 'creator' ? '🚀 Crear mi comunidad' : '🎉 Entrar a EscalaClub'}
+                {loading ? 'Entrando...' : role === 'creator' ? '🚀 Crear mi comunidad' : '🎉 Entrar a Komunio'}
               </button>
             </div>
           </div>
