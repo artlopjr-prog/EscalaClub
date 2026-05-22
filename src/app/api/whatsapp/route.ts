@@ -147,7 +147,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Construir mensaje según tipo
-    const BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://komunio-artlopjr-progs-projects.vercel.app'
+    const BASE_URL = process.env.NEXT_PUBLIC_APP_URL ?? 'https://komunio.vercel.app'
     let message = ''
 
     switch (type) {

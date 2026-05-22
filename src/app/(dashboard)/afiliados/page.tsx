@@ -11,7 +11,7 @@ export default async function AfiliadosPage() {
 
   const { data: profile } = await supabase.from('ec_profiles').select('display_name, username').eq('id', user.id).single()
   const referralCode = profile?.username ?? user.id.slice(0, 8)
-  const referralLink = `https://komunio-artlopjr-progs-projects.vercel.app/registro?ref=${referralCode}`
+  const referralLink = `https://komunio.vercel.app/registro?ref=${referralCode}`
 
   return (
     <div style={{ padding: 32, maxWidth: 800, margin: '0 auto' }}>
