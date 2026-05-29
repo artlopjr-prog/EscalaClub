@@ -1,228 +1,298 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
-import { Search, Users, X } from 'lucide-react'
+import { createClient } from '@/lib/supabase/client'
 import { KomunioLogo } from '@/components/KomunioLogo'
+import { Check, ArrowRight, Zap, Users, BookOpen, Trophy, Star, ChevronDown } from 'lucide-react'
 
-const CATS = [
-  { label: 'Todas', emoji: '\u{1F30D}' },
-  { label: 'Marketing', emoji: '\u{1F4C8}' },
-  { label: 'Ventas', emoji: '\u{1F4B0}' },
-  { label: 'IA', emoji: '\u{1F916}' },
-  { label: 'Emprendimiento', emoji: '\u{1F680}' },
-  { label: 'Finanzas', emoji: '\u{1F4B5}' },
-  { label: 'Tecnología', emoji: '\u{1F4BB}' },
-  { label: 'Fitness', emoji: '\u{1F4AA}' },
-  { label: 'Liderazgo', emoji: '\u{1F451}' },
-  { label: 'E-commerce', emoji: '\u{1F6CD}\uFE0F' },
-  { label: 'Diseño', emoji: '\u{1F3A8}' },
-  { label: 'Gaming', emoji: '\u{1F3AE}' },
-  { label: 'Educación', emoji: '\u{1F4DA}' },
-  { label: 'Música', emoji: '\u{1F3B5}' },
+const FEATURES = [
+  { emoji: '👥', title: 'Comunidades privadas', desc: 'Crea tu espacio exclusivo. Foro, chat, eventos y anuncios — todo en un solo lugar.' },
+  { emoji: '📚', title: 'Cursos integrados', desc: 'Sube tus lecciones en video. Tus miembros aprenden dentro de la misma comunidad.' },
+  { emoji: '💰', title: 'Cobros con PayPal', desc: 'Acepta pagos desde cualquier país de LATAM. Sin complicaciones bancarias.' },
+  { emoji: '🎮', title: 'Gamificación', desc: 'XP, niveles, badges y leaderboard. Tus miembros se mantienen activos y enganchados.' },
+  { emoji: '🤖', title: 'Tutor IA incluido', desc: 'Cada comunidad tiene su propio asistente IA entrenado con tu contenido.' },
+  { emoji: '🎓', title: 'Certificados automáticos', desc: 'Al completar un curso, tus estudiantes reciben un certificado descargable con tu marca.' },
+  { emoji: '📈', title: 'Analytics en tiempo real', desc: 'Ve cómo crece tu comunidad: nuevos miembros, posts populares, retención.' },
+  { emoji: '📱', title: 'Mobile-first', desc: 'Funciona perfecto en el celular. Tus miembros siempre conectados desde donde estén.' },
 ]
 
-const RANK_BG = [
-  'linear-gradient(135deg,#E9A020,#FFCA6B)',
-  'linear-gradient(135deg,#9ba8b5,#c8d0d8)',
-  'linear-gradient(135deg,#c47c2a,#e8a44a)',
+const PLANS = [
+  { id: 'starter', name: 'Starter', price: 39, annual: 374, color: '#3B82F6', members: '100 miembros', features: ['1 comunidad activa', 'Cursos ilimitados', 'Foro con canales', 'Eventos en vivo', 'Certificados automáticos', 'Analytics básico', 'Soporte por email'] },
+  { id: 'creator', name: 'Creator', price: 79, annual: 758, color: '#6C47FF', members: '1,000 miembros', popular: true, features: ['Todo lo de Starter', 'Hasta 1,000 miembros', 'Programa de afiliados', 'Analytics avanzado', 'Notificaciones WhatsApp', 'Badge verificado', 'Soporte prioritario'] },
+  { id: 'pro', name: 'Pro', price: 129, annual: 1238, color: '#10B981', members: 'Sin límite', features: ['Todo lo de Creator', 'Miembros ilimitados', 'White-label (próximo)', 'API pública (próximo)', 'Manager dedicado', 'Onboarding personalizado'] },
 ]
-const RANK_COLOR = ['var(--bg)', '#1a1a2e', '#fff']
 
-export default function HomePage() {
-  const supabase = createClient()
-  const [communities, setCommunities] = useState<any[]>([])
-  const [loading, setLoading] = useState(true)
-  const [q, setQ] = useState('')
-  const [cat, setCat] = useState('Todas')
-  const [access, setAccess] = useState('all')
+const FAQS = [
+  { q: '¿Necesito saber programar?', a: 'Para nada. Komunio lo configuras todo desde un panel visual. En menos de 10 minutos tienes tu comunidad lista para recibir miembros.' },
+  { q: '¿Cómo recibo mis pagos?', a: 'Los pagos van directo a tu cuenta de PayPal. Komunio cobra una comisión del 1.5% por transacción — la más baja del mercado.' },
+  { q: '¿Puedo migrar desde Skool o Kajabi?', a: 'Sí. Puedes exportar tu lista de miembros e importarla en Komunio. Para los cursos, te ayudamos con la migración.' },
+  { q: '¿Hay contrato de permanencia?', a: 'No. Pagas mes a mes y cancelas cuando quieras. Sin penalidades, sin letra chica.' },
+  { q: '¿Qué diferencia a Komunio de Skool?', a: 'Komunio está hecho para LATAM: pagos con PayPal, soporte en español, precios en dólares asequibles y sin las restricciones de Skool para creadores de habla hispana.' },
+]
+
+export default function LandingPage() {
   const [user, setUser] = useState<any>(null)
+  const [billing, setBilling] = useState<'monthly' | 'annual'>('monthly')
+  const [openFaq, setOpenFaq] = useState<number | null>(null)
+  const supabase = createClient()
 
   useEffect(() => {
-    // Track affiliate referral
+    // Track affiliate ref
     const params = new URLSearchParams(window.location.search)
     const ref = params.get('ref')
     if (ref) {
       localStorage.setItem('komunio_ref', ref)
-      // Track click
-      fetch('/api/affiliates/click', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: ref })
-      }).catch(() => {})
+      fetch('/api/affiliates/click', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ code: ref }) }).catch(() => {})
     }
-  }, [])
 
-  useEffect(() => {
-    async function load() {
-      const { data: { user: u } } = await supabase.auth.getUser()
-      setUser(u)
-      const { data: comms } = await supabase
-        .from('ec_communities')
-        .select('id,name,slug,tagline,category,access_type,price_monthly,primary_color,logo_url,banner_url,member_count,owner:ec_profiles!ec_communities_owner_id_fkey(display_name,avatar_url)')
-        .eq('status', 'active')
-        .order('member_count', { ascending: false })
-        .limit(60)
-      setCommunities(comms ?? [])
-      setLoading(false)
-    }
-    load()
+    supabase.auth.getUser().then(({ data: { user: u } }) => setUser(u))
   }, [])
-
-  const filtered = communities.filter(c => {
-    const matchQ = !q || c.name.toLowerCase().includes(q.toLowerCase()) || (c.tagline ?? '').toLowerCase().includes(q.toLowerCase())
-    const matchCat = cat === 'Todas' || (c.category ?? '').toLowerCase().includes(cat.toLowerCase())
-    const matchAccess = access === 'all'
-      || (access === 'free' ? (!c.price_monthly || c.price_monthly === 0) : (c.price_monthly ?? 0) > 0)
-    return matchQ && matchCat && matchAccess
-  })
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
-      {/* NAVBAR */}
-      <nav style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(20px)', borderBottom: '1px solid var(--border)', padding: '0 24px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <div style={{ minHeight: '100vh', background: '#FFFFFF', color: '#0F0F0F' }}>
+
+      {/* ── NAVBAR ── */}
+      <nav style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(20px)', borderBottom: '1px solid #F0F0F5', padding: '0 24px' }}>
+        <div style={{ maxWidth: 1100, margin: '0 auto', height: 60, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link href="/" style={{ textDecoration: 'none' }}>
-            <KomunioLogo size={32} variant="full" />
+            <KomunioLogo size={32} variant="full" theme="light" />
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Link href="/explorar" style={{ padding: '7px 14px', borderRadius: 8, color: '#525252', textDecoration: 'none', fontSize: 13, fontWeight: 500 }}>
+              Explorar comunidades
+            </Link>
+            <Link href="/precios" style={{ padding: '7px 14px', borderRadius: 8, color: '#525252', textDecoration: 'none', fontSize: 13, fontWeight: 500 }}>
+              Precios
+            </Link>
             {user ? (
-              <Link href="/dashboard" style={{ padding: '8px 18px', borderRadius: 10, background: 'linear-gradient(135deg,var(--purple),var(--purple2))', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 700, fontFamily: 'Inter,sans-serif' }}>
+              <Link href="/dashboard" style={{ padding: '8px 18px', borderRadius: 9, background: '#6C47FF', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>
                 Mi dashboard →
               </Link>
             ) : (
               <>
-                <Link href="/login" style={{ padding: '8px 16px', borderRadius: 10, color: 'var(--muted2)', textDecoration: 'none', fontSize: 13, fontWeight: 600 }}>Entrar</Link>
-                <Link href="/registro" style={{ padding: '8px 18px', borderRadius: 10, background: 'linear-gradient(135deg,var(--purple),var(--purple2))', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 700, fontFamily: 'Inter,sans-serif', boxShadow: '0 4px 14px rgba(123,94,248,0.3)' }}>Registrarme</Link>
+                <Link href="/login" style={{ padding: '8px 14px', borderRadius: 9, color: '#525252', textDecoration: 'none', fontSize: 13, fontWeight: 500 }}>
+                  Entrar
+                </Link>
+                <Link href="/registro" style={{ padding: '8px 18px', borderRadius: 9, background: '#6C47FF', color: '#fff', textDecoration: 'none', fontSize: 13, fontWeight: 600, boxShadow: '0 2px 12px rgba(108,71,255,0.3)' }}>
+                  Empezar gratis
+                </Link>
               </>
             )}
           </div>
         </div>
       </nav>
 
-      {/* HERO */}
-      <div style={{ background: 'linear-gradient(180deg,var(--bg1) 0%,var(--bg) 100%)', borderBottom: '1px solid var(--border)', padding: '40px 24px 28px' }}>
-        <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 28 }}>
-            <p style={{ fontSize: 11, fontWeight: 700, color: 'var(--purple2)', letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: 12 }}>La plataforma de comunidades de LATAM</p>
-            <h1 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 'clamp(28px,6vw,52px)', letterSpacing: '-.04em', lineHeight: 1.05, marginBottom: 10 }}>Descubre comunidades</h1>
-            <p style={{ fontSize: 15, color: 'var(--muted2)', maxWidth: 460, margin: '0 auto' }}>
-              {loading ? 'Cargando...' : `${filtered.length} comunidades · Únete gratis o con membresía`}
-            </p>
+      {/* ── HERO ── */}
+      <section style={{ padding: 'clamp(60px,10vw,120px) 24px clamp(60px,8vw,100px)', textAlign: 'center', background: 'linear-gradient(180deg, #FAFAFA 0%, #FFFFFF 100%)', position: 'relative', overflow: 'hidden' }}>
+        {/* Background decoration */}
+        <div style={{ position: 'absolute', top: -100, left: '50%', transform: 'translateX(-50%)', width: 600, height: 600, borderRadius: '50%', background: 'radial-gradient(circle, rgba(108,71,255,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+        <div style={{ maxWidth: 780, margin: '0 auto', position: 'relative' }}>
+          {/* Badge */}
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 99, background: 'rgba(108,71,255,0.08)', border: '1px solid rgba(108,71,255,0.2)', marginBottom: 24 }}>
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#6C47FF' }} />
+            <span style={{ fontSize: 12, fontWeight: 600, color: '#6C47FF' }}>El Skool de LATAM — Ya disponible</span>
           </div>
-          <div style={{ position: 'relative', maxWidth: 560, margin: '0 auto 20px' }}>
-            <Search size={16} color="var(--muted)" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} />
-            <input value={q} onChange={e => setQ(e.target.value)}
-              placeholder="Busca por nombre, tema, creador..."
-              style={{ width: '100%', background: 'var(--bg2)', border: '1px solid var(--border2)', borderRadius: 14, padding: '14px 16px 14px 46px', color: 'var(--text)', fontSize: 15, outline: 'none' }} />
-            {q && <button onClick={() => setQ('')} style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--muted)', display: 'flex' }}><X size={14} /></button>}
+
+          <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 'clamp(36px,7vw,72px)', letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 20, color: '#0F0F0F' }}>
+            Tu comunidad.<br />
+            <span style={{ color: '#6C47FF' }}>Tus ingresos.</span>
+          </h1>
+
+          <p style={{ fontSize: 'clamp(16px,2.5vw,20px)', color: '#525252', lineHeight: 1.6, marginBottom: 36, maxWidth: 560, margin: '0 auto 36px' }}>
+            Crea tu comunidad online, vende cursos y cobra membresías en español. Con PayPal. Para creadores de LATAM.
+          </p>
+
+          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/registro" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 32px', borderRadius: 12, background: '#6C47FF', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 16, boxShadow: '0 4px 20px rgba(108,71,255,0.35)', transition: 'all .2s' }}>
+              Crear mi comunidad gratis <ArrowRight size={17} />
+            </Link>
+            <Link href="/explorar" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 28px', borderRadius: 12, border: '1.5px solid #E5E5EA', background: '#fff', color: '#0F0F0F', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: 16 }}>
+              Ver comunidades
+            </Link>
           </div>
-          <div style={{ display: 'flex', gap: 6, overflowX: 'auto', scrollbarWidth: 'none', justifyContent: 'center', flexWrap: 'wrap' }}>
-            {CATS.map(c => (
-              <button key={c.label} onClick={() => setCat(c.label)} style={{
-                padding: '7px 14px', borderRadius: 99, fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap',
-                background: cat === c.label ? 'linear-gradient(135deg,#7B5EF8,#A78BFF)' : 'var(--bg2)',
-                color: cat === c.label ? '#fff' : 'var(--muted2)',
-                border: `1px solid ${cat === c.label ? 'transparent' : 'var(--border)'}`,
-                cursor: 'pointer', transition: 'all .15s', fontFamily: 'Inter,sans-serif',
-                display: 'flex', alignItems: 'center', gap: 5,
-              }}>
-                <span>{c.emoji}</span> {c.label}
+
+          <p style={{ fontSize: 13, color: '#A0A0AB', marginTop: 16 }}>Sin tarjeta de crédito · Cancela cuando quieras</p>
+        </div>
+      </section>
+
+      {/* ── SOCIAL PROOF BAR ── */}
+      <div style={{ background: '#F7F7F8', borderTop: '1px solid #F0F0F5', borderBottom: '1px solid #F0F0F5', padding: '16px 24px' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(24px,5vw,60px)', flexWrap: 'wrap' }}>
+          {[
+            { val: '1.5%', label: 'Comisión por transacción' },
+            { val: 'PayPal', label: 'Pagos seguros' },
+            { val: '100%', label: 'En español' },
+            { val: '24/7', label: 'Soporte incluido' },
+          ].map(s => (
+            <div key={s.label} style={{ textAlign: 'center' }}>
+              <div style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 20, color: '#6C47FF', letterSpacing: '-0.03em' }}>{s.val}</div>
+              <div style={{ fontSize: 12, color: '#737373', marginTop: 2 }}>{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── FEATURES ── */}
+      <section style={{ padding: 'clamp(60px,8vw,100px) 24px', maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+          <p style={{ fontSize: 12, fontWeight: 700, color: '#6C47FF', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 12 }}>Todo lo que necesitas</p>
+          <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 'clamp(26px,5vw,42px)', letterSpacing: '-0.03em', marginBottom: 12, color: '#0F0F0F' }}>
+            Una plataforma. Todo incluido.
+          </h2>
+          <p style={{ fontSize: 16, color: '#525252', maxWidth: 500, margin: '0 auto' }}>
+            No necesitas 5 herramientas distintas. Komunio tiene todo lo que un creador necesita para crecer.
+          </p>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))', gap: 16 }}>
+          {FEATURES.map((f, i) => (
+            <div key={i} style={{ background: '#FAFAFA', border: '1px solid #F0F0F5', borderRadius: 16, padding: '22px 20px', transition: 'all .2s' }}>
+              <div style={{ fontSize: 32, marginBottom: 12 }}>{f.emoji}</div>
+              <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 15, marginBottom: 6, color: '#0F0F0F' }}>{f.title}</h3>
+              <p style={{ fontSize: 13, color: '#737373', lineHeight: 1.6, margin: 0 }}>{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── VS SKOOL ── */}
+      <section style={{ padding: 'clamp(40px,6vw,80px) 24px', background: '#FAFAFA', borderTop: '1px solid #F0F0F5', borderBottom: '1px solid #F0F0F5' }}>
+        <div style={{ maxWidth: 720, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 36 }}>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', letterSpacing: '-0.03em', color: '#0F0F0F', marginBottom: 8 }}>
+              ¿Por qué Komunio y no Skool?
+            </h2>
+            <p style={{ fontSize: 15, color: '#737373' }}>Skool está hecho para el mercado anglosajón. Komunio está hecho para ti.</p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            {[
+              { title: 'Skool', items: ['Solo acepta tarjetas de crédito USA/UK', 'Interfaz en inglés', '$99/mes sin importar tu tamaño', 'Soporte solo en inglés', 'Sin PayPal ni transferencias LATAM', 'Comisión del 2.9% + $0.30 por transacción'], bad: true },
+              { title: 'Komunio', items: ['PayPal y métodos de pago LATAM', 'Todo en español', 'Planes desde $39/mes', 'Soporte en español 24/7', 'Optimizado para creadores de LATAM', 'Solo 1.5% de comisión'], bad: false },
+            ].map(col => (
+              <div key={col.title} style={{ background: col.bad ? '#fff' : 'linear-gradient(135deg, rgba(108,71,255,0.05), rgba(108,71,255,0.02))', border: `1.5px solid ${col.bad ? '#F0F0F5' : 'rgba(108,71,255,0.2)'}`, borderRadius: 16, padding: '20px 18px' }}>
+                <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, marginBottom: 14, color: col.bad ? '#737373' : '#6C47FF' }}>{col.title}</h3>
+                {col.items.map((item, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 10 }}>
+                    <span style={{ fontSize: 14, marginTop: 1, flexShrink: 0 }}>{col.bad ? '✗' : '✓'}</span>
+                    <span style={{ fontSize: 13, color: col.bad ? '#A0A0AB' : '#0F0F0F', lineHeight: 1.5 }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PRICING ── */}
+      <section style={{ padding: 'clamp(60px,8vw,100px) 24px', maxWidth: 1000, margin: '0 auto' }} id="precios">
+        <div style={{ textAlign: 'center', marginBottom: 40 }}>
+          <p style={{ fontSize: 12, fontWeight: 700, color: '#6C47FF', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: 12 }}>Precios</p>
+          <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 'clamp(26px,5vw,42px)', letterSpacing: '-0.03em', marginBottom: 12, color: '#0F0F0F' }}>
+            Transparente. Sin sorpresas.
+          </h2>
+
+          {/* Billing toggle */}
+          <div style={{ display: 'inline-flex', background: '#F7F7F8', borderRadius: 10, padding: 3, border: '1px solid #E5E5EA', marginTop: 8 }}>
+            {[{ val: 'monthly', label: 'Mensual' }, { val: 'annual', label: 'Anual  -20%' }].map(b => (
+              <button key={b.val} onClick={() => setBilling(b.val as any)} style={{ padding: '7px 18px', borderRadius: 8, border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600, background: billing === b.val ? '#fff' : 'transparent', color: billing === b.val ? '#0F0F0F' : '#737373', boxShadow: billing === b.val ? '0 1px 3px rgba(0,0,0,0.08)' : 'none', transition: 'all .15s' }}>
+                {b.label}
               </button>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* CONTENT */}
-      <div style={{ maxWidth: 1100, margin: '0 auto', padding: '24px 24px 60px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 20, flexWrap: 'wrap', gap: 10 }}>
-          <div style={{ display: 'flex', gap: 4, background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 10, padding: 3 }}>
-            {[{ val: 'all', label: 'Todas' }, { val: 'free', label: 'Gratis' }, { val: 'paid', label: 'De pago' }].map(a => (
-              <button key={a.val} onClick={() => setAccess(a.val)} style={{ padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 600, background: access === a.val ? 'var(--bg3)' : 'transparent', color: access === a.val ? 'var(--text)' : 'var(--muted)', border: 'none', cursor: 'pointer', fontFamily: 'Inter,sans-serif' }}>{a.label}</button>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
+          {PLANS.map(plan => (
+            <div key={plan.id} style={{ background: plan.popular ? 'linear-gradient(135deg, #6C47FF, #8B6DFF)' : '#FAFAFA', border: `1.5px solid ${plan.popular ? 'transparent' : '#E5E5EA'}`, borderRadius: 20, padding: '28px 24px', position: 'relative', boxShadow: plan.popular ? '0 8px 32px rgba(108,71,255,0.25)' : 'none' }}>
+              {plan.popular && (
+                <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: '#F59E0B', color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 14px', borderRadius: 99, whiteSpace: 'nowrap' }}>
+                  ⭐ Más popular
+                </div>
+              )}
+              <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 4, color: plan.popular ? '#fff' : '#0F0F0F' }}>{plan.name}</h3>
+              <p style={{ fontSize: 12, color: plan.popular ? 'rgba(255,255,255,0.7)' : '#737373', marginBottom: 16 }}>{plan.members}</p>
+              <div style={{ marginBottom: 20 }}>
+                <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 40, letterSpacing: '-0.04em', color: plan.popular ? '#fff' : '#0F0F0F' }}>
+                  ${billing === 'monthly' ? plan.price : Math.round(plan.annual / 12)}
+                </span>
+                <span style={{ fontSize: 14, color: plan.popular ? 'rgba(255,255,255,0.7)' : '#737373', marginLeft: 4 }}>/mes</span>
+                {billing === 'annual' && <div style={{ fontSize: 11, color: plan.popular ? 'rgba(255,255,255,0.8)' : '#10B981', marginTop: 2, fontWeight: 600 }}>Facturado ${plan.annual}/año</div>}
+              </div>
+              <Link href="/registro" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, padding: '11px 20px', borderRadius: 10, background: plan.popular ? '#fff' : '#6C47FF', color: plan.popular ? '#6C47FF' : '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 14, marginBottom: 20 }}>
+                Empezar con {plan.name} →
+              </Link>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {plan.features.map((f, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <Check size={14} color={plan.popular ? 'rgba(255,255,255,0.8)' : '#6C47FF'} style={{ flexShrink: 0 }} />
+                    <span style={{ fontSize: 13, color: plan.popular ? 'rgba(255,255,255,0.9)' : '#525252' }}>{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+        <p style={{ textAlign: 'center', fontSize: 13, color: '#A0A0AB', marginTop: 20 }}>
+          + 1.5% de comisión por transacción · Sin cargos ocultos · Cancela cuando quieras
+        </p>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section style={{ padding: 'clamp(40px,6vw,80px) 24px', background: '#FAFAFA', borderTop: '1px solid #F0F0F5' }}>
+        <div style={{ maxWidth: 640, margin: '0 auto' }}>
+          <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', letterSpacing: '-0.03em', textAlign: 'center', marginBottom: 36, color: '#0F0F0F' }}>
+            Preguntas frecuentes
+          </h2>
+          {FAQS.map((faq, i) => (
+            <div key={i} style={{ borderBottom: '1px solid #E5E5EA', paddingBottom: 0 }}>
+              <button onClick={() => setOpenFaq(openFaq === i ? null : i)} style={{ width: '100%', textAlign: 'left', padding: '18px 0', background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+                <span style={{ fontSize: 15, fontWeight: 600, color: '#0F0F0F' }}>{faq.q}</span>
+                <ChevronDown size={18} color="#737373" style={{ flexShrink: 0, transform: openFaq === i ? 'rotate(180deg)' : 'none', transition: 'transform .2s' }} />
+              </button>
+              {openFaq === i && (
+                <p style={{ fontSize: 14, color: '#525252', lineHeight: 1.7, margin: '0 0 18px', paddingBottom: 0 }}>{faq.a}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── FINAL CTA ── */}
+      <section style={{ padding: 'clamp(60px,8vw,100px) 24px', textAlign: 'center' }}>
+        <div style={{ maxWidth: 600, margin: '0 auto' }}>
+          <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 'clamp(28px,5vw,46px)', letterSpacing: '-0.04em', marginBottom: 14, color: '#0F0F0F' }}>
+            Empieza hoy.<br /><span style={{ color: '#6C47FF' }}>Gratis.</span>
+          </h2>
+          <p style={{ fontSize: 16, color: '#525252', marginBottom: 28, lineHeight: 1.6 }}>
+            Crea tu comunidad en 10 minutos. Sin tarjeta de crédito.
+          </p>
+          <Link href="/registro" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '15px 36px', borderRadius: 14, background: '#6C47FF', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 17, boxShadow: '0 8px 28px rgba(108,71,255,0.35)' }}>
+            Crear mi comunidad gratis <ArrowRight size={18} />
+          </Link>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 20, marginTop: 18, flexWrap: 'wrap' }}>
+            {['Sin tarjeta de crédito', 'Cancela cuando quieras', 'Soporte en español'].map(t => (
+              <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 13, color: '#737373' }}>
+                <Check size={13} color="#10B981" /> {t}
+              </div>
             ))}
           </div>
-          <Link href="/registro" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, background: 'linear-gradient(135deg,#7B5EF8,#A78BFF)', color: '#fff', textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Inter,sans-serif', boxShadow: '0 4px 14px rgba(123,94,248,0.3)' }}>
-            Crear mi comunidad gratis
-          </Link>
         </div>
+      </section>
 
-        {loading ? (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(300px,1fr))', gap: 18 }}>
-            {[1,2,3,4,5,6].map(i => <div key={i} className="skeleton" style={{ height: 280, borderRadius: 20 }} />)}
+      {/* ── FOOTER ── */}
+      <footer style={{ background: '#F7F7F8', borderTop: '1px solid #E5E5EA', padding: '24px', textAlign: 'center' }}>
+        <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
+          <KomunioLogo size={24} variant="full" theme="light" />
+          <div style={{ display: 'flex', gap: 20, flexWrap: 'wrap' }}>
+            {[['Explorar', '/explorar'], ['Precios', '/precios'], ['Términos', '/terminos'], ['Privacidad', '/privacidad']].map(([label, href]) => (
+              <Link key={href} href={href} style={{ fontSize: 13, color: '#737373', textDecoration: 'none' }}>{label}</Link>
+            ))}
           </div>
-        ) : filtered.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '80px 24px' }}>
-            <div style={{ fontSize: 48, marginBottom: 16 }}>🔍</div>
-            <h3 style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 20, marginBottom: 8 }}>Sin resultados</h3>
-            <button onClick={() => { setQ(''); setCat('Todas'); setAccess('all') }} style={{ padding: '10px 20px', borderRadius: 12, background: 'rgba(123,94,248,0.12)', color: '#A78BFF', border: '1px solid rgba(123,94,248,0.3)', cursor: 'pointer', fontSize: 13, fontWeight: 700, fontFamily: 'Inter,sans-serif', marginTop: 12 }}>
-              Limpiar filtros
-            </button>
-          </div>
-        ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(300px,1fr))', gap: 18 }}>
-            {filtered.map((c, idx) => {
-              const isFree = !c.price_monthly || c.price_monthly === 0
-              const accent = c.primary_color ?? '#7B5EF8'
-              const owner = c.owner as any
-              const initials = (owner?.display_name ?? '').slice(0,2).toUpperCase()
-              return (
-                <Link key={c.id} href={`/comunidades/${c.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
-                  <div style={{ background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 20, overflow: 'hidden', cursor: 'pointer', height: '100%', transition: 'transform .18s, box-shadow .2s' }}
-                    onMouseEnter={e => { const el=e.currentTarget as HTMLElement; el.style.transform='translateY(-3px)'; el.style.boxShadow=`0 12px 40px rgba(0,0,0,0.4),0 0 0 1px ${accent}33` }}
-                    onMouseLeave={e => { const el=e.currentTarget as HTMLElement; el.style.transform=''; el.style.boxShadow='' }}>
-                    <div style={{ height: 170, background: c.banner_url?undefined:`linear-gradient(135deg,${accent}44,${accent}11)`, position: 'relative', overflow: 'hidden' }}>
-                      {c.banner_url && <img src={c.banner_url} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} />}
-                      <div style={{ position:'absolute', inset:0, background:'linear-gradient(to bottom,transparent 25%,rgba(6,6,10,0.88) 100%)' }} />
-                      {idx < 3 && (
-                        <div style={{ position:'absolute', top:10, left:10, width:28, height:28, borderRadius:8, background:RANK_BG[idx], display:'flex', alignItems:'center', justifyContent:'center', fontFamily:'Inter,sans-serif', fontWeight:900, fontSize:12, color:RANK_COLOR[idx], boxShadow:'0 2px 8px rgba(0,0,0,0.4)' }}>
-                          #{idx+1}
-                        </div>
-                      )}
-                      <div style={{ position:'absolute', top:10, right:10, padding:'3px 10px', borderRadius:99, background:'rgba(0,0,0,0.75)', backdropFilter:'blur(8px)', fontSize:11, fontFamily:'Inter,sans-serif', fontWeight:700, color:isFree?'#00D68F':accent }}>
-                        {isFree?'GRATIS':`$${c.price_monthly}/mes`}
-                      </div>
-                      <div style={{ position:'absolute', bottom:-18, left:16, zIndex:2 }}>
-                        <div style={{ width:46, height:46, borderRadius:13, border:'3px solid var(--bg1)', background:c.logo_url?undefined:accent+'22', display:'flex', alignItems:'center', justifyContent:'center', fontSize:20, overflow:'hidden', boxShadow:'0 4px 14px rgba(0,0,0,0.5)' }}>
-                          {c.logo_url?<img src={c.logo_url} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} />:'🌐'}
-                        </div>
-                      </div>
-                    </div>
-                    <div style={{ padding:'24px 16px 16px' }}>
-                      <h3 style={{ fontFamily:'Inter,sans-serif', fontWeight:800, fontSize:15, letterSpacing:'-.03em', marginBottom:4, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{c.name}</h3>
-                      {c.tagline && <p style={{ fontSize:12, color:'var(--muted2)', marginBottom:10, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap', lineHeight:1.4 }}>{c.tagline}</p>}
-                      <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginTop:8 }}>
-                        <div style={{ display:'flex', alignItems:'center', gap:6, minWidth:0 }}>
-                          <div style={{ width:20, height:20, borderRadius:'50%', background:`linear-gradient(135deg,${accent},${accent}88)`, display:'flex', alignItems:'center', justifyContent:'center', fontSize:8, fontWeight:700, color:'#fff', overflow:'hidden', flexShrink:0 }}>
-                            {owner?.avatar_url?<img src={owner.avatar_url} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} />:initials||'👤'}
-                          </div>
-                          <span style={{ fontSize:11, color:'var(--muted)', overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{owner?.display_name??'Creador'}</span>
-                        </div>
-                        <div style={{ display:'flex', alignItems:'center', gap:4, color:'var(--muted)', fontSize:11, flexShrink:0 }}>
-                          <Users size={11} />
-                          <span style={{ fontWeight:600, color:'var(--muted2)' }}>{(c.member_count??0).toLocaleString()}</span>
-                        </div>
-                      </div>
-                      {c.category && <div style={{ marginTop:10 }}><span style={{ fontSize:10, padding:'3px 9px', borderRadius:99, background:`${accent}15`, color:accent, fontWeight:600, border:`1px solid ${accent}25` }}>{c.category}</span></div>}
-                    </div>
-                  </div>
-                </Link>
-              )
-            })}
-          </div>
-        )}
-
-        {!loading && (
-          <div style={{ marginTop: 48, textAlign: 'center', padding: '32px 24px', background: 'linear-gradient(135deg,rgba(123,94,248,0.08),rgba(123,94,248,0.03))', border: '1px solid rgba(123,94,248,0.15)', borderRadius: 20 }}>
-            <p style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 6 }}>¿Quieres crear tu propia comunidad?</p>
-            <p style={{ fontSize: 14, color: 'var(--muted2)', marginBottom: 18 }}>Sin comisiones · Con PayPal · En español · Para LATAM</p>
-            <Link href="/registro" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 28px', borderRadius: 12, background: 'linear-gradient(135deg,#7B5EF8,#A78BFF)', color: '#fff', textDecoration: 'none', fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: 14, boxShadow: '0 4px 20px rgba(123,94,248,0.35)' }}>
-              Crear mi comunidad gratis
-            </Link>
-          </div>
-        )}
-      </div>
+          <p style={{ fontSize: 12, color: '#A0A0AB', margin: 0 }}>© 2026 Komunio · Hecho con ❤️ para LATAM</p>
+        </div>
+      </footer>
     </div>
   )
 }

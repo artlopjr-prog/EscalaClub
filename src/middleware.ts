@@ -18,7 +18,7 @@ export async function middleware(request: NextRequest) {
   requestHeaders.set('x-pathname', pathname)
 
   // Rutas completamente públicas
-  const publicPaths = ['/', '/login', '/registro', '/recuperar', '/terminos', '/privacidad', '/precios']
+  const publicPaths = ['/', '/explorar', '/login', '/registro', '/recuperar', '/terminos', '/privacidad', '/precios']
 
   // Explorador de comunidades público
   const isPublicCommunities = pathname === '/comunidades'
