@@ -63,6 +63,7 @@ export default function ForoClient({
   const [commentText, setCommentText] = useState<Record<string, string>>({})
   const [imageUrl, setImageUrl] = useState('')
   const [showImageInput, setShowImageInput] = useState(false)
+  const [uploadedImages, setUploadedImages] = useState<string[]>([])
   const [leaderboard, setLeaderboard] = useState<LeaderEntry[]>([])
   const [onlineCount] = useState(Math.floor(Math.random() * 12) + 3)
   const [completedTasks, setCompletedTasks] = useState<Set<string>>(new Set())
@@ -121,7 +122,7 @@ export default function ForoClient({
       .single()
     if (error) { toast.error('Error al publicar'); setPosting(false); return }
     setPosts([data as Post, ...posts])
-    setContent(''); setTitle(''); setImageUrl(''); setShowImageInput(false)
+    setContent(''); setTitle(''); setImageUrl(''); setShowImageInput(false); setUploadedImages([])
     setComposerFocused(false)
     setPosting(false)
     setCompletedTasks(prev => new Set([...prev, 'post']))
@@ -265,11 +266,11 @@ export default function ForoClient({
               />
 
               {showImageInput && (
-                <input
-                  value={imageUrl}
-                  onChange={e => setImageUrl(e.target.value)}
-                  placeholder="URL de la imagen..."
-                  style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 10, padding: '10px 14px', color: C.text, fontSize: 13, outline: 'none', marginTop: 10, boxSizing: 'border-box' }}
+                <ImageUploader
+                  communityId={communityId}
+                  images={uploadedImages}
+                  onUpload={url => setUploadedImages(prev => [...prev, url])}
+                  onRemove={url => setUploadedImages(prev => prev.filter(u => u !== url))}
                 />
               )}
 
