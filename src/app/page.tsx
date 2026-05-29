@@ -40,6 +40,21 @@ export default function HomePage() {
   const [user, setUser] = useState<any>(null)
 
   useEffect(() => {
+    // Track affiliate referral
+    const params = new URLSearchParams(window.location.search)
+    const ref = params.get('ref')
+    if (ref) {
+      localStorage.setItem('komunio_ref', ref)
+      // Track click
+      fetch('/api/affiliates/click', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: ref })
+      }).catch(() => {})
+    }
+  }, [])
+
+  useEffect(() => {
     async function load() {
       const { data: { user: u } } = await supabase.auth.getUser()
       setUser(u)
