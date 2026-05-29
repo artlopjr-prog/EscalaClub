@@ -4,7 +4,8 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import toast from 'react-hot-toast'
-import { Zap, ArrowRight, Check, Users, BookOpen } from 'lucide-react'
+import { ArrowRight, Check, Users, BookOpen } from 'lucide-react'
+import { KomunioLogo } from '@/components/KomunioLogo'
 
 const GOALS_CREATOR = [
   { id: 'community', icon: '👥', label: 'Crear mi comunidad' },
@@ -74,11 +75,8 @@ export default function OnboardingPage() {
       <div style={{ width: '100%', maxWidth: 560 }}>
 
         {/* Logo */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center', marginBottom: 40 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 20px rgba(124,58,237,0.4)' }}>
-            <Zap size={16} color="#fff" />
-          </div>
-          <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, letterSpacing: '-0.04em', color: 'var(--text)' }}>Komunio</span>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 40 }}>
+          <KomunioLogo size={36} variant="full" />
         </div>
 
         {/* Progress */}

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
+import { KomunioLogo } from '@/components/KomunioLogo'
 import { Zap, Mail, Lock, Eye, EyeOff, ArrowRight } from 'lucide-react'
 import toast from 'react-hot-toast'
 

@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
-import { Search, Users, X, Zap } from 'lucide-react'
+import { Search, Users, X } from 'lucide-react'
+import { KomunioLogo } from '@/components/KomunioLogo'
 
 const CATS = [
   { label: 'Todas', emoji: '\u{1F30D}' },
@@ -67,11 +68,8 @@ export default function HomePage() {
       {/* NAVBAR */}
       <nav style={{ position: 'sticky', top: 0, zIndex: 100, background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(20px)', borderBottom: '1px solid var(--border)', padding: '0 24px' }}>
         <div style={{ maxWidth: 1100, margin: '0 auto', height: 56, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
-            <div style={{ width: 30, height: 30, borderRadius: 8, background: 'linear-gradient(135deg,var(--purple),var(--purple2))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Zap size={16} color="#fff" />
-            </div>
-            <span style={{ fontFamily: 'Inter,sans-serif', fontWeight: 900, fontSize: 17, letterSpacing: '-.03em' }}>Komunio</span>
+          <Link href="/" style={{ textDecoration: 'none' }}>
+            <KomunioLogo size={32} variant="full" />
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             {user ? (

@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase/client'
+import { KomunioLogo } from '@/components/KomunioLogo'
 import { Zap, Mail, Lock, User, Globe, ArrowRight, Eye, EyeOff, Users, Sparkles } from 'lucide-react'
 import toast from 'react-hot-toast'
 
