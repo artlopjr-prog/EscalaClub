@@ -60,7 +60,7 @@ export default function RegistroPage() {
 
     // Si es creador → precios, si es miembro → onboarding
     if (role === 'creator') {
-      router.push('/precios')
+      router.push('/creator/checklist')
     } else {
       router.push('/onboarding')
     }

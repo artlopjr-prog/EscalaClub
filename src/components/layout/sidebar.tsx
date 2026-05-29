@@ -8,7 +8,7 @@ import {
   LayoutDashboard, Globe, BookOpen, MessageSquare, Calendar,
   Trophy, TrendingUp, Bell, User, ChevronLeft, ChevronRight,
   LogOut, Settings, Shield, Zap, Users, BarChart2, Megaphone,
-  DollarSign, Lock, Star
+  DollarSign, Lock, Star, CheckSquare
 } from 'lucide-react'
 
 const C = {
