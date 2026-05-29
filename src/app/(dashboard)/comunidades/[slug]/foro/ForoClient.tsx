@@ -249,13 +249,12 @@ export default function ForoClient({
                 style={{ width: '100%', background: 'transparent', border: 'none', outline: 'none', color: C.text, fontSize: 16, fontFamily: 'Inter, sans-serif', fontWeight: 700, marginBottom: 10 }}
                 autoFocus
               />
-              <textarea
+              <RichEditor
                 value={content}
-                onChange={e => setContent(e.target.value)}
-                onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) submitPost() }}
+                onChange={setContent}
                 placeholder="¿Qué quieres compartir con la comunidad?"
-                rows={4}
-                style={{ width: '100%', background: C.bg2, border: `1px solid ${C.border}`, borderRadius: 12, padding: '12px 14px', color: C.text, fontSize: 14, outline: 'none', resize: 'none', fontFamily: 'Inter, sans-serif', boxSizing: 'border-box' }}
+                minHeight={120}
+                accent={accent}
               />
 
               {showImageInput && (
@@ -351,7 +350,7 @@ export default function ForoClient({
               <div style={{ display: 'grid', gridTemplateColumns: post.media_urls?.length ? '1fr 140px' : '1fr', gap: 14, alignItems: 'start' }}>
                 <div>
                   {post.title && <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 15, color: C.text, marginBottom: 6 }}>{post.title}</h3>}
-                  <p style={{ fontSize: 14, color: C.muted2, lineHeight: 1.7, whiteSpace: 'pre-wrap', margin: 0 }}>{post.content}</p>
+                  <div style={{ fontSize: 14, color: C.muted2, lineHeight: 1.7, margin: 0 }} dangerouslySetInnerHTML={{ __html: post.content }} />
                 </div>
                 {post.media_urls && post.media_urls.length > 0 && (
                   <div style={{ borderRadius: 10, overflow: 'hidden', height: 90 }}>
