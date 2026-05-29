@@ -269,7 +269,7 @@ export default function LandingPage() {
             Crea tu cuenta gratis. Tu comunidad desde $39/mes.
           </p>
           <Link href="/registro" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '15px 36px', borderRadius: 14, background: '#6C47FF', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 17, boxShadow: '0 8px 28px rgba(108,71,255,0.35)' }}>
-            Crear mi comunidad gratis <ArrowRight size={18} />
+            Crear mi comunidad <ArrowRight size={18} />
           </Link>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 20, marginTop: 18, flexWrap: 'wrap' }}>
             {['Planes desde $39/mes', 'Cancela cuando quieras', 'Soporte en español'].map(t => (

@@ -144,7 +144,7 @@ export default function HomePage() {
             ))}
           </div>
           <Link href="/registro" style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px', borderRadius: 10, background: 'linear-gradient(135deg,#7B5EF8,#A78BFF)', color: '#fff', textDecoration: 'none', fontSize: 12, fontWeight: 700, fontFamily: 'Inter,sans-serif', boxShadow: '0 4px 14px rgba(123,94,248,0.3)' }}>
-            Crear mi comunidad gratis
+            Crear mi comunidad
           </Link>
         </div>
 
@@ -218,7 +218,7 @@ export default function HomePage() {
             <p style={{ fontFamily: 'Inter,sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 6 }}>¿Quieres crear tu propia comunidad?</p>
             <p style={{ fontSize: 14, color: 'var(--muted2)', marginBottom: 18 }}>Sin comisiones · Con PayPal · En español · Para LATAM</p>
             <Link href="/registro" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 28px', borderRadius: 12, background: 'linear-gradient(135deg,#7B5EF8,#A78BFF)', color: '#fff', textDecoration: 'none', fontFamily: 'Inter,sans-serif', fontWeight: 700, fontSize: 14, boxShadow: '0 4px 20px rgba(123,94,248,0.35)' }}>
-              Crear mi comunidad gratis
+              Crear mi comunidad
             </Link>
           </div>
         )}
