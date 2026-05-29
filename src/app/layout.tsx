@@ -3,7 +3,10 @@ import './globals.css'
 import { Toaster } from 'react-hot-toast'
 
 export const metadata: Metadata = {
-  title: 'Komunio — La plataforma de comunidades de LATAM',
+  title: {
+    default: 'Komunio — La plataforma de comunidades de LATAM',
+    template: '%s · Komunio'
+  },
   description: 'Crea tu comunidad, sube tus cursos, conecta con miles de emprendedores en Latinoamérica.',
 }
 
@@ -13,6 +16,26 @@ export const viewport: Viewport = {
   maximumScale: 1,
   userScalable: false,
   themeColor: 'var(--bg)',
+,
+  description: 'Crea tu comunidad, vende cursos y cobra membresías. La plataforma de comunidades para creadores de LATAM.',
+  keywords: ['comunidades online', 'cursos online', 'membresías', 'LATAM', 'creadores'],
+  authors: [{ name: 'Komunio' }],
+  openGraph: {
+    type: 'website',
+    locale: 'es_LA',
+    url: 'https://komunio.vercel.app',
+    siteName: 'Komunio',
+    title: 'Komunio — La plataforma de comunidades de LATAM',
+    description: 'Crea tu comunidad, vende cursos y cobra membresías en español. Sin comisiones. Con PayPal.',
+    images: [{ url: 'https://komunio.vercel.app/og.png', width: 1200, height: 630, alt: 'Komunio' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Komunio — La plataforma de comunidades de LATAM',
+    description: 'Crea tu comunidad, vende cursos y cobra membresías en español.',
+    images: ['https://komunio.vercel.app/og.png'],
+  },
+  robots: { index: true, follow: true },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,17 +1,31 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { sendWelcomeEmail } from '@/lib/emails'
+import { sendWelcomeEmail, sendCreatorWelcomeEmail } from '@/lib/emails'
 
 export async function POST(req: NextRequest) {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
-  const { name, email } = await req.json()
-  if (!process.env.RESEND_API_KEY) return NextResponse.json({ ok: true, skipped: true })
   try {
-    await sendWelcomeEmail(email ?? user.email!, name ?? 'Usuario')
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return NextResponse.json({ ok: false })
+
+    const { role } = await req.json()
+    const { data: profile } = await supabase
+      .from('ec_profiles')
+      .select('display_name')
+      .eq('id', user.id)
+      .maybeSingle()
+
+    const name = profile?.display_name ?? user.email?.split('@')[0] ?? 'Usuario'
+    const email = user.email!
+
+    if (role === 'creator') {
+      await sendCreatorWelcomeEmail(email, name)
+    } else {
+      await sendWelcomeEmail(email, name)
+    }
+
     return NextResponse.json({ ok: true })
-  } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 })
+  } catch (e) {
+    return NextResponse.json({ ok: false })
   }
 }

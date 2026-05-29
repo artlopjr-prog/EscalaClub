@@ -13,10 +13,10 @@ const PURPLE = '#7B5EF8'
 const PURPLE2= '#A78BFF'
 const GOLD   = '#E9A020'
 const GREEN  = '#00CF88'
-const BG     = 'var(--bg)'
-const BG2    = 'var(--bg2)'
-const TEXT   = 'var(--text)'
-const MUTED  = 'var(--muted2)'
+const BG     = '#FFFFFF'
+const BG2    = '#F7F7F8'
+const TEXT   = '#0F0F0F'
+const MUTED  = '#525252'
 
 // ── WRAPPER BASE ──
 function wrap(content: string, preheader = '') {
@@ -34,24 +34,33 @@ ${preheader ? `<div style="display:none;max-height:0;overflow:hidden;">${prehead
 <table width="100%" style="max-width:560px;">
 
   <!-- LOGO -->
-  <tr><td style="padding:0 0 20px;text-align:center;">
-    <div style="display:inline-flex;align-items:center;gap:8px;">
-      <div style="background:linear-gradient(135deg,${PURPLE},${PURPLE2});width:36px;height:36px;border-radius:10px;display:inline-block;line-height:36px;text-align:center;font-size:18px;">⚡</div>
-      <span style="font-size:20px;font-weight:900;color:${TEXT};letter-spacing:-0.04em;">Komunio</span>
-    </div>
+  <tr><td style="padding:0 0 24px;text-align:center;">
+    <table cellpadding="0" cellspacing="0" style="margin:0 auto;">
+      <tr>
+        <td style="padding-right:10px;">
+          <div style="width:40px;height:40px;position:relative;display:inline-block;">
+            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#C084FC,#A855F7);position:absolute;top:0;left:0;opacity:0.9;"></div>
+            <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#818CF8,#7C3AED);position:absolute;top:6px;left:10px;opacity:0.85;"></div>
+          </div>
+        </td>
+        <td>
+          <span style="font-size:22px;font-weight:800;color:#0F0F0F;letter-spacing:-0.03em;font-family:Arial,sans-serif;"><span style="color:#6C47FF;">K</span>omunio</span>
+        </td>
+      </tr>
+    </table>
   </td></tr>
 
   <!-- CONTENT -->
-  <tr><td style="background:${BG2};border-radius:20px;border:1px solid var(--border);overflow:hidden;">
+  <tr><td style="background:${BG2};border-radius:20px;border:1px solid #E5E5EA;overflow:hidden;">
     ${content}
   </td></tr>
 
   <!-- FOOTER -->
   <tr><td style="padding:20px 0;text-align:center;">
-    <p style="font-size:11px;color:var(--muted);margin:0 0 4px;">Komunio · La plataforma de comunidades de LATAM</p>
-    <p style="font-size:11px;color:var(--muted);margin:0;">
-      <a href="${BASE}/notificaciones" style="color:var(--muted);">Gestionar notificaciones</a> · 
-      <a href="${BASE}" style="color:var(--muted);">Ir a la plataforma</a>
+    <p style="font-size:11px;color:#737373;margin:0 0 4px;">Komunio · La plataforma de comunidades de LATAM</p>
+    <p style="font-size:11px;color:#737373;margin:0;">
+      <a href="${BASE}/notificaciones" style="color:#737373;">Gestionar notificaciones</a> · 
+      <a href="${BASE}" style="color:#737373;">Ir a la plataforma</a>
     </p>
   </td></tr>
 
@@ -256,7 +265,7 @@ export async function sendNewBadgeEmail(email: string, name: string, badgeName: 
     html: wrap(
       hero(badgeEmoji, '¡Nuevo badge desbloqueado!', `${first}, acabas de conseguir algo especial`, PURPLE, PURPLE2) +
       body(`
-        <table width="100%" cellpadding="0" cellspacing="0" style="background:var(--bg1);border:1px solid var(--border);border-radius:14px;text-align:center;margin-bottom:20px;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background:var(--bg1);border:1px solid #E5E5EA;border-radius:14px;text-align:center;margin-bottom:20px;">
           <tr><td style="padding:24px;">
             <div style="font-size:52px;margin-bottom:12px;">${badgeEmoji}</div>
             <div style="font-size:18px;font-weight:900;color:${TEXT};margin-bottom:6px;">${badgeName}</div>
@@ -347,5 +356,67 @@ export async function sendCreatorPaymentEmail(creatorEmail: string, creatorName:
         ${btn('Ver mis ingresos →', `${BASE}/creator/ingresos`, GOLD)}
       `)
     )
+  })
+}
+
+// ── CERTIFICATE ISSUED ──
+export async function sendCertificateEmail(
+  email: string, name: string,
+  courseName: string, communityName: string,
+  certNumber: string
+) {
+  const resend = getResend()
+  if (!resend) return
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: `🎓 Tu certificado de "${courseName}" está listo`,
+    html: wrap(`
+      <div style="padding:32px 28px;text-align:center;">
+        <div style="font-size:52px;margin-bottom:16px;">🎓</div>
+        <h1 style="font-size:22px;font-weight:800;color:#0F0F0F;margin:0 0 8px;letter-spacing:-0.03em;">¡Felicitaciones, ${name}!</h1>
+        <p style="font-size:15px;color:#525252;margin:0 0 24px;">Completaste el curso <strong>"${courseName}"</strong> en ${communityName}.</p>
+        <div style="background:#F7F7F8;border:1px solid #E5E5EA;border-radius:14px;padding:20px;margin-bottom:24px;">
+          <p style="font-size:11px;font-weight:700;color:#6C47FF;letter-spacing:.1em;text-transform:uppercase;margin:0 0 8px;">Certificado de Finalización</p>
+          <p style="font-size:18px;font-weight:800;color:#0F0F0F;margin:0 0 4px;">${name}</p>
+          <p style="font-size:12px;color:#737373;font-family:monospace;margin:0;">Nº ${certNumber}</p>
+        </div>
+        <a href="${BASE}/certificados" style="display:inline-block;background:#6C47FF;color:#fff;text-decoration:none;padding:12px 28px;border-radius:10px;font-weight:700;font-size:14px;">Descargar mi certificado →</a>
+        <p style="font-size:12px;color:#737373;margin-top:16px;">Compártelo en LinkedIn y cuéntale al mundo lo que aprendiste.</p>
+      </div>
+    `, `Tu certificado de ${courseName} está listo para descargar`)
+  })
+}
+
+// ── CREATOR WELCOME ──
+export async function sendCreatorWelcomeEmail(email: string, name: string) {
+  const resend = getResend()
+  if (!resend) return
+  await resend.emails.send({
+    from: FROM,
+    to: email,
+    subject: `Bienvenido a Komunio, ${name} 🚀`,
+    html: wrap(`
+      <div style="padding:32px 28px;">
+        <div style="text-align:center;margin-bottom:24px;">
+          <div style="font-size:48px;margin-bottom:12px;">🚀</div>
+          <h1 style="font-size:22px;font-weight:800;color:#0F0F0F;margin:0 0 8px;letter-spacing:-0.03em;">¡Bienvenido a Komunio!</h1>
+          <p style="font-size:15px;color:#525252;margin:0;">Estás a unos pasos de lanzar tu comunidad.</p>
+        </div>
+        <div style="background:#F7F7F8;border:1px solid #E5E5EA;border-radius:14px;padding:20px;margin-bottom:24px;">
+          <p style="font-size:13px;font-weight:700;color:#0F0F0F;margin:0 0 14px;">Tu checklist de inicio rápido:</p>
+          ${['Sube tu logo y banner', 'Escribe la descripción de tu comunidad', 'Agrega un video de presentación', 'Define el precio de membresía', 'Crea tu primer curso'].map((s, i) => `
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+              <div style="width:22px;height:22px;border-radius:50%;background:#6C47FF;color:#fff;font-size:11px;font-weight:700;text-align:center;line-height:22px;flex-shrink:0;">${i+1}</div>
+              <span style="font-size:13px;color:#525252;">${s}</span>
+            </div>
+          `).join('')}
+        </div>
+        <div style="text-align:center;">
+          <a href="${BASE}/creator/checklist" style="display:inline-block;background:#6C47FF;color:#fff;text-decoration:none;padding:13px 30px;border-radius:10px;font-weight:700;font-size:14px;">Configurar mi comunidad →</a>
+        </div>
+        <p style="font-size:12px;color:#737373;text-align:center;margin-top:20px;">¿Tienes dudas? Responde este email y te ayudamos.</p>
+      </div>
+    `, `Hola ${name} — configura tu comunidad en minutos`)
   })
 }
