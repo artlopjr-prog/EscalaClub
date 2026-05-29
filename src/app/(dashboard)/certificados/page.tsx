@@ -26,7 +26,7 @@ export default async function CertificadosPage() {
 
   return (
     <CertificadosClient
-      certificates={certificates ?? []}
+      certificates={(certificates ?? []) as any[]}
       userName={profile?.display_name ?? 'Usuario'}
     />
   )

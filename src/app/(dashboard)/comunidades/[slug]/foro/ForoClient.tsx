@@ -4,7 +4,9 @@ import { useState, useEffect } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import Link from 'next/link'
 import toast from 'react-hot-toast'
-import { Send, Heart, MessageCircle, Trash2, ChevronDown, ChevronUp, Image as ImageIcon, Pin, Trophy, Users, CheckCircle, Circle } from 'lucide-react'
+import { Send, Heart, MessageCircle, Trash2, ChevronDown, ChevronUp, Image as ImageIcon, Pin, Trophy, Users, CheckCircle, Circle, Search, X as XIcon } from 'lucide-react'
+import { RichEditor } from '@/components/RichEditor'
+import { ImageUploader } from '@/components/ImageUploader'
 
 const C = {
   bg: 'var(--bg)', bg1: 'var(--bg1)', bg2: 'var(--bg2)', bg3: 'var(--bg3)',
@@ -267,10 +269,10 @@ export default function ForoClient({
 
               {showImageInput && (
                 <ImageUploader
-                  communityId={communityId}
+                  communityId={community.id}
                   images={uploadedImages}
-                  onUpload={url => setUploadedImages(prev => [...prev, url])}
-                  onRemove={url => setUploadedImages(prev => prev.filter(u => u !== url))}
+                  onUpload={(url: string) => setUploadedImages(prev => [...prev, url])}
+                  onRemove={(url: string) => setUploadedImages(prev => prev.filter(u => u !== url))}
                 />
               )}
 
