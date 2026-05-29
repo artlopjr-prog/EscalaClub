@@ -9,9 +9,9 @@ const COMMISSION_PCT = 20
 
 export default function AfiliadosPage() {
   const supabase = createClient()
-  const [code, setCode] = useState(null)
+  const [code, setCode] = useState<string | null>(null)
   const [clicks, setClicks] = useState(0)
-  const [conversions, setConversions] = useState([])
+  const [conversions, setConversions] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [copied, setCopied] = useState(false)
 
