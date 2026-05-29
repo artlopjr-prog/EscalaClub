@@ -106,14 +106,14 @@ export default function LandingPage() {
 
           <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/registro" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 32px', borderRadius: 12, background: '#6C47FF', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 16, boxShadow: '0 4px 20px rgba(108,71,255,0.35)', transition: 'all .2s' }}>
-              Crear mi comunidad gratis <ArrowRight size={17} />
+              Crear mi comunidad <ArrowRight size={17} />
             </Link>
             <Link href="/explorar" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 28px', borderRadius: 12, border: '1.5px solid #E5E5EA', background: '#fff', color: '#0F0F0F', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 600, fontSize: 16 }}>
               Ver comunidades
             </Link>
           </div>
 
-          <p style={{ fontSize: 13, color: '#A0A0AB', marginTop: 16 }}>Sin tarjeta de crédito · Cancela cuando quieras</p>
+          <p style={{ fontSize: 13, color: '#A0A0AB', marginTop: 16 }}>Planes desde $39/mes · Cancela cuando quieras</p>
         </div>
       </section>
 
@@ -266,13 +266,13 @@ export default function LandingPage() {
             Empieza hoy.<br /><span style={{ color: '#6C47FF' }}>Gratis.</span>
           </h2>
           <p style={{ fontSize: 16, color: '#525252', marginBottom: 28, lineHeight: 1.6 }}>
-            Crea tu comunidad en 10 minutos. Sin tarjeta de crédito.
+            Crea tu cuenta gratis. Tu comunidad desde $39/mes.
           </p>
           <Link href="/registro" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '15px 36px', borderRadius: 14, background: '#6C47FF', color: '#fff', textDecoration: 'none', fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 17, boxShadow: '0 8px 28px rgba(108,71,255,0.35)' }}>
             Crear mi comunidad gratis <ArrowRight size={18} />
           </Link>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 20, marginTop: 18, flexWrap: 'wrap' }}>
-            {['Sin tarjeta de crédito', 'Cancela cuando quieras', 'Soporte en español'].map(t => (
+            {['Planes desde $39/mes', 'Cancela cuando quieras', 'Soporte en español'].map(t => (
               <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 13, color: '#737373' }}>
                 <Check size={13} color="#10B981" /> {t}
               </div>
