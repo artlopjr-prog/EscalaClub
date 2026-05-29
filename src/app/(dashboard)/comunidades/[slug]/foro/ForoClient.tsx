@@ -67,6 +67,7 @@ export default function ForoClient({
   const [onlineCount] = useState(Math.floor(Math.random() * 12) + 3)
   const [completedTasks, setCompletedTasks] = useState<Set<string>>(new Set())
   const [composerFocused, setComposerFocused] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
   const accent = community.primary_color ?? C.purple
   const isOwner = userRole === 'owner'
@@ -195,7 +196,13 @@ export default function ForoClient({
     setPosts(prev => prev.map(p => p.id === postId ? { ...p, comment_count: Math.max(0, (p.comment_count ?? 1) - 1) } : p))
   }
 
-  const filteredPosts = filterCat === 'all' ? posts : posts.filter(p => p.category_id === filterCat)
+  const filteredPosts = posts.filter(p => {
+    const matchCat = filterCat === 'all' || p.category_id === filterCat
+    const matchSearch = !searchQuery.trim() ||
+      p.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      p.content?.toLowerCase().includes(searchQuery.toLowerCase().replace(/<[^>]*>/g, ''))
+    return matchCat && matchSearch
+  })
   const sortedPosts = [...filteredPosts.filter(p => p.is_pinned), ...filteredPosts.filter(p => !p.is_pinned)]
   const allTasksDone = WELCOME_TASKS.every(t => completedTasks.has(t.id))
 
@@ -305,6 +312,31 @@ export default function ForoClient({
             </button>
           ))}
         </div>
+
+        {/* Search bar */}
+        <div style={{ position: 'relative', marginBottom: 16 }}>
+          <Search size={15} color="var(--muted)" style={{ position: 'absolute', left: 12, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} />
+          <input
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+            placeholder="Buscar posts..."
+            style={{ width: '100%', background: 'var(--bg1)', border: '1px solid var(--border)', borderRadius: 10, padding: '9px 36px 9px 36px', color: 'var(--text)', fontSize: 13, outline: 'none', boxSizing: 'border-box' }}
+          />
+          {searchQuery && (
+            <button onClick={() => setSearchQuery('')} style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'var(--muted)', display: 'flex', padding: 2 }}>
+              <XIcon size={13} />
+            </button>
+          )}
+        </div>
+
+        {/* Search results info */}
+        {searchQuery && (
+          <div style={{ marginBottom: 12, fontSize: 12, color: 'var(--muted)' }}>
+            {sortedPosts.length === 0
+              ? `Sin resultados para "${searchQuery}"`
+              : `${sortedPosts.length} resultado${sortedPosts.length !== 1 ? 's' : ''} para "${searchQuery}"`}
+          </div>
+        )}
 
         {/* Posts feed */}
         {sortedPosts.length > 0 ? sortedPosts.map(post => {
