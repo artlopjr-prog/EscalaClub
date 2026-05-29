@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { KomunioLogo } from '@/components/KomunioLogo'
+import { NotificationBell } from '@/components/NotificationBell'
 import { usePathname, useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
 import {
@@ -223,7 +224,7 @@ export function Sidebar({ user, unread, isCreator }: Props) {
         </div>
       )}
 
-      {/* User footer */}
+      {/* Notification bell + User footer */}
       <div style={{ borderTop: `1px solid ${C.border}`, padding: collapsed ? '10px 0' : '12px 14px', flexShrink: 0, background: 'rgba(0,0,0,0.15)' }}>
         {!collapsed ? (
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>

@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import { Sidebar } from '@/components/layout/sidebar'
+import { NotificationBell } from '@/components/NotificationBell'
 import { MobileNav } from '@/components/layout/MobileNav'
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
@@ -82,8 +83,14 @@ export default async function DashboardLayout({ children }: { children: React.Re
       <div className="desktop-sidebar" style={{ flexShrink: 0 }}>
         <Sidebar user={member} unread={unread ?? 0} isCreator={isCreator} />
       </div>
-      <main style={{ flex: 1, overflowY: 'auto', minWidth: 0, width: '100%' }}>
-        {children}
+      <main style={{ flex: 1, overflowY: 'auto', minWidth: 0, width: '100%', display: 'flex', flexDirection: 'column' }}>
+        {/* Top bar with notification bell */}
+        <div className="desktop-only" style={{ display: 'flex', justifyContent: 'flex-end', padding: '12px 24px 0', flexShrink: 0 }}>
+          <NotificationBell userId={user.id} />
+        </div>
+        <div style={{ flex: 1 }}>
+          {children}
+        </div>
       </main>
       <MobileNav />
     </div>
