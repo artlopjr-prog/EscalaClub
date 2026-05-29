@@ -1,80 +1,37 @@
 import Link from 'next/link'
-import { Zap } from 'lucide-react'
+import { KomunioLogo } from '@/components/KomunioLogo'
 
-const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple2: '#9F67FF' }
+export const metadata = { title: 'Política de Privacidad · Komunio' }
 
 export default function PrivacidadPage() {
   return (
-    <div style={{ minHeight: '100vh', background: C.bg, color: C.text, fontFamily: 'Inter, sans-serif' }}>
-      <div style={{ maxWidth: 800, margin: '0 auto', padding: '48px 24px 80px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 48 }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
-            <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Zap size={15} color="#fff" />
-            </div>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>Komunio</span>
-          </Link>
-        </div>
-
-        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 40, letterSpacing: '-0.04em', marginBottom: 12 }}>Política de Privacidad</h1>
-        <p style={{ color: C.muted, fontSize: 14, marginBottom: 48 }}>Última actualización: Mayo 2026 · Versión 1.0</p>
+    <div style={{ minHeight: '100vh', background: '#FFFFFF' }}>
+      <nav style={{ borderBottom: '1px solid #F0F0F5', padding: '16px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Link href="/" style={{ textDecoration: 'none' }}><KomunioLogo size={28} variant="full" theme="light" /></Link>
+        <Link href="/" style={{ fontSize: 13, color: '#737373', textDecoration: 'none' }}>← Volver al inicio</Link>
+      </nav>
+      <div style={{ maxWidth: 720, margin: '0 auto', padding: '48px 24px 80px' }}>
+        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 32, letterSpacing: '-0.03em', marginBottom: 8 }}>Política de Privacidad</h1>
+        <p style={{ fontSize: 14, color: '#737373', marginBottom: 40 }}>Última actualización: Mayo 2026</p>
 
         {[
-          {
-            title: '1. Información que Recopilamos',
-            content: `Recopilamos la siguiente información:\n\n• Información de registro: nombre, email, país e idioma.\n• Información de perfil: foto, biografía, redes sociales (opcional).\n• Información de pago: procesada por PayPal; Komunio no almacena datos de tarjetas.\n• Datos de uso: páginas visitadas, cursos completados, interacciones en el foro.\n• Información técnica: dirección IP, tipo de navegador, dispositivo.`
-          },
-          {
-            title: '2. Cómo Usamos tu Información',
-            content: `Utilizamos tu información para:\n\n• Proveer y mejorar el servicio de Komunio.\n• Procesar pagos y gestionar suscripciones.\n• Enviarte notificaciones sobre tu cuenta y actividad en la plataforma.\n• Enviar comunicaciones de marketing (puedes cancelar en cualquier momento).\n• Cumplir obligaciones legales.\n• Prevenir fraude y garantizar la seguridad de la plataforma.`
-          },
-          {
-            title: '3. Compartición de Información',
-            content: `No vendemos tu información personal. La compartimos únicamente con:\n\n• Proveedores de servicios: Supabase (base de datos), Vercel (hosting), PayPal (pagos), Resend (emails). Estos proveedores están sujetos a acuerdos de confidencialidad.\n• Creadores de comunidades: pueden ver tu nombre y foto de perfil como miembro de su comunidad.\n• Autoridades legales: cuando sea requerido por ley o para proteger derechos legítimos.`
-          },
-          {
-            title: '4. Cookies y Tecnologías Similares',
-            content: `Usamos cookies esenciales para el funcionamiento de la plataforma (autenticación, preferencias). No usamos cookies de rastreo de terceros con fines publicitarios. Puedes configurar tu navegador para rechazar cookies, pero esto puede afectar la funcionalidad del servicio.`
-          },
-          {
-            title: '5. Seguridad de los Datos',
-            content: `Implementamos medidas de seguridad estándar de la industria:\n\n• Cifrado SSL/TLS para todas las comunicaciones.\n• Contraseñas almacenadas con hash seguro (bcrypt).\n• Acceso a datos restringido con Row Level Security (RLS) en base de datos.\n• Infraestructura alojada en servidores seguros de Supabase y Vercel.`
-          },
-          {
-            title: '6. Tus Derechos',
-            content: `Tienes derecho a:\n\n• Acceder a los datos personales que tenemos sobre ti.\n• Corregir información incorrecta o incompleta.\n• Solicitar la eliminación de tu cuenta y datos asociados.\n• Exportar tu información en formato legible.\n• Oponerte al procesamiento de tus datos para marketing.\n\nPara ejercer estos derechos, escríbenos a: hola@komunio.app`
-          },
-          {
-            title: '7. Retención de Datos',
-            content: `Conservamos tus datos mientras tu cuenta esté activa. Al eliminar tu cuenta, tus datos personales se borran en un plazo de 30 días, excepto aquellos que debamos conservar por obligaciones legales.`
-          },
-          {
-            title: '8. Menores de Edad',
-            content: `Komunio no está dirigido a personas menores de 18 años. Si eres menor de 18 años, no debes registrarte ni usar la plataforma. Si detectamos que un usuario es menor de edad, eliminaremos su cuenta inmediatamente.`
-          },
-          {
-            title: '9. Transferencias Internacionales',
-            content: `Tu información puede ser procesada en servidores ubicados fuera de tu país de residencia. Al usar Komunio, consientes estas transferencias. Nos aseguramos de que nuestros proveedores cumplan con estándares adecuados de protección de datos.`
-          },
-          {
-            title: '10. Cambios a esta Política',
-            content: `Podemos actualizar esta Política de Privacidad periódicamente. Te notificaremos por email sobre cambios significativos. El uso continuado de Komunio después de los cambios constituye tu aceptación.`
-          },
-          {
-            title: '11. Contacto',
-            content: `Para consultas sobre privacidad o ejercer tus derechos:\n\nEmail: hola@komunio.app\nEmpresa: SCALON\nPaís: República de Panamá`
-          },
-        ].map(section => (
-          <div key={section.title} style={{ marginBottom: 36 }}>
-            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 12, color: C.text }}>{section.title}</h2>
-            <div style={{ fontSize: 15, color: C.muted2, lineHeight: 1.8, whiteSpace: 'pre-line' }}>{section.content}</div>
+          { title: '1. Información que recopilamos', body: 'Recopilamos información que usted nos proporciona al crear una cuenta (nombre, email, país), información de uso de la plataforma (posts, interacciones, progreso en cursos), información de pagos procesada a través de PayPal (no almacenamos datos de tarjetas), y datos técnicos como dirección IP y tipo de navegador para mejorar el servicio.' },
+          { title: '2. Cómo usamos su información', body: 'Usamos su información para proporcionar y mejorar nuestros servicios, procesar pagos y enviar confirmaciones, enviar comunicaciones sobre su cuenta y la plataforma, personalizar su experiencia, y cumplir con obligaciones legales. No vendemos su información personal a terceros.' },
+          { title: '3. Compartición de datos', body: 'Compartimos información con proveedores de servicios necesarios para operar la plataforma (Supabase para base de datos, PayPal para pagos, Resend para emails). Los creadores de comunidades pueden ver la información de perfil de sus miembros. No compartimos datos con terceros para publicidad.' },
+          { title: '4. Cookies y tecnologías similares', body: 'Usamos cookies estrictamente necesarias para el funcionamiento de la sesión. No usamos cookies de rastreo publicitario. Puede configurar su navegador para rechazar cookies, aunque esto puede afectar la funcionalidad de la plataforma.' },
+          { title: '5. Seguridad de datos', body: 'Implementamos medidas técnicas y organizativas para proteger su información: conexiones cifradas SSL/TLS, bases de datos con acceso controlado mediante Row Level Security, contraseñas cifradas mediante bcrypt. Sin embargo, ningún sistema es 100% seguro y no podemos garantizar seguridad absoluta.' },
+          { title: '6. Retención de datos', body: 'Conservamos su información mientras su cuenta esté activa. Al cerrar su cuenta, eliminamos sus datos personales en un plazo de 30 días, excepto cuando la ley exija conservarlos por más tiempo (por ejemplo, registros de transacciones financieras).' },
+          { title: '7. Sus derechos', body: 'Tiene derecho a acceder a sus datos personales, solicitar corrección de datos incorrectos, solicitar eliminación de su cuenta y datos, oponerse al procesamiento de sus datos, y recibir sus datos en formato portable. Para ejercer estos derechos, contacte: hola@komunio.app' },
+          { title: '8. Transferencias internacionales', body: 'Sus datos pueden ser procesados en servidores ubicados en Estados Unidos (Supabase, Vercel). Estas transferencias se realizan con las garantías adecuadas conforme a la legislación de protección de datos aplicable.' },
+          { title: '9. Menores de edad', body: 'Komunio no está dirigido a menores de 18 años. No recopilamos intencionalmente información de menores. Si detectamos que un menor ha creado una cuenta, la eliminaremos de inmediato.' },
+          { title: '10. Cambios a esta política', body: 'Podemos actualizar esta política periódicamente. Le notificaremos cambios significativos por email. El uso continuado de la plataforma después de los cambios implica aceptación de la nueva política.' },
+          { title: '11. Contacto', body: 'Para consultas sobre privacidad y protección de datos: hola@komunio.app · komunio.vercel.app' },
+        ].map(s => (
+          <div key={s.title} style={{ marginBottom: 28 }}>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 17, marginBottom: 8, color: '#0F0F0F' }}>{s.title}</h2>
+            <p style={{ fontSize: 15, color: '#525252', lineHeight: 1.75 }}>{s.body}</p>
           </div>
         ))}
-
-        <div style={{ marginTop: 48, paddingTop: 32, borderTop: `1px solid ${C.border}`, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-          <Link href="/terminos" style={{ color: C.purple2, textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>→ Términos y Condiciones</Link>
-          <Link href="/registro" style={{ color: C.purple2, textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>Crear cuenta →</Link>
-        </div>
       </div>
     </div>
   )

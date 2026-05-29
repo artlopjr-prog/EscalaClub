@@ -28,7 +28,7 @@ const FAQS = [
   { q: '¿Cómo recibo mis pagos?', a: 'Los pagos van directo a tu cuenta de PayPal. Komunio cobra una comisión del 1.5% por transacción — la más baja del mercado.' },
   { q: '¿Puedo migrar desde Skool o Kajabi?', a: 'Sí. Puedes exportar tu lista de miembros e importarla en Komunio. Para los cursos, te ayudamos con la migración.' },
   { q: '¿Hay contrato de permanencia?', a: 'No. Pagas mes a mes y cancelas cuando quieras. Sin penalidades, sin letra chica.' },
-  { q: '¿Qué diferencia a Komunio de Skool?', a: 'Komunio está hecho para LATAM: pagos con PayPal, soporte en español, precios en dólares asequibles y sin las restricciones de Skool para creadores de habla hispana.' },
+  { q: '¿Qué diferencia a Komunio de otras plataformas?', a: 'Komunio está hecho para LATAM: pagos con PayPal, soporte en español, precios asequibles y pensado desde el primer día para creadores de habla hispana.' },
 ]
 
 export default function LandingPage() {
@@ -92,7 +92,7 @@ export default function LandingPage() {
           {/* Badge */}
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 99, background: 'rgba(108,71,255,0.08)', border: '1px solid rgba(108,71,255,0.2)', marginBottom: 24 }}>
             <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#6C47FF' }} />
-            <span style={{ fontSize: 12, fontWeight: 600, color: '#6C47FF' }}>El Skool de LATAM — Ya disponible</span>
+            <span style={{ fontSize: 12, fontWeight: 600, color: '#6C47FF' }}>La plataforma de comunidades de LATAM</span>
           </div>
 
           <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 'clamp(36px,7vw,72px)', letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 20, color: '#0F0F0F' }}>
@@ -162,17 +162,17 @@ export default function LandingPage() {
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: 36 }}>
             <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 'clamp(22px,4vw,34px)', letterSpacing: '-0.03em', color: '#0F0F0F', marginBottom: 8 }}>
-              ¿Por qué Komunio y no Skool?
+              ¿Por qué Komunio?
             </h2>
-            <p style={{ fontSize: 15, color: '#737373' }}>Skool está hecho para el mercado anglosajón. Komunio está hecho para ti.</p>
+            <p style={{ fontSize: 15, color: '#737373' }}>Diseñado desde cero para creadores de LATAM.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
             {[
-              { title: 'Skool', items: ['Solo acepta tarjetas de crédito USA/UK', 'Interfaz en inglés', '$99/mes sin importar tu tamaño', 'Soporte solo en inglés', 'Sin PayPal ni transferencias LATAM', 'Comisión del 2.9% + $0.30 por transacción'], bad: true },
+              { title: 'Otras plataformas', items: ['Solo acepta tarjetas de crédito USA/UK', 'Interfaz en inglés', '$99/mes sin importar tu tamaño', 'Soporte solo en inglés', 'Sin PayPal ni transferencias LATAM', 'Comisión del 2.9% + $0.30 por transacción'], bad: true },
               { title: 'Komunio', items: ['PayPal y métodos de pago LATAM', 'Todo en español', 'Planes desde $39/mes', 'Soporte en español 24/7', 'Optimizado para creadores de LATAM', 'Solo 1.5% de comisión'], bad: false },
             ].map(col => (
               <div key={col.title} style={{ background: col.bad ? '#fff' : 'linear-gradient(135deg, rgba(108,71,255,0.05), rgba(108,71,255,0.02))', border: `1.5px solid ${col.bad ? '#F0F0F5' : 'rgba(108,71,255,0.2)'}`, borderRadius: 16, padding: '20px 18px' }}>
-                <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, marginBottom: 14, color: col.bad ? '#737373' : '#6C47FF' }}>{col.title}</h3>
+                <h3 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 16, marginBottom: 14, color: col.bad ? '#737373' : '#6C47FF' }}>{col.title === 'Skool' ? 'Otras plataformas' : col.title}</h3>
                 {col.items.map((item, i) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, marginBottom: 10 }}>
                     <span style={{ fontSize: 14, marginTop: 1, flexShrink: 0 }}>{col.bad ? '✗' : '✓'}</span>

@@ -1,89 +1,37 @@
 import Link from 'next/link'
-import { Zap } from 'lucide-react'
+import { KomunioLogo } from '@/components/KomunioLogo'
 
-const C = { bg: 'var(--bg)', bg1: 'var(--bg1)', border: 'var(--border)', text: 'var(--text)', muted: 'var(--muted)', muted2: 'var(--muted2)', purple2: '#9F67FF' }
+export const metadata = { title: 'Términos y Condiciones · Komunio' }
 
 export default function TerminosPage() {
   return (
-    <div style={{ minHeight: '100vh', background: C.bg, color: C.text, fontFamily: 'Inter, sans-serif' }}>
-      <div style={{ maxWidth: 800, margin: '0 auto', padding: '48px 24px 80px' }}>
-        {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 48 }}>
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
-            <div style={{ width: 32, height: 32, borderRadius: 9, background: 'linear-gradient(135deg, #7C3AED, #9F67FF)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Zap size={15} color="#fff" />
-            </div>
-            <span style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, color: C.text }}>Komunio</span>
-          </Link>
-        </div>
-
-        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 900, fontSize: 40, letterSpacing: '-0.04em', marginBottom: 12 }}>Términos y Condiciones</h1>
-        <p style={{ color: C.muted, fontSize: 14, marginBottom: 48 }}>Última actualización: Mayo 2026 · Versión 1.0</p>
+    <div style={{ minHeight: '100vh', background: '#FFFFFF' }}>
+      <nav style={{ borderBottom: '1px solid #F0F0F5', padding: '16px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <Link href="/" style={{ textDecoration: 'none' }}><KomunioLogo size={28} variant="full" theme="light" /></Link>
+        <Link href="/" style={{ fontSize: 13, color: '#737373', textDecoration: 'none' }}>← Volver al inicio</Link>
+      </nav>
+      <div style={{ maxWidth: 720, margin: '0 auto', padding: '48px 24px 80px' }}>
+        <h1 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 32, letterSpacing: '-0.03em', marginBottom: 8 }}>Términos y Condiciones</h1>
+        <p style={{ fontSize: 14, color: '#737373', marginBottom: 40 }}>Última actualización: Mayo 2026</p>
 
         {[
-          {
-            title: '1. Aceptación de los Términos',
-            content: `Al acceder o utilizar Komunio ("la Plataforma"), operada por SCALON (Panamá), aceptas quedar vinculado por estos Términos y Condiciones. Si no estás de acuerdo con alguno de estos términos, no debes usar la Plataforma. Estos términos aplican a todos los usuarios, incluyendo visitantes, miembros y creadores.`
-          },
-          {
-            title: '2. Descripción del Servicio',
-            content: `Komunio es una plataforma SaaS tipo marketplace que permite a creadores de contenido crear y gestionar comunidades online de pago, publicar cursos, organizar eventos en vivo y conectar con sus audiencias en Latinoamérica. Los miembros pueden unirse a comunidades, acceder a cursos y participar en eventos organizados por los creadores.`
-          },
-          {
-            title: '3. Cuentas de Usuario',
-            content: `3.1 Debes tener al menos 18 años para crear una cuenta.\n3.2 Eres responsable de mantener la confidencialidad de tu contraseña.\n3.3 Debes proporcionar información veraz y actualizada al registrarte.\n3.4 No puedes crear múltiples cuentas para eludir restricciones de la plataforma.\n3.5 Komunio se reserva el derecho de suspender o eliminar cuentas que violen estos términos.`
-          },
-          {
-            title: '4. Planes y Pagos para Creadores',
-            content: `4.1 Los creadores deben suscribirse a uno de los planes disponibles (Starter $39/mes, Creator $79/mes, Pro $129/mes) para activar su comunidad.\n4.2 Los pagos se procesan mediante PayPal. Al suscribirte, autorizas cargos recurrentes según el plan elegido.\n4.3 Los planes anuales ofrecen un descuento del 20% respecto al precio mensual.\n4.4 Komunio no reembolsa pagos ya procesados salvo por fallas técnicas comprobables del servicio.\n4.5 Komunio se reserva el derecho de modificar precios con 30 días de aviso previo.`
-          },
-          {
-            title: '5. Membresías de Comunidades',
-            content: `5.1 Los creadores determinan libremente el precio de acceso a sus comunidades.\n5.2 Los pagos de membresía van directamente al PayPal del creador. Komunio no retiene comisiones sobre estos pagos.\n5.3 Los creadores son responsables de cumplir con sus obligaciones fiscales sobre los ingresos recibidos.\n5.4 Komunio no es parte en las transacciones entre creadores y miembros, y no asume responsabilidad por disputas entre ellos.\n5.5 Las políticas de reembolso de membresías las establece cada creador individualmente.`
-          },
-          {
-            title: '6. Contenido del Usuario',
-            content: `6.1 Eres el único responsable del contenido que publicas en la plataforma.\n6.2 Al publicar contenido, otorgas a Komunio una licencia no exclusiva para mostrarlo dentro de la plataforma.\n6.3 Está prohibido publicar contenido ilegal, ofensivo, que infrinja derechos de terceros, spam, material adulto explícito, o contenido que incite a la violencia o discriminación.\n6.4 Komunio puede eliminar contenido que viole estas normas sin previo aviso.\n6.5 Los creadores son responsables del contenido publicado en sus comunidades.`
-          },
-          {
-            title: '7. Propiedad Intelectual',
-            content: `7.1 Komunio y sus logos, diseño y código son propiedad de SCALON. No puedes reproducirlos sin autorización.\n7.2 Los creadores conservan todos los derechos sobre su contenido original.\n7.3 No puedes copiar, distribuir o vender cursos o contenido de las comunidades sin autorización expresa del creador.`
-          },
-          {
-            title: '8. Limitación de Responsabilidad',
-            content: `8.1 Komunio se provee "tal cual" sin garantías de ningún tipo.\n8.2 Komunio no garantiza disponibilidad ininterrumpida del servicio.\n8.3 En ningún caso Komunio será responsable por daños indirectos, pérdida de ingresos o datos resultantes del uso de la plataforma.\n8.4 La responsabilidad máxima de Komunio se limita al monto pagado por el usuario en los últimos 3 meses.`
-          },
-          {
-            title: '9. Privacidad',
-            content: `El uso de la plataforma está sujeto a nuestra Política de Privacidad, disponible en komunio.vercel.app/privacidad. Al usar Komunio, aceptas las prácticas de recopilación y uso de datos descritas en dicha política.`
-          },
-          {
-            title: '10. Terminación',
-            content: `10.1 Puedes cancelar tu cuenta en cualquier momento desde la configuración de tu perfil.\n10.2 Komunio puede suspender o terminar tu acceso si violas estos términos.\n10.3 Al cancelar una suscripción de creador, tu comunidad permanecerá activa hasta el fin del período pagado.\n10.4 Tras la cancelación, el contenido puede ser eliminado de los servidores después de 30 días.`
-          },
-          {
-            title: '11. Ley Aplicable',
-            content: `Estos Términos se rigen por las leyes de la República de Panamá. Cualquier disputa será sometida a la jurisdicción de los tribunales competentes de Ciudad de Panamá.`
-          },
-          {
-            title: '12. Cambios a los Términos',
-            content: `Komunio puede modificar estos Términos en cualquier momento. Te notificaremos por email con al menos 15 días de anticipación. El uso continuado de la plataforma después de los cambios constituye aceptación de los nuevos términos.`
-          },
-          {
-            title: '13. Contacto',
-            content: `Para preguntas sobre estos Términos, contáctanos en: hola@komunio.app`
-          },
-        ].map(section => (
-          <div key={section.title} style={{ marginBottom: 36 }}>
-            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 800, fontSize: 18, marginBottom: 12, color: C.text }}>{section.title}</h2>
-            <div style={{ fontSize: 15, color: C.muted2, lineHeight: 1.8, whiteSpace: 'pre-line' }}>{section.content}</div>
+          { title: '1. Aceptación de los términos', body: 'Al acceder y usar Komunio ("la Plataforma"), usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con alguna parte de estos términos, no podrá acceder a la Plataforma. Komunio se reserva el derecho de actualizar estos términos en cualquier momento.' },
+          { title: '2. Descripción del servicio', body: 'Komunio es una plataforma SaaS que permite a creadores de contenido crear comunidades online, publicar cursos y cobrar membresías a sus miembros. Komunio actúa únicamente como intermediario tecnológico entre creadores y miembros.' },
+          { title: '3. Cuentas de usuario', body: 'Para usar Komunio debe crear una cuenta con información verídica. Es responsable de mantener la confidencialidad de su contraseña. Debe notificarnos inmediatamente si detecta uso no autorizado de su cuenta. Debe tener al menos 18 años para crear una cuenta.' },
+          { title: '4. Creadores de contenido', body: 'Los creadores son responsables de todo el contenido que publican en sus comunidades. El contenido debe cumplir con las leyes aplicables y no puede ser ofensivo, ilegal o engañoso. Komunio puede eliminar contenido que viole estas políticas. Los creadores establecen sus propios precios y son responsables de sus obligaciones fiscales.' },
+          { title: '5. Pagos y comisiones', body: 'Komunio cobra una comisión del 1.5% sobre cada transacción procesada a través de la plataforma, además de los planes de suscripción mensual o anual. Los pagos se procesan a través de PayPal. Komunio no almacena información de tarjetas de crédito. Las suscripciones se renuevan automáticamente hasta que sean canceladas.' },
+          { title: '6. Cancelaciones y reembolsos', body: 'Los creadores pueden cancelar su suscripción a Komunio en cualquier momento desde su panel de configuración. Los miembros de comunidades pueden cancelar sus membresías conforme a la política de cada comunidad. Komunio no garantiza reembolsos de comisiones ya procesadas. En casos de error técnico, evaluaremos reembolsos caso por caso.' },
+          { title: '7. Propiedad intelectual', body: 'Los creadores conservan todos los derechos sobre el contenido que publican. Al publicar contenido en Komunio, otorgan a Komunio una licencia limitada para mostrarlo dentro de la plataforma. Komunio y sus logos son propiedad de Komunio. No se permite usar nuestras marcas sin autorización previa por escrito.' },
+          { title: '8. Limitación de responsabilidad', body: 'Komunio no es responsable del contenido publicado por los creadores. No garantizamos que la plataforma esté libre de errores o interrupciones. En ningún caso nuestra responsabilidad superará el monto pagado por el usuario en los últimos 3 meses. No somos responsables por pérdidas indirectas, incidentales o consecuentes.' },
+          { title: '9. Terminación', body: 'Komunio puede suspender o terminar cuentas que violen estos términos, realicen fraude, publiquen contenido ilegal o dañino, o no paguen las tarifas correspondientes. Usted puede cerrar su cuenta en cualquier momento. Al cerrar una cuenta, los datos serán eliminados conforme a nuestra Política de Privacidad.' },
+          { title: '10. Ley aplicable', body: 'Estos términos se rigen por las leyes de la República de Panamá. Cualquier disputa será resuelta mediante arbitraje en Ciudad de Panamá. Si alguna cláusula es inválida, el resto de los términos permanecen en vigor.' },
+          { title: '11. Contacto', body: 'Para consultas sobre estos términos: hola@komunio.app · comunio.vercel.app' },
+        ].map(s => (
+          <div key={s.title} style={{ marginBottom: 28 }}>
+            <h2 style={{ fontFamily: 'Inter, sans-serif', fontWeight: 700, fontSize: 17, marginBottom: 8, color: '#0F0F0F' }}>{s.title}</h2>
+            <p style={{ fontSize: 15, color: '#525252', lineHeight: 1.75 }}>{s.body}</p>
           </div>
         ))}
-
-        <div style={{ marginTop: 48, paddingTop: 32, borderTop: `1px solid ${C.border}`, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12 }}>
-          <Link href="/privacidad" style={{ color: C.purple2, textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>→ Política de Privacidad</Link>
-          <Link href="/registro" style={{ color: C.purple2, textDecoration: 'none', fontSize: 14, fontWeight: 600 }}>Crear cuenta →</Link>
-        </div>
       </div>
     </div>
   )
